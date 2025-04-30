@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Game Xếp Hình</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link đến file CSS chung -->
+    <!-- Optional: Font Awesome for icons -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+</head>
+<body>
+
+    <!-- ===== NAVBAR START ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Game Xếp Hình</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="game.html">Chơi Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item active"> <!-- Trang hiện tại có class 'active' -->
+                        <a class="nav-link" href="contact.html">Liên Hệ <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ===== NAVBAR END ===== -->
+
+    <!-- ===== MAIN CONTENT START ===== -->
+    <main class="main-content-area container">
+        <h1 class="text-center mb-4">Liên Hệ Với Chúng Tôi</h1>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <p>Nếu bạn có bất kỳ câu hỏi, góp ý hoặc báo cáo lỗi nào về trò chơi, xin vui lòng liên hệ với chúng tôi qua các kênh dưới đây:</p>
+
+                <div class="contact-info mt-4">
+                    <h5>Thông tin liên hệ:</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Email:</strong> <a href="mailto:lienhe@example.com">lienhe@example.com</a></li>
+                        <li><strong>Facebook:</strong> <a href="#" target="_blank">fb.com/YourGamePage</a></li>
+                        <!-- Thêm các kênh khác nếu có (Twitter, Discord,...) -->
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h5 class="mt-4">Hoặc gửi tin nhắn trực tiếp:</h5>
+                <!-- Lưu ý: Form này chỉ là giao diện, cần backend để xử lý gửi tin nhắn -->
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contactName">Tên của bạn</label>
+                        <input type="text" class="form-control" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" class="form-control" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Chủ đề</label>
+                        <input type="text" class="form-control" id="contactSubject">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Nội dung tin nhắn</label>
+                        <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Gửi Tin Nhắn</button>
+                    <small id="form-notice" class="form-text text-muted mt-2">(Chức năng gửi tin nhắn đang được xây dựng)</small>
+                </form>
+
+            </div>
+        </div>
+    </main>
+    <!-- ===== MAIN CONTENT END ===== -->
+
+    <!-- ===== FOOTER START ===== -->
+    <footer class="site-footer">
+         <!-- Copy y hệt footer từ index.html -->
+         <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="copyright-text mb-2">
+                        © 2024 Game Xếp Hình Vui Nhộn. Phát triển bởi Tràn Hữu Đạt.
+                    </p>
+                    <p class="footer-links mb-1">
+                        <a href="index.html">Trang Chủ</a> |
+                        <a href="game.html">Chơi Game</a> |
+                        <a href="about.html">Giới Thiệu</a> |
+                        <a href="contact.html">Liên Hệ</a>
+                    </p>
+                    <p class="made-with">
+                        <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ===== FOOTER END ===== -->
+
+    <!-- Bootstrap JS và dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Optional: Thêm JS để xử lý form contact (ví dụ: hiển thị thông báo)
+        $(document).ready(function() {
+            $('#contact-form').on('submit', function(e) {
+                e.preventDefault(); // Ngăn form gửi đi thực sự
+                alert('Cảm ơn bạn đã liên hệ! Chức năng này sẽ sớm được cập nhật.');
+                // Hoặc có thể thêm logic gửi form bằng AJAX nếu có backend
+                // $(this).trigger('reset'); // Reset form sau khi gửi (tùy chọn)
+            });
+        });
+    </script>
+</body>
+</html>

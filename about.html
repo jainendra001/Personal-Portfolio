@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ - Game Xếp Hình</title>
+    <title>Giới Thiệu - Game Xếp Hình</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css"> <!-- Link đến file CSS chung -->
 </head>
@@ -18,15 +18,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"> <!-- Trang hiện tại có class 'active' -->
-                        <a class="nav-link" href="index.html">Trang Chủ <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
-                         <!-- Giả sử file game của bạn là game.html -->
                         <a class="nav-link" href="game.html">Chơi Game</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Giới Thiệu</a>
+                    <li class="nav-item active"> <!-- Trang hiện tại có class 'active' -->
+                        <a class="nav-link" href="about.html">Giới Thiệu <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Liên Hệ</a>
@@ -39,34 +38,34 @@
 
     <!-- ===== MAIN CONTENT START ===== -->
     <main class="main-content-area container">
-        <div class="jumbotron text-center">
-            <h1 class="display-4">Chào mừng đến với Game Xếp Hình!</h1>
-            <p class="lead">Thử thách trí tuệ và sự kiên nhẫn của bạn với những bức tranh đầy màu sắc.</p>
-            <hr class="my-4">
-            <p>Chọn một bức ảnh, xoay các mảnh ghép và kéo thả vào đúng vị trí để hoàn thành bức tranh.</p>
-            <a class="btn btn-warning btn-lg" href="game.html" role="button">Bắt Đầu Chơi Ngay!</a> <!-- Nút màu vàng -->
-        </div>
-
-        <div class="row text-center">
-            <div class="col-md-4">
-                <h3>Đa Dạng Hình Ảnh</h3>
-                <p>Nhiều bộ ảnh hấp dẫn thuộc các chủ đề khác nhau để bạn lựa chọn.</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Thử Thách Thời Gian</h3>
-                <p>Hoàn thành bức tranh trong thời gian ngắn nhất để thể hiện kỹ năng.</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Rèn Luyện Trí Tuệ</h3>
-                <p>Trò chơi giúp cải thiện khả năng quan sát, logic và sự tập trung.</p>
+        <h1 class="text-center mb-4">Giới Thiệu Về Game Xếp Hình</h1>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <p class="lead">Chào mừng bạn đến với thế giới của những mảnh ghép!</p>
+                <p>Game Xếp Hình này được tạo ra với mục đích mang lại những phút giây giải trí nhẹ nhàng, đồng thời giúp người chơi rèn luyện khả năng tư duy logic, sự kiên nhẫn và óc quan sát.</p>
+                <p>Cách chơi rất đơn giản:</p>
+                <ul>
+                    <li>Chọn một bộ ảnh bạn yêu thích từ danh sách.</li>
+                    <li>Các mảnh ghép của bức ảnh sẽ được xáo trộn và xoay ngẫu nhiên.</li>
+                    <li>Click vào một mảnh ghép để xoay nó 90 độ theo chiều kim đồng hồ.</li>
+                    <li>Kéo và thả các mảnh ghép vào đúng vị trí trên bảng chơi 3x3.</li>
+                    <li>Khi tất cả các mảnh ghép được đặt đúng vị trí và đúng góc xoay, bạn sẽ chiến thắng!</li>
+                </ul>
+                <hr>
+                <p>Trò chơi được phát triển bởi <strong>[Tên Của Bạn hoặc Team Bạn]</strong> sử dụng các công nghệ web hiện đại như HTML, CSS, JavaScript, cùng với sự hỗ trợ của thư viện Bootstrap và jQuery.</p>
+                <p>Chúng tôi hy vọng bạn sẽ có những trải nghiệm thú vị với trò chơi này. Mọi ý kiến đóng góp xin vui lòng gửi về trang Liên Hệ.</p>
+                <div class="text-center mt-4">
+                    <a href="game.html" class="btn btn-warning">Thử Chơi Ngay</a>
+                </div>
             </div>
         </div>
     </main>
     <!-- ===== MAIN CONTENT END ===== -->
 
     <!-- ===== FOOTER START ===== -->
-    <footer class="site-footer"> <!-- Bỏ mt-5 nếu dùng flexbox cho body -->
-        <div class="container">
+    <footer class="site-footer">
+         <!-- Copy y hệt footer từ index.html -->
+         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
                     <p class="copyright-text mb-2">

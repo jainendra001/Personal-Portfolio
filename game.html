@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <title>Game xếp hình</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding-top: 20px;
+            font-family: sans-serif;
+            /* Để tránh modal che khu vực chọn ảnh */
+        }
+
+        .game-title-area {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 20px;
+        }
+
+        .game-title-area h1 {
+            margin-bottom: 5px;
+        }
+
+        .game-title-area h6 {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        /* Container chính */
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+            /* Khoảng cách với khu vực chọn ảnh */
+        }
+
+        /* Khu vực ảnh tham chiếu */
+        .reference-section {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .reference-section h5 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .reference-image {
+            max-width: 250px;
+            height: auto;
+            border: 2px solid #ddd;
+            padding: 5px;
+            background-color: white;
+        }
+
+        /* Khu vực chơi game chính */
+        .main-game-section {
+            text-align: center;
+        }
+
+        #timer-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        #game-table {
+            width: 306px;
+            /* 100*3 + 1*2 (borders) + 1*2 (borders) */
+            height: 306px;
+            margin: auto;
+            /* border: 1px solid black; Bỏ viền ngoài */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-cell {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            float: left;
+            /* Sử dụng float cho lưới 3x3 */
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Bỏ viền ngoài cùng của ô đầu tiên/cuối cùng để khớp 306px */
+        /* Có thể bỏ nếu không quá quan trọng */
+
+
+        /* Khu vực danh sách ảnh nguồn */
+        #image-list-container {
+            text-align: center;
+            flex-basis: 100%;
+            /* Luôn chiếm dòng riêng */
+            order: 3;
+            /* Đảm bảo nó ở dưới */
+        }
+
+        #image-list-container h5 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #image-list {
+            width: auto;
+            max-width: 700px;
+            min-height: 110px;
+            margin: 10px auto;
+            padding: 15px;
+            border: 1px dashed #aaa;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f8f8;
+        }
+
+        /* Ô chứa ảnh trong danh sách nguồn */
+        #image-list .image-cell {
+            float: none;
+            /* Quan trọng khi dùng flex */
+            background-color: #e9e9e9;
+            border-color: #bbb;
+        }
+
+        .image-cell img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: cover;
+            cursor: grab;
+            transition: transform 0.2s ease-in-out, opacity 0.1s linear;
+        }
+
+        .image-cell img:active {
+            cursor: grabbing;
+        }
+
+        /* Trạng thái chiến thắng */
+        #game-table.game-won {
+            border: 3px solid limegreen;
+            box-shadow: 0 0 15px limegreen;
+            /* Điều chỉnh lại kích thước để bù trừ cho border dày hơn */
+            /* Hoặc dùng outline thay vì border */
+            /* outline: 3px solid limegreen; */
+            /* border: none; */
+        }
+
+        #game-table.game-won .image-cell {
+            border-color: limegreen;
+        }
+
+        /* Hiệu ứng kéo thả */
+        .drag-over-valid {
+            background-color: #d3ffd3 !important;
+            border-style: dashed !important;
+        }
+
+        .dragging {
+            opacity: 0.4 !important;
+            cursor: grabbing !important;
+        }
+
+        /* Khu vực chọn ảnh */
+        #puzzle-selection {
+            text-align: center;
+            clear: both;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            
+        }
+
+        #selection-list {
+            align-items: center;
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            margin: 50px;
+            border: 1px solid #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .puzzle-option {
+            max-width: 150px;
+            height: auto;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.3s ease, transform 0.2s ease;
+            padding: 2px;
+            background-color: white;
+        }
+
+        .puzzle-option:hover {
+            border-color: #ddd;
+            transform: scale(1.03);
+        }
+
+        .puzzle-option.active {
+            border-color: limegreen;
+            box-shadow: 0 0 8px limegreen;
+        }
+
+        /* --- Footer Styles --- */
+        .site-footer {
+            background-color: #26272b;
+            /* Màu nền tối */
+            padding: 45px 0 20px;
+            /* Khoảng đệm trên dưới */
+            font-size: 15px;
+            line-height: 24px;
+            color: #737373;
+            /* Màu chữ mặc định */
+            border-top: 2px solid #ffc107;
+            /* Đường viền vàng trên cùng */
+        }
+
+        .site-footer .copyright-text {
+            margin: 0;
+            /* Bỏ margin mặc định của p */
+            color: #a0a0a0;
+            /* Màu chữ sáng hơn một chút */
+        }
+
+        .site-footer .footer-links a {
+            color: #999;
+            /* Màu link */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            /* Hiệu ứng chuyển màu */
+            padding: 0 5px;
+            /* Khoảng cách giữa các link */
+        }
+
+        .site-footer .footer-links a:hover {
+            color: #ffc107;
+            /* Màu vàng khi hover */
+            text-decoration: none;
+        }
+
+        .site-footer .made-with {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .site-footer .made-with i {
+            /* Style cho trái tim */
+            font-style: normal;
+            /* Bỏ nghiêng mặc định của i */
+        }
+
+        /* Responsive cho footer nếu cần */
+        @media (max-width: 767px) {
+            .site-footer {
+                padding: 30px 0 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR START ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Game Xếp Hình</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item active"> <!-- Trang hiện tại có class 'active' -->
+                        <a class="nav-link" href="game.html">Chơi Game <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="contact.html">Liên Hệ </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ===== NAVBAR END ===== -->
+
+    <div class="game-title-area">
+        <h1>Game Xếp Hình</h1>
+        <h6>Click vào ảnh để xoay góc độ của ảnh. Kéo thả ảnh vào đúng vị trí.</h6>
+    </div>
+
+    <div class="game-container">
+        <!-- Khu vực ảnh tham chiếu bên trái -->
+        <div class="reference-section">
+            <h5>Ảnh Gốc</h5>
+            <!-- Ảnh gốc mặc định (Paimon) -->
+            <img src="AnhXepHinh/paimon/Genshin_Impact.jpg" alt="Ảnh gốc tham khảo" class="reference-image">
+        </div>
+
+        <!-- Khu vực chơi game chính giữa -->
+        <div class="main-game-section">
+            <div id="timer-display">Thời gian: 00:00</div>
+            <div id="game-table">
+                <!-- 9 ô mục tiêu 3x3 -->
+                <div class="image-cell target-cell" id="cell-0" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-1" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-2" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-3" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-4" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-5" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-6" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-7" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+                <div class="image-cell target-cell" id="cell-8" ondragover="allowDrop(event, this)"
+                    ondrop="receiveData(event)" ondragleave="dragLeave(event, this)"></div>
+            </div>
+        </div>
+
+        <!-- Khu vực danh sách ảnh nguồn -->
+        <div id="image-list-container">
+            <h5>Các Mảnh Ghép</h5>
+            <div id="image-list">
+                <!-- Các ô ảnh nguồn mặc định (Paimon) - Sẽ được shuffle bởi JS -->
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-1.jpg" id="paimon-image01" data-correct-cell="cell-0"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-2.jpg" id="paimon-image02" data-correct-cell="cell-1"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-3.jpg" id="paimon-image03" data-correct-cell="cell-2"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-4.jpg" id="paimon-image04" data-correct-cell="cell-3"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-5.jpg" id="paimon-image05" data-correct-cell="cell-4"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-6.jpg" id="paimon-image06" data-correct-cell="cell-5"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-7.jpg" id="paimon-image07" data-correct-cell="cell-6"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-8.jpg" id="paimon-image08" data-correct-cell="cell-7"
+                        draggable="true" />
+                </div>
+                <div class="image-cell source-cell">
+                    <img src="AnhXepHinh/paimon/anh-9.jpg" id="paimon-image09" data-correct-cell="cell-8"
+                        draggable="true" />
+                </div>
+            </div>
+        </div>
+
+    </div><!-- End .game-container -->
+
+    <!-- Khu vực chọn ảnh mới -->
+    <div id="puzzle-selection">
+        <h4 style="border-top: 1px solid #eee; padding: 20px; margin-left: 50px;">Chọn Ảnh Khác</h4>
+        <div id="selection-list">
+            <!-- Danh sách ảnh lựa chọn sẽ được tạo bằng JavaScript -->
+        </div>
+    </div>
+
+    <!-- ===== FOOTER START ===== -->
+    <footer class="site-footer">
+        <!-- Copy y hệt footer từ index.html -->
+        <div class="container">
+           <div class="row">
+               <div class="col-12 text-center">
+                   <p class="copyright-text mb-2">
+                       © 2024 Game Xếp Hình Vui Nhộn. Phát triển bởi Tràn Hữu Đạt.
+                   </p>
+                   <p class="footer-links mb-1">
+                       <a href="index.html">Trang Chủ</a> |
+                       <a href="game.html">Chơi Game</a> |
+                       <a href="about.html">Giới Thiệu</a> |
+                       <a href="contact.html">Liên Hệ</a>
+                   </p>
+                   <p class="made-with">
+                       <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
+                   </p>
+               </div>
+           </div>
+       </div>
+   </footer>
+   <!-- ===== FOOTER END ===== -->
+
+    <!-- Modal thông báo chiến thắng -->
+    <div class="modal fade" id="winModal" tabindex="-1" role="dialog" aria-labelledby="winModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="winModalLabel">🎉 Chúc Mừng! 🎉</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn đã hoàn thành bức tranh! <br>
+                    Thời gian của bạn là: <strong id="final-time"></strong>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="location.reload()">Chơi Lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom Game JavaScript -->
+    <script>
+        // --- KHAI BÁO BIẾN TOÀN CỤC ---
+        let timerInterval = null;
+        let startTime = null;
+        let timerRunning = false;
+        let gameWon = false;
+        let draggedElement = null;
+        let currentPuzzleId = 'paimon'; // Bắt đầu với bộ 'paimon'
+
+        // --- Dữ liệu các bộ ảnh ---
+        const puzzlesData = {
+            'paimon': {
+                name: 'Paimon',
+                // !!! THAY ĐỔI ĐƯỜNG DẪN NẾU CẦN !!!
+                reference: 'AnhXepHinh/paimon/Genshin_Impact.jpg', // Ví dụ đường dẫn khác
+                pieces: [
+                    'AnhXepHinh/paimon/anh-1.jpg', 'AnhXepHinh/paimon/anh-2.jpg', 'AnhXepHinh/paimon/anh-3.jpg',
+                    'AnhXepHinh/paimon/anh-4.jpg', 'AnhXepHinh/paimon/anh-5.jpg', 'AnhXepHinh/paimon/anh-6.jpg',
+                    'AnhXepHinh/paimon/anh-7.jpg', 'AnhXepHinh/paimon/anh-8.jpg', 'AnhXepHinh/paimon/anh-9.jpg'
+                ],
+                thumbnail: 'AnhXepHinh/paimon/Genshin_Impact.jpg'
+            },
+            'honkai_star_rail': {
+                name: 'Honkai Star Rail',
+                // !!! THAY ĐỔI ĐƯỜNG DẪN NẾU CẦN !!!
+                reference: 'AnhXepHinh/honkai_star_rail/Honkai_Star_Rail.png', // Ví dụ đường dẫn khác
+                pieces: [
+                    'AnhXepHinh/honkai_star_rail/anh-1.jpg', 'AnhXepHinh/honkai_star_rail/anh-2.jpg', 'AnhXepHinh/honkai_star_rail/anh-3.jpg',
+                    'AnhXepHinh/honkai_star_rail/anh-4.jpg', 'AnhXepHinh/honkai_star_rail/anh-5.jpg', 'AnhXepHinh/honkai_star_rail/anh-6.jpg',
+                    'AnhXepHinh/honkai_star_rail/anh-7.jpg', 'AnhXepHinh/honkai_star_rail/anh-8.jpg', 'AnhXepHinh/honkai_star_rail/anh-9.jpg'
+                ],
+                thumbnail: 'AnhXepHinh/honkai_star_rail/Honkai_Star_Rail.png' // Ví dụ đường dẫn khác
+            },
+            'zenless_zone_zero': {
+                name: 'Zenless Zone Zero',
+                // !!! THAY ĐỔI ĐƯỜNG DẪN NẾU CẦN !!!
+                reference: 'AnhXepHinh/zenless_zone_zero/zenless-zone-zero.jpg', // Ví dụ đường dẫn khác
+                pieces: [
+                    'AnhXepHinh/zenless_zone_zero/anh-1.jpg', 'AnhXepHinh/zenless_zone_zero/anh-2.jpg', 'AnhXepHinh/zenless_zone_zero/anh-3.jpg',
+                    'AnhXepHinh/zenless_zone_zero/anh-4.jpg', 'AnhXepHinh/zenless_zone_zero/anh-5.jpg', 'AnhXepHinh/zenless_zone_zero/anh-6.jpg',
+                    'AnhXepHinh/zenless_zone_zero/anh-7.jpg', 'AnhXepHinh/zenless_zone_zero/anh-8.jpg', 'AnhXepHinh/zenless_zone_zero/anh-9.jpg'
+                ],
+                thumbnail: 'AnhXepHinh/zenless_zone_zero/zenless-zone-zero.jpg' // Ví dụ đường dẫn khác
+            }
+            // Thêm các bộ ảnh khác vào đây
+        };
+
+        // --- Các hàm xử lý thời gian ---
+        function startTimer() {
+            if (!timerRunning && !gameWon) {
+                startTime = Date.now();
+                timerInterval = setInterval(updateTimer, 1000);
+                timerRunning = true;
+            }
+        }
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerRunning = false;
+        }
+        function updateTimer() {
+            if (!startTime) return;
+            const elapsedTime = Date.now() - startTime;
+            const seconds = Math.floor((elapsedTime / 1000) % 60);
+            const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+            const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            $('#timer-display').text(`Thời gian: ${formattedTime}`);
+        }
+        function getFinalTime() {
+            if (!startTime) return "00:00";
+            const elapsedTime = Date.now() - startTime;
+            const seconds = Math.floor((elapsedTime / 1000) % 60);
+            const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // --- Hàm kiểm tra điều kiện thắng ---
+        function checkWinCondition() {
+            if (gameWon) return false;
+            const targetCells = $('#game-table .target-cell');
+            if (targetCells.length !== 9) return false;
+            let allCorrect = true;
+            for (let i = 0; i < targetCells.length; i++) {
+                const cell = targetCells[i];
+                const img = cell.querySelector('img');
+                if (!img) { allCorrect = false; break; }
+                const expectedCellId = img.getAttribute('data-correct-cell');
+                const currentCellId = cell.id;
+                const currentAngle = ($(img).data('angle') || 0) % 360;
+                if (expectedCellId !== currentCellId || currentAngle !== 0) {
+                    allCorrect = false;
+                    break;
+                }
+            }
+            if (allCorrect) {
+                gameWon = true;
+                stopTimer();
+                $('#game-table').addClass('game-won');
+                $('#game-table img, #image-list img').attr('draggable', false).css('cursor', 'default');
+                $('#final-time').text(getFinalTime());
+                $('#winModal').modal('show');
+            }
+            return allCorrect;
+        }
+
+        // --- Hàm xáo trộn ---
+        function shuffleImages() {
+            var parent = $("#image-list");
+            var cells = parent.children('.source-cell');
+            if (cells.length === 0) return;
+
+            var tempCells = [];
+            cells.each(function () {
+                tempCells.push($(this).detach());
+            });
+
+            while (tempCells.length) {
+                parent.append(tempCells.splice(Math.floor(Math.random() * tempCells.length), 1)[0]);
+            }
+
+            parent.find('.source-cell img').each(function () {
+                var randomRotation = getRandomRotationAngle();
+                $(this).css('transform', 'rotate(' + randomRotation + 'deg)');
+                $(this).data('angle', randomRotation);
+            });
+            console.log("Shuffled images for:", currentPuzzleId);
+        }
+
+        // --- Hàm lấy góc xoay ngẫu nhiên ---
+        function getRandomRotationAngle() {
+            var angles = [0, 90, 180, 270];
+            return angles[Math.floor(Math.random() * angles.length)];
+        }
+
+
+        // --- Các hàm xử lý Drag and Drop ---
+        function startDrag(event) {
+            if (gameWon) { event.preventDefault(); return; }
+            draggedElement = event.target;
+            event.dataTransfer.setData('imageId', draggedElement.id);
+            setTimeout(() => {
+                if (draggedElement) draggedElement.classList.add('dragging');
+            }, 0);
+        }
+
+        function allowDrop(event, receiverCell) {
+            if (gameWon) return;
+            const isReceiverEmpty = receiverCell.childElementCount === 0;
+            const isNotSelfContainer = draggedElement ? receiverCell !== draggedElement.parentNode : true;
+            if (isReceiverEmpty && isNotSelfContainer) {
+                event.preventDefault();
+                receiverCell.classList.add('drag-over-valid');
+            }
+        }
+
+        function dragLeave(event, receiverCell) {
+            if (receiverCell) receiverCell.classList.remove('drag-over-valid');
+        }
+
+        function endDrag(event) {
+            if (draggedElement) {
+                draggedElement.classList.remove('dragging');
+            }
+            $('.image-cell').removeClass('drag-over-valid');
+            draggedElement = null;
+        }
+
+        function receiveData(event) {
+            event.preventDefault();
+            if (gameWon) return;
+
+            const id = event.dataTransfer.getData('imageId');
+            const droppedImage = document.getElementById(id);
+            let targetCell = event.target;
+
+            $('.image-cell').removeClass('drag-over-valid');
+
+            if (!droppedImage) return;
+
+            if (targetCell.tagName === 'IMG') {
+                targetCell = targetCell.parentNode;
+            }
+
+            if (targetCell.classList.contains('image-cell') &&
+                targetCell.childElementCount === 0 &&
+                (!draggedElement || targetCell !== draggedElement.parentNode)) {
+                targetCell.appendChild(droppedImage);
+
+                if ($(targetCell).closest('#game-table').length > 0 && !timerRunning) {
+                    console.log("Điều kiện bắt đầu timer thỏa mãn"); // Log để kiểm tra
+                    startTimer();
+                }
+                if ($(targetCell).closest('#game-table').length > 0) {
+                    checkWinCondition();
+                }
+            }
+            // Không cần reset dragging class ở đây vì endDrag sẽ xử lý
+            // if(droppedImage) droppedImage.classList.remove('dragging');
+            // draggedElement = null; // endDrag sẽ reset
+        }
+
+
+        // --- Hàm tạo danh sách lựa chọn ảnh ---
+        function populateSelectionList() {
+            const selectionList = $('#selection-list');
+            selectionList.empty();
+
+            for (const puzzleId in puzzlesData) {
+                const puzzle = puzzlesData[puzzleId];
+                const imgElement = $('<img>')
+                    .attr('src', puzzle.thumbnail)
+                    .attr('alt', `Chọn ${puzzle.name}`)
+                    .attr('data-puzzle-id', puzzleId)
+                    .addClass('puzzle-option img-thumbnail')
+                    .on('click', selectPuzzle); // Gán sự kiện
+
+                if (puzzleId === currentPuzzleId) {
+                    imgElement.addClass('active');
+                }
+                selectionList.append(imgElement);
+            }
+        }
+
+        // --- Hàm xử lý khi chọn bộ ảnh mới ---
+        function selectPuzzle(event) {
+            const selectedId = $(event.target).data('puzzle-id');
+            if (selectedId === currentPuzzleId) return;
+
+            currentPuzzleId = selectedId;
+            $('.puzzle-option').removeClass('active');
+            $(event.target).addClass('active');
+            resetAndLoadPuzzle(currentPuzzleId);
+        }
+
+        // --- Hàm Reset và Tải bộ ảnh mới ---
+        function resetAndLoadPuzzle(puzzleId) {
+            const puzzle = puzzlesData[puzzleId];
+            if (!puzzle) { console.error("Không tìm thấy bộ ảnh:", puzzleId); return; }
+
+            // 1. Reset game
+            gameWon = false;
+            stopTimer();
+            startTime = null;
+            timerRunning = false;
+            $('#timer-display').text('Thời gian: 00:00');
+            $('#game-table').removeClass('game-won');
+            $('#game-table .target-cell').empty();
+
+            // 2. Update ảnh gốc
+            $('.reference-image').attr('src', puzzle.reference).attr('alt', `Ảnh gốc ${puzzle.name}`);
+
+            // 3. Tạo mảnh ghép mới
+            const imageList = $('#image-list');
+            imageList.empty();
+
+            if (!puzzle.pieces || puzzle.pieces.length !== 9) {
+                console.error("Dữ liệu mảnh ghép không hợp lệ cho:", puzzleId);
+                imageList.html('<p style="color: red;">Lỗi tải mảnh ghép!</p>');
+                return;
+            }
+
+            puzzle.pieces.forEach((pieceSrc, index) => {
+                const cellId = `cell-${index}`;
+                const imgId = `${puzzleId}-image${String(index + 1).padStart(2, '0')}`;
+
+                // Tạo ảnh và lấy DOM element
+                const imgDOM = $('<img>')
+                    .attr('src', pieceSrc)
+                    .attr('id', imgId)
+                    .attr('data-correct-cell', cellId)
+                    .get(0); // Lấy DOM element
+
+                // Gán thuộc tính và sự kiện trực tiếp
+                imgDOM.draggable = true;
+                imgDOM.ondragstart = startDrag;
+                imgDOM.ondragend = endDrag;
+                // Click listener được xử lý bởi $(document).on(...)
+
+                // Tạo ô chứa và lấy DOM element
+                const cellDOM = $('<div>')
+                    .addClass('image-cell source-cell')
+                    .append(imgDOM) // Thêm ảnh vào ô
+                    .get(0); // Lấy DOM element
+
+                // Gán sự kiện trực tiếp cho ô chứa
+                cellDOM.ondragover = (e) => allowDrop(e, cellDOM);
+                cellDOM.ondrop = (e) => receiveData(e);
+                cellDOM.ondragleave = (e) => dragLeave(e, cellDOM);
+
+                imageList.append(cellDOM); // Thêm ô chứa vào list
+            });
+
+            // 4. Xáo trộn
+            shuffleImages();
+
+            // 5. Kích hoạt lại kéo thả
+            $('#image-list img').css('cursor', 'grab'); // Cập nhật cursor
+
+        }
+
+        // --- Document Ready ---
+        $(document).ready(function () {
+            // Gán sự kiện cho các ảnh ban đầu có trong HTML
+            $('#image-list img').each(function () {
+                const imgDOM = $(this).get(0);
+                imgDOM.ondragstart = startDrag;
+                imgDOM.ondragend = endDrag;
+            });
+            $('#image-list .source-cell').each(function () {
+                const cellDOM = $(this).get(0);
+                cellDOM.ondragover = (e) => allowDrop(e, cellDOM);
+                cellDOM.ondrop = (e) => receiveData(e);
+                cellDOM.ondragleave = (e) => dragLeave(e, cellDOM);
+            });
+
+
+            // Hiển thị danh sách chọn
+            populateSelectionList();
+
+            // Xáo trộn bộ ảnh mặc định
+            shuffleImages();
+        });
+
+        // --- SỰ KIỆN CLICK XOAY ẢNH (Dùng event delegation) ---
+        $(document).on('click', '.image-cell img', function (e) {
+            if (gameWon) return;
+            if ($(this).hasClass('dragging')) return; // Kiểm tra class dragging
+
+            var currentAngle = ($(this).data('angle') || 0);
+            var newAngle = (currentAngle + 90) % 360;
+            $(this).css('transform', 'rotate(' + newAngle + 'deg)');
+            $(this).data('angle', newAngle);
+
+            if ($(this).closest('#game-table').length > 0) {
+                checkWinCondition();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+/* style.css */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    padding-top: 56px; /* Khoảng đệm cho navbar cố định */
+    display: flex; /* Giúp footer đẩy xuống dưới */
+    flex-direction: column;
+    min-height: 100vh; /* Đảm bảo body chiếm ít nhất toàn bộ chiều cao màn hình */
+}
+
+/* Đảm bảo nội dung chính co giãn để đẩy footer xuống */
+.main-content-area {
+    flex: 1; /* Cho phép co giãn */
+    padding: 40px 15px; /* Khoảng đệm cho nội dung */
+}
+
+
+/* ===== NAVBAR Styles (Nếu cần tùy chỉnh thêm) ===== */
+/* .navbar { ... } */
+
+/* ===== FOOTER Styles (Copy từ lần trước) ===== */
+.site-footer {
+    background-color: #26272b;
+    padding: 45px 0 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+    border-top: 2px solid #ffc107;
+    /* Bỏ margin-top nếu dùng flexbox cho body */
+}
+
+.site-footer .copyright-text {
+    margin: 0;
+    color: #a0a0a0;
+}
+
+.site-footer .footer-links a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 0 5px;
+}
+
+.site-footer .footer-links a:hover {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.site-footer .made-with {
+    font-size: 0.85em;
+    color: #666;
+}
+.site-footer .made-with i {
+    font-style: normal;
+}
+
+@media (max-width: 767px) {
+    .site-footer {
+        padding: 30px 0 15px;
+    }
+     /* Có thể cần điều chỉnh padding-top cho body trên mobile */
+     body { padding-top: 56px; } /* Giữ nguyên hoặc thay đổi tùy navbar */
+}
+
+/* Thêm style cho link navbar active */
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #ffc107; /* Màu vàng cho link active */
+    font-weight: bold;
+}
