@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        .game-title-area {
-            padding-top: 10px;
-        }
-
         /* --- Thêm CSS cho lựa chọn chế độ --- */
         .game-mode-selection {
             text-align: center;
@@ -85,147 +81,6 @@
             cursor: not-allowed !important;
             /* Con trỏ không cho phép */
         }
-
-        :root {
-            --sidebar-width: 320px;
-            --transition-duration: 0.5s;
-            --sidebar-bg: #fff;
-            --header-color: #333;
-            --button-bg: #d0021b;
-            --button-color: #fff;
-            --checkout-bg: #d0021b;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .ins-sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            top: 0;
-            right: 0;
-            background-color: var(--sidebar-bg);
-            overflow-x: hidden;
-            transition: var(--transition-duration);
-            padding-top: 20px;
-            box-shadow: -2px 0px 10px var(--shadow-color);
-            z-index: 1000;
-        }
-
-        .ins-sidebar.open {
-            width: var(--sidebar-width);
-        }
-
-        .ins-header {
-            padding: 80px 20px 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ins-header h2 {
-            font-size: 18px;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .close-btn {
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .ins-content {
-            padding: 15px 20px;
-            max-height: calc(100vh - 150px);
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
-
-        .cart-item img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 10px;
-        }
-
-        .cart-item-info {
-            flex-grow: 1;
-        }
-
-        .cart-item-info p {
-            margin: 0;
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .cart-item-info span {
-            display: block;
-            font-size: 14px;
-            color: #888;
-            margin-top: 2px;
-        }
-
-        .cart-item-remove {
-            font-size: 16px;
-            cursor: pointer;
-            color: #d0021b;
-        }
-
-        .free-shipping-banner {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #d0021b;
-        }
-
-        .free-shipping-banner img {
-            width: 30px;
-            margin-left: 5px;
-        }
-
-        .cart-footer {
-            padding: 10px 20px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .cart-total {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .cart-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cart-actions button {
-            flex: 1;
-            margin: 0 5px;
-            padding: 10px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            color: var(--button-color);
-            background-color: var(--button-bg);
-            font-size: 14px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .cart-actions button:hover {
-            background-color: #e14b6d;
-        }
     </style>
 </head>
 
@@ -270,33 +125,6 @@
     <div class="game-title-area">
         <h1>Game Xếp Hình</h1>
         <h6>Click vào ảnh để xoay góc độ của ảnh. Kéo thả ảnh vào đúng vị trí.</h6>
-        <button class="btn btn-warning" id="insBtn">Hướng dẫn cách chơi</button>
-    </div>
-
-
-    <!-- Sidebar -->
-    <div id="insSidebar" class="ins-sidebar">
-        <div class="ins-header">
-            <p><strong>Bí Kíp Xếp Hình</strong></p>
-            <span id="closeSidebar" class="close-btn">×</span>
-        </div>
-        <div class="ins-content">
-            <p>Chào mừng bạn đến với thử thách xếp hình!</p>
-            <p><strong>Bắt đầu nào:</strong> Hãy chọn một bức ảnh bạn thích ở phía dưới nhé.</p>
-            <p><strong>Làm quen mảnh ghép:</strong> Các mảnh ghép đang bị lộn xộn và xoay tứ tung. Đừng lo, hãy click
-                vào chúng để xoay về đúng chiều.</p>
-            <p><strong>Xếp thôi:</strong> Dùng chuột kéo từng mảnh ghép vào đúng ô trên bảng 3x3. Hãy nhìn ảnh gốc bên
-                trái để tham khảo nhé.</p>
-            <p><strong>Hoàn thành:</strong> Khi bức tranh hiện ra hoàn chỉnh (đúng vị trí, đúng góc), bạn là người chiến
-                thắng!</p>
-            <hr>
-            <p><strong>Thử thách bản thân:</strong></p>
-            <p>Bạn có thể chơi chế độ <strong>Cổ điển</strong> để xem mình xếp trong bao lâu, hoặc thử chế độ
-                <strong>Đếm ngược</strong> (20-60 giây) để tăng phần gay cấn!
-            </p>
-            <p>Chúc bạn có những phút giây thư giãn!</p>
-
-        </div>
     </div>
 
     <!-- ===== LỰA CHỌN CHẾ ĐỘ CHƠI (Cập nhật) ===== -->
@@ -403,7 +231,7 @@
 
     <!-- Khu vực chọn ảnh mới -->
     <div id="puzzle-selection">
-        <h4 style="font-weight: 600;">Chọn Ảnh Khác</h4>
+        <h4 style="border-top: 1px solid #eee; padding: 20px; margin-left: 50px;">Chọn Ảnh Khác</h4>
         <div id="selection-list">
             <!-- Danh sách ảnh lựa chọn sẽ được tạo bằng JavaScript -->
         </div>
@@ -489,28 +317,6 @@
 
     <!-- Custom Game JavaScript (Cập nhật) -->
     <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const insBtn = document.getElementById('insBtn');
-            const insSidebar = document.getElementById('insSidebar');
-            const closeSidebar = document.getElementById('closeSidebar');
-
-            function toggleSidebar() {
-                insSidebar.classList.toggle('open');
-            }
-
-            function closeSidebarIfClickedOutside(event) {
-                if (!insSidebar.contains(event.target) && !insBtn.contains(event.target)) {
-                    insSidebar.classList.remove('open');
-                }
-            }
-
-            insBtn.addEventListener('click', toggleSidebar);
-            closeSidebar.addEventListener('click', toggleSidebar);
-            window.addEventListener('click', closeSidebarIfClickedOutside);
-        });
-
-
         // --- KHAI BÁO BIẾN TOÀN CỤC ---
         let timerInterval = null;
         let startTime = null;     // Dùng cho chế độ classic

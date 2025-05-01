@@ -9,32 +9,41 @@
 </head>
 <body>
 
-    <!-- ===== NAVBAR START ===== -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><img style="max-height: 40px;" src="logo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Trang Chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="game.html">Chơi Game</a>
-                    </li>
-                    <li class="nav-item active"> <!-- Trang hiện tại có class 'active' -->
-                        <a class="nav-link" href="about.html">Giới Thiệu <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Liên Hệ</a>
-                    </li>
-                </ul>
-            </div>
+<!-- ===== NAVBAR START (Custom CSS) ===== -->
+<nav class="custom-navbar">
+    <div class="nav-container">
+        <a class="nav-brand" href="index.html">
+            <img style="max-height: 40px; display: inline-block; vertical-align: middle;" src="logo.png" alt="Logo">
+            <!-- Optional: Thêm tên thương hiệu dạng text -->
+            <!-- <span style="vertical-align: middle; margin-left: 5px;">Game Xếp Hình</span> -->
+        </a>
+
+        <button class="nav-toggler" id="navbarToggler" aria-label="Toggle navigation">
+            <span class="nav-toggler-icon"></span>
+        </button>
+
+        <div class="nav-collapse" id="navbarNavContent">
+            <ul class="nav-menu">
+                <li class="nav-menu-item ">
+                    <a class="nav-menu-link" href="index.html">Trang Chủ <span class="screen-reader-only">(current)</span></a>
+                </li>
+                <li class="nav-menu-item ">
+                    <a class="nav-menu-link" href="game.html">Chơi Game</a>
+                </li>
+                <li class="nav-menu-item active">
+                    <a class="nav-menu-link" href="about.html">Giới Thiệu</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a class="nav-menu-link" href="contact.html">Liên Hệ</a>
+                </li>
+                <li class="nav-menu-item ">
+                    <a class="nav-menu-link" href="split.html">Cắt Ảnh</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-    <!-- ===== NAVBAR END ===== -->
+    </div>
+</nav>
+<!-- ===== NAVBAR END (Custom CSS) ===== -->
 
     <!-- ===== MAIN CONTENT START ===== -->
     <main class="main-content-area container">
@@ -63,9 +72,8 @@
     <!-- ===== MAIN CONTENT END ===== -->
 
     <!-- ===== FOOTER START ===== -->
-    <footer class="site-footer">
-         <!-- Copy y hệt footer từ index.html -->
-         <div class="container">
+    <footer class="site-footer"> <!-- Bỏ mt-5 nếu dùng flexbox cho body -->
+        <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
                     <p class="copyright-text mb-2">
@@ -75,7 +83,8 @@
                         <a href="index.html">Trang Chủ</a> |
                         <a href="game.html">Chơi Game</a> |
                         <a href="about.html">Giới Thiệu</a> |
-                        <a href="contact.html">Liên Hệ</a>
+                        <a href="contact.html">Liên Hệ</a> |
+                        <a href="split.html">Cắt Ảnh</a>                        
                     </p>
                     <p class="made-with">
                         <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
