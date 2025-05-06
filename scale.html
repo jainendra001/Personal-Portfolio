@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cắt Ảnh Thành Hình Vuông</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link đến file CSS chung -->
+    <style>
+        body {
+            padding-top: 100px;
+            /* Khoảng đệm trên */
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Container chứa ảnh và vùng cắt */
+        #image-crop-container {
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            /* Để container co giãn theo ảnh */
+            margin: 20px auto;
+            /* Căn giữa */
+            border: 1px solid #ddd;
+            background-color: #eee;
+            /* Nền khi chưa có ảnh */
+            min-height: 200px;
+            /* Chiều cao tối thiểu */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            /* Ngăn chọn text khi kéo */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        #original-image {
+            display: block;
+            /* Quan trọng để tính toán kích thước */
+            max-width: 100%;
+            /* Ảnh không vượt quá container */
+            transition: opacity 0.3s ease;
+        }
+
+        /* Vùng chọn hình vuông */
+        #crop-box {
+            position: absolute;
+            border: 2px dashed rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+            /* Làm mờ vùng ngoài */
+            cursor: move;
+            display: none;
+            /* Ẩn ban đầu */
+        }
+
+        /* Các điểm điều khiển kích thước */
+        .crop-handle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #555;
+            border-radius: 50%;
+            /* Bo tròn */
+        }
+
+        /* Định vị các điểm điều khiển */
+        .handle-nw {
+            top: -6px;
+            left: -6px;
+            cursor: nwse-resize;
+        }
+
+        .handle-ne {
+            top: -6px;
+            right: -6px;
+            cursor: nesw-resize;
+        }
+
+        .handle-sw {
+            bottom: -6px;
+            left: -6px;
+            cursor: nesw-resize;
+        }
+
+        .handle-se {
+            bottom: -6px;
+            right: -6px;
+            cursor: nwse-resize;
+        }
+
+        /* Có thể thêm các điểm giữa cạnh nếu muốn */
+        /* .handle-n { top: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; } */
+        /* .handle-s { bottom: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; } */
+        /* .handle-w { top: 50%; left: -6px; transform: translateY(-50%); cursor: ew-resize; } */
+        /* .handle-e { top: 50%; right: -6px; transform: translateY(-50%); cursor: ew-resize; } */
+
+        /* Khu vực kết quả */
+        #crop-result {
+            margin-top: 30px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        #cropped-image-preview {
+            max-width: 250px;
+            /* Kích thước preview ảnh đã cắt */
+            height: auto;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        #download-link {
+            display: none;
+            /* Ẩn ban đầu */
+        }
+
+        /* Thông báo lỗi */
+        #error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== NAVBAR START (Custom CSS) ===== -->
+    <nav class="custom-navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="index.html">
+                <img style="max-height: 40px; display: inline-block; vertical-align: middle;" src="logo.png" alt="Logo">
+                <!-- Optional: Thêm tên thương hiệu dạng text -->
+                <!-- <span style="vertical-align: middle; margin-left: 5px;">Game Xếp Hình</span> -->
+            </a>
+
+            <button class="nav-toggler" id="navbarToggler" aria-label="Toggle navigation">
+                <span class="nav-toggler-icon"></span>
+            </button>
+
+            <div class="nav-collapse" id="navbarNavContent">
+                <ul class="nav-menu">
+                    <li class="nav-menu-item ">
+                        <a class="nav-menu-link" href="index.html">Trang Chủ <span
+                                class="screen-reader-only">(current)</span></a>
+                    </li>
+                    <li class="nav-menu-item ">
+                        <a class="nav-menu-link" href="game.html">Chơi Game</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="about.html">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="contact.html">Liên Hệ</a>
+                    </li>
+                    <li class="nav-menu-item active">
+                        <a class="nav-menu-link" href="split.html">Cắt Ảnh</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ===== NAVBAR END (Custom CSS) ===== -->
+    <div class="container">
+        <h1 class="text-center">Cắt Ảnh Thành Hình Vuông (1:1)</h1>
+        <div class="alert alert-info">
+            Chọn ảnh từ máy tính, chọn khu vực để cắt ảnh, sau đó nhấn "Cắt Ảnh".
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                    <label for="image-upload">Chọn Ảnh Gốc:</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image-upload"
+                            accept="image/png, image/jpeg, image/gif, image/webp">
+                        <label class="custom-file-label" for="image-upload" data-browse="Duyệt">Chọn file...</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="image-crop-container">
+            <img id="original-image" src="#" alt="Ảnh gốc">
+            <div id="crop-box">
+                <div class="crop-handle handle-nw"></div>
+                <div class="crop-handle handle-ne"></div>
+                <div class="crop-handle handle-sw"></div>
+                <div class="crop-handle handle-se"></div>
+                <!-- Thêm các handle giữa cạnh nếu cần -->
+            </div>
+        </div>
+
+        <!-- Nút thực hiện cắt -->
+        <div class="text-center mt-3">
+            <button id="crop-button" class="btn btn-warning" disabled>Cắt Ảnh</button>
+        </div>
+
+        <!-- Thông báo lỗi -->
+        <div id="error-message" class="text-center"></div>
+
+        <!-- Khu vực hiển thị kết quả -->
+        <div id="crop-result" style="display: none;">
+            <h5>Ảnh Vuông Đã Cắt:</h5>
+            <img id="cropped-image-preview" src="#" alt="Ảnh đã cắt">
+            <br>
+            <a id="download-link" class="btn btn-success" href="#" download="anh_vuong.png">Tải Ảnh Vuông</a>
+        </div>
+
+    </div>
+    <!-- ===== FOOTER START ===== -->
+    <footer class="site-footer"> <!-- Bỏ mt-5 nếu dùng flexbox cho body -->
+        <div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="copyright-text mb-2">
+                        © 2024 Game Xếp Hình Vui Nhộn. Phát triển bởi Tràn Hữu Đạt.
+                    </p>
+                    <p class="footer-links mb-1">
+                        <a href="index.html">Trang Chủ</a> |
+                        <a href="game.html">Chơi Game</a> |
+                        <a href="about.html">Giới Thiệu</a> |
+                        <a href="contact.html">Liên Hệ</a> |
+                        <a href="split.html">Cắt Ảnh</a>
+                    </p>
+                    <p class="made-with">
+                        <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ===== FOOTER END ===== -->
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        $(document).ready(function () {
+            // --- Lấy các phần tử DOM ---
+            const imageInput = document.getElementById('image-upload');
+            const originalImage = document.getElementById('original-image'); // Thẻ img hiển thị
+            const previewPlaceholder = document.getElementById('preview-placeholder'); // Placeholder (tùy chọn)
+            const errorMessage = document.getElementById('error-message');
+            const fileLabel = $('.custom-file-label');
+            const imageContainer = document.getElementById('image-crop-container');
+            const cropBox = document.getElementById('crop-box');
+            const cropHandles = cropBox ? cropBox.querySelectorAll('.crop-handle') : [];
+            const cropResultDiv = document.getElementById('crop-result');
+            const croppedImagePreview = document.getElementById('cropped-image-preview');
+            const downloadLink = document.getElementById('download-link');
+            const cropButton = document.getElementById('crop-button');
+            // Xóa các biến không còn dùng nếu chỉ làm chức năng crop vuông
+            // const rowsInput = document.getElementById('rows-input');
+            // const colsInput = document.getElementById('cols-input');
+            // const splitButton = document.getElementById('split-button');
+            // const tilesOutput = document.getElementById('tiles-output');
+    
+    
+            // --- KHAI BÁO BIẾN Ở SCOPE CHUNG ---
+            let originalFileName = 'anh_goc'; // Tên file mặc định
+            let img = new Image(); // Đối tượng ảnh ẩn để load và lấy kích thước thực
+            let isDragging = false;
+            let isResizing = false;
+            let currentHandle = null;
+            let startX, startY, initialX, initialY, initialWidth, initialHeight;
+    
+            // --- Xử lý chọn file ---
+            imageInput.addEventListener('change', function (e) {
+                resetState(); // Reset trạng thái trước khi xử lý file mới
+                const file = e.target.files[0];
+                if (!file) {
+                    fileLabel.text('Chọn file...');
+                    return;
+                }
+    
+                if (!file.type.startsWith('image/')) {
+                    showError('Vui lòng chọn một file ảnh hợp lệ (png, jpg, gif, webp).');
+                    imageInput.value = ''; // Reset input file
+                    fileLabel.text('Chọn file...');
+                    return;
+                }
+    
+                originalFileName = file.name.split('.').slice(0, -1).join('.') || 'image';
+                fileLabel.text(file.name); // Hiển thị tên file
+    
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    // Load ảnh vào đối tượng Image ẩn trước
+                    img.onload = () => {
+                        // Sau khi ảnh ẩn load xong, hiển thị ảnh preview
+                        originalImage.src = event.target.result;
+                        originalImage.style.display = 'block'; // Hiện ảnh
+                        originalImage.classList.add('loaded'); // Thêm class để hiện mượt
+                        if (previewPlaceholder) previewPlaceholder.style.display = 'none'; // Ẩn placeholder nếu có
+    
+                        console.log(`Ảnh đã tải: ${img.naturalWidth}x${img.naturalHeight}`);
+                        initializeCropBox(); // Gọi sau khi ảnh hiển thị
+                        if (cropButton) cropButton.disabled = false; // Kích hoạt nút cắt
+                    };
+                    img.onerror = () => {
+                        showError('Không thể tải ảnh. File có thể bị lỗi hoặc không được hỗ trợ.');
+                        resetState(); // Reset nếu lỗi load ảnh
+                    };
+                    img.src = event.target.result;
+                }
+                 reader.onerror = function(error) { // Thêm xử lý lỗi cho FileReader
+                     console.error("FileReader error:", error);
+                     showError('Đã xảy ra lỗi khi đọc file ảnh.');
+                     resetState();
+                 }
+                reader.readAsDataURL(file);
+            });
+    
+    
+            // --- Hàm Khởi tạo Crop Box ---
+            function initializeCropBox() {
+                // Kiểm tra các phần tử cần thiết
+                if (!cropBox || !img || img.naturalWidth === 0 || !originalImage || !imageContainer) {
+                     console.warn("initializeCropBox: Các phần tử cần thiết chưa sẵn sàng.");
+                     return;
+                }
+                if (cropResultDiv) cropResultDiv.style.display = 'none';
+                cropBox.style.display = 'block';
+    
+                // Kích thước container
+                const containerWidth = imageContainer.clientWidth;
+                const containerHeight = imageContainer.clientHeight;
+    
+                // Kích thước ảnh hiển thị thực tế
+                const displayWidth = originalImage.clientWidth;
+                const displayHeight = originalImage.clientHeight;
+    
+                 // Nếu kích thước hiển thị vẫn là 0 (ảnh chưa render xong), thử lại sau chút
+                 if (displayWidth === 0 || displayHeight === 0) {
+                    console.warn("initializeCropBox: Kích thước hiển thị là 0, thử lại...");
+                    setTimeout(initializeCropBox, 100); // Thử lại sau 100ms
+                    return;
+                }
+    
+                // Tính kích thước crop box ban đầu
+                let initialSize = Math.min(displayWidth, displayHeight) * 0.8;
+                initialSize = Math.min(initialSize, displayWidth, displayHeight);
+                initialSize = Math.max(20, initialSize); // Min size 20px
+    
+                // Tính vị trí crop box *so với góc trên trái của ảnh*
+                const cropBoxTopRelativeToImage = (displayHeight - initialSize) / 2;
+                const cropBoxLeftRelativeToImage = (displayWidth - initialSize) / 2;
+    
+                // Tính offset của ảnh trong container
+                const offsetX = originalImage.offsetLeft;
+                const offsetY = originalImage.offsetTop;
+    
+                // Tính vị trí tuyệt đối cuối cùng của crop box
+                const finalTop = offsetY + cropBoxTopRelativeToImage;
+                const finalLeft = offsetX + cropBoxLeftRelativeToImage;
+    
+                console.log(`Init CropBox -> Container: ${containerWidth}x${containerHeight}, Display: ${displayWidth}x${displayHeight}, Offset: ${offsetX.toFixed(2)},${offsetY.toFixed(2)}, InitialSize: ${initialSize.toFixed(2)}, Final Top/Left: ${finalTop.toFixed(2)},${finalLeft.toFixed(2)}`);
+    
+                Object.assign(cropBox.style, {
+                    width: `${initialSize}px`,
+                    height: `${initialSize}px`,
+                    top: `${finalTop}px`,
+                    left: `${finalLeft}px`
+                });
+            }
+    
+    
+            // --- Các hàm xử lý kéo/resize Crop Box ---
+            if (cropBox) {
+                cropBox.addEventListener('mousedown', function(e) {
+                    if (e.target === cropBox) {
+                        isDragging = true;
+                        startX = e.clientX; startY = e.clientY;
+                        initialX = cropBox.offsetLeft; initialY = cropBox.offsetTop;
+                        cropBox.style.cursor = 'grabbing';
+                        e.preventDefault();
+                    }
+                });
+            }
+    
+            if (cropHandles) {
+                cropHandles.forEach(handle => {
+                    handle.addEventListener('mousedown', function(e) {
+                        isResizing = true;
+                        currentHandle = handle;
+                        startX = e.clientX; startY = e.clientY;
+                        initialX = cropBox.offsetLeft; initialY = cropBox.offsetTop;
+                        initialWidth = cropBox.offsetWidth; initialHeight = cropBox.offsetHeight;
+                        cropBox.style.cursor = getComputedStyle(handle).cursor;
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                });
+            }
+    
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging && !isResizing) return;
+                if (!cropBox || !originalImage || !imageContainer) return;
+                e.preventDefault();
+    
+                const currentX = e.clientX; const currentY = e.clientY;
+                const deltaX = currentX - startX; const deltaY = currentY - startY;
+    
+                // Kích thước và vị trí ảnh hiển thị (lấy lại trong mousemove)
+                const displayWidth = originalImage.clientWidth;
+                const displayHeight = originalImage.clientHeight;
+                const offsetX = originalImage.offsetLeft;
+                const offsetY = originalImage.offsetTop;
+    
+                if(displayWidth === 0 || displayHeight === 0) return; // Bỏ qua nếu ảnh chưa render
+    
+                if (isDragging) {
+                     let newLeft = initialX + deltaX;
+                     let newTop = initialY + deltaY;
+                     // Giới hạn kéo trong phạm vi ảnh hiển thị
+                     const minLeft = offsetX;
+                     const maxLeft = offsetX + displayWidth - cropBox.offsetWidth;
+                     const minTop = offsetY;
+                     const maxTop = offsetY + displayHeight - cropBox.offsetHeight;
+                     newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+                     newTop = Math.max(minTop, Math.min(newTop, maxTop));
+                     cropBox.style.left = `${newLeft}px`;
+                     cropBox.style.top = `${newTop}px`;
+    
+                } else if (isResizing) {
+                     let newLeft = initialX; let newTop = initialY;
+                     let newWidth = initialWidth; let newHeight = initialHeight;
+                     // Giới hạn biên của ảnh (tọa độ tương đối với container)
+                     const imageLeftEdge = offsetX;
+                     const imageTopEdge = offsetY;
+                     const imageRightEdge = offsetX + displayWidth;
+                     const imageBottomEdge = offsetY + displayHeight;
+    
+                     // --- Logic resize (Đảm bảo vuông và trong giới hạn ảnh) ---
+                    if (currentHandle.classList.contains('handle-se')) {
+                        newWidth = initialWidth + deltaX; newHeight = initialHeight + deltaY;
+                        newWidth = newHeight = Math.max(20, Math.max(newWidth, newHeight)); // Lấy cạnh lớn hơn, min 20
+                        // Giới hạn bởi cạnh phải và dưới của ảnh
+                        newWidth = Math.min(newWidth, imageRightEdge - initialX);
+                        newHeight = Math.min(newHeight, imageBottomEdge - initialY);
+                        newWidth = newHeight = Math.min(newWidth, newHeight); // Giữ vuông sau khi giới hạn
+                    } else if (currentHandle.classList.contains('handle-nw')) {
+                        newWidth = initialWidth - deltaX; newHeight = initialHeight - deltaY;
+                        newWidth = newHeight = Math.max(20, Math.max(newWidth, newHeight));
+                        // Tính vị trí mới trước
+                        let tempLeft = initialX + (initialWidth - newWidth);
+                        let tempTop = initialY + (initialHeight - newHeight);
+                        // Điều chỉnh nếu vượt biên trái/trên của ảnh
+                        if (tempLeft < imageLeftEdge) { newWidth -= (imageLeftEdge - tempLeft); tempLeft = imageLeftEdge; }
+                        if (tempTop < imageTopEdge) { newHeight -= (imageTopEdge - tempTop); tempTop = imageTopEdge; }
+                        newWidth = newHeight = Math.min(newWidth, newHeight); // Giữ vuông sau điều chỉnh
+                        // Gán lại newLeft, newTop nếu kích thước hợp lệ
+                        if(newWidth >= 20) { newLeft = tempLeft; newTop = tempTop;} else { newWidth=initialWidth; newHeight=initialHeight; }
+    
+                    } else if (currentHandle.classList.contains('handle-ne')) {
+                         newWidth = initialWidth + deltaX; newHeight = initialHeight - deltaY;
+                         newWidth = newHeight = Math.max(20, Math.max(newWidth, newHeight));
+                         let tempTop = initialY + (initialHeight - newHeight);
+                          // Giới hạn bởi cạnh phải và trên
+                         if (tempTop < imageTopEdge) { newHeight -= (imageTopEdge - tempTop); tempTop = imageTopEdge; }
+                         newWidth = Math.min(newWidth, imageRightEdge - initialX);
+                         newWidth = newHeight = Math.min(newWidth, newHeight);
+                         if(newHeight >= 20) { newTop = tempTop;} else { newWidth=initialWidth; newHeight=initialHeight; }
+    
+                    } else if (currentHandle.classList.contains('handle-sw')) {
+                         newWidth = initialWidth - deltaX; newHeight = initialHeight + deltaY;
+                         newWidth = newHeight = Math.max(20, Math.max(newWidth, newHeight));
+                         let tempLeft = initialX + (initialWidth - newWidth);
+                          // Giới hạn bởi cạnh trái và dưới
+                         if (tempLeft < imageLeftEdge) { newWidth -= (imageLeftEdge - tempLeft); tempLeft = imageLeftEdge; }
+                         newHeight = Math.min(newHeight, imageBottomEdge - initialY);
+                          newWidth = newHeight = Math.min(newWidth, newHeight);
+                          if(newWidth >= 20) { newLeft = tempLeft;} else { newWidth=initialWidth; newHeight=initialHeight; }
+                    }
+                     // --- Kết thúc logic resize ---
+    
+                     // Chỉ cập nhật nếu kích thước hợp lệ
+                     if (newWidth >= 20 && newHeight >= 20) {
+                          Object.assign(cropBox.style, {
+                              width: `${newWidth}px`, height: `${newHeight}px`,
+                              top: `${newTop}px`, left: `${newLeft}px`
+                          });
+                     }
+                }
+            });
+    
+            document.addEventListener('mouseup', function(e) {
+                if (isDragging || isResizing) {
+                    isDragging = false; isResizing = false; currentHandle = null;
+                    if (cropBox) cropBox.style.cursor = 'move';
+                }
+            });
+    
+    
+            // --- Xử lý nhấn nút Cắt Ảnh ---
+            if (cropButton) {
+                cropButton.addEventListener('click', function() {
+                    // Sử dụng đối tượng 'img' đã load để lấy kích thước thực
+                    if (!img || !img.complete || img.naturalWidth === 0) {
+                        showError('Ảnh gốc chưa sẵn sàng hoặc không hợp lệ.');
+                        return;
+                    }
+                    if (!cropBox || cropBox.style.display === 'none') {
+                        showError('Vùng chọn chưa được khởi tạo hoặc đang ẩn.');
+                        return;
+                    }
+    
+                    const boxLeft = cropBox.offsetLeft;
+                    const boxTop = cropBox.offsetTop;
+                    const boxSize = cropBox.offsetWidth; // Kích thước vùng crop box hiển thị
+    
+                    // Kích thước ảnh hiển thị
+                    const displayWidth = originalImage.clientWidth;
+                    const displayHeight = originalImage.clientHeight;
+                     // Offset của ảnh trong container
+                     const offsetX = originalImage.offsetLeft;
+                     const offsetY = originalImage.offsetTop;
+    
+                    if (displayWidth === 0 || displayHeight === 0) {
+                        showError('Không thể xác định kích thước ảnh hiển thị.');
+                        return;
+                    }
+    
+                    const scaleX = img.naturalWidth / displayWidth;
+                    const scaleY = img.naturalHeight / displayHeight;
+    
+                    // Tọa độ crop box *so với ảnh hiển thị*
+                    const boxLeftImage = boxLeft - offsetX;
+                    const boxTopImage = boxTop - offsetY;
+    
+                    // Tọa độ tương ứng trên ảnh gốc
+                    const sourceX = boxLeftImage * scaleX;
+                    const sourceY = boxTopImage * scaleY;
+    
+                    // Kích thước vùng cắt trên ảnh gốc (phải là hình vuông)
+                    const sourceCropBoxWidth = boxSize * scaleX;
+                    const sourceCropBoxHeight = boxSize * scaleY;
+                     // Kích thước thực tế để vẽ lên canvas (lấy min để đảm bảo vuông)
+                    const effectiveSourceSize = Math.min(sourceCropBoxWidth, sourceCropBoxHeight);
+    
+                    const effectiveSourceX = Math.max(0, sourceX);
+                    const effectiveSourceY = Math.max(0, sourceY);
+                    // Kích thước cắt cuối cùng (không thể lớn hơn phần còn lại của ảnh gốc)
+                    const finalCropSize = Math.min(
+                       effectiveSourceSize,
+                       img.naturalWidth - effectiveSourceX,
+                       img.naturalHeight - effectiveSourceY
+                    );
+    
+                    if (finalCropSize <= 0) {
+                        showError('Kích thước vùng cắt không hợp lệ (quá nhỏ hoặc nằm ngoài ảnh).');
+                        return;
+                    }
+    
+                    const canvas = document.createElement('canvas');
+                    canvas.width = finalCropSize;
+                    canvas.height = finalCropSize;
+                    const ctx = canvas.getContext('2d');
+    
+                    try {
+                        // Vẽ phần đã chọn từ ảnh gốc (đối tượng img) vào canvas
+                        ctx.drawImage(
+                            img, // Ảnh gốc đã load
+                            effectiveSourceX, effectiveSourceY,
+                            finalCropSize, finalCropSize,
+                            0, 0,
+                            canvas.width, canvas.height
+                        );
+    
+                        const croppedImageDataUrl = canvas.toDataURL('image/png');
+                        if (croppedImagePreview) croppedImagePreview.src = croppedImageDataUrl;
+                        if (downloadLink) {
+                            downloadLink.href = croppedImageDataUrl;
+                            downloadLink.download = `${(originalFileName || 'anh_da_cat').replace(/ /g, '_')}_vuong.png`;
+                            downloadLink.style.display = 'inline-block';
+                        }
+                        if (cropResultDiv) cropResultDiv.style.display = 'block';
+                        errorMessage.textContent = '';
+    
+                    } catch (error) {
+                        console.error("Lỗi khi cắt ảnh:", error);
+                        showError("Đã xảy ra lỗi trong quá trình cắt ảnh.");
+                        if (cropResultDiv) cropResultDiv.style.display = 'none';
+                    }
+                });
+            }
+    
+    
+            // --- Hàm hiển thị lỗi ---
+            function showError(message) {
+                if (errorMessage) errorMessage.textContent = message;
+                console.error("Lỗi:", message);
+            }
+    
+            // --- Hàm reset trạng thái ---
+            function resetState() {
+                if (errorMessage) errorMessage.textContent = '';
+                // Vô hiệu hóa nút cropButton
+                if (cropButton) cropButton.disabled = true;
+                // Reset và ẩn các phần tử liên quan đến crop box
+                if (cropBox) cropBox.style.display = 'none';
+                if (cropResultDiv) cropResultDiv.style.display = 'none';
+                if (downloadLink) downloadLink.style.display = 'none';
+                // Reset ảnh preview
+                if (originalImage) { // Sử dụng originalImage (thẻ img) để reset src và display
+                     originalImage.src = '#';
+                     originalImage.style.display = 'none';
+                     originalImage.classList.remove('loaded');
+                }
+                 if (previewPlaceholder) previewPlaceholder.style.display = 'inline';
+                // Reset các đối tượng và biến trạng thái
+                img = new Image(); // Quan trọng: Tạo lại đối tượng Image mới
+                // originalImage = null; // Không reset originalImage vì nó là thẻ DOM
+                originalFileName = 'anh_goc';
+                if(fileLabel) fileLabel.text('Chọn file...');
+                isDragging = false; isResizing = false; currentHandle = null;
+                 // Không cần reset input file ở đây imageInput.value = '';
+            }
+    
+            // --- Cập nhật label của input file (Bootstrap) ---
+            $('.custom-file-input').on('change', function() {
+               let fileName = $(this).val().split('\\').pop();
+               $(this).siblings('.custom-file-label').addClass("selected").html(fileName || 'Chọn file...');
+            });
+    
+        }); // End $(document).ready
+    </script>
+</body>
+
+</html>
