@@ -106,46 +106,58 @@
 </head>
 
 <body>
-<!-- ===== NAVBAR START (Custom CSS) ===== -->
-<nav class="custom-navbar">
-    <div class="nav-container">
-        <a class="nav-brand" href="index.html">
-            <img style="max-height: 40px; display: inline-block; vertical-align: middle;" src="logo.png" alt="Logo">
-            <!-- Optional: Thêm tên thương hiệu dạng text -->
-            <!-- <span style="vertical-align: middle; margin-left: 5px;">Game Xếp Hình</span> -->
-        </a>
+    <!-- ===== NAVBAR START (Custom CSS) ===== -->
+    <nav class="custom-navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="index.html">
+                <img style="max-height: 40px; display: inline-block; vertical-align: middle;" src="logo.png" alt="Logo">
+                <!-- Optional: Thêm tên thương hiệu dạng text -->
+                <!-- <span style="vertical-align: middle; margin-left: 5px;">Game Xếp Hình</span> -->
+            </a>
 
-        <button class="nav-toggler" id="navbarToggler" aria-label="Toggle navigation">
-            <span class="nav-toggler-icon"></span>
-        </button>
+            <button class="nav-toggler" id="navbarToggler" aria-label="Toggle navigation">
+                <span class="nav-toggler-icon"></span>
+            </button>
 
-        <div class="nav-collapse" id="navbarNavContent">
-            <ul class="nav-menu">
-                <li class="nav-menu-item "> 
-                    <a class="nav-menu-link" href="index.html">Trang Chủ <span class="screen-reader-only">(current)</span></a>
-                </li>
-                <li class="nav-menu-item ">
-                    <a class="nav-menu-link" href="game.html">Chơi Game</a>
-                </li>
-                <li class="nav-menu-item">
-                    <a class="nav-menu-link" href="about.html">Giới Thiệu</a>
-                </li>
-                <li class="nav-menu-item">
-                    <a class="nav-menu-link" href="contact.html">Liên Hệ</a>
-                </li>
-                <li class="nav-menu-item active">
-                    <a class="nav-menu-link" href="split.html">Cắt Ảnh</a>
-                </li>
-            </ul>
+            <div class="nav-collapse" id="navbarNavContent">
+                <ul class="nav-menu">
+                    <li class="nav-menu-item ">
+                        <a class="nav-menu-link" href="index.html">Trang Chủ <span
+                                class="screen-reader-only">(current)</span></a>
+                    </li>
+                    <li class="nav-menu-item ">
+                        <a class="nav-menu-link" href="game.html">Chơi Game</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="about.html">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="contact.html">Liên Hệ</a>
+                    </li>
+                    <li class="nav-menu-item active">
+                        <a class="nav-menu-link" href="split.html">Cắt Ảnh</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- ===== NAVBAR END (Custom CSS) ===== -->
-
+    </nav>
+    <!-- ===== NAVBAR END (Custom CSS) ===== -->
     <div style="padding-top: 80px;"></div>
     <div style="padding-top: 20px;" class="container">
-        <h1 class="text-center mb-4">Công Cụ Cắt Ảnh Thành Lưới</h1>
 
+        <!-- Tab lựa chọn công cụ -->
+        <ul class="nav nav-tabs mb-4" id="toolTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="crop-square-tab" href="scale.html" role="tab" aria-controls="crop-square-tool"
+                    aria-selected="false">Cắt Ảnh Vuông</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="split-grid-tab" href="split.html" role="tab"
+                    aria-controls="split-grid-tool" aria-selected="true">Cắt Ảnh Lưới</a>
+            </li>
+        </ul>
+
+        <h1 class="text-center mb-4">Công Cụ Cắt Ảnh Thành Lưới</h1>
         <div class="alert alert-info">
             Chọn ảnh từ máy tính, nhập số hàng và cột mong muốn, sau đó nhấn "Cắt Ảnh".
         </div>
@@ -189,30 +201,65 @@
         </div>
 
     </div>
-        <!-- ===== FOOTER START ===== -->
-        <footer class="site-footer"> <!-- Bỏ mt-5 nếu dùng flexbox cho body -->
-            <div>
+    <div style="padding-bottom: 80px;"></div>
+    <!-- ===== MAIN CONTENT END ===== -->
+
+    <!-- ===== FOOTER START ===== -->
+    <footer class="site-footer bg-dark text-white py-4">
+        <div class="container-fluid"> <!-- SỬ DỤNG CONTAINER-FLUID Ở ĐÂY -->
+            <div class="footer-content-wrapper"> <!-- THÊM DIV WRAPPER NÀY -->
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <img src="logo.png" alt="Logo" class="mb-2" style="max-height: 50px;">
+                        <p class="small text-white-50">Giải trí và sáng tạo không giới hạn. .</p>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3 mb-md-0">
+                        <h5 class="fw-semibold">Khám Phá</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html" class="text-white-50 text-decoration-none hover-light">Trang
+                                    Chủ</a>
+                            </li>
+                            <li><a href="game.html" class="text-white-50 text-decoration-none hover-light">Game Xếp
+                                    Hình</a>
+                            </li>
+                            <li><a href="split.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt
+                                    Ảnh Lưới</a></li>
+                            <li><a href="scale.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt
+                                    Ảnh Vuông</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <h5 class="fw-semibold">Thông Tin</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="about.html" class="text-white-50 text-decoration-none hover-light">Giới
+                                    Thiệu</a>
+                            </li>
+                            <li><a href="contact.html" class="text-white-50 text-decoration-none hover-light">Liên
+                                    Hệ</a>
+                            </li>
+                            <li><a href="terms.html" class="text-white-50 text-decoration-none hover-light">Điều
+                                    Khoản</a></li>
+                            <!-- Thêm link Điều khoản nếu có -->
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-3 border-secondary">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="copyright-text mb-2">
-                            © 2024 Game Xếp Hình Vui Nhộn. Phát triển bởi Tràn Hữu Đạt.
+                        <p class="small text-white-50 mb-0">
+                            © <span id="currentYear"></span> Game & Ảnh Pro. Phát triển bởi Trần Hữu Đạt. Bảo lưu mọi
+                            quyền.
                         </p>
-                        <p class="footer-links mb-1">
-                            <a href="index.html">Trang Chủ</a> |
-                            <a href="game.html">Chơi Game</a> |
-                            <a href="about.html">Giới Thiệu</a> |
-                            <a href="contact.html">Liên Hệ</a> |
-                            <a href="split.html">Cắt Ảnh</a>                        
-                        </p>
-                        <p class="made-with">
-                            <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
+                        <p class="small text-white-50">
+                            <small>Xây dựng với <i class="fas fa-heart text-danger"></i> và Bootstrap, jQuery.</small>
+                            <!-- Lưu ý: Bootstrap 5 không cần jQuery, nếu bạn dùng BS5 thì có thể bỏ jQuery -->
                         </p>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- ===== FOOTER END ===== -->
-
+        </div>
+    </footer>
+    <!-- ===== FOOTER END ===== -->
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -322,6 +369,9 @@
                     return;
                 }
 
+                // Giả sử originalFileName và numCols (ở đây là cols) đã được định nghĩa
+                // Ví dụ: const originalFileName = "anh"; // Lấy từ tên file gốc, không có đuôi
+                // const numCols = cols; // Số cột chính là biến cols truyền vào hàm
 
                 for (let r = 0; r < rows; r++) {
                     for (let c = 0; c < cols; c++) {
@@ -351,13 +401,26 @@
                             tileImg.src = dataUrl;
                             tileImg.alt = `Mảnh ${r + 1}-${c + 1}`;
 
+                            // === PHẦN SỬA ĐỔI TÊN FILE ===
+                            // Tính toán số thứ tự tăng dần cho mảnh ảnh
+                            const pieceNumber = (r * cols) + (c + 1); // Sử dụng 'cols' trực tiếp từ tham số hàm
+
                             // Tạo link tải về cho từng mảnh
                             const downloadLink = document.createElement('a');
-                            const fileName = `${originalFileName}_${String(r + 1).padStart(2, '0')}_${String(c + 1).padStart(2, '0')}.png`;
+
+                            // Tên file mới theo dạng: originalFileName-sốThứTự.png
+                            // Cần đảm bảo biến 'originalFileName' đã được định nghĩa ở đâu đó ngoài hàm này,
+                            // hoặc bạn cần một cách để lấy tên file gốc ở đây.
+                            // Ví dụ: const originalFileNameFromFile = uploadedFileName.split('.').slice(0, -1).join('.');
+                            const fileName = `anh_${pieceNumber}.png`; // Giả sử originalFileName là tên gốc không đuôi
+
                             downloadLink.href = dataUrl;
                             downloadLink.download = fileName;
-                            downloadLink.textContent = `Tải mảnh ${r + 1}-${c + 1}`;
+
+                            // Cập nhật textContent của link cho phù hợp
+                            downloadLink.textContent = `Tải ảnh-${pieceNumber}`;
                             downloadLink.classList.add('btn', 'btn-sm', 'btn-outline-secondary', 'mt-1'); // Thêm class Bootstrap
+                            // === KẾT THÚC PHẦN SỬA ĐỔI ===
 
 
                             // Tạo container cho ảnh và link

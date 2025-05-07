@@ -410,48 +410,43 @@ body {
      }
 }
 
-/* ===== FOOTER Styles (Copy từ lần trước) ===== */
-.site-footer {
-    background-color: #26272b;
-    padding: 45px 0 20px;
-    font-size: 15px;
-    line-height: 24px;
-    color: #737373;
-    border-top: 2px solid #ffc107;
-    /* Bỏ margin-top nếu dùng flexbox cho body */
+/* style.css */
+
+/* ... các style khác của bạn ... */
+
+.footer-content-wrapper {
+    max-width: 1140px; /* Chiều rộng tối đa tương tự .container cho màn hình lớn (lg) */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;  /* Giữ padding như .container của Bootstrap */
+    padding-right: 15px; /* Giữ padding như .container của Bootstrap */
 }
 
-.site-footer .copyright-text {
-    margin: 0;
-    color: #a0a0a0;
-}
-
-.site-footer .footer-links a {
-    color: #999;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    padding: 0 5px;
-}
-
-.site-footer .footer-links a:hover {
-    color: #ffc107;
-    text-decoration: none;
-}
-
-.site-footer .made-with {
-    font-size: 0.85em;
-    color: #666;
-}
-.site-footer .made-with i {
-    font-style: normal;
-}
-
-@media (max-width: 767px) {
-    .site-footer {
-        padding: 30px 0 15px;
+/* Điều chỉnh max-width cho các breakpoint khác nếu cần, tương tự như .container của Bootstrap */
+@media (min-width: 576px) {
+    .footer-content-wrapper {
+        max-width: 540px;
     }
-     /* Có thể cần điều chỉnh padding-top cho body trên mobile */
-     body { padding-top: 56px; } /* Giữ nguyên hoặc thay đổi tùy navbar */
+}
+@media (min-width: 768px) {
+    .footer-content-wrapper {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .footer-content-wrapper {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .footer-content-wrapper {
+        max-width: 1140px;
+    }
+}
+@media (min-width: 1400px) { /* Breakpoint mới của Bootstrap 5 */
+    .footer-content-wrapper {
+        max-width: 1320px;
+    }
 }
 
 /* Thêm style cho link navbar active */

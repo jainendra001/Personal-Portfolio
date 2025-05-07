@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css"> <!-- Link đến file CSS chung -->
 </head>
-<body>
+<style>
+    /* Có thể thêm style riêng cho trang about nếu cần */
+    .feature-icon {
+        font-size: 3rem;
+        color: #ffc107;
+        /* Màu vàng đặc trưng */
+        margin-bottom: 15px;
+    }
 
-<!-- ===== NAVBAR START (Custom CSS) ===== -->
-<nav class="custom-navbar">
+    .feature-card {
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 30px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card h3 {
+        margin-bottom: 15px;
+        color: #343a40;
+    }
+</style>
+
+<body>
+ <!-- ===== NAVBAR START (Custom CSS) ===== -->
+ <nav class="custom-navbar">
     <div class="nav-container">
         <a class="nav-brand" href="index.html">
             <img style="max-height: 40px; display: inline-block; vertical-align: middle;" src="logo.png" alt="Logo">
@@ -25,7 +55,8 @@
         <div class="nav-collapse" id="navbarNavContent">
             <ul class="nav-menu">
                 <li class="nav-menu-item ">
-                    <a class="nav-menu-link" href="index.html">Trang Chủ <span class="screen-reader-only">(current)</span></a>
+                    <a class="nav-menu-link" href="index.html">Trang Chủ <span
+                            class="screen-reader-only">(current)</span></a>
                 </li>
                 <li class="nav-menu-item ">
                     <a class="nav-menu-link" href="game.html">Chơi Game</a>
@@ -36,7 +67,7 @@
                 <li class="nav-menu-item">
                     <a class="nav-menu-link" href="contact.html">Liên Hệ</a>
                 </li>
-                <li class="nav-menu-item ">
+                <li class="nav-menu-item">
                     <a class="nav-menu-link" href="split.html">Cắt Ảnh</a>
                 </li>
             </ul>
@@ -45,13 +76,107 @@
 </nav>
 <!-- ===== NAVBAR END (Custom CSS) ===== -->
 
+
     <!-- ===== MAIN CONTENT START ===== -->
     <main class="main-content-area container">
-        <h1 class="text-center mb-4">Giới Thiệu Về Game Xếp Hình</h1>
+        <div class="text-center mb-5">
+            <h1 class="display-4">Giới Thiệu Công Cụ Xử Lý Ảnh</h1>
+            <p class="lead">Khám phá các tính năng mạnh mẽ để tùy chỉnh và chia nhỏ hình ảnh của bạn một cách dễ dàng!
+            </p>
+        </div>
+
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <p class="lead">Chào mừng bạn đến với thế giới của những mảnh ghép!</p>
-                <p>Game Xếp Hình này được tạo ra với mục đích mang lại những phút giây giải trí nhẹ nhàng, đồng thời giúp người chơi rèn luyện khả năng tư duy logic, sự kiên nhẫn và óc quan sát.</p>
+            <!-- Tính năng Cắt Ảnh Vuông -->
+            <div class="col-md-6">
+                <div class="feature-card">
+
+                    <div class="text-center">
+                        <img src="img/demo_scale.png" alt="Ảnh gốc" height="100px">
+
+                    </div>
+                    <h3 class="text-center" style="padding-top: 20px;">Cắt Ảnh Thành Hình Vuông (1:1)</h3>
+                    <p>Bạn có một bức ảnh chữ nhật nhưng cần một phiên bản hình vuông hoàn hảo? Công cụ này cho phép
+                        bạn:</p>
+                    <ul>
+                        <li>Tải lên bất kỳ ảnh nào (JPG, PNG, GIF, WEBP).</li>
+                        <li>Xem trước ảnh gốc và điều chỉnh một vùng chọn hình vuông trực quan.</li>
+                        <li><strong>Kéo thả</strong> để di chuyển vùng chọn đến vị trí mong muốn trên ảnh.</li>
+                        <li><strong>Điều chỉnh kích thước</strong> vùng chọn bằng cách kéo các điểm ở góc, đảm bảo tỉ lệ
+                            1:1 luôn được duy trì.</li>
+                        <li>Sau khi chọn được vùng ưng ý, nhấn "Cắt Ảnh Vuông" để tạo ra bức ảnh mới.</li>
+                        <li>Xem trước kết quả và tải về ảnh vuông đã cắt.</li>
+                    </ul>
+                    <p>Hoàn hảo cho việc tạo avatar, ảnh thumbnail, hoặc bất kỳ mục đích nào cần ảnh tỉ lệ 1:1.</p>
+                    <div class="text-center">
+                        <a href="scale.html" class="btn btn-warning btn-lg mt-3 text-center">Cắt ảnh vuông</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Tính năng Cắt Ảnh Lưới -->
+            <div class="col-md-6">
+                <div class="feature-card">
+
+                    <div class="text-center">
+                        <img src="img/demo_split.png" alt="Ảnh gốc" height="100px">
+
+                    </div>
+                    <h3 class="text-center" style="padding-top: 20px;">Cắt Ảnh Thành Lưới (Ví dụ: 3x3)</h3>
+                    <p>Chia một bức ảnh lớn thành nhiều mảnh nhỏ theo dạng lưới. Tính năng này rất hữu ích khi:</p>
+                    <ul>
+                        <li>Tải lên ảnh gốc bạn muốn chia nhỏ.</li>
+                        <li>Nhập số lượng <strong>hàng</strong> và <strong>cột</strong> bạn muốn chia (ví dụ: 3 hàng, 3
+                            cột để tạo 9 mảnh).</li>
+                        <li>Công cụ sẽ tự động tính toán và cắt ảnh gốc thành các mảnh đều nhau.</li>
+                        <li>Xem trước các mảnh đã cắt và tải về từng mảnh</li>
+                    </ul>
+                    <p>Tuyệt vời để tạo các mảnh ghép cho game xếp hình, tạo hiệu ứng ảnh lưới trên mạng xã hội, hoặc
+                        chia nhỏ ảnh lớn để dễ dàng chia sẻ.</p>
+                    <p class="font-italic">Lưu ý: Để có kết quả tốt nhất cho game xếp hình 3x3, nên sử dụng ảnh gốc hình
+                        vuông khi dùng tính năng này.</p>
+
+                    <div class="text-center">
+                        <a href="split.html" class="btn btn-warning btn-lg mt-3">Cắt ảnh dạng lưới</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- <hr class="my-5"> -->
+
+        <!-- <div class="text-center">
+            <h2>Bắt Đầu Sáng Tạo!</h2>
+            <p>Hãy thử nghiệm các công cụ này và tạo ra những bức ảnh độc đáo theo ý muốn của bạn.</p>
+
+            <a href="game.html" class="btn btn-outline-secondary btn-lg mt-3 ml-2">Chơi Game Xếp Hình</a>
+        </div> -->
+
+    </main>
+    <!-- ===== MAIN CONTENT END ===== -->
+
+
+    <!-- ===== MAIN CONTENT START ===== -->
+    <main class="main-content-area container">
+
+        <div class="text-center mb-5">
+            <h1 class="display-4">Giới Thiệu Về Game Xếp Hình</h1>
+            <p class="lead">Chào mừng bạn đến với thế giới của những mảnh ghép!
+            </p>
+        </div>
+
+        <div class="col-md-12 mb-4">
+            <div class="feature-card">
+                <div class="text-center">
+                    <img src="img/demo_game.png" alt="Ảnh gốc" height="100px">
+                </div>
+                <div class="text-center" style="padding-top: 20px;"></div>
+                <p>Game Xếp Hình này được tạo ra với mục đích mang lại những phút giây giải trí nhẹ nhàng, đồng thời
+                    giúp người chơi rèn luyện khả năng tư duy logic, sự kiên nhẫn và óc quan sát.</p>
                 <p>Cách chơi rất đơn giản:</p>
                 <ul>
                     <li>Chọn một bộ ảnh bạn yêu thích từ danh sách.</li>
@@ -61,8 +186,12 @@
                     <li>Khi tất cả các mảnh ghép được đặt đúng vị trí và đúng góc xoay, bạn sẽ chiến thắng!</li>
                 </ul>
                 <hr>
-                <p>Trò chơi được phát triển bởi <strong>[Tên Của Bạn hoặc Team Bạn]</strong> sử dụng các công nghệ web hiện đại như HTML, CSS, JavaScript, cùng với sự hỗ trợ của thư viện Bootstrap và jQuery.</p>
-                <p>Chúng tôi hy vọng bạn sẽ có những trải nghiệm thú vị với trò chơi này. Mọi ý kiến đóng góp xin vui lòng gửi về trang Liên Hệ.</p>
+                <p>Trò chơi được phát triển bởi <strong>Trần Hữu Đạt</strong> sử dụng các công nghệ
+                    web
+                    hiện đại như HTML, CSS, JavaScript, cùng với sự hỗ trợ của thư viện Bootstrap và jQuery.</p>
+                <p>Chúng tôi hy vọng bạn sẽ có những trải nghiệm thú vị với trò chơi này. Mọi ý kiến đóng góp xin
+                    vui
+                    lòng gửi về trang Liên Hệ.</p>
                 <div class="text-center mt-4">
                     <a href="game.html" class="btn btn-warning">Thử Chơi Ngay</a>
                 </div>
@@ -71,33 +200,70 @@
     </main>
     <!-- ===== MAIN CONTENT END ===== -->
 
-    <!-- ===== FOOTER START ===== -->
-    <footer class="site-footer"> <!-- Bỏ mt-5 nếu dùng flexbox cho body -->
-        <div class="container">
+
+<!-- ===== FOOTER START ===== -->
+<footer class="site-footer bg-dark text-white py-4">
+    <div class="container-fluid"> <!-- SỬ DỤNG CONTAINER-FLUID Ở ĐÂY -->
+        <div class="footer-content-wrapper"> <!-- THÊM DIV WRAPPER NÀY -->
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <img src="logo.png" alt="Logo" class="mb-2" style="max-height: 50px;">
+                    <p class="small text-white-50">Giải trí và sáng tạo không giới hạn. .</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3 mb-md-0">
+                    <h5 class="fw-semibold">Khám Phá</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none hover-light">Trang Chủ</a>
+                        </li>
+                        <li><a href="game.html" class="text-white-50 text-decoration-none hover-light">Game Xếp Hình</a>
+                        </li>
+                        <li><a href="split.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt Ảnh Lưới</a></li>
+                        <li><a href="scale.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt Ảnh Vuông</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h5 class="fw-semibold">Thông Tin</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white-50 text-decoration-none hover-light">Giới Thiệu</a>
+                        </li>
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none hover-light">Liên Hệ</a>
+                        </li>
+                        <li><a href="terms.html" class="text-white-50 text-decoration-none hover-light">Điều Khoản</a></li>
+                        <!-- Thêm link Điều khoản nếu có -->
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3 border-secondary">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="copyright-text mb-2">
-                        © 2024 Game Xếp Hình Vui Nhộn. Phát triển bởi Tràn Hữu Đạt.
+                    <p class="small text-white-50 mb-0">
+                        © <span id="currentYear"></span> Game & Ảnh Pro. Phát triển bởi Trần Hữu Đạt. Bảo lưu mọi quyền.
                     </p>
-                    <p class="footer-links mb-1">
-                        <a href="index.html">Trang Chủ</a> |
-                        <a href="game.html">Chơi Game</a> |
-                        <a href="about.html">Giới Thiệu</a> |
-                        <a href="contact.html">Liên Hệ</a> |
-                        <a href="split.html">Cắt Ảnh</a>                        
-                    </p>
-                    <p class="made-with">
-                        <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
+                    <p class="small text-white-50">
+                        <small>Xây dựng với <i class="fas fa-heart text-danger"></i> và Bootstrap, jQuery.</small>
+                        <!-- Lưu ý: Bootstrap 5 không cần jQuery, nếu bạn dùng BS5 thì có thể bỏ jQuery -->
                     </p>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
     <!-- ===== FOOTER END ===== -->
-
     <!-- Bootstrap JS và dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript cho Navbar Toggler (nếu dùng custom navbar)
+        const togglerButton = document.getElementById('navbarToggler');
+        const navbarContent = document.getElementById('navbarNavContent');
+        if (togglerButton && navbarContent) {
+            togglerButton.addEventListener('click', function () {
+                navbarContent.classList.toggle('show');
+            });
+        }
+    </script>
 </body>
+
 </html>

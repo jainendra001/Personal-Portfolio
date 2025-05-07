@@ -409,28 +409,53 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER START ===== -->
-    <footer class="site-footer"> <!-- Bỏ mt-5 nếu dùng flexbox cho body -->
-        <div class="container">
+<!-- ===== FOOTER START ===== -->
+<footer class="site-footer bg-dark text-white py-4">
+    <div class="container-fluid"> <!-- SỬ DỤNG CONTAINER-FLUID Ở ĐÂY -->
+        <div class="footer-content-wrapper"> <!-- THÊM DIV WRAPPER NÀY -->
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <img src="logo.png" alt="Logo" class="mb-2" style="max-height: 50px;">
+                    <p class="small text-white-50">Giải trí và sáng tạo không giới hạn. .</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3 mb-md-0">
+                    <h5 class="fw-semibold">Khám Phá</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none hover-light">Trang Chủ</a>
+                        </li>
+                        <li><a href="game.html" class="text-white-50 text-decoration-none hover-light">Game Xếp Hình</a>
+                        </li>
+                        <li><a href="split.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt Ảnh Lưới</a></li>
+                        <li><a href="scale.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt Ảnh Vuông</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h5 class="fw-semibold">Thông Tin</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white-50 text-decoration-none hover-light">Giới Thiệu</a>
+                        </li>
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none hover-light">Liên Hệ</a>
+                        </li>
+                        <li><a href="terms.html" class="text-white-50 text-decoration-none hover-light">Điều Khoản</a></li>
+                        <!-- Thêm link Điều khoản nếu có -->
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3 border-secondary">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="copyright-text mb-2">
-                        © 2024 Game Xếp Hình Vui Nhộn. Phát triển bởi Tràn Hữu Đạt.
+                    <p class="small text-white-50 mb-0">
+                        © <span id="currentYear"></span> Game & Ảnh Pro. Phát triển bởi Trần Hữu Đạt. Bảo lưu mọi quyền.
                     </p>
-                    <p class="footer-links mb-1">
-                        <a href="index.html">Trang Chủ</a> |
-                        <a href="game.html">Chơi Game</a> |
-                        <a href="about.html">Giới Thiệu</a> |
-                        <a href="contact.html">Liên Hệ</a> |
-                        <a href="split.html">Cắt Ảnh</a>
-                    </p>
-                    <p class="made-with">
-                        <small>Được xây dựng với <i class="text-danger">♥</i> và Bootstrap, jQuery.</small>
+                    <p class="small text-white-50">
+                        <small>Xây dựng với <i class="fas fa-heart text-danger"></i> và Bootstrap, jQuery.</small>
+                        <!-- Lưu ý: Bootstrap 5 không cần jQuery, nếu bạn dùng BS5 thì có thể bỏ jQuery -->
                     </p>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
     <!-- ===== FOOTER END ===== -->
 
     <!-- Modal thông báo chiến thắng -->
@@ -557,6 +582,17 @@
                     'AnhXepHinh/zenless_zone_zero/anh-7.jpg', 'AnhXepHinh/zenless_zone_zero/anh-8.jpg', 'AnhXepHinh/zenless_zone_zero/anh-9.jpg'
                 ],
                 thumbnail: 'AnhXepHinh/zenless_zone_zero/zenless-zone-zero.jpg'
+            },
+            'mahiru': {
+                name: 'Mahiru',
+                // !!! KIỂM TRA VÀ THAY ĐỔI ĐƯỜNG DẪN CHO ĐÚNG !!!
+                reference: 'AnhXepHinh/Mahiru/anh_goc.png',
+                pieces: [
+                    'AnhXepHinh/Mahiru/anh-1.png', 'AnhXepHinh/Mahiru/anh-2.png', 'AnhXepHinh/Mahiru/anh-3.png',
+                    'AnhXepHinh/Mahiru/anh-4.png', 'AnhXepHinh/Mahiru/anh-5.png', 'AnhXepHinh/Mahiru/anh-6.png',
+                    'AnhXepHinh/Mahiru/anh-7.png', 'AnhXepHinh/Mahiru/anh-8.png', 'AnhXepHinh/Mahiru/anh-9.png',
+                ],
+                thumbnail: 'AnhXepHinh/Mahiru/anh_goc.png'
             }
             // Thêm các bộ ảnh khác vào đây
         };
