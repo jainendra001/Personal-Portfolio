@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cắt Ảnh Thành Hình Vuông</title>
+    <title>Crop Image to Square</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!-- Link đến file CSS chung -->
+    <link rel="stylesheet" href="style.css"> <!-- Link to common CSS file -->
     <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
             padding-top: 100px;
-            /* Khoảng đệm trên */
+            /* Top padding */
             background-color: #f8f9fa;
         }
 
@@ -31,24 +31,24 @@
             font-weight: bold;
         }
 
-        /* Container chứa ảnh và vùng cắt */
+        /* Container for image and crop area */
         #image-crop-container {
             position: relative;
             overflow: hidden;
             max-width: 100%;
-            /* Để container co giãn theo ảnh */
+            /* To make container responsive to image */
             margin: 20px auto;
-            /* Căn giữa */
+            /* Center */
             border: 1px solid #ddd;
             background-color: #eee;
-            /* Nền khi chưa có ảnh */
+            /* Background when no image */
             min-height: 200px;
-            /* Chiều cao tối thiểu */
+            /* Minimum height */
             display: flex;
             justify-content: center;
             align-items: center;
             user-select: none;
-            /* Ngăn chọn text khi kéo */
+            /* Prevent text selection when dragging */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -56,24 +56,24 @@
 
         #original-image {
             display: block;
-            /* Quan trọng để tính toán kích thước */
+            /* Important for size calculation */
             max-width: 100%;
-            /* Ảnh không vượt quá container */
+            /* Image does not exceed container */
             transition: opacity 0.3s ease;
         }
 
-        /* Vùng chọn hình vuông */
+        /* Square selection area */
         #crop-box {
             position: absolute;
             border: 2px dashed rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-            /* Làm mờ vùng ngoài */
+            /* Dim outside area */
             cursor: move;
             display: none;
-            /* Ẩn ban đầu */
+            /* Hidden initially */
         }
 
-        /* Các điểm điều khiển kích thước */
+        /* Resize handles */
         .crop-handle {
             position: absolute;
             width: 12px;
@@ -81,10 +81,10 @@
             background-color: rgba(255, 255, 255, 0.9);
             border: 1px solid #555;
             border-radius: 50%;
-            /* Bo tròn */
+            /* Rounded */
         }
 
-        /* Định vị các điểm điều khiển */
+        /* Positioning resize handles */
         .handle-nw {
             top: -6px;
             left: -6px;
@@ -109,13 +109,13 @@
             cursor: nwse-resize;
         }
 
-        /* Có thể thêm các điểm giữa cạnh nếu muốn */
+        /* Could add mid-edge handles if desired */
         /* .handle-n { top: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; } */
         /* .handle-s { bottom: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; } */
         /* .handle-w { top: 50%; left: -6px; transform: translateY(-50%); cursor: ew-resize; } */
         /* .handle-e { top: 50%; right: -6px; transform: translateY(-50%); cursor: ew-resize; } */
 
-        /* Khu vực kết quả */
+        /* Result area */
         #crop-result {
             margin-top: 30px;
             text-align: center;
@@ -125,7 +125,7 @@
 
         #cropped-image-preview {
             max-width: 250px;
-            /* Kích thước preview ảnh đã cắt */
+            /* Preview size of cropped image */
             height: auto;
             border: 1px solid #ccc;
             margin-bottom: 15px;
@@ -133,16 +133,17 @@
 
         #download-link {
             display: none;
-            /* Ẩn ban đầu */
+            /* Hidden initially */
         }
 
-        /* Thông báo lỗi */
+        /* Error message */
         #error-message {
             color: red;
             font-weight: bold;
             margin-top: 15px;
         }
-                /* --- NEW Custom styles for language switcher --- */
+
+                        /* --- NEW Custom styles for language switcher --- */
         .lang-switcher-container {
             position: fixed;
             top: 80px; /* Adjust based on your navbar height and preference */
@@ -185,21 +186,20 @@
 </head>
 
 <body>
-        <!-- Language Switcher -->
+            <!-- Language Switcher -->
     <div class="lang-switcher-container">
         <div class="lang-switcher btn-group">
-            <a href="scale.html"><button class="btn btn-outline-secondary lang-btn active" data-lang="vi">VI</button></a> 
-            <a href="scale_en.html"><button class="btn btn-outline-secondary lang-btn" data-lang="en">EN</button></a> 
+            <a href="scale.html"><button class="btn btn-outline-secondary lang-btn " data-lang="vi">VI</button></a> 
+            <a href="scale_en.html"><button class="btn btn-outline-secondary lang-btn active" data-lang="en">EN</button></a> 
         </div>
     </div>
-
     <!-- ===== NAVBAR START (Custom CSS) ===== -->
     <nav class="custom-navbar">
         <div class="nav-container">
             <a class="nav-brand" href="index.html">
                 <img style="max-height: 40px; display: inline-block; vertical-align: middle;" src="logo.png" alt="Logo">
-                <!-- Optional: Thêm tên thương hiệu dạng text -->
-                <!-- <span style="vertical-align: middle; margin-left: 5px;">Game Xếp Hình</span> -->
+                <!-- Optional: Add brand name as text -->
+                <!-- <span style="vertical-align: middle; margin-left: 5px;">Puzzle Game</span> -->
             </a>
 
             <button class="nav-toggler" id="navbarToggler" aria-label="Toggle navigation">
@@ -209,20 +209,20 @@
             <div class="nav-collapse" id="navbarNavContent">
                 <ul class="nav-menu">
                     <li class="nav-menu-item ">
-                        <a class="nav-menu-link" href="index.html">Trang Chủ <span
+                        <a class="nav-menu-link" href="index.html">Home <span
                                 class="screen-reader-only">(current)</span></a>
                     </li>
                     <li class="nav-menu-item ">
-                        <a class="nav-menu-link" href="game.html">Chơi Game</a>
+                        <a class="nav-menu-link" href="game.html">Play Game</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a class="nav-menu-link" href="about.html">Giới Thiệu</a>
+                        <a class="nav-menu-link" href="about.html">About</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a class="nav-menu-link" href="contact.html">Liên Hệ</a>
+                        <a class="nav-menu-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-menu-item active">
-                        <a class="nav-menu-link" href="split.html">Cắt Ảnh</a>
+                        <a class="nav-menu-link" href="split.html">Image Tools</a>
                     </li>
                 </ul>
             </div>
@@ -232,62 +232,59 @@
 
 
     <div class="container">
-        <!-- Tab lựa chọn công cụ -->
+        <!-- Tool selection tabs -->
         <ul class="nav nav-tabs mb-4" id="toolTabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="crop-square-tab" href="scale.html" role="tab"
-                    aria-controls="crop-square-tool" aria-selected="true">Cắt Ảnh Vuông</a>
+                <a class="nav-link active" id="crop-square-tab" href="scale_en.html" role="tab"
+                    aria-controls="crop-square-tool" aria-selected="true">Crop Square</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="split-grid-tab" href="split.html" role="tab" aria-controls="split-grid-tool"
-                    aria-selected="false">Cắt Ảnh Lưới</a>
+                <a class="nav-link" id="split-grid-tab" href="split_en.html" role="tab" aria-controls="split-grid-tool"
+                    aria-selected="false">Split Grid</a>
             </li>
         </ul>
-        <h1 class="text-center">Cắt Ảnh Thành Hình Vuông (1:1)</h1>
+        <h1 class="text-center">Crop Image to Square (1:1)</h1>
         <div class="alert alert-info">
-            Chọn ảnh từ máy tính, chọn khu vực để cắt ảnh, sau đó nhấn "Cắt Ảnh".
+            Select an image from your computer, choose the area to crop, then click "Crop Image".
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="form-group">
-                    <label for="image-upload">Chọn Ảnh Gốc:</label>
+                    <label for="image-upload">Select Original Image:</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image-upload"
                             accept="image/png, image/jpeg, image/gif, image/webp">
-                        <label class="custom-file-label" for="image-upload" data-browse="Duyệt">Chọn file...</label>
+                        <label class="custom-file-label" for="image-upload" data-browse="Browse">Choose file...</label>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="image-crop-container">
-
-            <img id="original-image" src="" alt="">
-
-
+            <img id="original-image" src="" alt="Original image">
             <div id="crop-box">
                 <div class="crop-handle handle-nw"></div>
                 <div class="crop-handle handle-ne"></div>
                 <div class="crop-handle handle-sw"></div>
                 <div class="crop-handle handle-se"></div>
-                <!-- Thêm các handle giữa cạnh nếu cần -->
+                <!-- Add mid-edge handles if needed -->
             </div>
         </div>
 
-        <!-- Nút thực hiện cắt -->
+        <!-- Crop button -->
         <div class="text-center mt-3">
-            <button id="crop-button" class="btn btn-warning" disabled>Cắt Ảnh</button>
+            <button id="crop-button" class="btn btn-warning" disabled>Crop Image</button>
         </div>
 
-        <!-- Thông báo lỗi -->
+        <!-- Error message -->
         <div id="error-message" class="text-center"></div>
 
-        <!-- Khu vực hiển thị kết quả -->
+        <!-- Result display area -->
         <div id="crop-result" style="display: none;">
-            <h5>Ảnh Vuông Đã Cắt:</h5>
-            <img id="cropped-image-preview" src="#" alt="Ảnh đã cắt">
+            <h5>Cropped Square Image:</h5>
+            <img id="cropped-image-preview" src="#" alt="Cropped image">
             <br>
-            <a id="download-link" class="btn btn-success" href="#" download="anh_vuong.png">Tải Ảnh Vuông</a>
+            <a id="download-link" class="btn btn-success" href="#" download="square_image.png">Download Square Image</a>
         </div>
 
     </div>
@@ -297,45 +294,38 @@
      
 <!-- ===== FOOTER START ===== -->
     <footer class="site-footer bg-dark text-white py-4">
-        <div class="container-fluid"> <!-- SỬ DỤNG CONTAINER-FLUID Ở ĐÂY -->
-            <div class="footer-content-wrapper"> <!-- THÊM DIV WRAPPER NÀY -->
+        <div class="container-fluid"> <!-- USE CONTAINER-FLUID HERE -->
+            <div class="footer-content-wrapper"> <!-- ADD THIS WRAPPER DIV -->
                 <div class="row">
                     <div class="col-md-3 mb-3 mb-md-0">
                         <img src="logo.png" alt="Logo" class="mb-2" style="max-height: 50px;">
-                        <p class="small text-white-50">Giải trí và sáng tạo không giới hạn. .</p>
+                        <p class="small text-white-50">Unlimited entertainment and creativity.</p>
                     </div>
                     <div class="col-md-3 col-4 mb-3 mb-md-0">
-                        <h5 class="fw-semibold">Khám Phá</h5>
+                        <h5 class="fw-semibold">Explore</h5>
                         <ul class="list-unstyled">
-                            <li><a href="index.html" class="text-white-50 text-decoration-none hover-light">Trang
-                                    Chủ</a>
+                            <li><a href="index.html" class="text-white-50 text-decoration-none hover-light">Home</a>
                             </li>
-                            <li><a href="game.html" class="text-white-50 text-decoration-none hover-light">Game Xếp
-                                    Hình</a>
+                            <li><a href="game.html" class="text-white-50 text-decoration-none hover-light">Puzzle Game</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-4 mb-3 mb-md-0">
-                        <h5 class="fw-semibold">Công cụ</h5>
+                        <h5 class="fw-semibold">Tools</h5>
                         <ul class="list-unstyled">
-                            <li><a href="split.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt
-                                    Ảnh Lưới</a></li>
-                            <li><a href="scale.html" class="text-white-50 text-decoration-none hover-light">Công Cụ Cắt
-                                    Ảnh Vuông</a></li>
+                            <li><a href="split.html" class="text-white-50 text-decoration-none hover-light">Grid Split Tool</a></li>
+                            <li><a href="scale.html" class="text-white-50 text-decoration-none hover-light">Square Crop Tool</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-4">
-                        <h5 class="fw-semibold">Thông Tin</h5>
+                        <h5 class="fw-semibold">Information</h5>
                         <ul class="list-unstyled">
-                            <li><a href="about.html" class="text-white-50 text-decoration-none hover-light">Giới
-                                    Thiệu</a>
+                            <li><a href="about.html" class="text-white-50 text-decoration-none hover-light">About</a>
                             </li>
-                            <li><a href="contact.html" class="text-white-50 text-decoration-none hover-light">Liên
-                                    Hệ</a>
+                            <li><a href="contact.html" class="text-white-50 text-decoration-none hover-light">Contact</a>
                             </li>
-                            <li><a href="terms.html" class="text-white-50 text-decoration-none hover-light">Điều
-                                    Khoản</a></li>
-                            <!-- Thêm link Điều khoản nếu có -->
+                            <li><a href="terms.html" class="text-white-50 text-decoration-none hover-light">Terms</a></li>
+                            <!-- Add Terms link if available -->
                         </ul>
                     </div>
                 </div>
@@ -343,12 +333,11 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <p class="small text-white-50 mb-0">
-                            © <span id="currentYear"></span> Game & Ảnh Pro. Phát triển bởi Trần Hữu Đạt. Bảo lưu mọi
-                            quyền.
+                            © <span id="currentYear"></span> Game & Image Pro. Developed by Tran Huu Dat. All rights reserved.
                         </p>
                         <p class="small text-white-50">
-                            <small>Xây dựng với <i class="fas fa-heart text-danger"></i> và Bootstrap, jQuery.</small>
-                            <!-- Lưu ý: Bootstrap 5 không cần jQuery, nếu bạn dùng BS5 thì có thể bỏ jQuery -->
+                            <small>Built with <i class="fas fa-heart text-danger"></i> and Bootstrap, jQuery.</small>
+                            <!-- Note: Bootstrap 5 doesn't require jQuery, if you use BS5 you can remove jQuery -->
                         </p>
                     </div>
                 </div>
@@ -365,9 +354,9 @@
     <!-- Custom JavaScript -->
     <script>
         $(document).ready(function () {
-            // --- Lấy các phần tử DOM ---
+            // --- Get DOM elements ---
             const imageInput = document.getElementById('image-upload');
-            const originalImage = document.getElementById('original-image'); // Thẻ img hiển thị
+            const originalImage = document.getElementById('original-image'); // img tag for display
             const previewPlaceholder = document.getElementById('preview-placeholder');
             const errorMessage = document.getElementById('error-message');
             const fileLabel = $('.custom-file-label');
@@ -379,26 +368,26 @@
             const downloadLink = document.getElementById('download-link');
             const cropButton = document.getElementById('crop-button');
 
-            // --- KHAI BÁO BIẾN Ở SCOPE CHUNG ---
-            let originalFileName = 'anh_goc';
-            let img = new Image(); // Đối tượng ảnh ẩn để load và lấy kích thước thực
+            // --- DECLARE VARIABLES IN GLOBAL SCOPE ---
+            let originalFileName = 'original_image';
+            let img = new Image(); // Hidden image object to load and get actual dimensions
             let isDragging = false;
             let isResizing = false;
             let currentHandle = null;
             let startX, startY, initialX, initialY, initialWidth, initialHeight;
 
-            // --- Xử lý chọn file ---
+            // --- Handle file selection ---
             imageInput.addEventListener('change', function (e) {
                 resetState();
                 const file = e.target.files[0];
                 if (!file) {
-                    fileLabel.text('Chọn file...');
+                    fileLabel.text('Choose file...');
                     return;
                 }
                 if (!file.type.startsWith('image/')) {
-                    showError('Vui lòng chọn một file ảnh hợp lệ (png, jpg, gif, webp).');
+                    showError('Please select a valid image file (png, jpg, gif, webp).');
                     imageInput.value = '';
-                    fileLabel.text('Chọn file...');
+                    fileLabel.text('Choose file...');
                     return;
                 }
 
@@ -412,29 +401,29 @@
                         originalImage.style.display = 'block';
                         originalImage.classList.add('loaded');
                         if (previewPlaceholder) previewPlaceholder.style.display = 'none';
-                        console.log(`Ảnh đã tải: ${img.naturalWidth}x${img.naturalHeight}`);
+                        console.log(`Image loaded: ${img.naturalWidth}x${img.naturalHeight}`);
                         initializeCropBox();
                         if (cropButton) cropButton.disabled = false;
                     };
                     img.onerror = () => {
-                        showError('Không thể tải ảnh. File có thể bị lỗi hoặc không được hỗ trợ.');
+                        showError('Could not load image. The file may be corrupted or unsupported.');
                         resetState();
                     };
                     img.src = event.target.result;
                 }
                 reader.onerror = function (error) {
                     console.error("FileReader error:", error);
-                    showError('Đã xảy ra lỗi khi đọc file ảnh.');
+                    showError('An error occurred while reading the image file.');
                     resetState();
                 }
                 reader.readAsDataURL(file);
             });
 
 
-            // --- Hàm Khởi tạo Crop Box ---
+            // --- Initialize Crop Box Function ---
             function initializeCropBox() {
                 if (!cropBox || !img || img.naturalWidth === 0 || !originalImage || !imageContainer) {
-                    console.warn("initializeCropBox: Các phần tử cần thiết chưa sẵn sàng.");
+                    console.warn("initializeCropBox: Required elements are not ready.");
                     return;
                 }
                 if (cropResultDiv) cropResultDiv.style.display = 'none';
@@ -445,7 +434,7 @@
                 const displayHeight = originalImage.clientHeight;
 
                 if (displayWidth === 0 || displayHeight === 0) {
-                    console.warn("initializeCropBox: Kích thước hiển thị là 0, thử lại...");
+                    console.warn("initializeCropBox: Display size is 0, retrying...");
                     setTimeout(initializeCropBox, 100);
                     return;
                 }
@@ -467,7 +456,7 @@
                 });
             }
 
-            // === CÁC HÀM XỬ LÝ TƯƠNG TÁC CHUNG (CHUỘT VÀ CHẠM) ===
+            // === COMMON INTERACTION HANDLERS (MOUSE AND TOUCH) ===
             function getCoords(e) {
                 if (e.touches && e.touches.length > 0) {
                     return { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -507,7 +496,7 @@
 
             function handleInteractionMove(e) {
                 if (!isDragging && !isResizing) return;
-                e.preventDefault(); // Ngăn cuộn trang trên mobile
+                e.preventDefault(); // Prevent page scrolling on mobile
                 const coords = getCoords(e);
                 const currentX = coords.x;
                 const currentY = coords.y;
@@ -593,7 +582,7 @@
                 }
             }
 
-            // --- Gắn Listener Ban Đầu ---
+            // --- Attach Initial Listeners ---
             if (cropBox) {
                 cropBox.addEventListener('mousedown', handleInteractionStart);
                 cropBox.addEventListener('touchstart', handleInteractionStart, { passive: false });
@@ -605,15 +594,15 @@
                 });
             }
 
-            // --- Xử lý nhấn nút Cắt Ảnh ---
+            // --- Handle Crop Image button click ---
             if (cropButton) {
                 cropButton.addEventListener('click', function () {
                     if (!img || !img.complete || img.naturalWidth === 0) {
-                        showError('Ảnh gốc chưa sẵn sàng hoặc không hợp lệ.');
+                        showError('Original image is not ready or invalid.');
                         return;
                     }
                     if (!cropBox || cropBox.style.display === 'none') {
-                        showError('Vùng chọn chưa được khởi tạo hoặc đang ẩn.');
+                        showError('Crop box not initialized or hidden.');
                         return;
                     }
                     const boxLeft = cropBox.offsetLeft;
@@ -625,7 +614,7 @@
                     const offsetY = originalImage.offsetTop;
 
                     if (displayWidth === 0 || displayHeight === 0) {
-                        showError('Không thể xác định kích thước ảnh hiển thị.');
+                        showError('Cannot determine displayed image dimensions.');
                         return;
                     }
                     const scaleX = img.naturalWidth / displayWidth;
@@ -646,7 +635,7 @@
                     );
 
                     if (finalCropSize <= 0) {
-                        showError('Kích thước vùng cắt không hợp lệ (quá nhỏ hoặc nằm ngoài ảnh).');
+                        showError('Invalid crop size (too small or outside the image).');
                         return;
                     }
                     const canvas = document.createElement('canvas');
@@ -665,30 +654,30 @@
                         if (croppedImagePreview) croppedImagePreview.src = croppedImageDataUrl;
                         if (downloadLink) {
                             downloadLink.href = croppedImageDataUrl;
-                            downloadLink.download = `${(originalFileName || 'anh_da_cat').replace(/ /g, '_')}_vuong.png`;
+                            downloadLink.download = `${(originalFileName || 'cropped_image').replace(/ /g, '_')}_square.png`;
                             downloadLink.style.display = 'inline-block';
                         }
                         if (cropResultDiv) cropResultDiv.style.display = 'block';
                         if (errorMessage) errorMessage.textContent = '';
                     } catch (error) {
-                        console.error("Lỗi khi cắt ảnh:", error);
-                        showError("Đã xảy ra lỗi trong quá trình cắt ảnh.");
+                        console.error("Error during image cropping:", error);
+                        showError("An error occurred during the image cropping process.");
                         if (cropResultDiv) cropResultDiv.style.display = 'none';
                     }
                 });
             }
 
-            // --- Hàm hiển thị lỗi ---
+            // --- Show error function ---
             function showError(message) {
                 if (errorMessage) errorMessage.textContent = message;
-                console.error("Lỗi:", message);
+                console.error("Error:", message);
             }
 
-            // --- Hàm reset trạng thái ---
+            // --- Reset state function ---
             function resetState() {
                 if (errorMessage) errorMessage.textContent = '';
                 if (cropButton) cropButton.disabled = true;
-                // Xóa luôn nút cắt lưới nếu nó còn tồn tại trong DOM (mặc dù không dùng)
+                // Also disable split button if it exists (though not used here)
                 const splitBtn = document.getElementById('split-button');
                 if (splitBtn) splitBtn.disabled = true;
 
@@ -702,15 +691,15 @@
                 }
                 if (previewPlaceholder) previewPlaceholder.style.display = 'inline';
                 img = new Image();
-                originalFileName = 'anh_goc';
-                if (fileLabel) fileLabel.text('Chọn file...');
+                originalFileName = 'original_image';
+                if (fileLabel) fileLabel.text('Choose file...');
                 isDragging = false; isResizing = false; currentHandle = null;
             }
 
-            // --- Cập nhật label của input file (Bootstrap) ---
+            // --- Update file input label (Bootstrap) ---
             $('.custom-file-input').on('change', function () {
                 let fileName = $(this).val().split('\\').pop();
-                $(this).siblings('.custom-file-label').addClass("selected").html(fileName || 'Chọn file...');
+                $(this).siblings('.custom-file-label').addClass("selected").html(fileName || 'Choose file...');
             });
 
         }); // End $(document).ready
