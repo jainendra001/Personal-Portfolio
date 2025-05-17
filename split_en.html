@@ -192,15 +192,16 @@
     <div style="padding-top: 80px;"></div>
     <div style="padding-top: 20px;" class="container">
 
-        <!-- Tool selection tabs -->
+        <!-- Tool selection tabs (Optional, can be removed if this page is only for resize) -->
         <ul class="nav nav-tabs mb-4" id="toolTabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" id="crop-square-tab" href="scale_en.html" role="tab" aria-controls="crop-square-tool"
-                    aria-selected="false">Crop Square</a>
+            <li class="nav-item ">
+                <a class="nav-link" id="crop-square-tab" href="scale_en.html" role="tab">Square Crop</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link active" id="split-grid-tab" href="split_en.html" role="tab">Grid Split</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" id="split-grid-tab" href="split_en.html" role="tab"
-                    aria-controls="split-grid-tool" aria-selected="true">Split Grid</a>
+                <a class="nav-link " id="resize-image-tab" href="resize_en.html" role="tab">Resize Image</a>
             </li>
         </ul>
 
@@ -253,8 +254,8 @@
 
 <!-- ===== FOOTER START ===== -->
     <footer class="site-footer bg-dark text-white py-4">
-        <div class="container-fluid"> <!-- USE CONTAINER-FLUID HERE -->
-            <div class="footer-content-wrapper"> <!-- ADD THIS WRAPPER DIV -->
+        <div class="container-fluid">
+            <div class="footer-content-wrapper">
                 <div class="row">
                     <div class="col-md-3 mb-3 mb-md-0">
                         <img src="logo.png" alt="Logo" class="mb-2" style="max-height: 50px;">
@@ -263,10 +264,8 @@
                     <div class="col-md-3 col-4 mb-3 mb-md-0">
                         <h5 class="fw-semibold">Explore</h5>
                         <ul class="list-unstyled">
-                            <li><a href="index_en.html" class="text-white-50 text-decoration-none hover-light">Home</a>
-                            </li>
-                            <li><a href="game_en.html" class="text-white-50 text-decoration-none hover-light">Puzzle Game</a>
-                            </li>
+                            <li><a href="index_en.html" class="text-white-50 text-decoration-none hover-light">Home</a></li>
+                            <li><a href="game.html" class="text-white-50 text-decoration-none hover-light">Jigsaw Game</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-4 mb-3 mb-md-0">
@@ -274,17 +273,15 @@
                         <ul class="list-unstyled">
                             <li><a href="split_en.html" class="text-white-50 text-decoration-none hover-light">Grid Split Tool</a></li>
                             <li><a href="scale_en.html" class="text-white-50 text-decoration-none hover-light">Square Crop Tool</a></li>
+                            <li><a href="resize_en.html" class="text-white-50 text-decoration-none hover-light">Image Resizer</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-4">
                         <h5 class="fw-semibold">Information</h5>
                         <ul class="list-unstyled">
-                            <li><a href="about_en.html" class="text-white-50 text-decoration-none hover-light">About</a>
-                            </li>
-                            <li><a href="contact_en.html" class="text-white-50 text-decoration-none hover-light">Contact</a>
-                            </li>
-                            <li><a href="terms_en.html" class="text-white-50 text-decoration-none hover-light">Terms</a></li> <!-- Assuming terms_en.html -->
-                            <!-- Add Terms link if available -->
+                            <li><a href="about.html" class="text-white-50 text-decoration-none hover-light">About</a></li>
+                            <li><a href="contact.html" class="text-white-50 text-decoration-none hover-light">Contact</a></li>
+                            <li><a href="terms.html" class="text-white-50 text-decoration-none hover-light">Terms</a></li>
                         </ul>
                     </div>
                 </div>
@@ -296,7 +293,6 @@
                         </p>
                         <p class="small text-white-50">
                             <small>Built with <i class="fas fa-heart text-danger"></i> and Bootstrap, jQuery.</small>
-                            <!-- Note: Bootstrap 5 doesn't require jQuery, if you use BS5 you can remove jQuery -->
                         </p>
                     </div>
                 </div>
@@ -304,6 +300,7 @@
         </div>
     </footer>
     <!-- ===== FOOTER END ===== -->
+
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
