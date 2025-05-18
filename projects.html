@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="My Projects and Skills" />
+        <meta name="author" content="Tran Huu Dat" />
+        <title>Projects - Tran Huu Dat</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            body { /* Áp dụng cursor: none cho toàn bộ body */
+                cursor: none;
+                position: relative; /* Cần cho việc định vị con trỏ ảo nếu nó không fixed */
+            }
+
+            .interactive-grid-section {
+                margin-bottom: 3rem;
+            }
+
+            .interactive-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                /* position: relative;  Không cần nữa */
+                /* cursor: none;  Đã chuyển lên body */
+                padding: 20px;
+                border: 1px solid #e0e0e0;
+                border-radius: 0.75rem;
+                background-color: #ffffff;
+                justify-content: center;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            }
+
+            .grid-item {
+                padding: 10px 20px;
+                border: 1px solid #e0e0e0;
+                border-radius: 50px;
+                background-color: #f8f9fa;
+                transition: all 0.3s ease-out;
+                color: #495057;
+                font-weight: 600;
+                font-size: 0.9rem;
+                /* cursor: default; Bỏ vì body đã là none, element con có thể set lại nếu muốn */
+            }
+
+            .grid-item:hover { /* Thêm :hover cho grid-item khi người dùng tự di chuột */
+                 background-color: #d1ecf1;
+                box-shadow: 0 0 15px rgba(13, 202, 240, 0.4);
+                transform: scale(1.1);
+                border-color: #0dcaf0;
+                color: #0a58ca;
+            }
+
+            .grid-item.highlight-auto { /* Class riêng cho animation tự động */
+                background-color: #d1ecf1;
+                box-shadow: 0 0 15px rgba(13, 202, 240, 0.4);
+                transform: scale(1.1);
+                border-color: #0dcaf0;
+                color: #0a58ca;
+            }
+
+            .cursor-element {
+                position: fixed;
+                display: flex;
+                align-items: center;
+                pointer-events: none;
+                z-index: 1070;
+                /* Sẽ được set top/left bằng JS */
+                opacity: 0; /* Bắt đầu ẩn, sẽ hiện ra khi JS chạy */
+                transition: opacity 0.3s ease-in-out; /* Transition cho việc hiện ra */
+            }
+            .cursor-element.visible {
+                opacity: 1;
+            }
+
+            .cursor-element img {
+                width: 28px;
+                height: auto;
+                margin-right: 8px;
+            }
+
+            .cursor-element .cursor-text {
+                background-color: #0d6efd;
+                color: white;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 0.95em;
+                box-shadow: 0 3px 7px rgba(0,0,0,0.15);
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100 bg-light"> <!-- Bỏ class interactive-grid ở đây -->
+        <main class="flex-shrink-0">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Tran Huu Dat</span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Interactive Skills Section -->
+            <section class="py-5 interactive-grid-section">
+                <div class="container px-5">
+                    <div class="text-center mb-5">
+                        <h2 class="display-6 fw-bolder mb-0"><span class="text-gradient d-inline">Tech Stack Highlights</span></h2>
+                    </div>
+                    <div class="interactive-grid">
+                        <div class="grid-item" data-text="Frontend">HTML5</div>
+                        <div class="grid-item" data-text="Styling">CSS3</div>
+                        <div class="grid-item" data-text="Scripting">JavaScript</div>
+                        <div class="grid-item" data-text="Backend">Node.js</div>
+                        <div class="grid-item" data-text="Framework">Express.js</div>
+                        <div class="grid-item" data-text="Backend">PHP</div>
+                        <div class="grid-item" data-text="Database">MySQL</div>
+                        <div class="grid-item" data-text="Database">Firebase</div>
+                        <div class="grid-item" data-text="Mobile">Java (Android)</div>
+                        <div class="grid-item" data-text="UI Tool">Figma</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section (Giữ nguyên như trước) -->
+            <section class="py-5">
+                <!-- ... Nội dung các project card ... -->
+                 <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">My Projects</span></h1>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card 1: BrickShop -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="p-5 flex-grow-1">
+                                            <h2 class="fw-bolder">BrickShop - E-commerce</h2>
+                                            <p>Engineered an e-commerce hub for building block enthusiasts (Qman, Keeppley, LEGO). Features seamless product browsing, secure checkout, order management, and a dedicated admin dashboard.
+                                            <br><em>Tech: Node.js, Express.js, MySQL, HTML, CSS, JS, Bootstrap, Tailwind CSS.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/brickshop" class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                        <img class="img-fluid p-md-3" src="assets/logo_brickshop.png" alt="BrickShop Screenshot" style="max-width: 300px; object-fit: cover;" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 2: Puzzle & Image Tools Suite -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column-reverse flex-md-row align-items-center">
+                                        <img class="img-fluid p-md-3" src="assets/logo_puzzle0.png" alt="Puzzle & Image Tools Suite Screenshot" style="max-width: 300px; object-fit: cover;" />
+                                        <div class="p-5 flex-grow-1">
+                                            <h2 class="fw-bolder">Puzzle & Image Tools Suite</h2>
+                                            <p>An engaging web application featuring an interactive jigsaw puzzle and practical image manipulation tools (square cropper, grid splitter, resizer).
+                                            <br><em>Tech: HTML5, CSS3, JavaScript, Bootstrap.</em></p>
+                                            <a href="https://tranhuudat2004.github.io/" class="btn btn-sm btn-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                                            <a href="https://github.com/TranHuuDat2004/TranHuuDat2004.github.io" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 3: MyMusic Player Interface -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="p-5 flex-grow-1">
+                                            <h2 class="fw-bolder">MyMusic Player Interface</h2>
+                                            <p>A sleek, modern online music player interface inspired by platforms like Spotify, showcasing UI/UX design and front-end proficiency with a focus on responsive and interactive experience.
+                                            <br><em>Tech: HTML5, CSS3, JavaScript (ES6+).</em></p>
+                                            <a href="https://tranhuudatlego.github.io/" class="btn btn-sm btn-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                                            <a href="https://github.com/TranHuuDatlego/TranHuuDatlego.github.io" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                        <img class="img-fluid p-md-3" src="assets/logo_mymusic.png" alt="MyMusic Player Screenshot" style="max-width: 300px; object-fit: cover;" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 4: Signature Verification (Colab) -->
+                             <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column-reverse flex-md-row align-items-center">
+                                        <img class="img-fluid p-md-3" src="assets/logo_signature_colab.png" alt="Signature Verification Project Screenshot" style="max-width: 300px; object-fit: cover;" /> <!-- Thay ảnh -->
+                                        <div class="p-5 flex-grow-1">
+                                            <h2 class="fw-bolder">Signature Verification System</h2>
+                                            <p>Developed a model to authenticate handwritten signatures using Machine Learning techniques in Google Colab, achieving high accuracy in identifying genuine and forged signatures.
+                                            <br><em>Tech: Python, TensorFlow/Keras, OpenCV, Matplotlib, Colab.</em></p>
+                                            <a href="LINK_TO_YOUR_SIGNATURE_REPO" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Project Card 5: ZStyle -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="p-5 flex-grow-1">
+                                            <h2 class="fw-bolder">ZStyle - Clothing E-commerce</h2>
+                                            <p>Developed a foundational e-commerce website for clothing as a course project, implementing core functionalities for users to explore fashion items.
+                                            <br><em>Tech: PHP, MySQL, HTML5, CSS3, JavaScript.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/ZStyle" class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                        <img class="img-fluid p-md-3" src="assets/logo_zstyle.png" alt="ZStyle Screenshot" style="max-width: 300px; object-fit: cover;" />
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Project Card 6: AquaTrack -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column-reverse flex-md-row align-items-center">
+                                         <img class="img-fluid p-md-3" src="assets/logo_aquatrack.png" alt="AquaTrack Screenshot" style="max-width: 300px; object-fit: cover;" />
+                                        <div class="p-5 flex-grow-1">
+                                            <h2 class="fw-bolder">AquaTrack - Water Reminder App</h2>
+                                            <p>Created AquaTrack, a native Android application promoting better hydration. Allows users to log water consumption and visualize progress using Firebase Firestore.
+                                            <br><em>Tech: Java (Android), Firebase Firestore.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/Water_Reminder" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a> <!-- Cập nhật link repo -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to action section (Giữ nguyên) -->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                 <!-- ... Nội dung ... -->
+                  <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer (Giữ nguyên) -->
+        <footer class="bg-white py-4 mt-auto">
+            <!-- ... Nội dung ... -->
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0">Copyright © Tran Huu Dat 2024</div></div> <!-- Thay tên và năm -->
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">·</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">·</span>
+                        <a class="small" href="contact.html">Contact</a> <!-- Link đến trang contact -->
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cursor Element HTML -->
+        <div class="cursor-element">
+            <img src="assets/cursor_blue.png" alt="Custom Cursor Icon">
+            <span class="cursor-text">Huu Dat</span>
+        </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+        <!-- JavaScript cho Interactive Grid -->
+        <script>
+            const cursorElement = document.querySelector('.cursor-element');
+            const cursorTextElement = cursorElement.querySelector('.cursor-text');
+            const gridItems = document.querySelectorAll('.interactive-grid .grid-item');
+
+            let currentIndex = 0;
+            let animationTimeout;
+            let userHasMovedMouse = false; // Cờ để kiểm tra người dùng đã di chuột lần nào chưa
+
+            function updateCursorPosition(x, y) {
+                cursorElement.style.left = x + 'px';
+                cursorElement.style.top = y + 'px';
+                if (!cursorElement.classList.contains('visible')) {
+                    cursorElement.classList.add('visible'); // Hiện con trỏ ảo khi nó bắt đầu di chuyển
+                }
+            }
+
+            // Con trỏ ảo luôn theo chuột thật
+            document.addEventListener('mousemove', (e) => {
+                userHasMovedMouse = true; // Đánh dấu người dùng đã di chuột
+                clearTimeout(animationTimeout); // Dừng animation tự động khi người dùng di chuột
+                gridItems.forEach(item => item.classList.remove('highlight-auto')); // Xóa highlight tự động
+                updateCursorPosition(e.clientX, e.clientY);
+
+                // Cập nhật text dựa trên item đang được hover (nếu có)
+                // Tìm xem chuột đang trỏ vào grid-item nào
+                let hoveredItem = null;
+                for (const item of gridItems) {
+                    const rect = item.getBoundingClientRect();
+                    if (e.clientX >= rect.left && e.clientX <= rect.right &&
+                        e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                        hoveredItem = item;
+                        break;
+                    }
+                }
+                if (hoveredItem && hoveredItem.dataset.text) {
+                    cursorTextElement.textContent = hoveredItem.dataset.text;
+                } else {
+                    cursorTextElement.textContent = "Huu Dat"; // Default text
+                }
+            });
+
+            function positionCursorNearItem(itemElement) {
+                if (!itemElement) return;
+                const itemRect = itemElement.getBoundingClientRect();
+                const cursorOffsetX = -5 + (itemRect.width / 4);
+                const cursorOffsetY = - (cursorElement.offsetHeight + 10);
+
+                const cursorTargetX = itemRect.left + window.scrollX + cursorOffsetX;
+                const cursorTargetY = itemRect.top + window.scrollY + cursorOffsetY;
+
+                updateCursorPosition(cursorTargetX, cursorTargetY);
+                if (itemElement.dataset.text) {
+                    cursorTextElement.textContent = itemElement.dataset.text;
+                } else {
+                    cursorTextElement.textContent = "Huu Dat";
+                }
+            }
+
+            function highlightNextItem() {
+                if (userHasMovedMouse || gridItems.length === 0) { // Nếu người dùng đã di chuột, không chạy animation tự động nữa
+                    // Có thể ẩn con trỏ ảo nếu muốn khi animation không chạy và người dùng chưa di chuột
+                    // if (!userHasMovedMouse && cursorElement.classList.contains('visible')) {
+                    //     cursorElement.classList.remove('visible');
+                    // }
+                    return;
+                }
+
+
+                gridItems.forEach(item => item.classList.remove('highlight-auto'));
+
+                if (currentIndex >= gridItems.length) {
+                    currentIndex = 0;
+                }
+
+                const currentItem = gridItems[currentIndex];
+                if (currentItem) {
+                    currentItem.classList.add('highlight-auto');
+                    positionCursorNearItem(currentItem);
+                     if (!cursorElement.classList.contains('visible')) {
+                        cursorElement.classList.add('visible'); // Hiện con trỏ khi animation bắt đầu
+                    }
+                }
+
+                currentIndex++;
+                animationTimeout = setTimeout(highlightNextItem, 1800);
+            }
+
+            if (gridItems.length > 0) {
+                // Xử lý hover trên từng item để dừng animation và cho phép CSS :hover hoạt động
+                gridItems.forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        userHasMovedMouse = true; // Đánh dấu người dùng đã tương tác
+                        clearTimeout(animationTimeout);
+                        gridItems.forEach(i => i.classList.remove('highlight-auto'));
+                        // CSS :hover sẽ tự xử lý việc highlight
+                    });
+                     // Không cần mouseleave cụ thể trên item vì mousemove trên document đã xử lý text
+                });
+
+                // Bắt đầu animation tự động nếu người dùng chưa di chuột
+                if (!userHasMovedMouse) {
+                    highlightNextItem();
+                }
+
+            } else {
+                if(cursorElement) cursorElement.style.display = 'none';
+            }
+
+             // Hiển thị con trỏ ảo khi chuột di chuyển lần đầu (nếu nó đang ẩn)
+            document.addEventListener('mousemove', function showCursorFirstMove() {
+                if (!cursorElement.classList.contains('visible')) {
+                    cursorElement.classList.add('visible');
+                }
+                // Gỡ bỏ event listener này sau lần chạy đầu tiên để tránh thừa
+                document.removeEventListener('mousemove', showCursorFirstMove);
+            });
+        </script>
+    </body>
+</html>
