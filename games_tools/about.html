@@ -124,27 +124,23 @@
         <!-- ===== NAVBAR END (Custom CSS) ===== -->
 
 
-    <!-- ===== MAIN CONTENT START ===== -->
+        <!-- ===== MAIN CONTENT START ===== -->
     <main class="main-content-area container">
-
 
         <!-- VIETNAMESE CONTENT -->
         <div class="lang-content" data-lang="vi">
             <div class="text-center mb-5">
-                <h1 class="display-4">Giới Thiệu Công Cụ Xử Lý Ảnh</h1>
-                <p class="lead">Khám phá các tính năng mạnh mẽ để tùy chỉnh và chia nhỏ hình ảnh của bạn một cách dễ
-                    dàng!
+                <h1 class="display-4">Giới Thiệu Các Công Cụ Xử Lý Ảnh</h1>
+                <p class="lead">Khám phá các tính năng mạnh mẽ để tùy chỉnh, chia nhỏ và thay đổi kích thước hình ảnh của bạn một cách dễ dàng!
                 </p>
             </div>
 
             <div class="row">
                 <!-- Tính năng Cắt Ảnh Vuông -->
-                <div class="col-md-6">
-                    <div class="feature-card">
-
+                <div class="col-md-6 col-lg-4 mb-4"> 
+                    <div class="feature-card h-100"> 
                         <div class="text-center">
-                            <img src="img/demo_scale.png" alt="Ảnh gốc" height="100px">
-
+                            <img src="img/demo_scale.png" alt="Demo Cắt Ảnh Vuông" width="300px">
                         </div>
                         <h3 class="text-center" style="padding-top: 20px;">Cắt Ảnh Thành Hình Vuông (1:1)</h3>
                         <p>Bạn có một bức ảnh chữ nhật nhưng cần một phiên bản hình vuông hoàn hảo? Công cụ này cho phép
@@ -160,22 +156,17 @@
                             <li>Xem trước kết quả và tải về ảnh vuông đã cắt.</li>
                         </ul>
                         <p>Hoàn hảo cho việc tạo avatar, ảnh thumbnail, hoặc bất kỳ mục đích nào cần ảnh tỉ lệ 1:1.</p>
-                        <div class="text-center">
-                            <a href="scale.html" class="btn btn-warning btn-lg mt-3 text-center">Cắt ảnh vuông</a>
-
+                        <div class="text-center mt-auto">
+                            <a href="scale.html" class="btn btn-warning btn-lg mt-3 text-center">Thử Cắt Ảnh Vuông</a>
                         </div>
                     </div>
-
-
                 </div>
 
                 <!-- Tính năng Cắt Ảnh Lưới -->
-                <div class="col-md-6">
-                    <div class="feature-card">
-
+                <div class="col-md-6 col-lg-4 mb-4"> 
+                    <div class="feature-card h-100"> 
                         <div class="text-center">
-                            <img src="img/demo_split.png" alt="Ảnh gốc" height="100px">
-
+                            <img src="img/demo_split.png" alt="Demo Cắt Ảnh Lưới" width="300px">
                         </div>
                         <h3 class="text-center" style="padding-top: 20px;">Cắt Ảnh Thành Lưới (Ví dụ: 3x3)</h3>
                         <p>Chia một bức ảnh lớn thành nhiều mảnh nhỏ theo dạng lưới. Tính năng này rất hữu ích khi:</p>
@@ -192,46 +183,76 @@
                         <p class="font-italic">Lưu ý: Để có kết quả tốt nhất cho game xếp hình 3x3, nên sử dụng ảnh gốc
                             hình
                             vuông khi dùng tính năng này.</p>
+                        <div class="text-center mt-auto"> 
+                            <a href="split.html" class="btn btn-warning btn-lg mt-3">Thử Cắt Ảnh Lưới</a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Tính năng Thay Đổi Kích Thước Ảnh -->
+                <div class="col-md-12 col-lg-4 mb-4"> 
+                    <div class="feature-card h-100"> 
                         <div class="text-center">
-                            <a href="split.html" class="btn btn-warning btn-lg mt-3">Cắt ảnh dạng lưới</a>
+                            <img src="img/demo_resize.png" alt="Demo Thay Đổi Kích Thước Ảnh" width="300px">
+                            <!-- Nhớ thêm ảnh demo_resize.png vào thư mục img/ -->
+                        </div>
+                        <h3 class="text-center" style="padding-top: 20px;">Thay Đổi Kích Thước Ảnh</h3>
+                        <p>Công cụ này giúp bạn dễ dàng điều chỉnh kích thước chiều rộng và chiều cao của hình ảnh:</p>
+                        <ul>
+                            <li>Tải ảnh bạn muốn thay đổi kích thước.</li>
+                            <li>Nhập vào <strong>chiều rộng</strong> hoặc <strong>chiều cao</strong> mới mong muốn (đơn vị pixel).</li>
+                            <li>Tùy chọn <strong>"Giữ tỷ lệ"</strong>:
+                                <ul>
+                                    <li>Nếu được chọn, khi bạn nhập một chiều, chiều còn lại sẽ tự động được tính toán để duy trì tỷ lệ khung hình gốc của ảnh, tránh làm méo ảnh.</li>
+                                    <li>Nếu không chọn, bạn có thể tự do nhập cả chiều rộng và chiều cao, cho phép thay đổi tỷ lệ khung hình.</li>
+                                </ul>
+                            </li>
+                            <li>Nhấn "Thay Đổi Kích Thước" để xem trước kết quả.</li>
+                            <li>Tải về ảnh đã được điều chỉnh kích thước.</li>
+                        </ul>
+                        <p>Rất hữu ích khi bạn cần ảnh với kích thước cụ thể cho website, email, hoặc các mục đích khác.</p>
+                        <div class="text-center mt-auto"> 
+                            <a href="resize.html" class="btn btn-warning btn-lg mt-3">Thử Resize Ảnh</a>
                         </div>
                     </div>
                 </div>
             </div>
 
+
             <!-- Giới Thiệu Về Game Xếp Hình -->
-            <div class="text-center mb-5">
+            <div class="text-center my-5"> <!-- Thêm my-5 cho khoảng cách -->
                 <h1 class="display-4">Giới Thiệu Về Game Xếp Hình</h1>
                 <p class="lead">Chào mừng bạn đến với thế giới của những mảnh ghép!
                 </p>
             </div>
 
-            <div class="col-md-12 mb-4">
-                <div class="feature-card">
-                    <div class="text-center">
-                        <img src="img/demo_game.png" alt="Ảnh gốc" height="100px">
-                    </div>
-                    <div class="text-center" style="padding-top: 20px;"></div>
-                    <p>Game Xếp Hình này được tạo ra với mục đích mang lại những phút giây giải trí nhẹ nhàng, đồng thời
-                        giúp người chơi rèn luyện khả năng tư duy logic, sự kiên nhẫn và óc quan sát.</p>
-                    <p>Cách chơi rất đơn giản:</p>
-                    <ul>
-                        <li>Chọn một bộ ảnh bạn yêu thích từ danh sách.</li>
-                        <li>Các mảnh ghép của bức ảnh sẽ được xáo trộn và xoay ngẫu nhiên.</li>
-                        <li>Click vào một mảnh ghép để xoay nó 90 độ theo chiều kim đồng hồ.</li>
-                        <li>Kéo và thả các mảnh ghép vào đúng vị trí trên bảng chơi 3x3.</li>
-                        <li>Khi tất cả các mảnh ghép được đặt đúng vị trí và đúng góc xoay, bạn sẽ chiến thắng!</li>
-                    </ul>
-                    <hr>
-                    <p>Trò chơi được phát triển bởi <strong>Trần Hữu Đạt</strong> sử dụng các công nghệ
-                        web
-                        hiện đại như HTML, CSS, JavaScript, cùng với sự hỗ trợ của thư viện Bootstrap và jQuery.</p>
-                    <p>Chúng tôi hy vọng bạn sẽ có những trải nghiệm thú vị với trò chơi này. Mọi ý kiến đóng góp xin
-                        vui
-                        lòng gửi về trang Liên Hệ.</p>
-                    <div class="text-center mt-4">
-                        <a href="game.html" class="btn btn-warning">Thử Chơi Ngay</a>
+            <div class="row"> 
+                <div class="col-md-10 mx-auto mb-4"> 
+                    <div class="feature-card">
+                        <div class="text-center">
+                            <img src="img/demo_game.png" alt="Demo Game Xếp Hình" width="300px">
+                        </div>
+                        <div class="text-center" style="padding-top: 20px;"></div>
+                        <p>Game Xếp Hình này được tạo ra với mục đích mang lại những phút giây giải trí nhẹ nhàng, đồng thời
+                            giúp người chơi rèn luyện khả năng tư duy logic, sự kiên nhẫn và óc quan sát.</p>
+                        <p>Cách chơi rất đơn giản:</p>
+                        <ul>
+                            <li>Chọn một bộ ảnh bạn yêu thích từ danh sách.</li>
+                            <li>Các mảnh ghép của bức ảnh sẽ được xáo trộn và xoay ngẫu nhiên.</li>
+                            <li>Click vào một mảnh ghép để xoay nó 90 độ theo chiều kim đồng hồ.</li>
+                            <li>Kéo và thả các mảnh ghép vào đúng vị trí trên bảng chơi 3x3.</li>
+                            <li>Khi tất cả các mảnh ghép được đặt đúng vị trí và đúng góc xoay, bạn sẽ chiến thắng!</li>
+                        </ul>
+                        <hr>
+                        <p>Trò chơi được phát triển bởi <strong>Trần Hữu Đạt</strong> sử dụng các công nghệ
+                            web
+                            hiện đại như HTML, CSS, JavaScript, cùng với sự hỗ trợ của thư viện Bootstrap và jQuery.</p>
+                        <p>Chúng tôi hy vọng bạn sẽ có những trải nghiệm thú vị với trò chơi này. Mọi ý kiến đóng góp xin
+                            vui
+                            lòng gửi về trang Liên Hệ.</p>
+                        <div class="text-center mt-4">
+                            <a href="game.html" class="btn btn-warning">Thử Chơi Ngay</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,17 +262,17 @@
         <!-- ENGLISH CONTENT -->
         <div class="lang-content" data-lang="en">
             <div class="text-center mb-5">
-                <h1 class="display-4">About the Image Processing Tools</h1>
-                <p class="lead">Discover powerful features to easily customize and split your images!
+                <h1 class="display-4">About The Image Processing Tools</h1>
+                <p class="lead">Discover powerful features to easily customize, split, and resize your images!
                 </p>
             </div>
 
             <div class="row">
                 <!-- Feature: Crop Square Image -->
-                <div class="col-md-6">
-                    <div class="feature-card">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card h-100">
                         <div class="text-center">
-                            <img src="img/demo_scale.png" alt="Original Image" height="100px">
+                            <img src="img/demo_scale.png" alt="Square Crop Demo" width="300px">
                         </div>
                         <h3 class="text-center" style="padding-top: 20px;">Crop Images to a Square (1:1)</h3>
                         <p>Do you have a rectangular photo but need a perfect square version? This tool allows you to:
@@ -268,17 +289,17 @@
                             <li>Preview the result and download the cropped square image.</li>
                         </ul>
                         <p>Perfect for creating avatars, thumbnails, or any purpose requiring a 1:1 aspect ratio.</p>
-                        <div class="text-center">
-                            <a href="scale.html" class="btn btn-warning btn-lg mt-3 text-center">Crop Square Image</a>
+                        <div class="text-center mt-auto">
+                            <a href="scale_en.html" class="btn btn-warning btn-lg mt-3 text-center">Try Square Crop</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Image Tools Grid -->
-                <div class="col-md-6">
-                    <div class="feature-card">
+                <!-- Feature: Split Image into Grid -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card h-100">
                         <div class="text-center">
-                            <img src="img/demo_split.png" alt="Original Image" height="100px">
+                            <img src="img/demo_split.png" alt="Grid Split Demo" width="300px">
                         </div>
                         <h3 class="text-center" style="padding-top: 20px;">Split Images into a Grid (e.g., 3x3)</h3>
                         <p>Split a large image into multiple smaller pieces in a grid format. This feature is very useful
@@ -295,44 +316,74 @@
                             media, or splitting large images for easy sharing.</p>
                         <p class="font-italic">Note: For the best results with a 3x3 jigsaw puzzle game, it's recommended
                             to use a square original image when using this feature.</p>
+                        <div class="text-center mt-auto">
+                            <a href="split_en.html" class="btn btn-warning btn-lg mt-3">Try Grid Split</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Image Resizer -->
+                <div class="col-md-12 col-lg-4 mb-4">
+                     <div class="feature-card h-100">
                         <div class="text-center">
-                            <a href="split.html" class="btn btn-warning btn-lg mt-3">Image Tools Grid</a>
+                            <img src="img/demo_resize.png" alt="Image Resizer Demo" width="300px">
+                            <!-- Remember to add demo_resize.png to your img/ folder -->
+                        </div>
+                        <h3 class="text-center" style="padding-top: 20px;">Resize Image Dimensions</h3>
+                        <p>This tool helps you easily adjust the width and height of your images:</p>
+                        <ul>
+                            <li>Upload the image you want to resize.</li>
+                            <li>Enter the new desired <strong>width</strong> or <strong>height</strong> (in pixels).</li>
+                            <li><strong>"Lock aspect ratio"</strong> option:
+                                <ul>
+                                    <li>If checked, when you enter one dimension, the other will be automatically calculated to maintain the original aspect ratio, preventing distortion.</li>
+                                    <li>If unchecked, you can freely enter both width and height, allowing aspect ratio changes.</li>
+                                </ul>
+                            </li>
+                            <li>Click "Resize Image" to preview the result.</li>
+                            <li>Download the resized image.</li>
+                        </ul>
+                        <p>Very useful when you need images of specific dimensions for websites, emails, or other purposes.</p>
+                        <div class="text-center mt-auto">
+                            <a href="resize_en.html" class="btn btn-warning btn-lg mt-3">Try Image Resizer</a>
                         </div>
                     </div>
                 </div>
             </div>
 
+
             <!-- About the Jigsaw Puzzle Game -->
-            <div class="text-center mb-5">
+            <div class="text-center my-5">
                 <h1 class="display-4">About the Jigsaw Puzzle Game</h1>
                 <p class="lead">Welcome to the world of puzzle pieces!
                 </p>
             </div>
-
-            <div class="col-md-12 mb-4">
-                <div class="feature-card">
-                    <div class="text-center">
-                        <img src="img/demo_game.png" alt="Game Demo" height="100px">
-                    </div>
-                    <div class="text-center" style="padding-top: 20px;"></div>
-                    <p>This Jigsaw Puzzle Game was created with the aim of providing relaxing entertainment, while also
-                        helping players develop logical thinking, patience, and observation skills.</p>
-                    <p>How to play is very simple:</p>
-                    <ul>
-                        <li>Choose a set of images you love from the list.</li>
-                        <li>The puzzle pieces of the image will be shuffled and rotated randomly.</li>
-                        <li>Click on a piece to rotate it 90 degrees clockwise.</li>
-                        <li>Drag and drop the puzzle pieces into their correct positions on the 3x3 game board.</li>
-                        <li>When all the pieces are placed in the correct positions and rotated to the right angles, you
-                            win!</li>
-                    </ul>
-                    <hr>
-                    <p>The game was developed by <strong>Trần Hữu Đạt</strong> using modern web technologies such as
-                        HTML, CSS, JavaScript, with the support of Bootstrap and jQuery libraries.</p>
-                    <p>We hope you have an enjoyable experience with this game. Any feedback is welcome via the Contact
-                        page.</p>
-                    <div class="text-center mt-4">
-                        <a href="game.html" class="btn btn-warning">Try Playing Now</a>
+            <div class="row">
+                <div class="col-md-10 mx-auto mb-4">
+                    <div class="feature-card">
+                        <div class="text-center">
+                            <img src="img/demo_game.png" alt="Game Demo" width="300px">
+                        </div>
+                        <div class="text-center" style="padding-top: 20px;"></div>
+                        <p>This Jigsaw Puzzle Game was created with the aim of providing relaxing entertainment, while also
+                            helping players develop logical thinking, patience, and observation skills.</p>
+                        <p>How to play is very simple:</p>
+                        <ul>
+                            <li>Choose a set of images you love from the list.</li>
+                            <li>The puzzle pieces of the image will be shuffled and rotated randomly.</li>
+                            <li>Click on a piece to rotate it 90 degrees clockwise.</li>
+                            <li>Drag and drop the puzzle pieces into their correct positions on the 3x3 game board.</li>
+                            <li>When all the pieces are placed in the correct positions and rotated to the right angles, you
+                                win!</li>
+                        </ul>
+                        <hr>
+                        <p>The game was developed by <strong>Trần Hữu Đạt</strong> using modern web technologies such as
+                            HTML, CSS, JavaScript, with the support of Bootstrap and jQuery libraries.</p>
+                        <p>We hope you have an enjoyable experience with this game. Any feedback is welcome via the Contact
+                            page.</p>
+                        <div class="text-center mt-4">
+                            <a href="game.html" class="btn btn-warning">Try Playing Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -341,6 +392,7 @@
 
     </main>
     <!-- ===== MAIN CONTENT END ===== -->
+
 
 
     <!-- ===== FOOTER START ===== -->

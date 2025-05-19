@@ -1,65 +1,201 @@
-# 🧩 Game Xếp Hình (Jigsaw Puzzle Web Game)
 
-Chào mừng bạn đến với dự án Game Xếp Hình! Đây là một trò chơi giải đố vui nhộn dựa trên web, nơi bạn có thể thử thách khả năng quan sát và tư duy logic của mình bằng cách lắp ráp các mảnh ghép thành một bức tranh hoàn chỉnh.
+# Handwriting Signature Writer Identification using CNN
 
-![Ảnh chụp màn hình Game]([Thêm đường dẫn đến ảnh chụp màn hình hoặc GIF của game tại đây, ví dụ: /screenshots/game-demo.png])
-*<p align="center">Giao diện chính của trò chơi</p>*
+This project implements a Convolutional Neural Network (CNN) model to identify the writer of a given handwritten signature. The model is trained on a dataset of genuine and forged signatures, and it aims to classify a new signature sample to its respective writer.
 
----
+Developed in Google Colab using TensorFlow and Keras.
 
-## ✨ Tính Năng Nổi Bật
-
-*   **Giao diện Kéo và Thả (Drag & Drop):** Dễ dàng di chuyển các mảnh ghép vào đúng vị trí trên bảng chơi.
-*   **Xoay Mảnh Ghép:** Chỉ cần một cú click để xoay mảnh ghép 90 độ theo chiều kim đồng hồ.
-*   **Nhiều Bộ Ảnh:** Lựa chọn từ nhiều bộ ảnh với các chủ đề và độ khó khác nhau (tùy thuộc vào ảnh).
-*   **Ảnh Tham Chiếu:** Luôn có ảnh gốc hoàn chỉnh để bạn đối chiếu trong quá trình chơi.
-*   **Bộ Đếm Thời Gian:** Theo dõi và thử thách bản thân để hoàn thành game trong thời gian nhanh nhất.
-*   **Kiểm Tra & Thông Báo Chiến Thắng:** Game tự động nhận biết khi bạn hoàn thành và hiển thị thông báo chúc mừng cùng thời gian thực hiện.
-*   **Giao diện Thân Thiện:** Sử dụng Bootstrap để đảm bảo trải nghiệm tốt trên nhiều kích thước màn hình.
+![Example Prediction Output](images/example_prediction.png) <!-- Replace with your result screenshot -->
 
 ---
 
-## 🛠️ Công Nghệ Sử Dụng
+## Table of Contents
 
-*   **Ngôn ngữ:** HTML5, CSS3, JavaScript (ES6+)
-*   **Thư viện/Framework:**
-    *   **jQuery:** Hỗ trợ thao tác DOM và xử lý sự kiện.
-    *   **Bootstrap 4:** Cung cấp các thành phần giao diện và hệ thống lưới responsive.
+- [Project Overview](#project-overview)
+- [Dataset](#dataset)
+- [Methodology](#methodology)
+  - [Data Preprocessing](#data-preprocessing)
+  - [Model Architecture](#model-architecture)
+  - [Training](#training)
+- [Results](#results)
+- [How to Use](#how-to-use)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Running the Notebook](#running-the-notebook)
+- [Future Work](#future-work)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
 ---
 
-## 🚀 Bắt Đầu Nhanh (Getting Started)
+## Project Overview
 
-Chơi game thật đơn giản:
+The goal is to build a system that identifies the author of a handwritten signature. This has applications in forensics and document verification. A CNN is used due to its effectiveness in image recognition tasks.
 
-1.  **Tải về dự án:**
-    *   Cách 1: Clone repository (nếu có):
-        ```bash
-        git clone [Đường dẫn đến repository của bạn, nếu có]
-        cd [Tên thư mục dự án]
+---
+
+## Dataset
+
+The dataset contains handwritten signatures from multiple writers, including both genuine (`full_org`) and forged (`full_forg`) samples.
+
+- **Source:** [Add dataset name/link or brief explanation if private]
+- **Structure:**
+  - Example filenames: `original_58_1.png`, `forgeries_1_10.png`
+- **Image Format:** PNG, TIFF, or JPG
+
+> **Note on Privacy:** All data has been anonymized and used solely for research purposes. Ensure proper consent when using real signature data.
+
+---
+
+## Methodology
+
+### Data Preprocessing
+
+- **Loading:** Signature paths collected from Google Drive
+- **Labeling:** Writer IDs extracted from filenames
+- **Encoding:** String IDs converted to integers
+- **Splitting:** 80/20 train-validation split (with stratification)
+- **Image Processing:**
+  - Resize to `64x256`
+  - Grayscale (1 channel)
+  - Normalize pixel values `[0, 1]`
+
+> **TensorFlow Dataset Pipeline** is used for efficient loading, batching, and prefetching.
+
+---
+
+### Model Architecture
+
+CNN model structure:
+
+```text
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 62, 254, 32)       320
+ max_pooling2d (MaxPooling2D) (None, 31, 127, 32)      0
+ conv2d_1 (Conv2D)           (None, 29, 125, 64)       18496
+ max_pooling2d_1 (MaxPooling2D) (None, 14, 62, 64)     0
+ conv2d_2 (Conv2D)           (None, 12, 60, 128)       73856
+ max_pooling2d_2 (MaxPooling2D) (None, 6, 30, 128)     0
+ flatten (Flatten)           (None, 23040)             0
+ dense (Dense)               (None, 128)               2949248
+ dropout (Dropout)           (None, 128)               0
+ dense_1 (Dense)             (None, 55)                7095
+=================================================================
+Total params: 3,046,015
+Trainable params: 3,046,015
+Non-trainable params: 0
+_________________________________________________________________
+```
+
+
+
+---
+
+### Training
+
+* **Optimizer:** Adam
+* **Loss:** `SparseCategoricalCrossentropy(from_logits=True)`
+* **Metrics:** Accuracy
+* **Epochs:** 30 (or adjust as needed)
+
+Training history includes plots for accuracy and loss across epochs.
+
+---
+
+## Results
+
+On validation set:
+
+* **Validation Accuracy:** 95.83%
+* **Validation Loss:** 0.25
+
+**Training and Validation Accuracy:**
+![Accuracy Plot](images/accuracy_plot.png)
+
+**Training and Validation Loss:**
+![Loss Plot](images/loss_plot.png)
+
+**Example Test (Writer ID: 58):**
+
+* **Accuracy:** 95.83% (23/24 correct)
+
+---
+
+## How to Use
+
+### Prerequisites
+
+* Google Colab or local Python environment
+* Python Libraries:
+
+  * TensorFlow (2.x)
+  * NumPy
+  * Matplotlib
+  * scikit-learn
+  * Pillow
+
+### Setup
+
+1.  **Clone the repo (optional):**
+
+    ```bash
+    git clone https://github.com/TranHuuDat2004/handwriting-signature-recognition.git
+    cd handwriting-signature-recognition
+    ```
+
+2.  **Upload Notebook to Colab**
+
+3.  **Prepare Dataset:**
+
+    *   Upload dataset to Google Drive
+    *   Update `BASE_DATA_DIR` in the notebook:
+
+        ```python
+        BASE_DATA_DIR = '/content/drive/MyDrive/YOUR_PATH_TO/SIGNATURES'
         ```
-    *   Cách 2: Tải file ZIP của dự án và giải nén ra một thư mục.
-2.  **Mở file HTML:** Tìm đến file `index.html` (hoặc `game.html`) trong thư mục vừa giải nén và mở nó bằng trình duyệt web yêu thích của bạn (Chrome, Firefox, Edge,...).
-
-Vậy là xong! Bạn đã có thể bắt đầu chơi game ngay lập tức.
 
 ---
 
-## 🤝 Đóng Góp (Contributing)
+### Running the Notebook
 
-Mọi ý tưởng đóng góp, báo lỗi hoặc đề xuất cải thiện đều được chào đón! Vui lòng [Mở một Issue]([Link tới trang Issues trên repo của bạn, nếu có]) để chúng ta có thể thảo luận chi tiết hơn.
+1.  **Mount Google Drive**
+2.  **Run cells sequentially:**
+
+    *   Collect paths and labels
+    *   Preprocess images
+    *   Create Dataset objects
+    *   Build and train the model
+    *   Evaluate and save model
+    *   Predict single or batch samples
+    *   Evaluate on a specific writer ID
 
 ---
 
-## 📝 Giấy Phép (License)
+## Future Work
 
-Dự án này được phân phối dưới giấy phép [MIT]([Link tới file LICENSE của bạn, nếu có] - ví dụ: LICENSE). Xem file `LICENSE` để biết thêm chi tiết.
+* Try ResNet, VGG, or MobileNet
+* Improve data augmentation
+* Explore Siamese Networks for signature verification
+* Build a web interface (e.g., with Streamlit)
+* Train on larger datasets
 
 ---
 
-## 👤 Tác Giả
+## Author
 
-*   **[Tên Của Bạn hoặc Tên Nhóm]**
-*   **Liên hệ:** [Địa chỉ email hoặc link mạng xã hội của bạn]
+**Tran Huu Dat**
+GitHub: [@TranHuuDat2004](https://github.com/TranHuuDat2004)
+\[LinkedIn or Portfolio link - optional]
 
-Cảm ơn bạn đã quan tâm đến dự án Game Xếp Hình! Chúc bạn chơi game vui vẻ! 🎉
+---
+
+## Acknowledgments
+
+* TensorFlow and Keras for deep learning frameworks
+* Google Colab for providing a free GPU environment
+* [Your dataset source or research papers if applicable]
+
+---
