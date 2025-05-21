@@ -8,7 +8,7 @@
     <meta name="author" content="Tran Huu Dat" />
     <title>Projects - Tran Huu Dat</title>
     <!-- Favicon-->
-        <link rel="icon" type="image/png" href="assets/favicon.png"/>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <!-- Custom Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,6 +26,14 @@
             cursor: none;
             position: relative;
             /* Cần cho việc định vị con trỏ ảo nếu nó không fixed */
+        }
+
+        a, 
+        button, 
+        input[type="submit"], /* Thêm cho nút submit */
+        .form-control /* Thêm cho các input field */
+        {
+            cursor: url('assets/hand_blue.png'), auto; /* Fallback là auto */
         }
 
         .interactive-grid-section {
@@ -67,6 +75,7 @@
             transform: scale(1.1);
             border-color: #0dcaf0;
             color: #0a58ca;
+            cursor: none;
         }
 
         .grid-item.highlight-auto {
@@ -179,140 +188,57 @@
                 </div>
             </div>
         </nav>
-                    <!-- Projects Section -->
-            <section class="py-5">
-                <div class="container px-5 mb-5">
-                    <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">My Projects</span></h1>
-                    </div>
+        <!-- Projects Section -->
+        <section class="py-5">
+            <div class="container px-5 mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">My Projects</span></h1>
+                </div>
 
-                    <!-- Full-Stack Websites Section -->
-                    <div class="mb-5">
-                        <h2 class="text-primary fw-bolder mb-4 text-center">Full-Stack Websites</h2>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-11 col-xl-9 col-xxl-8">
-                                <!-- Project Card: BrickShop -->
-                                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex flex-column flex-md-row align-items-center">
-                                            <div class="text-center text-md-start p-3 p-md-0">
-                                                <img class="img-fluid project-card-image" src="assets/logo_brickshop.png" alt="BrickShop Logo" />
-                                            </div>
-                                            <div class="p-4 p-md-5 flex-grow-1">
-                                                <h3 class="fw-bolder">BrickShop - E-commerce</h3>
-                                                <p>Engineered an e-commerce hub for building block enthusiasts (Qman, Keeppley, LEGO). Features seamless product browsing, secure checkout, order management, and a dedicated admin dashboard.</p>
-                                                <p><em>Tech: Node.js, Express.js, MySQL, HTML, CSS, JS, Bootstrap, Tailwind CSS.</em></p>
-                                                <a href="https://github.com/TranHuuDat2004/brickshop" class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
-                                            </div>
+                <!-- Full-Stack Websites Section -->
+                <div class="mb-5">
+                    <h2 class="text-primary fw-bolder mb-4 text-center">Full-Stack Websites</h2>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card: BrickShop -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_brickshop.png"
+                                                alt="BrickShop Logo" />
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- Project Card: ZStyle -->
-                                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex flex-column flex-md-row align-items-center">
-                                            <div class="text-center text-md-start p-3 p-md-0">
-                                                <img class="img-fluid project-card-image" src="assets/logo_zstyle.png" alt="ZStyle Logo" />
-                                            </div>
-                                            <div class="p-4 p-md-5 flex-grow-1">
-                                                <h3 class="fw-bolder">ZStyle - Clothing E-commerce</h3>
-                                                <p>Developed a foundational e-commerce website for clothing as a course project, implementing core functionalities for users to explore fashion items.</p>
-                                                <p><em>Tech: PHP, MySQL, HTML5, CSS3, JavaScript.</em></p>
-                                                <a href="https://github.com/TranHuuDat2004/ZStyle" class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
-                                            </div>
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <h3 class="fw-bolder">BrickShop - E-commerce</h3>
+                                            <p>Engineered an e-commerce hub for building block enthusiasts (Qman,
+                                                Keeppley, LEGO). Features seamless product browsing, secure checkout,
+                                                order management, and a dedicated admin dashboard.</p>
+                                            <p><em>Tech: Node.js, Express.js, MySQL, HTML, CSS, JS, Bootstrap, Tailwind
+                                                    CSS.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/brickshop"
+                                                class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank"
+                                                rel="noopener noreferrer">View Repository</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- GitHub Pages & Frontend Projects Section -->
-                    <div class="mb-5">
-                        <h2 class="text-primary fw-bolder mb-4 text-center">GitHub Pages & Frontend</h2>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-11 col-xl-9 col-xxl-8">
-                                <!-- Project Card: Puzzle & Image Tools Suite -->
-                                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex flex-column flex-md-row align-items-center">
-                                            <div class="text-center text-md-start p-3 p-md-0">
-                                                <img class="img-fluid project-card-image" src="assets/logo_puzzle0.png" alt="Puzzle & Image Tools Suite Logo" />
-                                            </div>
-                                            <div class="p-4 p-md-5 flex-grow-1">
-                                                <h3 class="fw-bolder">Puzzle & Image Tools Suite</h3>
-                                                <p>An engaging web application featuring an interactive jigsaw puzzle and practical image manipulation tools (square cropper, grid splitter, resizer).</p>
-                                                <p><em>Tech: HTML5, CSS3, JavaScript, Bootstrap.</em></p>
-                                                <a href="https://tranhuudat2004.github.io/games_tools/" class="btn btn-sm btn-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                                                <a href="https://github.com/TranHuuDat2004/games_tools" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
-                                            </div>
+                            <!-- Project Card: ZStyle -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_zstyle.png"
+                                                alt="ZStyle Logo" />
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- Project Card: MyMusic Player Interface -->
-                                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex flex-column flex-md-row align-items-center">
-                                            <div class="text-center text-md-start p-3 p-md-0">
-                                                <img class="img-fluid project-card-image" src="assets/logo_mymusic.png" alt="MyMusic Player Logo" />
-                                            </div>
-                                            <div class="p-4 p-md-5 flex-grow-1">
-                                                <h3 class="fw-bolder">MyMusic Player Interface</h3>
-                                                <p>A sleek, modern online music player interface inspired by platforms like Spotify, showcasing UI/UX design and front-end proficiency with a focus on responsive and interactive experience.</p>
-                                                <p><em>Tech: HTML5, CSS3, JavaScript (ES6+).</em></p>
-                                                <a href="https://tranhuudat2004.github.io/mymusic/" class="btn btn-sm btn-primary me-2 mt-2" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                                                <a href="https://github.com/TranHuuDat2004/mymusic" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Android (Java) Projects Section -->
-                    <div class="mb-5">
-                        <h2 class="text-primary fw-bolder mb-4 text-center">Android (Java) Apps</h2>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-11 col-xl-9 col-xxl-8">
-                                <!-- Project Card: AquaTrack -->
-                                <div class="card overflow-hidden shadow rounded-4 border-0">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex flex-column flex-md-row align-items-center">
-                                            <div class="text-center text-md-start p-3 p-md-0">
-                                                 <img class="img-fluid project-card-image" src="assets/logo_aquatrack.png" alt="AquaTrack Logo" />
-                                            </div>
-                                            <div class="p-4 p-md-5 flex-grow-1">
-                                                <h3 class="fw-bolder">AquaTrack - Water Reminder</h3>
-                                                <p>Created AquaTrack, a native Android application promoting better hydration. Allows users to log water consumption and visualize progress using Firebase Firestore.</p>
-                                                <p><em>Tech: Java (Android), Firebase Firestore.</em></p>
-                                                <a href="https://github.com/TranHuuDat2004/Water_Reminder" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Machine Learning Projects Section -->
-                    <div>
-                        <h2 class="text-primary fw-bolder mb-4 text-center">Machine Learning</h2>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-11 col-xl-9 col-xxl-8">
-                                <!-- Project Card: Signature Verification -->
-                                 <div class="card overflow-hidden shadow rounded-4 border-0">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex flex-column flex-md-row align-items-center">
-                                            <div class="text-center text-md-start p-3 p-md-0">
-                                                <img class="img-fluid project-card-image" src="assets/logo_handwriting.png" alt="Signature Verification Logo" />
-                                            </div>
-                                            <div class="p-4 p-md-5 flex-grow-1">
-                                                <h3 class="fw-bolder">Signature Verification System</h3>
-                                                <p>Developed a model to authenticate handwritten signatures using Machine Learning techniques in Google Colab, achieving high accuracy in identifying genuine and forged signatures.</p>
-                                                <p><em>Tech: Python, TensorFlow/Keras, OpenCV, Matplotlib, Colab.</em></p>
-                                                <a href="https://github.com/TranHuuDat2004/handwriting-signature-recognition" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer">View Repository</a>
-                                            </div>
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <h3 class="fw-bolder">ZStyle - Clothing E-commerce</h3>
+                                            <p>Developed a foundational e-commerce website for clothing as a course
+                                                project, implementing core functionalities for users to explore fashion
+                                                items.</p>
+                                            <p><em>Tech: PHP, MySQL, HTML5, CSS3, JavaScript.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/ZStyle"
+                                                class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank"
+                                                rel="noopener noreferrer">View Repository</a>
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +246,125 @@
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <!-- GitHub Pages & Frontend Projects Section -->
+                <div class="mb-5">
+                    <h2 class="text-primary fw-bolder mb-4 text-center">GitHub Pages & Frontend</h2>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card: Puzzle & Image Tools Suite -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_puzzle0.png"
+                                                alt="Puzzle & Image Tools Suite Logo" />
+                                        </div>
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <h3 class="fw-bolder">Puzzle & Image Tools Suite</h3>
+                                            <p>An engaging web application featuring an interactive jigsaw puzzle and
+                                                practical image manipulation tools (square cropper, grid splitter,
+                                                resizer).</p>
+                                            <p><em>Tech: HTML5, CSS3, JavaScript, Bootstrap.</em></p>
+                                            <a href="https://tranhuudat2004.github.io/games_tools/"
+                                                class="btn btn-sm btn-primary me-2 mt-2" target="_blank"
+                                                rel="noopener noreferrer">Live Demo</a>
+                                            <a href="https://github.com/TranHuuDat2004/games_tools"
+                                                class="btn btn-sm btn-outline-primary mt-2" target="_blank"
+                                                rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Project Card: MyMusic Player Interface -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_mymusic.png"
+                                                alt="MyMusic Player Logo" />
+                                        </div>
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <h3 class="fw-bolder">MyMusic Player Interface</h3>
+                                            <p>A sleek, modern online music player interface inspired by platforms like
+                                                Spotify, showcasing UI/UX design and front-end proficiency with a focus
+                                                on responsive and interactive experience.</p>
+                                            <p><em>Tech: HTML5, CSS3, JavaScript (ES6+).</em></p>
+                                            <a href="https://tranhuudat2004.github.io/mymusic/"
+                                                class="btn btn-sm btn-primary me-2 mt-2" target="_blank"
+                                                rel="noopener noreferrer">Live Demo</a>
+                                            <a href="https://github.com/TranHuuDat2004/mymusic"
+                                                class="btn btn-sm btn-outline-primary mt-2" target="_blank"
+                                                rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Android (Java) Projects Section -->
+                <div class="mb-5">
+                    <h2 class="text-primary fw-bolder mb-4 text-center">Android (Java) Apps</h2>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card: AquaTrack -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_aquatrack.png"
+                                                alt="AquaTrack Logo" />
+                                        </div>
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <h3 class="fw-bolder">AquaTrack - Water Reminder</h3>
+                                            <p>Created AquaTrack, a native Android application promoting better
+                                                hydration. Allows users to log water consumption and visualize progress
+                                                using Firebase Firestore.</p>
+                                            <p><em>Tech: Java (Android), Firebase Firestore.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/Water_Reminder"
+                                                class="btn btn-sm btn-outline-primary mt-2" target="_blank"
+                                                rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Machine Learning Projects Section -->
+                <div>
+                    <h2 class="text-primary fw-bolder mb-4 text-center">Machine Learning</h2>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card: Signature Verification -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_handwriting.png"
+                                                alt="Signature Verification Logo" />
+                                        </div>
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <h3 class="fw-bolder">Signature Verification System</h3>
+                                            <p>Developed a model to authenticate handwritten signatures using Machine
+                                                Learning techniques in Google Colab, achieving high accuracy in
+                                                identifying genuine and forged signatures.</p>
+                                            <p><em>Tech: Python, TensorFlow/Keras, OpenCV, Matplotlib, Colab.</em></p>
+                                            <a href="https://github.com/TranHuuDat2004/handwriting-signature-recognition"
+                                                class="btn btn-sm btn-outline-primary mt-2" target="_blank"
+                                                rel="noopener noreferrer">View Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Call to action section (Giữ nguyên) -->
         <section class="py-5 bg-gradient-primary-to-secondary text-white">
