@@ -27,12 +27,17 @@
             position: relative;
         }
 
-        a, 
-        button, 
-        input[type="submit"], /* Thêm cho nút submit */
-        .form-control /* Thêm cho các input field */
-        {
-            cursor: url('assets/hand_blue.png'), auto; /* Fallback là auto */
+        a,
+        button,
+        button:hover,
+        input[type="submit"],
+        /* Thêm cho nút submit */
+        .form-control
+
+        /* Thêm cho các input field */
+            {
+            cursor: url('assets/hand_blue.png'), auto;
+            /* Fallback là auto */
         }
 
         .interactive-grid-container {
@@ -122,16 +127,45 @@
             opacity: 0;
             /* Trạng thái khi text mờ đi */
         }
+
+                /* ... (CSS hiện tại của bạn) ... */
+
+        .glimpse-image-wrapper {
+            width: 90%; /* Ảnh sẽ chiếm 90% chiều rộng của container cha trên thiết bị nhỏ */
+            max-width: 600px; /* Nhưng không bao giờ vượt quá 400px trên màn hình lớn */
+            margin-top: 1rem; /* Thêm chút khoảng cách phía trên ảnh nếu cần */
+            margin-bottom: 1rem; /* Thêm chút khoảng cách phía dưới ảnh */
+        }
+
+        /* Tùy chọn: Nếu bạn muốn ảnh nhỏ hơn nữa trên màn hình cực nhỏ */
+        @media (max-width: 576px) {
+            .glimpse-image-wrapper {
+                width: 80%; /* Hoặc có thể là 100% nếu bạn muốn nó đầy đủ hơn trên xs screens */
+            }
+
+            .card-body .row .col-lg-8 ul,
+            .card-body .row .col-lg-9 ul { /* Áp dụng cho cột chứa mô tả trong Experience, Education, Awards */
+                padding-left: 1.25rem; /* Giảm độ thụt lề của danh sách (mặc định Bootstrap là 2rem) */
+            }
+
+            .card-body .row .col-lg-8 ul li,
+            .card-body .row .col-lg-9 ul li,
+            .card-body .row .col-lg-8 p, /* Nếu có đoạn văn p trong phần này */
+            .card-body .row .col-lg-9 p {
+                font-size: 0.875rem; /* Giảm nhẹ cỡ chữ (14px nếu base là 16px) */
+                line-height: 1.5;    /* Giảm nhẹ khoảng cách dòng */
+                margin-bottom: 0.35rem; /* Khoảng cách nhỏ giữa các list items */
+            }
+        }
     </style>
 </head>
 
 <body class="d-flex flex-column h-100 bg-light">
     <main class="flex-shrink-0">
-        <!-- Navigation (Giữ nguyên) -->
+        <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
             <div class="container px-5">
                 <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Tran Huu Dat</span></a>
-                <!-- Thay tên -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
@@ -153,72 +187,171 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-11 col-xl-9 col-xxl-8">
-                    <!-- Experience Section (Giữ nguyên hoặc cập nhật nội dung của bạn) -->
+                    <!-- Experience Section -->
                     <section>
-                        <!-- ... Nội dung Experience ... -->
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <h2 class="text-primary fw-bolder mb-0">Experience</h2>
-                            <a class="btn btn-primary px-4 py-3" href="assets/your-resume.pdf"
-                                download="TranHuuDat-Resume.pdf"> <!-- Thay link và tên file CV -->
+                            <a class="btn btn-primary px-4 py-3" href="assets/TranHuuDat-Resume.pdf"
+                                download="TranHuuDat-Resume.pdf">
                                 <div class="d-inline-block bi bi-download me-2"></div>
                                 Download Resume
                             </a>
                         </div>
-                        <!-- Experience Card 1 (Ví dụ) -->
+                        <!-- Experience Card 1 (Placeholder - Update or Remove if Invigilator is primary) -->
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body p-5">
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">Dates</div>
-                                            <div class="small fw-bolder">Your Role</div>
-                                            <div class="small text-muted">Company Name</div>
-                                            <div class="small text-muted">Location</div>
+                                            <div class="text-primary fw-bolder mb-2">[Dates for Exp 1]</div>
+                                            <div class="small fw-bolder">[Your Role for Exp 1]</div>
+                                            <div class="small text-muted">[Company Name for Exp 1]</div>
+                                            <div class="small text-muted">[Location for Exp 1]</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <div>Your responsibilities and achievements.</div>
+                                        <div>[Your responsibilities and achievements for Exp 1. If this is not needed,
+                                            remove this entire card.]</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experience Card for Invigilator -->
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="bg-light p-4 rounded-4">
+                                            <!-- UPDATED DATE -->
+                                            <div class="text-primary fw-bolder mb-2">2024 - Present</div>
+                                            <div class="small fw-bolder">Invigilator (Part-time)</div>
+                                            <div class="small text-muted">Ton Duc Thang University</div>
+                                            <div class="small text-muted">Ho Chi Minh City, VN</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div>
+                                            <ul>
+                                                <li>Ensured the integrity and fairness of university examinations by
+                                                    strictly adhering to examination protocols.</li>
+                                                <li>Supervised candidates, managed examination materials, and addressed
+                                                    procedural queries to maintain a smooth testing environment.</li>
+                                                <li>Developed strong discipline, meticulous attention to detail, and the
+                                                    ability to remain composed and decisive under pressure.</li>
+                                                <li>Enhanced observational skills and professionalism through
+                                                    interactions with faculty and students.</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <!-- Education Section (Giữ nguyên hoặc cập nhật nội dung của bạn) -->
+
+                    <!-- Education Section -->
                     <section>
-                        <!-- ... Nội dung Education ... -->
                         <h2 class="text-secondary fw-bolder mb-4">Education</h2>
-                        <!-- Education Card 1 (Ví dụ) -->
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body p-5">
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-secondary fw-bolder mb-2">2022 - 2026</div>
+                                            <div class="text-secondary fw-bolder mb-2">2022 - 2026 (Expected)</div>
                                             <div class="mb-2">
                                                 <div class="small fw-bolder">Ton Duc Thang University</div>
-                                                <!-- Ví dụ -->
                                                 <div class="small text-muted">Ho Chi Minh City, VN</div>
                                             </div>
                                             <div class="fst-italic">
-                                                <div class="small text-muted">Software Engineering</div>
+                                                <div class="small text-muted">Major: Software Engineering</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <div>Relevant coursework or achievements.</div>
+                                        <!-- UPDATED Details -->
+                                        <div>GPA: ~7.8/10 </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <!-- Divider-->
-                    <div class="pb-5"></div>
-                    <!-- Skills Section-->
+
+                    <!-- Awards & Achievements Section -->
                     <section>
-                        <!-- Skillset Card-->
+                        <h2 class="text-primary fw-bolder mb-4">Awards & Achievements</h2>
+                        <!-- Award Card 1 -->
                         <div class="card shadow border-0 rounded-4 mb-5">
                             <div class="card-body p-5">
-                                <!-- Professional skills list -->
+                                <div class="row align-items-center gx-5">
+                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="bg-light p-4 rounded-4">
+                                            <div class="text-primary fw-bolder mb-2">April 2023</div>
+                                            <!-- Chính xác hơn là tháng diễn ra chung kết -->
+                                            <div class="small fw-bolder">Consolation Prize</div>
+
+                                            <div class="mb-2">
+                                                <div class="small text-muted">
+                                                    "Thiết kế Website Lớp năm 2023" (Class Website
+                                                Design Competition 2023)</div>
+                                                
+                                            </div>
+                                            <div class="fst-italic">
+                                                <div class="small text-muted">Faculty of Information Technology, Ton Duc
+                                                    Thang University</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div>
+                                            <ul>
+                                                <li>Achieved a Consolation Prize as part of team representing
+                                                    22H50201 class in a university-wide competition with over 20 participating
+                                                    classes.</li>
+                                                <li>The competition was part of "Tháng Thanh niên 2023" (Youth Month
+                                                    2023) under the theme "Tuổi trẻ tiên phong chuyển đổi số" (Youth
+                                                    Pioneering Digital Transformation).</li>
+                                                <li>Developed a class website aimed at fostering academic exchange and preserving class
+                                                    memories.</li>
+                                                <li>Contributed to UI/UX design,
+                                                    WordPress theme customization.</li>
+                                                <li>Demonstrated teamwork, creativity, and early application of web
+                                                    development skills in a competitive setting.</li>
+                                                <li><em>Note: The university-hosted competition website
+                                                        (<code>itclass.tdtu.edu.vn/ktpm2022clc01/</code>) has since been
+                                                        archived and is no longer publicly accessible.</em></li>
+                                                <!-- Optional: If you have screenshots or a local version, you could mention it or link to a portfolio item showcasing it -->
+                                                <!-- e.g., <li>Further details and visual evidence of the project are available in my <a href="[link_to_your_portfolio_page]" target="_blank">portfolio</a>.</li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- You can add more award cards here if needed -->
+                    </section>
+
+                    <!-- NEW: Souvenir Photo Section -->
+                    <section class="text-center my-5">
+                        <h2 class="text-gradient d-inline fw-bolder mb-4">A Glimpse</h2>
+                        
+                        <!-- Wrapper for the image to control its size and centering -->
+                        <div class="glimpse-image-wrapper mx-auto"> 
+                            <img src="assets/achive.jpg" alt="A memorable moment - Receiving award at TDTU 2023"
+                                class="img-fluid rounded shadow-sm"
+                                style="height: auto; border: 1px solid #dee2e6;">
+                        </div>
+                        
+                        <p class="text-muted fst-italic small">Receiving the design award at TDTU, 2023</p>
+                    </section>
+
+
+                    <!-- Divider-->
+                    <div class="pb-5"></div>
+
+                    <!-- Skills Section-->
+                    <section>
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
                                 <div class="mb-5">
                                     <div class="d-flex align-items-center mb-4">
                                         <div
@@ -228,8 +361,6 @@
                                         <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Professional
                                                 Skills</span></h3>
                                     </div>
-
-                                    <!-- General Expertise (áp dụng interactive-grid) -->
                                     <h4 class="fw-bolder my-3 text-center text-gradient">General Expertise</h4>
                                     <div class="interactive-grid-container mb-4">
                                         <div class="interactive-grid">
@@ -237,10 +368,11 @@
                                             <div class="grid-item" data-text="Mobile Platforms">Mobile Development</div>
                                             <div class="grid-item" data-text="User-Centric Design">UI/UX Design
                                                 Principles</div>
+                                            <div class="grid-item" data-text="Problem Solving">Problem Solving</div>
+                                            <div class="grid-item" data-text="Team Collaboration">Teamwork</div>
+                                            <div class="grid-item" data-text="Detail Oriented">Attention to Detail</div>
                                         </div>
                                     </div>
-
-                                    <!-- Tools (áp dụng interactive-grid) -->
                                     <h4 class="fw-bolder my-3 text-center text-gradient">Tools</h4>
                                     <div class="interactive-grid-container mb-4">
                                         <div class="interactive-grid">
@@ -249,8 +381,6 @@
                                             <div class="grid-item" data-text="Version Control">Git & GitHub</div>
                                         </div>
                                     </div>
-
-                                    <!-- Design (áp dụng interactive-grid) -->
                                     <h4 class="fw-bolder my-3 text-center text-gradient">Design Software</h4>
                                     <div class="interactive-grid-container">
                                         <div class="interactive-grid">
@@ -259,8 +389,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Technical Stack list -->
                                 <div class="mb-0">
                                     <div class="d-flex align-items-center mb-4">
                                         <div
@@ -274,13 +402,14 @@
                                         <div class="interactive-grid">
                                             <div class="grid-item" data-text="Frontend">HTML5</div>
                                             <div class="grid-item" data-text="Styling">CSS3</div>
-                                            <div class="grid-item" data-text="Scripting">JavaScript</div>
+                                            <div class="grid-item" data-text="Scripting">JavaScript (ES6+)</div>
                                             <div class="grid-item" data-text="Backend">Node.js</div>
                                             <div class="grid-item" data-text="Framework">Express.js</div>
                                             <div class="grid-item" data-text="Backend">PHP</div>
                                             <div class="grid-item" data-text="Database">MySQL</div>
-                                            <div class="grid-item" data-text="Database">Firebase</div>
-                                            <div class="grid-item" data-text="Mobile">Java (Android)</div>
+                                            <div class="grid-item" data-text="Database">Firebase (Firestore)</div>
+                                            <div class="grid-item" data-text="Mobile">Java (Android SDK)</div>
+                                            <div class="grid-item" data-text="CMS">WordPress</div>
                                         </div>
                                     </div>
                                 </div>
@@ -291,7 +420,7 @@
             </div>
         </div>
     </main>
-    <!-- Footer (Giữ nguyên) -->
+    <!-- Footer (Your existing footer) -->
     <footer class="bg-white py-4 mt-auto">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
@@ -321,14 +450,13 @@
     <script src="js/scripts.js"></script>
 
     <!-- JavaScript cho Interactive Grid và Cursor (Giữ nguyên như phiên bản trước) -->
-<script>
+    <script>
         const cursorElement = document.querySelector('.cursor-element');
-        const cursorTextElement = cursorElement ? cursorElement.querySelector('.cursor-text') : null;
+        const cursorTextElement = cursorElement.querySelector('.cursor-text');
+        const gridItems = document.querySelectorAll('.interactive-grid .grid-item');
 
         let autoTextCurrentIndex = 0;
         let autoTextInterval;
-        let isTextFading = false;
-        let isCustomCursorActive = true; // Theo dõi trạng thái của custom cursor
 
         const autoTexts = [
             "Hello!",
@@ -340,83 +468,127 @@
 
         function updateCursorPosition(x, y) {
             if (!cursorElement) return;
+            // Don't move if it's supposed to be hidden by interaction
+            if (cursorElement.classList.contains('hidden-by-interaction')) {
+                // Optionally, ensure it's visually hidden if class alone isn't enough
+                // (though the CSS class should handle this)
+                if (cursorElement.style.opacity !== '0') cursorElement.style.opacity = '0';
+                return;
+            }
+            // If it's not hidden by interaction, make it visible and position it
+            if (cursorElement.style.opacity !== '1' && cursorElement.classList.contains('visible')) {
+                cursorElement.style.opacity = '1'; // Restore opacity if it was set to 0
+            }
+
             cursorElement.style.left = x + 'px';
             cursorElement.style.top = y + 'px';
-        }
-
-        function showCustomCursor() {
-            if (!cursorElement) return;
-            isCustomCursorActive = true;
-            cursorElement.classList.add('visible');
-            // Khởi động lại auto text nếu có và chưa chạy
-            if (cursorTextElement && !autoTextInterval) {
-                updateAutoCursorText(); // Hiển thị text ngay
-                autoTextInterval = setInterval(updateAutoCursorText, 3000);
-            }
-        }
-
-        function hideCustomCursor() {
-            if (!cursorElement) return;
-            isCustomCursorActive = false;
-            cursorElement.classList.remove('visible');
-            // Dừng auto text
-            if (autoTextInterval) {
-                clearInterval(autoTextInterval);
-                autoTextInterval = null;
+            if (!cursorElement.classList.contains('visible')) {
+                cursorElement.classList.add('visible');
             }
         }
 
         function changeCursorTextWithFade(newText) {
-            if (!cursorTextElement || isTextFading || cursorTextElement.textContent === newText) {
+            if (!cursorTextElement || cursorTextElement.isTextFading || cursorTextElement.textContent === newText) {
                 return;
             }
-            isTextFading = true;
+            cursorTextElement.isTextFading = true;
             cursorTextElement.classList.add('fade-out');
 
             setTimeout(() => {
                 cursorTextElement.textContent = newText;
                 cursorTextElement.classList.remove('fade-out');
-                isTextFading = false;
-            }, 200); // Giảm thời gian fade
+                cursorTextElement.isTextFading = false;
+            }, 300);
         }
 
         function updateAutoCursorText() {
-            if (!isCustomCursorActive || !cursorTextElement) return; // Chỉ chạy nếu custom cursor đang active
-            const newTextToShow = autoTexts[autoTextCurrentIndex];
-            autoTextCurrentIndex = (autoTextCurrentIndex + 1) % autoTexts.length;
+            let newTextToShow;
+            let isOverGridItem = false;
+            let currentGridItemText = null;
+
+            // Prevent text update if cursor is meant to be hidden
+            if (cursorElement && cursorElement.classList.contains('hidden-by-interaction')) {
+                return;
+            }
+
+            if (cursorElement && gridItems.length > 0) {
+                const cursorRect = cursorElement.getBoundingClientRect();
+                for (const item of gridItems) {
+                    const itemRect = item.getBoundingClientRect();
+                    if (
+                        cursorRect.right > itemRect.left &&
+                        cursorRect.left < itemRect.right &&
+                        cursorRect.bottom > itemRect.top &&
+                        cursorRect.top < itemRect.bottom
+                    ) {
+                        if (item.dataset.text) {
+                            isOverGridItem = true;
+                            currentGridItemText = item.dataset.text;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (isOverGridItem) {
+                newTextToShow = currentGridItemText;
+            } else {
+                newTextToShow = autoTexts[autoTextCurrentIndex];
+                autoTextCurrentIndex = (autoTextCurrentIndex + 1) % autoTexts.length;
+            }
             changeCursorTextWithFade(newTextToShow);
         }
 
         if (cursorElement) {
             document.addEventListener('mousemove', (e) => {
                 updateCursorPosition(e.clientX, e.clientY);
-                // Chỉ hiển thị custom cursor nếu nó đang active (không hover qua link/button)
-                // và nó chưa visible (trường hợp ban đầu hoặc sau khi mouseleave khỏi body)
-                if (isCustomCursorActive && !cursorElement.classList.contains('visible')) {
-                    showCustomCursor();
-                }
             });
 
-
-
-            // Các element tương tác sẽ ẩn custom cursor và hiển thị cursor mặc định (hand.png)
+            // --- NEW LOGIC FOR HIDING CURSOR ON INTERACTIVE ELEMENTS ---
             const interactiveElements = document.querySelectorAll('a, button, input[type="submit"], .form-control');
+
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    hideCustomCursor();
+                    cursorElement.classList.add('hidden-by-interaction');
+                    // Ensure system cursor is visible for these elements
+                    // This is already handled by your CSS:
+                    // button, button:hover, input[type="submit"], .form-control { cursor: url('assets/hand_blue.png'), auto; }
+                    // a { cursor: pointer; } (browser default)
                 });
-                el.addEventListener('mouseleave', (e) => {
-                    // Khi rời khỏi, cập nhật vị trí và hiển thị lại custom cursor
-                    updateCursorPosition(e.clientX, e.clientY);
-                    showCustomCursor();
+                el.addEventListener('mouseleave', () => {
+                    cursorElement.classList.remove('hidden-by-interaction');
+                    // The mousemove event will quickly make it visible again if needed
+                    // and updateCursorPosition will restore its opacity if it was set to 0
+                });
+            });
+            // --- END OF NEW LOGIC ---
+        }
+
+
+        if (gridItems.length > 0 && cursorTextElement) {
+            gridItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    if (item.dataset.text) {
+                        changeCursorTextWithFade(item.dataset.text);
+                    }
                 });
             });
 
-            // Hiển thị cursor lần đầu
-            setTimeout(showCustomCursor, 100);
+            updateAutoCursorText();
+            autoTextInterval = setInterval(updateAutoCursorText, 3000);
+        }
 
+
+        if (cursorElement) {
+            function initialCursorShow() {
+                // Only make it visible if not currently hidden by interaction (e.g. if page loads with mouse over a button)
+                if (!cursorElement.classList.contains('hidden-by-interaction') && !cursorElement.classList.contains('visible')) {
+                    cursorElement.classList.add('visible');
+                }
+            }
+            setTimeout(initialCursorShow, 100);
         } else {
-            console.error("Cursor element not found!");
+            console.error("Cursor element not found for initial show!");
         }
     </script>
 </body>

@@ -165,6 +165,27 @@
                 /* Đồng bộ padding cho text trên desktop */
             }
         }
+
+                /* Tùy chọn: Nếu bạn muốn ảnh nhỏ hơn nữa trên màn hình cực nhỏ */
+        @media (max-width: 576px) {
+            .glimpse-image-wrapper {
+                width: 80%; /* Hoặc có thể là 100% nếu bạn muốn nó đầy đủ hơn trên xs screens */
+            }
+
+            .card-body .row .col-lg-8 ul,
+            .card-body .row .col-lg-9 ul { /* Áp dụng cho cột chứa mô tả trong Experience, Education, Awards */
+                padding-left: 1.25rem; /* Giảm độ thụt lề của danh sách (mặc định Bootstrap là 2rem) */
+            }
+
+            .card-body .row .col-lg-8 ul li,
+            .card-body .row .col-lg-9 ul li,
+            .card-body .row .col-lg-8 p, /* Nếu có đoạn văn p trong phần này */
+            .card-body .row .col-lg-9 p {
+                font-size: 0.875rem; /* Giảm nhẹ cỡ chữ (14px nếu base là 16px) */
+                line-height: 1.5;    /* Giảm nhẹ khoảng cách dòng */
+                margin-bottom: 0.35rem; /* Khoảng cách nhỏ giữa các list items */
+            }
+        }
     </style>
 </head>
 
