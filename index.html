@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-
+    <link href="css/github.css" rel="stylesheet" />
     <!-- CSS cho Interactive Grid và Cursor -->
     <style>
         body {
@@ -201,7 +201,7 @@
 
         <!-- Page Content-->
         <div class="container px-5 my-5">
-            <div class="text-center mb-5">
+            <div class="text-center">
                 <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">My Skills</span></h1>
             </div>
             <div class="row gx-5 justify-content-center">
@@ -282,36 +282,74 @@
         </div>
     </main>
 
-    <!-- About Section-->
+    <!-- My Projects on GitHub -->
     <section class="bg-light py-5"> <!-- Giữ lại bg-light hoặc đổi màu khác -->
-        <div class="container px-8">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-xxl-8">
-                    <div class="my-5">
-                        <h2 class="display-5 fw-bolder text-center"><span class="text-gradient d-inline">About Me</span>
-                        </h2>
-                        <p class="lead fw-light mb-4">I am Tran Huu Dat, a dedicated software engineering student at Ton
-                            Duc Thang University.</p> <!-- Thay thế -->
-                        <p class="text-muted">Passionate about creating efficient and user-friendly web and mobile
-                            solutions. I enjoy tackling challenging problems and continuously expanding my skill set in
-                            the ever-evolving world of technology. My goal is to leverage my technical abilities to
-                            build impactful applications and contribute to meaningful projects. Currently seeking
-                            opportunities to apply my knowledge and grow as a professional developer.</p>
-                        <!-- Viết thêm về bạn -->
-                        <div class="d-flex justify-content-center fs-2 gap-4 mt-4"> <!-- Thêm mt-4 -->
-                            <a class="text-gradient" href="YOUR_LINKEDIN_URL" target="_blank"
-                                rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                            <a class="text-gradient" href="https://github.com/TranHuuDat2004" target="_blank"
-                                rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                            <a class="text-gradient" href="mailto:huudat.peashooer@gmail.com"><i
-                                    class="bi bi-envelope-fill"></i></a> <!-- Thêm icon email -->
-                            <!-- <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a> -->
+        <div class="container px-5 mb-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">My Projects on
+                        GitHub</span></h1>
+            </div>
+        </div>
+
+
+        <!-- Projects Section -->
+        <section class="featured-projects">
+            <div class="projects-grid">
+                <!-- JavaScript sẽ chèn các card dự án vào đây -->
+
+                <div class="project-card">
+                    <p class="project-description">Project description here.</p>
+                    <div class="card-footer">
+                        <span class="project-language">
+                            <span class="language-dot ruby"></span>
+                            Ruby
+                        </span>
+                        <div class="project-stats">
+                            <span class="stars">⭐ 545</span>
+                            <span class="forks">🍴 207</span>
                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div class="text-center mt-4">
+            <a class="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
+                href="https://github.com/TranHuuDat2004?tab=repositories">Explore more of my projects in the
+                Repositories
+                tab.</a>
+        </div>
+    </section>
+    <!-- About Section-->
+
+    <div class="container px-8">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xxl-8">
+                <div class="my-5">
+                    <h2 class="display-5 fw-bolder text-center"><span class="text-gradient d-inline">About Me</span>
+                    </h2>
+                    <p class="lead fw-light mb-4">I am Tran Huu Dat, a dedicated software engineering student at Ton
+                        Duc Thang University.</p> <!-- Thay thế -->
+                    <p class="text-muted">Passionate about creating efficient and user-friendly web and mobile
+                        solutions. I enjoy tackling challenging problems and continuously expanding my skill set in
+                        the ever-evolving world of technology. My goal is to leverage my technical abilities to
+                        build impactful applications and contribute to meaningful projects. Currently seeking
+                        opportunities to apply my knowledge and grow as a professional developer.</p>
+                    <!-- Viết thêm về bạn -->
+                    <div class="d-flex justify-content-center fs-2 gap-4 mt-4"> <!-- Thêm mt-4 -->
+                        <a class="text-gradient" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer"><i
+                                class="bi bi-linkedin"></i></a>
+                        <a class="text-gradient" href="https://github.com/TranHuuDat2004" target="_blank"
+                            rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+                        <a class="text-gradient" href="mailto:huudat.peashooer@gmail.com"><i
+                                class="bi bi-envelope-fill"></i></a> <!-- Thêm icon email -->
+                        <!-- <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a> -->
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
     </main>
     <!-- Footer-->
     <footer class="bg-white py-4 mt-auto">
@@ -341,11 +379,8 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script> <!-- JS mặc định của template -->
 
-    <!-- JavaScript cho Interactive Grid và Cursor (Giữ nguyên như phiên bản trước) -->
-<!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+
+    <script src="js/github.js"></script>
 
     <!-- JavaScript cho Interactive Grid và Cursor -->
     <!-- JavaScript cho Interactive Grid và Cursor (Giữ nguyên như phiên bản trước) -->
@@ -369,14 +404,14 @@
             if (!cursorElement) return;
             // Don't move if it's supposed to be hidden by interaction
             if (cursorElement.classList.contains('hidden-by-interaction')) {
-                 // Optionally, ensure it's visually hidden if class alone isn't enough
-                 // (though the CSS class should handle this)
+                // Optionally, ensure it's visually hidden if class alone isn't enough
+                // (though the CSS class should handle this)
                 if (cursorElement.style.opacity !== '0') cursorElement.style.opacity = '0';
                 return;
             }
             // If it's not hidden by interaction, make it visible and position it
             if (cursorElement.style.opacity !== '1' && cursorElement.classList.contains('visible')) {
-                 cursorElement.style.opacity = '1'; // Restore opacity if it was set to 0
+                cursorElement.style.opacity = '1'; // Restore opacity if it was set to 0
             }
 
             cursorElement.style.left = x + 'px';

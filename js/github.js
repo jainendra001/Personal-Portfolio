@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return language.toLowerCase().replace(/#/g, 'sharp').replace(/\+/g, 'plus');
     }
 
-    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12&type=owner`)
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=9&type=owner`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`GitHub API error: ${response.status}`);
