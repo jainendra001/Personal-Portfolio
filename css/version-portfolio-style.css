@@ -1,0 +1,110 @@
+/* css/version-portfolio-style.css */
+
+/* Kế thừa hoặc định nghĩa lại các biến màu từ ANIME.TV nếu cần */
+/* Ví dụ:
+:root {
+    --primary-color: #f47521;
+    --background-color: #23252b;
+    --text-color: #ffffff;
+    --text-secondary-color: #adb0b5;
+    --card-background-color: #2d3038;
+    --border-color: #4a4d57;
+}
+*/
+
+body {
+    background-color: var(--background-color, #f8f9fa); /* Nền từ portfolio hoặc ANIME.TV */
+    color: var(--text-color, #212529);
+    font-family: 'Lato', 'Plus Jakarta Sans', sans-serif; /* Kết hợp font */
+}
+
+/* Navbar ANIME.TV đã có style trong style.css */
+
+/* Main content area */
+#version-page main.flex-shrink-0 {
+    padding-top: 2rem; /* Khoảng cách với navbar */
+}
+
+.page-title-gradient span, /* Nếu tiêu đề có class text-gradient từ portfolio */
+#version-page .page-title { /* Hoặc style tiêu đề của ANIME.TV */
+    color: var(--primary-color); /* Màu cam của ANIME.TV */
+    /* font-weight: 900; */ /* Giữ lại nếu muốn */
+}
+
+.text-center .lead.text-muted {
+    color: var(--text-secondary-color) !important; /* Đảm bảo ghi đè Bootstrap */
+}
+
+
+/* Version Card Styles (Lấy cảm hứng từ card của portfolio) */
+.version-card {
+    background-color: var(--card-background-color); /* Nền card của ANIME.TV */
+    color: var(--text-color);
+    border: 1px solid var(--border-color) !important; /* Ghi đè border Bootstrap */
+}
+
+.version-card .card-header {
+    /* background-color: transparent; */ /* Bỏ nền mặc định của Bootstrap card-header */
+    border-bottom: 1px solid var(--border-color);
+    /* Các class màu mềm (soft colors) */
+    /* Bạn cần định nghĩa các biến màu này trong :root của style.css */
+}
+.version-card .card-header.bg-primary-soft { background-color: rgba(var(--primary-color-rgb), 0.15) !important; color: var(--primary-color) !important; }
+.version-card .card-header.bg-secondary-soft { background-color: rgba(108, 117, 125, 0.15) !important; color: #6c757d !important; }
+.version-card .card-header.bg-success-soft { background-color: rgba(40, 167, 69, 0.15) !important; color: #28a745 !important; }
+.version-card .card-header.bg-info-soft { background-color: rgba(23, 162, 184, 0.15) !important; color: #17a2b8 !important; }
+.version-card .card-header.bg-warning-soft { background-color: rgba(255, 193, 7, 0.15) !important; color: #ffc107 !important; }
+.version-card .card-header.bg-danger-soft { background-color: rgba(220, 53, 69, 0.15) !important; color: #dc3545 !important; }
+.version-card .card-header.bg-light-soft { background-color: rgba(200, 200, 200, 0.15) !important; color: var(--text-secondary-color) !important; } /* Cho text màu tối hơn trên nền sáng */
+
+
+.version-card .card-header .bi { /* Icon Bootstrap */
+    vertical-align: text-bottom;
+}
+
+.version-card .card-body {
+    padding: 1.5rem; /* Giữ padding từ portfolio */
+}
+
+.version-tag { /* Tiêu đề của mỗi card, ví dụ "v1.1.1" hoặc "Cập nhật Ngôn ngữ" */
+    color: var(--text-color); /* Màu chữ chính */
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem; /* Điều chỉnh kích thước */
+}
+.card-header + .card-body .version-tag { /* Nếu version-tag ngay sau card-header */
+    /* margin-top: -0.5rem; /* Kéo lên một chút nếu muốn */
+}
+
+
+ul.version-changes {
+    list-style-type: disc; /* Hoặc '✓ ' nếu muốn dùng ký tự đặc biệt */
+    padding-left: 20px;
+    color: var(--text-secondary-color);
+    margin-bottom: 0;
+}
+ul.version-changes li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+ul.version-changes li:last-child {
+    margin-bottom: 0;
+}
+ul.version-changes code { /* Style cho tên commit nếu bạn dùng thẻ <code> */
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* Footer ANIME.TV đã có style trong style.css */
+.footer-animetv {
+    /* Kế thừa từ style.css của ANIME.TV */
+}
+
+/* Điều chỉnh nếu cần cho container của Bootstrap */
+.container.px-4.px-lg-5 {
+    max-width: 960px; /* Giống như trang about của ANIME.TV */
+    margin-left: auto;
+    margin-right: auto;
+}
