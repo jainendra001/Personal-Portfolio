@@ -9,7 +9,7 @@ This README is available in English and Vietnamese. Please expand the section fo
 
 <p align="center">
   <a href="https://github.com/TranHuuDat2004" target="_blank">
-    <img src="https://img.shields.io/badge/Author-TranHuuDat2004-blue?style=for-the-badge&logo=github" alt="Author: TranHuuDat2004"/>
+    <img src="https://img.shields.io/badge/GITHUB-TranHuuDat2004-yellow?style=flat&logo=github&logoColor=white" alt="Author: TranHuuDat2004"/>
   </a>
   <a href="https://tranhuudat2004.github.io/" target="_blank">
     <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=google-chrome" alt="Live Demo"/>
@@ -18,21 +18,6 @@ This README is available in English and Vietnamese. Please expand the section fo
     <img src="https://img.shields.io/github/v/release/TranHuuDat2004/tranhuudat2004.github.io?style=for-the-badge&logo=github" alt="Latest Release"/>
   </a>
 
-  <!-- GitHub Profile -->
-<img src="https://img.shields.io/badge/GitHub-TranHuuDat2004-informational?style=flat&logo=github&logoColor=white" alt="GitHub Profile"/>
-
-<!-- JavaScript Skill -->
-<img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?style=flat&logo=javascript&logoColor=black" alt="JavaScript ES6+"/>
-
-<!-- React Framework -->
-<img src="https://img.shields.io/badge/React-Framework-61DAFB?style=flat&logo=react&logoColor=black" alt="React Framework"/>
-<!-- (61DAFB là màu xanh của React, chữ đen cho dễ đọc) -->
-
-<!-- Node.js -->
-<img src="https://img.shields.io/badge/Node.js-Backend-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js Backend"/>
-
-<!-- Custom Badge -->
-<img src="https://img.shields.io/badge/Project%20Status-In%20Progress-orange?style=flat&logo=visualstudiocode&logoColor=white" alt="Project In Progress"/>
 </p>
 
 
