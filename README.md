@@ -9,7 +9,7 @@ This README is available in English and Vietnamese. Please expand the section fo
 
 <p align="center">
   <a href="https://github.com/TranHuuDat2004" target="_blank">
-    <img src="https://img.shields.io/badge/GITHUB-TranHuuDat2004-yellow?style=flat&logo=github&logoColor=white" alt="Author: TranHuuDat2004"/>
+    <img src="https://img.shields.io/badge/GITHUB-TranHuuDat2004-yellow?style=for-the-badge&logo=github&logoColor=white" alt="Author: TranHuuDat2004"/>
   </a>
   <a href="https://tranhuudat2004.github.io/" target="_blank">
     <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=google-chrome" alt="Live Demo"/>
