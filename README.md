@@ -1,183 +1,91 @@
-<!-- Optional Banner (Keep commented out unless you want it) -->
-<!-- ![MasterHead](https://1.bp.blogspot.com/-7A4WynwLsMw/XbBpCXG8fHI/AAAAAAAAMt4/uOa1bpLskYgrwGbllhSu2SDj_Mig8SXJQCLcBGAsYHQ/s1600/2000_600px.gif) -->
+# Trần Hữu Đạt - Personal Portfolio & Project Showcase
 
-<h1 align="center">Hi 👋, I'm Tran Huu Dat</h1>
-<h3 align="center">I'm a Software Engineering student at Ton Duc Thang University (TDTU) from Vietnam.</h3>
+![Trần Hữu Đạt Portfolio Banner](assets/profile.PNG) <!-- THAY THẾ bằng ảnh chụp màn hình trang chủ portfolio của bạn -->
 
-<img align="right" alt="Coding Animation" width="400" src="assets/type.gif"> 
-<!-- Make sure 'type.gif' exists in your repository or replace the src with a valid URL -->
+Welcome to the source code repository for my personal portfolio website! This site serves as a central hub to showcase my skills, projects, and professional resume. It's designed with a clean, responsive interface and enhanced with interactive elements to provide an engaging user experience.
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=TranHuuDat2004&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" /> </p>
+**🚀 Live Portfolio:** [https://tranhuudat2004.github.io/](https://tranhuudat2004.github.io/) <!-- Cập nhật link nếu khác -->
 
-<!-- Optional Giphy Embed (Keep commented out unless you want it) -->
-<!-- <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/vtm4qejJIl1ERPIrbA" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/knife-crab-pikaole-vtm4qejJIl1ERPIrbA">via GIPHY</a></p> -->
+## ✨ Key Features
 
-Here's a little bit about me:
-- 🌱 I’m currently deepening my knowledge in **Web Development**.
-- 👯 I’m open to collaborating on **Web Development projects**.
-- 📫 How to reach me: **huudat.peashooer@gmail.com**
-<!-- - ⚡ Fun fact: I identify with the ISTP personality type. -->
+This portfolio website incorporates several key features:
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-  <!-- Twitter -->
-  <!-- <a href="https://twitter.com/Rst_zsy" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="30" width="40" /></a> -->
-  
-  <a href="https://www.facebook.com/tranhuudat.10112004" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="Facebook" height="30" width="40" /></a>
-  <a href="https://www.instagram.com/huudat.2k4/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram" height="30" width="40" /></a>
-  
-  <!-- Discord -->
-  <!-- <a href="https://discord.gg/YOUR_DISCORD_ID" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="Discord" height="30" width="40" /></a> -->
-</p>
+*   **Comprehensive Multi-Page Layout:**
+    *   **🏠 Home (`index.html`):** A welcoming landing page introducing myself, highlighting key skills through an interactive grid, and providing an overview of my capabilities.
+    *   **📄 Resume (`resume.html`):** A detailed presentation of my professional experience, educational background, and notable achievements.
+    *   **💡 Projects (`projects.html`):** A categorized showcase of my software development projects, complete with descriptions, tech stacks, and direct links to live demos and GitHub repositories. This page dynamically fetches project data from the GitHub API.
+    *   **✉️ Contact (`contact.html`):** A user-friendly contact form (powered by SB Forms - *API token setup required for full functionality*) alongside direct contact information.
+*   **🖱️ Interactive Custom Cursor:** A unique, custom-designed mouse cursor that follows user movement across all pages. It features dynamically cycling text (with fade-in/fade-out animations) that is **contextually tailored to each specific page** (Home, Resume, Projects, Contact), offering relevant greetings or information. The cursor also changes appearance when hovering over interactive elements.
+*   **🌐 Bilingual Support (English/Vietnamese):** Users can seamlessly switch website content between English and Vietnamese using an intuitive language switcher located in the navigation bar. Language preferences are saved locally for a consistent experience.
+*   **📱 Responsive Design:** Built with Bootstrap 5, ensuring the website adapts beautifully and functions optimally across various screen sizes, including desktops, tablets, and mobile devices.
+*   **🛠️ Interactive Skills Display:** Technical skills are presented in an engaging, interactive grid format on the Home and Resume pages, where hovering reveals more information via the custom cursor.
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> 
-  <!-- Commented out icons - uncomment if you use them -->
-  <!-- <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="40" height="40"/> </a> -->
-  <!-- <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> -->
-  <!-- <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> -->
-  
-  <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> 
-  <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> 
-  
-  <!-- <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> -->
-  <!-- <a href="https://www.mathworks.com/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" alt="matlab" width="40" height="40"/> </a> -->
-  
-  <a href="https://www.microsoft.com/en-us/sql-server" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="mssql" width="40" height="40"/> </a> 
-  <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> 
-  
-  <!-- <a href="https://www.oracle.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="oracle" width="40" height="40"/> </a> -->
-  
-  <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-  <a href="#" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> 
-  <a href="#" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> 
-  <!-- Uncomented relevant icons -->
-  <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="NodeJS" width="40" height="40"/> </a>
-  <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="Express" width="40" height="40"/> </a>
-  <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a>
-  <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a>
-  <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a>
-</p>
+## 🛠️ Technology Stack
 
-<p align="center">
-  <a href="https://github.com/TranHuuDat2004/github-readme-stats">
-    <img height="200" src="https://github-readme-stats.vercel.app/api?username=TranHuuDat2004&theme=radical&show_icons=true&include_all_commits=true&count_private=true" />
-  </a>
-  <a href="https://github.com/TranHuuDat2004/github-readme-stats"> <!-- Corrected link wrapper for consistency -->
-    <img height="200" src="https://github-readme-stats.vercel.app/api/top-langs?username=TranHuuDat2004&theme=radical&layout=compact&langs_count=8&card_width=320" /> 
-    <!-- Corrected username=TranHuuDat2004 -->
-  </a>
-</p>
+This portfolio is built using a combination of modern front-end technologies:
 
-<p align="center">
-  <a href="https://git.io/streak-stats">
-    <img src="https://streak-stats.demolab.com/?user=TranHuuDat2004&theme=radical&langs_count=8&card_width=805" alt="GitHub Streak" /> 
-    <!-- Adjusted card_width slightly, you can fine-tune this -->
-  </a>
-</p>
+*   **HTML5:** Semantic markup for structuring the content of all pages.
+*   **CSS3:** Custom styling for visual appeal, layout management (Flexbox, Grid), and animations.
+    *   **Bootstrap 5:** Leveraged for its robust responsive grid system, pre-styled UI components, and utility classes.
+*   **JavaScript (ES6+):** Powers all dynamic functionalities:
+    *   **Custom Cursor Logic:** Manages cursor movement, text cycling with fade effects, and context-aware text display (embedded CaCl HMTL page).
+    *   **Bilingual System:** Dynamically loads and applies language translations to page content.
+    *   **GitHub API Integration (`js/github.js`):** Fetches and renders project information on the "Projects" page.
+    *   **UI Interactions:** Handles events for the language switcher, interactive grids, and other dynamic elements.
+*   **External Libraries & APIs:**
+    *   [Bootstrap Icons](https://icons.getbootstrap.com/)
+    *   [Google Fonts (Plus Jakarta Sans)](https://fonts.google.com/specimen/Plus+Jakarta+Sans)
+    *   [SB Forms](https://startbootstrap.com/solution/contact-forms) (for the contact form - *API token required*)
+    *   [GitHub API](https://docs.github.com/en/rest) (for project data)
+*   **Hosting:** Deployed as a static website via [GitHub Pages](https://pages.github.com/).
 
-### 🏆 Academic Projects:
-
-#### 🌐 Web Development:
-
-<p align="center">
-  <img alt="BrickShop Logo" height="50" src="assets/logo_brickshop.png">
-</p>
-
-1.  **[BrickShop](https://github.com/TranHuuDat2004/BrickShop):** Engineered an e-commerce hub for building block fans (Qman, Keeppley, LEGO). Key features include seamless product browsing, secure checkout, order management, and a dedicated administration dashboard for efficient business operations.
-    *   *Frontend:* HTML5, CSS3, JavaScript, Bootstrap (Customer UI), Tailwind CSS (Admin UI)
-    *   *Backend:* Node.js, Express.js
-    *   *Database:* MySQL
-
-<br/>
-
-<p align="center">
-  <img alt="ZStyle Logo" height="50" src="assets/logo_zstyle.png">
-</p>
-
-2.  **[ZStyle](https://github.com/TranHuuDat2004/ZStyle):** Developed a foundational e-commerce website for clothing as a course project. Implemented core functionalities for users to explore fashion items and proceed through a basic purchase flow.
-    *   *Frontend:* HTML5, CSS3, JavaScript
-    *   *Backend:* PHP
-    *   *Database:* MySQL
-
-<br/>
-
-<p align="center">
-  <img alt="Omacha Shop Logo" height="50" src="assets/logo_omacha.png">
-</p>
-
-3.  **[Omacha Shop](https://github.com/TranHuuDat2004/Omacha_Shop):** A delightful e-commerce platform specializing in toys, developed as a full-stack web application. Features comprehensive online shopping experience for customers and a robust administration system for efficient management.
-    *   *Frontend:* HTML5, CSS3, JavaScript, Bootstrap
-    *   *Backend:* PHP
-    *   *Database:* MySQL
-
-#### 📱 Mobile Development (Android - Java):
-
-<p align="center">
-  <img alt="AquaTrack Logo" height="50" src="assets/logo_aquatrack.png">
-</p>
-
-1.  **[AquaTrack (Water_Reminder)](https://github.com/TranHuuDat2004/Water_Reminder):** Created AquaTrack, a native Android application promoting better hydration. Allows users to easily log water consumption, visualize progress towards daily goals, and store data persistently using Firebase Firestore.
-    *   *Platform:* Android
-    *   *Language:* Java
-    *   *Database:* Firebase Firestore
-
-#### 🧠 Machine Learning:
-
-<p align="center">
-  <img alt="Handwriting Signature Recognition" height="50" src="assets/logo_handwriting.png"> 
-</p>
-
-1.  **[Handwriting Signature Recognition](https://github.com/TranHuuDat2004/handwriting-signature-recognition):** Developed a machine learning model for authenticating handwritten signatures. This project explores techniques for feature extraction and classification to verify signature authenticity.
-    *   *Language:* Python
-    *   *Libraries/Frameworks:* (e.g., TensorFlow/Keras, scikit-learn, OpenCV) - *Please add specific ML libraries if you remember them.*
+## 📂 Project Structure
 
 
+## 🚀 How to View / Local Setup
 
----
+1.  **Live Site:**
+    *   The portfolio is best viewed live at: [https://tranhuudat2004.github.io/](https://tranhuudat2004.github.io/)
 
-### 🚀 Personal Projects & Live Demos (GitHub Pages):
+2.  **Local Setup:**
+    *   Clone this repository:
+        ```bash
+        git clone https://github.com/TranHuuDat2004/tranhuudat2004.github.io.git
+        ```
+        *(Replace with your actual repository URL if it's different)*
+    *   Navigate into the cloned directory:
+        ```bash
+        cd tranhuudat2004.github.io
+        ```
+    *   Open any of the `.html` files (e.g., `index.html`) directly in your preferred web browser. No compilation or build steps are necessary as this is a static website.
 
-<p align="center">
-  <img alt="Puzzle Logo" height="50" src="assets/logo_puzzle.png">
-</p>
+    *   **Important Note for Contact Form:** The contact form on `contact.html` uses SB Forms. For it to send emails, you must:
+        1.  Sign up at [https://startbootstrap.com/solution/contact-forms](https://startbootstrap.com/solution/contact-forms).
+        2.  Obtain your unique API token.
+        3.  Replace the placeholder `API_TOKEN_CUA_BAN` in the `data-sb-form-api-token` attribute of the `<form>` tag in `contact.html` with your actual token.
 
-1.  **Puzzle & Image Tools Suite:**
-    *   **Description:** An engaging web application featuring an interactive jigsaw puzzle game and a set of practical image manipulation tools (square cropper, grid splitter, resizer). Designed for entertainment and utility.
-    *   🔗 **Live Demo:** [https://tranhuudat2004.github.io/games_tools/]
-    *   💡 **Key Features:**
-        *   Jigsaw puzzle with diverse image collections and intuitive drag & drop.
-        *   Image tools: Crop to square, split into grid, resize with aspect ratio control.
-    *   *Tech Stack:* HTML5, CSS3, JavaScript, Bootstrap.
+## 💡 Development Insights & Customizations
 
+*   **Contextual Cursor Text:** The custom cursor's text changes based on the page being viewed, providing relevant, cycling messages (e.g., greetings on the homepage, skill-related info when hovering over skill tags). This is achieved by defining unique `autoTexts` arrays within the JavaScript embedded in each HTML page.
+*   **Dynamic Language Switching:** A JavaScript-driven system allows users to toggle between English and Vietnamese content. Translations are stored in a JS object, and the DOM is updated dynamically. The selected language is persisted in `localStorage`.
+*   **GitHub Projects Showcase:** The `projects.html` page leverages the GitHub API via `js/github.js` to automatically fetch and display my public repositories as interactive project cards, keeping the project list up-to-date.
 
+## 🌟 Future Enhancements (Ideas)
 
-<p align="center">
-  <img alt="Mymusic Logo" height="50" src="assets/logo_mymusic.png">
-</p>
+*   Implement a dark mode/light mode toggle.
+*   Add a dedicated blog section.
+*   Further optimize image loading for even faster performance.
+*   Explore more advanced animations or micro-interactions.
 
-2.  **MyMusic Player Interface:**
-    *   **Description:** A sleek, modern online music player interface inspired by platforms like Spotify. This project showcases UI/UX design skills and front-end development proficiency with a focus on a clean, responsive, and interactive user experience.
-    *   🔗 **Live Demo:** [https://tranhuudat2004.github.io/mymusic/]
-    *   💡 **Key Features:**
-        *   Intuitive music playback controls (play/pause, progress, volume).
-        *   Responsive design for desktop and mobile.
-        *   Dynamic UI elements built with vanilla JavaScript.
-    *   *Tech Stack:* HTML5, CSS3, JavaScript (ES6+).
+## 👤 Author & Contact
 
-
-
----
-
-*   ➡️ Explore more of my projects in the [Repositories tab](https://github.com/TranHuuDat2004?tab=repositories).
+*   **Trần Hữu Đạt**
+    *   **GitHub:** [@TranHuuDat2004](https://github.com/TranHuuDat2004)
+    *   **LinkedIn:** [linkedin.com/in/tranhuudat2004](https://linkedin.com/in/tranhuudat2004) <!-- Cập nhật link đầy đủ -->
+    *   **Email:** `huudat.peashooer@gmail.com`
 
 ---
 
 <p align="center">
-  <strong>Thanks for visiting!</strong> 
-  <!-- Hoặc bạn có thể dùng: **Thanks for visiting!** -->
-</p>
-<p align="center">
-  <img src="assets/coding.gif" alt="Coding GIF - Thanks for visiting!" width="400"/> 
-  <!-- Make sure 'coding.gif' exists or replace src -->
+  Thank you for exploring my portfolio and its source code! Feel free to connect.
 </p>
