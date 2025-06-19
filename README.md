@@ -5,11 +5,10 @@
 Welcome to the source code repository for my personal portfolio website! This site serves as a central hub to showcase my skills, projects, and professional resume. It's designed with a clean, responsive interface and enhanced with interactive elements to provide an engaging user experience.
 This README is available in English and Vietnamese. Please expand the section for your preferred language.
 
-**🚀 Live Portfolio:** [https://tranhuudat2004.github.io/](https://tranhuudat2004.github.io/) <!-- Cập nhật link nếu khác -->
 **👤 Author GitHub:** [@TranHuuDat2004](https://github.com/TranHuuDat2004)
 
 <p align="center">
-  <a href="https://tranhuudat2004.github.io/tranhuudat2004.github.io/" target="_blank">
+  <a href="https://tranhuudat2004.github.io/" target="_blank">
     <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=google-chrome" alt="Live Demo"/>
   </a>
   <a href="https://github.com/TranHuuDat2004/tranhuudat2004.github.io/releases/latest" target="_blank">
