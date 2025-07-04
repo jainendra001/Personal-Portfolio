@@ -261,6 +261,23 @@
         .cursor-element .cursor-text.fade-out {
             opacity: 0;
         }
+
+        /* Thêm vào cuối file CSS của bạn */
+        footer.bg-dark a.text-white-50 {
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer.bg-dark a.text-white-50:hover {
+            color: #ffffff !important;
+            /* Dùng !important để ghi đè bootstrap nếu cần */
+            text-decoration: underline;
+        }
+
+        footer a {
+            color: #adb5bd;
+            /* Màu chữ liên kết trong footer */
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -268,42 +285,7 @@
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-            <div class="container px-5">
-                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Trần Hữu Đạt</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                        <li class="nav-item"><a class="nav-link" href="index.html" data-translate-key="navHome">Trang
-                                chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="resume.html" data-translate-key="navResume">Hồ
-                                sơ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="projects.html"
-                                data-translate-key="navProjects">Dự án</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html"
-                                data-translate-key="navContact">Liên hệ</a></li>
-                    </ul>
-                    <div class="language-switcher">
-                        <div class="current-flag">
-                            <img id="current-flag-img" src="assets/vn.png" alt="Current Language">
-                        </div>
-                        <div class="language-dropdown">
-                            <a href="#" class="lang-option" data-lang="en">
-                                <img src="assets/en.png" alt="English Flag">
-                                <span>English</span>
-                            </a>
-                            <a href="#" class="lang-option" data-lang="vi">
-                                <img src="assets/vn.png" alt="Vietnamese Flag">
-                                <span>Tiếng Việt</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <header-placeholder></header-placeholder>
 
         <!-- Project Details Section -->
         <section class="py-5">
@@ -560,22 +542,8 @@
         </section>
     </main>
 
-    <footer class="bg-white py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0" data-translate-key="footerCopyright">Bản quyền © Trần Hữu Đạt 2024</div>
-                </div>
-                <div class="col-auto">
-                    <a class="small" href="#!" data-translate-key="footerPrivacy">Chính sách Bảo mật</a>
-                    <span class="mx-1">·</span>
-                    <a class="small" href="#!" data-translate-key="footerTerms">Điều khoản Sử dụng</a>
-                    <span class="mx-1">·</span>
-                    <a class="small" href="contact.html" data-translate-key="footerContact">Liên hệ</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Chuyên nghiệp & Có Cấu trúc -->
+    <footer-placeholder></footer-placeholder>
 
     <div class="cursor-element">
         <img src="assets/cursor_blue.png" alt="Custom Cursor Icon">
@@ -584,6 +552,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -625,9 +595,12 @@
                     "ssAdminHeaderManageOrders": "Manage Orders",
                     "ssAdminHeaderAddProduct": "Add Product",
                     "ssAdminHeaderManageComments": "Manage Comments", // Thêm nếu bạn có ảnh này
-                    // =========================================
-                    "footerCopyright": "Copyright © Tran Huu Dat 2024",
-                    "footerPrivacy": "Privacy Policy", "footerTerms": "Terms of Use", "footerContact": "Contact"
+
+                    // --- CÁC KEY MỚI CHO FOOTER ---
+                    "footerTagline": "A passionate Web Developer dedicated to building beautiful and useful applications.",
+                    "footerQuickLinks": "Quick Links",
+                    "footerConnect": "Connect with Me",
+                    "footerCopyright": "Copyright © Tran Huu Dat 2025"
                 },
                 "vi": {
                     "metaDescription": "Chi tiết dự án BrickShop của Trần Hữu Đạt - Lập trình viên Web",
@@ -666,9 +639,12 @@
                     "ssAdminHeaderManageOrders": "Quản lý Đơn hàng",
                     "ssAdminHeaderAddProduct": "Thêm Sản phẩm",
                     "ssAdminHeaderManageComments": "Quản lý Bình luận", // Thêm nếu bạn có ảnh này
-                    // =========================================
-                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2024",
-                    "footerPrivacy": "Chính sách Bảo mật", "footerTerms": "Điều khoản Sử dụng", "footerContact": "Liên hệ"
+
+                    // --- CÁC KEY MỚI CHO FOOTER ---
+                    "footerTagline": "Một lập trình viên Web đam mê xây dựng các ứng dụng đẹp và hữu ích.",
+                    "footerQuickLinks": "Liên kết nhanh",
+                    "footerConnect": "Kết nối với tôi",
+                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2025"
                 }
             };
 
