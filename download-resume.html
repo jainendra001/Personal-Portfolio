@@ -11,7 +11,9 @@
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
 
@@ -169,56 +171,81 @@
             /* Màu chữ liên kết trong footer */
             text-decoration: none;
         }
-        
+
         /* === CSS MỚI CHO CARD DOWNLOAD === */
         .resume-card {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            text-decoration: none; /* Bỏ gạch chân nếu bọc card trong thẻ a */
-            display: block; /* Đảm bảo thẻ a chiếm toàn bộ không gian */
+            text-decoration: none;
+            /* Bỏ gạch chân nếu bọc card trong thẻ a */
+            display: block;
+            /* Đảm bảo thẻ a chiếm toàn bộ không gian */
         }
+
         .resume-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
         }
+
         .resume-card .card-img-top {
-            border-bottom: 1px solid #dee2e6; /* Đường kẻ ngăn cách ảnh và nội dung */
+            border-bottom: 1px solid #dee2e6;
+            /* Đường kẻ ngăn cách ảnh và nội dung */
             padding: 1rem;
-            background-color: #f8f9fa; /* Nền nhẹ cho khu vực ảnh */
+            background-color: #f8f9fa;
+            /* Nền nhẹ cho khu vực ảnh */
         }
     </style>
 </head>
 
 <body class="d-flex flex-column h-100 bg-light">
-    
+
     <header-placeholder></header-placeholder>
 
     <main class="flex-shrink-0">
         <div class="container px-5 my-5">
             <div class="text-center mb-5">
-                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline" data-translate-key="downloadTitle">Tải về Hồ sơ (CV)</span></h1>
-                <p class="lead fw-normal text-muted mt-3" data-translate-key="downloadSubtitle">Cảm ơn bạn đã quan tâm. Vui lòng chọn phiên bản CV phù hợp với nhu cầu của bạn.</p>
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline"
+                        data-translate-key="downloadTitle">Tải về Hồ sơ (CV)</span></h1>
+                <p class="lead fw-normal text-muted mt-3" data-translate-key="downloadSubtitle">Cảm ơn bạn đã quan tâm.
+                    Vui lòng chọn phiên bản CV phù hợp với nhu cầu của bạn.</p>
             </div>
-            
+
             <div class="row gx-5 justify-content-center">
-                
-                <!-- Card cho CV Tóm tắt -->
+
+                <!-- Card cho CV tiếng Anh -->
                 <div class="col-lg-5 mb-5">
                     <div class="card h-100 shadow border-0 resume-card">
                         <img class="card-img-top" src="assets/summary.PNG" alt="Resume Summary Preview" />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recommended</div>
-                            <h5 class="card-title mb-3 fw-bolder" data-translate-key="summaryTitle">CV Tóm tắt (1 Trang)</h5>
-                            <p class="card-text text-muted" data-translate-key="summaryDesc">Phiên bản ngắn gọn, súc tích, tập trung vào những kỹ năng và dự án nổi bật nhất. Lý tưởng để xem lướt qua nhanh chóng.</p>
+                            <h5 class="card-title mb-3 fw-bolder" data-translate-key="summaryTitle">CV tiếng Anh (1 Trang)
+                            </h5>
+                            <p class="card-text text-muted" data-translate-key="summaryDesc">Phiên bản ngắn gọn, súc
+                                tích, tập trung vào những kỹ năng và dự án nổi bật nhất. Lý tưởng để xem lướt qua nhanh
+                                chóng.</p>
                         </div>
                         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                            <a class="btn btn-primary w-100" href="assets/resume/TranHuuDat-Resume-Summary.pdf" download>
-                                <i class="bi bi-download me-2"></i>
-                                <span data-translate-key="btnDownloadSummary">Tải bản Tóm tắt</span>
-                            </a>
+                            <!-- Bọc 2 nút trong một div với d-flex -->
+                            <div class="d-flex justify-content-center gap-2">
+
+                                <!-- Nút 1: Tải bản tiếng Anh -->
+                                <a class="btn btn-primary flex-grow-1"
+                                    href="assets/resume/TranHuuDat-Resume-Summary.pdf" download>
+                                    <i class="bi bi-download me-2"></i>
+                                    <span data-translate-key="btnDownloadSummaryEN">Tải bản tiếng Anh</span>
+                                </a>
+
+                                <!-- Nút 2: Tải bản đầy đủ (SỬA LẠI LINK VÀ KEY CHO ĐÚNG) -->
+                                <a class="btn btn-outline-primary flex-grow-1"
+                                    href="assets/resume/TranHuuDat-Resume-Summary-VN.pdf" download>
+                                    <i class="bi bi-download me-2"></i>
+                                    <span data-translate-key="btnDownloadSummaryVN">Tải bản tiếng Việt</span>
+                                </a>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Card cho CV Đầy đủ -->
                 <div class="col-lg-5 mb-5">
                     <div class="card h-100 shadow border-0 resume-card">
@@ -226,12 +253,15 @@
 
                         <!-- <img class="card-img-top" src="assets/full2.PNG" alt="Full Resume Preview" /> Đẹp nha để lại -->
                         <div class="card-body p-4">
-                             <div class="badge bg-secondary bg-gradient rounded-pill mb-2">Detailed</div>
-                            <h5 class="card-title mb-3 fw-bolder" data-translate-key="fullTitle">CV Đầy đủ (Chi tiết)</h5>
-                            <p class="card-text text-muted" data-translate-key="fullDesc">Phiên bản chi tiết, bao gồm tất cả các dự án, kinh nghiệm và thành tích. Phù hợp khi bạn cần tìm hiểu sâu hơn.</p>
+                            <div class="badge bg-secondary bg-gradient rounded-pill mb-2">Detailed</div>
+                            <h5 class="card-title mb-3 fw-bolder" data-translate-key="fullTitle">CV Đầy đủ (Chi tiết)
+                            </h5>
+                            <p class="card-text text-muted" data-translate-key="fullDesc">Phiên bản chi tiết, bao gồm
+                                tất cả các dự án, kinh nghiệm và thành tích. Phù hợp khi bạn cần tìm hiểu sâu hơn.</p>
                         </div>
                         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                             <a class="btn btn-outline-dark w-100" href="assets/resume/TranHuuDat-Resume-Full.pdf" download>
+                            <a class="btn btn-outline-dark w-100" href="assets/resume/TranHuuDat-Resume-Full.pdf"
+                                download>
                                 <i class="bi bi-download me-2"></i>
                                 <span data-translate-key="btnDownloadFull">Tải bản Đầy đủ</span>
                             </a>
@@ -245,7 +275,7 @@
 
     <footer-placeholder></footer-placeholder>
 
-        <!-- Cursor Element HTML -->
+    <!-- Cursor Element HTML -->
     <div class="cursor-element">
         <img src="assets/cursor_blue.png" alt="Custom Cursor Icon">
         <span class="cursor-text">Hữu Đạt</span>
@@ -273,6 +303,8 @@
                     "fullTitle": "Comprehensive Resume",
                     "fullDesc": "The detailed version, including all projects, experiences, and achievements. Perfect for an in-depth review.",
                     "btnDownloadFull": "Download Full Version",
+                    "btnDownloadSummaryEN": "English Version",
+                    "btnDownloadSummaryVN": "Vietnamese Version",
 
                     // --- CÁC KEY MỚI CHO FOOTER ---
                     "footerTagline": "A passionate Web Developer dedicated to building beautiful and useful applications.",
@@ -290,12 +322,14 @@
                     "expTitle": "Kinh nghiệm",
                     "downloadTitle": "Tải về Hồ sơ (CV)",
                     "downloadSubtitle": "Cảm ơn bạn đã quan tâm. Vui lòng chọn phiên bản CV phù hợp với nhu cầu của bạn.",
-                    "summaryTitle": "CV Tóm tắt (1 Trang)",
+                    "summaryTitle": "CV tiếng Anh (1 Trang)",
                     "summaryDesc": "Phiên bản ngắn gọn, súc tích, tập trung vào những kỹ năng và dự án nổi bật nhất. Lý tưởng để xem lướt qua nhanh chóng.",
-                    "btnDownloadSummary": "Tải bản Tóm tắt",
+                    "btnDownloadSummary": "Tải bản tiếng Anh",
                     "fullTitle": "CV Đầy đủ (Chi tiết)",
                     "fullDesc": "Phiên bản chi tiết, bao gồm tất cả các dự án, kinh nghiệm và thành tích. Phù hợp khi bạn cần tìm hiểu sâu hơn.",
                     "btnDownloadFull": "Tải bản Đầy đủ",
+                    "btnDownloadSummaryEN": "Tải bản tiếng Anh",
+                    "btnDownloadSummaryVN": "Tải bản tiếng Việt",
                     "footerTagline": "Một lập trình viên Web đam mê xây dựng các ứng dụng đẹp và hữu ích.",
                     "footerQuickLinks": "Liên kết nhanh",
                     "footerConnect": "Kết nối với tôi",
