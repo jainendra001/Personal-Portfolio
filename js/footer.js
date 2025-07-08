@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <!-- Dòng bản quyền -->
                 <div class="row mt-5">
                     <div class="col text-center">
-                        <p class="text-white-50 small m-0" data-translate-key="footerCopyright">Bản quyền © Trần Hữu Đạt 2024</p>
+                        <p class="text-white-50 small m-0" data-translate-key="footerCopyright">Bản quyền © Trần Hữu Đạt 2025</p>
                     </div>
                 </div>
             </div>
