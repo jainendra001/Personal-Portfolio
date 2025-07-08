@@ -7,9 +7,9 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background: linear-gradient(135deg,
+    background: linear-gradient(135deg,
             #ff9a9e 0%,
             #fecfef 15%,
             #ffecd2 30%,
@@ -17,7 +17,7 @@ body {
             #ff6b6b 60%,
             #ee5a52 75%,
             #d63384 90%,
-            #b91c1c 100%);  */
+            #b91c1c 100%); */
 
     /* Hiệu ứng nền Gradient chính */
 
@@ -26,44 +26,46 @@ body {
 
     /* background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%); */
 
-    background: linear-gradient(125deg,
+    /* background: linear-gradient(125deg,
             #ff6b6b,
-            /* Đỏ hồng */
+            /* Đỏ hồng 
             #ff9a8b,
-            /* Cam nhạt */
+            /* Cam nhạt 
             #fecfef,
-            /* Hồng phấn */
+            /* Hồng phấn 
             #ffda07,
-            /* Vàng */
+            /* Vàng 
             #a8e6cf,
-            /* Xanh bạc hà */
+            /* Xanh bạc hà 
             #23d5ab,
-            /* Xanh lá cây sáng */
+            /* Xanh lá cây sáng 
             #23a6d5,
-            /* Xanh dương */
+            /* Xanh dương 
             #a1c4fd,
-            /* Xanh da trời nhạt */
+            /* Xanh da trời nhạt 
             #c6a9e8,
-            /* Tím Lavender */
+            /* Tím Lavender 
             #e73c7e
-            /* Hồng đậm */
-        );
-    background-size: 400% 400%;
+            /* Hồng đậm 
+        ); */
+
+
+    /* background-size: 400% 400%;
     /* Kích thước của gradient lớn hơn viewport để có thể di chuyển */
-    animation: gradient-animation 10s ease infinite;
+    /* animation: gradient-animation 10s ease infinite; */
     /* Gọi animation để chạy nền */
-    color: #333;
+    /* color: #333; */
     /* Đảm bảo màu chữ mặc định dễ đọc */
 
-    min-height: 100vh;
+    /* min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow-x: hidden;
-}
+    overflow-x: hidden; */
+/* } */ 
 
-/* Định nghĩa chuyển động của gradient */
+/* Định nghĩa chuyển động của gradient
 @keyframes gradient-animation {
     0% {
         background-position: 0% 50%;
@@ -76,7 +78,7 @@ body {
     100% {
         background-position: 0% 50%;
     }
-}
+} */
 
 /* Hiệu ứng nền màu nước */
 /* body::before {
@@ -96,6 +98,25 @@ body {
     animation: watercolor 20s ease-in-out infinite alternate;
     z-index: -2;
 } */
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg,
+            #ff9a9e 0%,
+            #fecfef 15%,
+            #ffecd2 30%,
+            #fcb69f 45%,
+            #ff6b6b 60%,
+            #ee5a52 75%,
+            #d63384 90%,
+            #b91c1c 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
 
 /* Lớp phủ để làm dịu nền (Tùy chọn nhưng khuyến khích) */
 /* Bạn có thể tạo một div ngay sau body hoặc dùng pseudo-element */
@@ -643,19 +664,32 @@ body::after {
 
 /* Áp dụng animation cho tất cả các icon có class .animated-icon */
 .animated-icon {
-    display: inline-block; /* Bắt buộc để transform hoạt động */
+    display: inline-block;
+    /* Bắt buộc để transform hoạt động */
     animation: pulse-glow 3s ease-in-out infinite;
     /* Gán một độ trễ khác nhau cho mỗi icon để chúng không nháy cùng lúc */
 }
 
-.feature-list li:nth-child(1) .animated-icon { animation-delay: 0s; }
-.feature-list li:nth-child(2) .animated-icon { animation-delay: 0.5s; }
-.feature-list li:nth-child(3) .animated-icon { animation-delay: 1s; }
-.feature-list li:nth-child(4) .animated-icon { animation-delay: 1.5s; }
+.feature-list li:nth-child(1) .animated-icon {
+    animation-delay: 0s;
+}
+
+.feature-list li:nth-child(2) .animated-icon {
+    animation-delay: 0.5s;
+}
+
+.feature-list li:nth-child(3) .animated-icon {
+    animation-delay: 1s;
+}
+
+.feature-list li:nth-child(4) .animated-icon {
+    animation-delay: 1.5s;
+}
 
 
 /* Keyframes animation (có thể dùng lại từ code cũ nếu có) */
 @keyframes pulse-glow {
+
     0%,
     100% {
         transform: scale(1);
@@ -663,7 +697,8 @@ body::after {
     }
 
     50% {
-        transform: scale(1.2); /* Tăng độ nảy lên một chút */
+        transform: scale(1.2);
+        /* Tăng độ nảy lên một chút */
         filter: drop-shadow(0 4px 12px rgba(220, 38, 38, 0.5));
     }
 }

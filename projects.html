@@ -100,6 +100,11 @@
             color: #333;
         }
 
+        .project-tag-starter {
+            background-color: #f1d4d4;
+            /* Pastel red */
+        }
+
         .project-tag-learning {
             background-color: #e6e6e6;
             /* Pastel gray */
@@ -346,7 +351,7 @@
             opacity: 0;
         }
 
-                /* Thêm vào cuối file CSS của bạn */
+        /* Thêm vào cuối file CSS của bạn */
         footer.bg-dark a.text-white-50 {
             transition: color 0.3s ease-in-out;
         }
@@ -384,6 +389,54 @@
                         Full-Stack</h2>
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card: Omacha Shop -->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row align-items-center">
+
+                                        <!-- Logo dự án -->
+                                        <div class="text-center text-md-start p-3 p-md-0">
+                                            <img class="img-fluid project-card-image" src="assets/logo_omacha.png"
+                                                alt="Omacha Shop Logo" />
+                                        </div>
+
+                                        <!-- Nội dung chi tiết -->
+                                        <div class="p-4 p-md-5 flex-grow-1">
+                                            <!-- Tag đặc biệt cho dự án -->
+                                            <div class="project-category-tag project-tag-starter"
+                                                data-translate-key="tagStarterProject">Starter Project</div>
+
+                                            <!-- Tiêu đề và Mô tả -->
+                                            <h3 class="fw-bolder" data-translate-key="omachaTitle">Omacha Shop - Cửa
+                                                hàng đồ chơi</h3>
+                                            <p data-translate-key="omachaDesc">Một nền tảng thương mại điện tử chuyên về
+                                                đồ chơi, được phát triển như một ứng dụng web full-stack. Cung cấp trải
+                                                nghiệm mua sắm toàn diện cho khách hàng và một hệ thống quản trị mạnh
+                                                mẽ.</p>
+
+                                            <!-- Ngăn xếp công nghệ -->
+                                            <div class="tech-stack-container">
+                                                <span class="tech-tag php">PHP</span>
+                                                <span class="tech-tag mysql">MySQL</span>
+                                                <span class="tech-tag html5">HTML5</span>
+                                                <span class="tech-tag css3">CSS3</span>
+                                                <span class="tech-tag javascript">JavaScript</span>
+                                                <span class="tech-tag bootstrap">Bootstrap</span>
+                                            </div>
+
+                                            <!-- Các nút bấm -->
+                                            <!-- Tạm thời ẩn nút chi tiết vì chưa có trang riêng -->
+                                            <!-- <a href="omacha.html" class="btn btn-sm btn-primary me-2 mt-2" rel="noopener noreferrer" data-translate-key="btnViewDetail">Xem thông tin chi tiết</a> -->
+
+                                            <a href="https://github.com/TranHuuDat2004/Omacha_Shop"
+                                                class="btn btn-sm btn-outline-primary me-2 mt-2" target="_blank"
+                                                rel="noopener noreferrer" data-translate-key="btnViewRepo">Xem Kho lưu
+                                                trữ</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Project Card: BrickShop -->
                             <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
                                 <div class="card-body p-0">
@@ -701,8 +754,12 @@
                     "footerTagline": "A passionate Web Developer dedicated to building beautiful and useful applications.",
                     "footerQuickLinks": "Quick Links",
                     "footerConnect": "Connect with Me",
-                    "footerCopyright": "Copyright © Tran Huu Dat 2025"
-                    
+                    "footerCopyright": "Copyright © Tran Huu Dat 2025",
+
+                    "tagStarterProject": "Starter Project",
+                    "omachaTitle": "Omacha Shop - Toy Store",
+                    "omachaDesc": "A delightful e-commerce platform specializing in toys, developed as a full-stack web application. Features a comprehensive shopping experience and a robust administration system.",
+
                 },
                 "vi": {
                     "metaDescription": "Các dự án và kỹ năng của tôi",
@@ -741,11 +798,16 @@
                     "tagNewRelease": "Mới Phát hành", // Ví dụ thêm
                     "tagLearningProject": "Dự án Học tập", // Cho games_tools
 
-                                        // --- CÁC KEY MỚI CHO FOOTER ---
+                    // --- CÁC KEY MỚI CHO FOOTER ---
                     "footerTagline": "Một lập trình viên Web đam mê xây dựng các ứng dụng đẹp và hữu ích.",
                     "footerQuickLinks": "Liên kết nhanh",
                     "footerConnect": "Kết nối với tôi",
-                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2025"
+                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2025",
+
+                    // Thêm vào mục "vi"
+                    "tagStarterProject": "Dự án Khởi đầu",
+                    "omachaTitle": "Omacha Shop - Cửa hàng đồ chơi",
+                    "omachaDesc": "Một nền tảng thương mại điện tử chuyên về đồ chơi, được phát triển như một ứng dụng web full-stack. Cung cấp trải nghiệm mua sắm toàn diện và một hệ thống quản trị mạnh mẽ.",
                 }
             };
 
