@@ -207,12 +207,16 @@
         <header-placeholder></header-placeholder>
 
         <!-- Header-->
+        <!-- Header-->
         <header class="py-5">
             <div class="container px-5 pb-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-xxl-5">
+
+                    <!-- === CỘT VĂN BẢN (ĐÃ SỬA) === -->
+                    <!-- Thay đổi từ col-xxl-5 thành col-lg-8 để chiếm khoảng 70% -->
+                    <div class="col-lg-8">
                         <!-- Header text content-->
-                        <div class="text-center text-xxl-start">
+                        <div class="text-center text-lg-start">
                             <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
                                 <div class="text-uppercase" data-translate-key="headerBadge">Phát triển Web · Full-Stack
                                     · Di động</div>
@@ -224,36 +228,31 @@
                             <p class="lead fw-light text-muted mb-4" data-translate-key="headerDescription">Một sinh
                                 viên Kỹ thuật Phần mềm đầy nhiệt huyết, chuyên về phát triển ứng dụng web và di động,
                                 luôn mong muốn học hỏi công nghệ mới và đóng góp vào các dự án sáng tạo.</p>
-                            <div
-                                class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-
-                                <!-- Nút 1: Hồ sơ -->
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start mb-3">
+                                <!-- Các nút bấm giữ nguyên -->
                                 <a class="btn btn-primary btn-lg px-4 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html"
                                     data-translate-key="btnMyResume">Hồ sơ của tôi</a>
-
-                                <!-- Nút 2: Dự án -->
                                 <a class="btn btn-outline-dark btn-lg px-4 py-3 me-sm-3 fs-6 fw-bolder"
                                     href="projects.html" data-translate-key="btnMyProjects">Dự án của tôi</a>
-
-                                <!-- Nút 3: Animation (Đã sửa lỗi) -->
                                 <a class="btn btn-outline-danger btn-lg px-4 py-3 fs-6 fw-bolder d-inline-flex align-items-center"
                                     href="animation.html">
-                                    <!-- <i class="bi bi-stars me-2"></i> Giữ nguyên icon -->
                                     <span data-translate-key="btnAnimation">Animation Page</span>
-                                    <!-- Chỉ dịch phần văn bản này -->
                                 </a>
-
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-4">
-                        <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+
+                    <!-- === CỘT ẢNH (ĐÃ SỬA) === -->
+                    <!-- Thay đổi từ col-xxl-4 thành col-lg-4 để chiếm khoảng 30% -->
+                    <div class="col-lg-4">
+                        <div class="d-flex justify-content-center mt-5 mt-lg-0">
                             <div>
                                 <img class="profile-img-custom" src="assets/my_image.jpg"
                                     alt="Ảnh đại diện Trần Hữu Đạt" />
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </header>
