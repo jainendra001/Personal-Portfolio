@@ -104,8 +104,8 @@
         }
 
         .profile-img-custom {
-            max-width: 100%;
-            height: 100%;
+            max-width: 300px;
+            height: 300px;
             border-radius: 50%;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         }
@@ -226,14 +226,27 @@
                                 luôn mong muốn học hỏi công nghệ mới và đóng góp vào các dự án sáng tạo.</p>
                             <div
                                 class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                                <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html"
+
+                                <!-- Nút 1: Hồ sơ -->
+                                <a class="btn btn-primary btn-lg px-4 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html"
                                     data-translate-key="btnMyResume">Hồ sơ của tôi</a>
-                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html"
-                                    data-translate-key="btnMyProjects">Dự án của tôi</a>
+
+                                <!-- Nút 2: Dự án -->
+                                <a class="btn btn-outline-dark btn-lg px-4 py-3 me-sm-3 fs-6 fw-bolder"
+                                    href="projects.html" data-translate-key="btnMyProjects">Dự án của tôi</a>
+
+                                <!-- Nút 3: Animation (Đã sửa lỗi) -->
+                                <a class="btn btn-outline-danger btn-lg px-4 py-3 fs-6 fw-bolder d-inline-flex align-items-center"
+                                    href="animation.html">
+                                    <!-- <i class="bi bi-stars me-2"></i> Giữ nguyên icon -->
+                                    <span data-translate-key="btnAnimation">Animation Page</span>
+                                    <!-- Chỉ dịch phần văn bản này -->
+                                </a>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-7">
+                    <div class="col-xxl-4">
                         <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                             <div>
                                 <img class="profile-img-custom" src="assets/my_image.jpg"
@@ -460,7 +473,8 @@
                     "footerTagline": "A passionate Web Developer dedicated to building beautiful and useful applications.",
                     "footerQuickLinks": "Quick Links",
                     "footerConnect": "Connect with Me",
-                    "footerCopyright": "Copyright © Tran Huu Dat 2025"
+                    "footerCopyright": "Copyright © Tran Huu Dat 2025",
+                    "btnAnimation": "Animation Page"
 
                 },
                 "vi": {
@@ -501,7 +515,8 @@
                     "footerTagline": "Một lập trình viên Web đam mê xây dựng các ứng dụng đẹp và hữu ích.",
                     "footerQuickLinks": "Liên kết nhanh",
                     "footerConnect": "Kết nối với tôi",
-                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2025"
+                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2025",
+                    "btnAnimation": " Trang hiệu ứng",
                 }
             };
 
