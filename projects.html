@@ -238,6 +238,37 @@
             margin-right: auto;
         }
 
+        /* Nút chính (màu nền hồng) */
+        .btn-omacha-primary {
+            background-color: #E84A7F;
+            /* Mã màu hồng từ logo Omacha của bạn */
+            border-color: #E84A7F;
+            color: #fff;
+            /* Chữ màu trắng */
+        }
+
+        /* Hiệu ứng khi di chuột vào nút chính */
+        .btn-omacha-primary:hover {
+            background-color: #d13c6d;
+            /* Làm màu hồng đậm hơn một chút */
+            border-color: #d13c6d;
+            color: #fff;
+        }
+
+        /* Nút phụ (viền hồng) */
+        .btn-omacha-outline {
+            border-color: #E84A7F;
+            color: #E84A7F;
+        }
+
+        /* Hiệu ứng khi di chuột vào nút phụ */
+        .btn-omacha-outline:hover {
+            background-color: #E84A7F;
+            border-color: #E84A7F;
+            color: #fff;
+            /* Chữ chuyển thành màu trắng */
+        }
+
         @media (min-width: 768px) {
             .project-card-image {
                 max-width: 220px;
@@ -423,11 +454,12 @@
                                                 <span class="tech-tag javascript">JavaScript</span>
                                                 <span class="tech-tag bootstrap">Bootstrap</span>
                                             </div>
-                                            
+
                                             <!-- Các nút bấm -->
-                                            <a href="https://tranhuudat2004.github.io/Omacha-Shop-Demo/" style="background-color: #F4538A; color: white;"
-                                                class="btn btn-sm me-2 mt-2" target="_blank"
-                                                rel="noopener noreferrer" data-translate-key="btnLiveDemo">Xem trực
+                                            <a href="https://tranhuudat2004.github.io/Omacha-Shop-Demo/"
+                                                
+                                                class="btn btn-sm btn-omacha-primary me-2 mt-2" target="_blank" rel="noopener noreferrer"
+                                                data-translate-key="btnLiveDemo">Xem trực
                                                 tiếp</a>
 
                                             <a href="omacha-shop.html" class="btn btn-sm btn-primary me-2 mt-2"
