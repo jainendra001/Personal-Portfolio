@@ -99,9 +99,48 @@
     z-index: -2;
 } */
 
+/* === CSS CHO NỀN ĐỘNG ĐA PHIÊN BẢN === */
+
+/* --- 1. NỀN MẶC ĐỊNH CHO MÀN HÌNH LỚN (DESKTOP-FIRST) --- */
 body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg,
+    /* 
+     * Nền gradient chảy màu SÁNG NHẠT cho desktop.
+     * Các màu được chọn để tạo cảm giác nhẹ nhàng, chuyên nghiệp.
+    */
+    background: linear-gradient(125deg, 
+        #fde6e6, /* Hồng rất nhạt */
+        #e9e7fd, /* Tím rất nhạt */
+        #d8f5fa, /* Xanh dương rất nhạt */
+        #fff4e0  /* Cam rất nhạt */
+    );
+    background-size: 400% 400%;
+    animation: GentleFlow 25s ease-in-out infinite;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+    transition: linear-gradient 0.5s ease; /* Thêm transition để chuyển nền mượt hơn */
+}
+
+@keyframes GentleFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* --- 2. THAY ĐỔI NỀN CHO MÀN HÌNH NHỎ (MOBILE) --- */
+/* Áp dụng các quy tắc này khi chiều rộng màn hình từ 992px trở xuống */
+@media (max-width: 992px) {
+    body {
+        /* 
+         * Ghi đè bằng nền gradient ĐẬM và RỰC RỠ hơn cho mobile.
+         * Đây là mã gradient gốc của bạn.
+        */
+        background: linear-gradient(135deg,
             #ff9a9e 0%,
             #fecfef 15%,
             #ffecd2 30%,
@@ -110,29 +149,31 @@ body {
             #ee5a52 75%,
             #d63384 90%,
             #b91c1c 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow-x: hidden;
+        background-size: 600% 600%; /* Giữ nguyên kích thước và animation của nền đậm */
+        /* animation: RainbowFlow 20s ease-in-out infinite; */
+    }
+
+    /* Keyframe cho nền đậm (có thể đã có, nếu chưa thì thêm vào) */
+    @keyframes RainbowFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 }
 
-/* Lớp phủ để làm dịu nền (Tùy chọn nhưng khuyến khích) */
-/* Bạn có thể tạo một div ngay sau body hoặc dùng pseudo-element */
+
+/* --- 3. LỚP PHỦ VÀ HIỆU ỨNG GIẤY (Giữ nguyên) --- */
+/* Hiệu ứng màu nước và giấy nhám vẫn áp dụng cho cả hai nền */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.85);
-    /* Lớp phủ màu trắng mờ */
-    z-index: -1;
-    /* Đặt lớp phủ nằm dưới nội dung nhưng trên nền gradient */
-    backdrop-filter: blur(5px);
-    /* Hiệu ứng "kính mờ" làm nền mềm mại hơn */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(255, 105, 97, 0.15) 0%, transparent 50%);
+    filter: blur(40px);
+    animation: watercolor 5s ease-in-out infinite alternate;
+    z-index: -2;
 }
 
 /* Hiệu ứng giấy nhám */
