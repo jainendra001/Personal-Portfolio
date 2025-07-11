@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- LINK CSS VÀ FONT AWESOME -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/new-version.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -24,18 +24,23 @@
     <div class="scroll-progress-bar"></div>
 
     <header class="main-header">
+        <!-- Nhóm 1: Logo -->
         <a class="logo" href="index.html"><span>tranhuudat</span>2004</a>
-        <nav class="main-nav">
-            <a href="#hero">Home</a> <!-- Thêm link cho Hero section -->
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
-            <!-- Thêm phần tử này vào -->
-            <span class="nav-indicator"></span>
-        </nav>
-        <a href="assets/resume/TranHuuDat-Resume-Summary.pdf" class="resume-button" download>Resume</a>
+
+        <!-- Nhóm 2: Khối điều hướng -->
+        <div class="header-navigation"> <!-- THÊM THẺ NÀY -->
+            <nav class="main-nav">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+                <span class="nav-indicator"></span>
+            </nav>
+            <a href="assets/resume.pdf" class="resume-button" download>Resume</a>
+        </div> <!-- THÊM THẺ NÀY -->
+
     </header>
 
     <main>
@@ -74,7 +79,7 @@
                         Building Digital<br>
                         <span class="gradient-text">Experiences</span>
                     </h1>
-                    <p class="animate-on-scroll">A passionate Software Engineering student specializing in creating
+                    <p style="color: white;" class="animate-on-scroll">A passionate Software Engineering student specializing in creating
                         efficient, user-centric web applications.</p>
                     <div class="hero-buttons animate-on-scroll">
                         <a href="#projects" class="btn btn-primary">View my projects <i
@@ -82,10 +87,10 @@
                         <a href="#contact" class="btn btn-secondary">Get in touch</a>
                     </div>
                     <div class="social-links animate-on-scroll">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a style="color: white;" href="https://linkedin.com/in/tranhuudat2004" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a style="color: white;" href="https://github.com/TranHuuDat2004" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a style="color: white;" href="mailto:tranhuudat.cv@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a style="color: white;" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -168,15 +173,23 @@
         <!-- ====================================================== -->
 
         <!-- Trong section#skills -->
-        <div class="skills-wrapper"> <!-- THÊM THẺ NÀY -->
-            <div class="skills-grid">
-                <!-- Các skill card và thông báo loading vẫn ở đây -->
-                <p class="skills-loading">
-                    <i class="fas fa-spinner fa-spin"></i> Fetching latest skills from GitHub...
-                </p>
+        <section id="skills" class="content-section">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">My Skills</div>
+                <h2 class="section-title">
+                    Technical Stack</h2>
+                <div class="title-underline"></div>
             </div>
-        </div> <!-- THÊM THẺ NÀY -->
 
+            <div class="skills-wrapper"> <!-- THÊM THẺ NÀY -->
+                <div class="skills-grid">
+                    <!-- Các skill card và thông báo loading vẫn ở đây -->
+                    <p class="skills-loading">
+                        <i class="fas fa-spinner fa-spin"></i> Fetching latest skills from GitHub...
+                    </p>
+                </div>
+            </div> <!-- THÊM THẺ NÀY -->
+        </section>
         <!-- <section id="skills" class="content-section">
             <div class="container">
                 <div class="section-header animate-on-scroll">
@@ -486,7 +499,7 @@
                     <li><a href="https://linkedin.com/in/tranhuudat2004" target="_blank"><i
                                 class="fab fa-linkedin-in"></i>
                             LinkedIn</a></li>
-                    <li><a href="mailto:contact@.tech"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="mailto:tranhuudat.cv@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
                 </ul>
             </div>
         </div>
@@ -501,7 +514,7 @@
 
     <audio id="audio-source"></audio>
     <script src="js/playlist.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/new-version.js"></script>
 </body>
 
 </html>
