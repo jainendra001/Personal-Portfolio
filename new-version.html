@@ -33,6 +33,7 @@
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
+                <!-- <a href="#coding-activity">Activity</a> -->
                 <a href="#projects">Projects</a>
                 <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
@@ -79,7 +80,8 @@
                         Building Digital<br>
                         <span class="gradient-text">Experiences</span>
                     </h1>
-                    <p style="color: white;" class="animate-on-scroll">A passionate Software Engineering student specializing in creating
+                    <p style="color: white;" class="animate-on-scroll">A passionate Software Engineering student
+                        specializing in creating
                         efficient, user-centric web applications.</p>
                     <div class="hero-buttons animate-on-scroll">
                         <a href="#projects" class="btn btn-primary">View my projects <i
@@ -87,9 +89,12 @@
                         <a href="#contact" class="btn btn-secondary">Get in touch</a>
                     </div>
                     <div class="social-links animate-on-scroll">
-                        <a style="color: white;" href="https://linkedin.com/in/tranhuudat2004" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a style="color: white;" href="https://github.com/TranHuuDat2004" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a style="color: white;" href="mailto:tranhuudat.cv@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a style="color: white;" href="https://linkedin.com/in/tranhuudat2004" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a style="color: white;" href="https://github.com/TranHuuDat2004" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a style="color: white;" href="mailto:tranhuudat.cv@gmail.com" aria-label="Email"><i
+                                class="fas fa-envelope"></i></a>
                         <a style="color: white;" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
@@ -171,25 +176,27 @@
         <!-- ====================================================== -->
         <!-- Section 3: Skills (CẬP NHẬT) -->
         <!-- ====================================================== -->
-
-        <!-- Trong section#skills -->
         <section id="skills" class="content-section">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">My Skills</div>
-                <h2 class="section-title">
-                    Technical Stack</h2>
-                <div class="title-underline"></div>
-            </div>
-
-            <div class="skills-wrapper"> <!-- THÊM THẺ NÀY -->
-                <div class="skills-grid">
-                    <!-- Các skill card và thông báo loading vẫn ở đây -->
-                    <p class="skills-loading">
-                        <i class="fas fa-spinner fa-spin"></i> Fetching latest skills from GitHub...
-                    </p>
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <!-- Thêm lại badge "My Skills" -->
+                    <div class="section-badge">My Skills</div>
+                    <!-- Đổi tiêu đề -->
+                    <h2 class="section-title">Technical Stack</h2>
+                    <div class="title-underline"></div>
                 </div>
-            </div> <!-- THÊM THẺ NÀY -->
+
+                <div class="skills-wrapper">
+                    <div class="skills-grid">
+                        <!-- JavaScript sẽ tự động chèn các thanh kỹ năng vào đây -->
+                        <p class="skills-loading">
+                            <i class="fas fa-spinner fa-spin"></i> Loading technical skills...
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
+
         <!-- <section id="skills" class="content-section">
             <div class="container">
                 <div class="section-header animate-on-scroll">
@@ -258,65 +265,149 @@
         </section> -->
 
         <!-- ====================================================== -->
-        <!-- Section 4: Featured Works (MỚI) -->
+        <!-- Section: Coding Activity (MỚI) -->
         <!-- ====================================================== -->
-        <section id="projects" class="content-section">
+        <!-- <section id="coding-activity" class="content-section">
             <div class="container">
                 <div class="section-header animate-on-scroll">
-                    <div class="section-badge">Some of my recent work</div>
-                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="section-badge">Developer Insights</div>
+                    <h2 class="section-title">Coding Activity</h2>
                     <div class="title-underline"></div>
                 </div>
-                <div class="projects-grid">
-                    <div class="project-card glass-card animate-on-scroll">
-                        <div class="project-image-container"><img src="assets/omacha/Home1.jpg" alt="Omacha Shop"
-                                class="project-image"></div>
-                        <div class="project-content">
-                            <h3>Omacha Shop - E-commerce</h3>
-                            <p>A full-stack toy e-commerce platform built with PHP & MySQL, featuring a robust admin
-                                panel.</p>
-                            <div class="project-tags">
-                                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
-                            </div>
-                            <div class="project-links"><a href="omachashop.html">View Details</a><a
-                                    href="https://github.com/TranHuuDat2004/Omacha_Shop" target="_blank">Code <i
-                                        class="fas fa-arrow-right"></i></a></div>
-                        </div>
+
+                <div class="wakatime-grid animate-on-scroll">
+                     WakaTime Chart 1: Ngôn ngữ lập trình 
+                    <div class="wakatime-card glass-card">
+                        <h3>Languages (All time)</h3>
+
+
+<figure><embed src="https://wakatime.com/share/@TranHuuDat2004/2702fa9b-4da9-4c2a-8088-051ea8a07211.svg"></embed></figure>
+
                     </div>
-                    <div class="project-card glass-card animate-on-scroll">
-                        <div class="project-image-container"><img src="assets/brickshop/homepage.png" alt="BrickShop"
-                                class="project-image"></div>
-                        <div class="project-content">
-                            <h3>BrickShop - E-commerce</h3>
-                            <p>A modern e-commerce hub for building block fans, developed with Node.js and a Tailwind
-                                CSS admin UI.</p>
-                            <div class="project-tags">
-                                <span>Node.js</span><span>Express.js</span><span>TailwindCSS</span>
-                            </div>
-                            <div class="project-links"><a href="brickshop.html">View Details</a><a
-                                    href="https://github.com/TranHuuDat2004/BrickShop" target="_blank">Code <i
-                                        class="fas fa-arrow-right"></i></a></div>
-                        </div>
-                    </div>
-                    <div class="project-card glass-card animate-on-scroll">
-                        <div class="project-image-container"><img src="assets/anime.tv/main-page-spy.PNG" alt="ANIME.TV"
-                                class="project-image"></div>
-                        <div class="project-content">
-                            <h3>ANIME.TV - Streaming Site</h3>
-                            <p>A personal project inspired by Crunchyroll, built with pure JavaScript for a dynamic user
-                                experience.</p>
-                            <div class="project-tags"><span>JavaScript</span><span>HTML5</span><span>CSS3</span></div>
-                            <div class="project-links"><a href="https://tranhuudat2004.github.io/anime.tv/"
-                                    target="_blank">Live Demo</a><a href="https://github.com/TranHuuDat2004/anime.tv"
-                                    target="_blank">Code <i class="fas fa-arrow-right"></i></a></div>
-                        </div>
+
+                     WakaTime Chart 2: Hoạt động hàng ngày 
+                    <div class="wakatime-card glass-card">
+                        <h3>Daily Activity (All time)</h3>
+
+                         DÁN MÃ IFRAME BIỂU ĐỒ HOẠT ĐỘNG CỦA BẠN VÀO ĐÂY 
+                        <figure><embed
+                                src="https://wakatime.com/share/@TranHuuDat2004/8f2a8fe2-d87f-487b-926a-daed1065ce97.svg"></embed>
+                        </figure>
+
                     </div>
                 </div>
             </div>
-        </section>
+         </section> -->
+
+<!-- ====================================================== -->
+<!-- Section 4: Featured Works (NEW ALTERNATING LAYOUT) -->
+<!-- ====================================================== -->
+<section id="projects" class="content-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-badge">Some of my recent work</div>
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="title-underline"></div>
+        </div>
+
+        <!-- PROJECT 1: Omacha Shop (Layout: Image Left, Details Right) -->
+        <div class="project-showcase-grid animate-on-scroll">
+            <div class="showcase-card">
+                <div class="showcase-header"><span>Omacha Project</span></div>
+                <div class="showcase-content">
+                    <div class="text-features">
+                        <h1>OMACHA SHOP<br>E-COMMERCE</h1>
+                        <h4 class="feature-title">FEATURES</h4>
+                        <ul>
+                            <li>Full-stack e-commerce platform built with PHP & MySQL.</li>
+                            <li>Robust admin panel for product, order, and user management.</li>
+                            <li>Responsive design ensuring a seamless experience on all devices.</li>
+                        </ul>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="assets/omacha/Home1.jpg" alt="Omacha Homepage" class="showcase-img">
+                    </div>
+                </div>
+            </div>
+            <div class="details-column">
+                <h2>Omacha Shop</h2>
+                <p class="project-category">Web, E-commerce, Full-stack</p>
+                <div class="project-tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span></div>
+                <div class="description-box glass-card"><p>A comprehensive toy e-commerce platform designed for a fun shopping experience and powerful admin tools.</p></div>
+                <div class="project-links">
+                    <a href="https://github.com/TranHuuDat2004/Omacha_Shop" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://tranhuudat2004.github.io/Omacha-Shop-Demo/" aria-label="Project Details"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 2: BrickShop (Layout: Details Left, Image Right) -->
+        <div class="project-showcase-grid layout-reversed animate-on-scroll">
+             <div class="showcase-card">
+                <div class="showcase-header"><span>BrickShop Project</span></div>
+                <div class="showcase-content">
+                    <div class="text-features">
+                        <h1>BRICKSHOP<br>E-COMMERCE</h1>
+                        <h4 class="feature-title">FEATURES</h4>
+                        <ul>
+                            <li>Modern e-commerce hub developed with Node.js and Express.js.</li>
+                            <li>Sleek and efficient admin UI built with Tailwind CSS.</li>
+                            <li>Focus on modern JavaScript stack and non-relational databases.</li>
+                        </ul>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="assets/brickshop/homepage.png" alt="BrickShop Homepage" class="showcase-img">
+                    </div>
+                </div>
+            </div>
+            <div class="details-column">
+                <h2>BrickShop</h2>
+                <p class="project-category">Web, E-commerce, Node.js</p>
+                <div class="project-tags"><span>Node.js</span><span>Express.js</span><span>TailwindCSS</span></div>
+                <div class="description-box glass-card"><p>A modern e-commerce hub for building block fans, developed with Node.js and a Tailwind CSS admin UI.</p></div>
+                <div class="project-links">
+                    <a href="https://github.com/TranHuuDat2004/BrickShop" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="brickshop.html" aria-label="Project Details"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 3: ANIME.TV (Layout: Image Left, Details Right) -->
+        <div class="project-showcase-grid animate-on-scroll">
+             <div class="showcase-card">
+                <div class="showcase-header"><span>ANIME.TV Project</span></div>
+                <div class="showcase-content">
+                    <div class="text-features">
+                        <h1>ANIME.TV<br>STREAMING SITE</h1>
+                        <h4 class="feature-title">FEATURES</h4>
+                        <ul>
+                            <li>Personal project inspired by Crunchyroll, built with pure JavaScript.</li>
+                            <li>Dynamic user experience for browsing and discovering anime.</li>
+                            <li>Demonstrates strong front-end skills with vanilla JS, HTML, and CSS.</li>
+                        </ul>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="assets/anime.tv/main-page-spy.PNG" alt="ANIME.TV Homepage" class="showcase-img">
+                    </div>
+                </div>
+            </div>
+            <div class="details-column">
+                <h2>ANIME.TV</h2>
+                <p class="project-category">Web, Streaming, Front-end</p>
+                <div class="project-tags"><span>JavaScript</span><span>HTML5</span><span>CSS3</span></div>
+                <div class="description-box glass-card"><p>A personal project inspired by Crunchyroll, built with pure JavaScript for a dynamic user experience.</p></div>
+                <div class="project-links">
+                    <a href="https://github.com/TranHuuDat2004/anime.tv" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://tranhuudat2004.github.io/anime.tv/" target="_blank" aria-label="Live Demo"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
         <!-- ====================================================== -->
-        <!-- Section 5: Awards & Achievements (ĐÃ BỔ SUNG) -->
+        <!-- Section 5: Awards & Achievements (UPDATED WITH IMAGE) -->
         <!-- ====================================================== -->
         <section id="awards" class="content-section">
             <div class="container">
@@ -326,6 +417,7 @@
                     <div class="title-underline"></div>
                 </div>
 
+                <!-- Card for Award Details -->
                 <div class="award-card glass-card animate-on-scroll">
                     <div class="award-info">
                         <p class="award-date">April 2023</p>
@@ -349,6 +441,15 @@
                             </li>
                         </ul>
                     </div>
+                </div>
+
+                <!-- NEW: Card for the Award Photo -->
+                <div class="award-photo-card glass-card animate-on-scroll">
+                    <h3 class="photo-title">A Proud Moment</h3>
+                    <div class="photo-wrapper">
+                        <img src="assets/achive.jpg" alt="A memorable moment - Receiving award at TDTU 2023">
+                    </div>
+                    <p class="photo-caption">Receiving the design award at Ton Duc Thang University, 2023.</p>
                 </div>
 
             </div>

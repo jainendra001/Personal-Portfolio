@@ -56,108 +56,140 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ======================================================
-    // --- 3. LOGIC CHO THANH SKILL BAR ---
+    // --- 3. LOGIC CHO THANH SKILL BAR (PHIÊN BẢN HYBRID) ---
     // ======================================================
 
     const skillsGrid = document.querySelector('.skills-grid');
 
-    // Hàm để khởi tạo lại IntersectionObserver cho các thanh skill mới
-    function initializeSkillBars() {
-        const skillLevels = document.querySelectorAll('.skill-level');
-        const skillObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    const level = element.getAttribute('data-level');
-                    element.style.width = level;
-                    observer.unobserve(element);
-                }
-            });
-        }, { threshold: 0.5 });
+    // Cập nhật lại toàn bộ hàm này
+function initializeSkillBars() {
+    const skillLevels = document.querySelectorAll('.skill-level');
+    
+    // Logic của Observer sẽ được thay đổi
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            const element = entry.target;
+            const level = element.getAttribute('data-level');
 
-        skillLevels.forEach(level => {
-            skillObserver.observe(level);
+            // Nếu phần tử đang ở trong màn hình (isIntersecting là true)
+            if (entry.isIntersecting) {
+                // Thì chạy animation đến mức % của nó
+                element.style.width = level;
+            } else {
+                // Ngược lại, nếu nó đã ra ngoài màn hình, RESET nó về 0%
+                element.style.width = '0%';
+            }
         });
-    }
+    }, { 
+        threshold: 0.5 // Kích hoạt khi 50% của thanh skill hiện ra
+    });
 
-    // Hàm chính để lấy và hiển thị skills
-    async function fetchAndDisplayGithubSkills() {
+    skillLevels.forEach(level => {
+        skillObserver.observe(level);
+    });
+}
+
+    // Hàm hiển thị kỹ năng phiên bản nâng cao
+    async function fetchAndDisplayHybridSkills() {
+        if (!skillsGrid) return;
+
+        // --- BƯỚC 1: ĐỊNH NGHĨA KỸ NĂNG CỐT LÕI VÀ ICON ---
+        // Đây là danh sách các kỹ năng cơ bản của bạn.
+        // 'percentage' ở đây là điểm cơ bản, sẽ được cộng thêm dựa vào GitHub.
+        // Tách riêng HTML và CSS như bạn muốn.
+        const skillsMap = new Map([
+            ['HTML', { name: 'HTML', percentage: 40, icon: 'assets/icons/html.png' }],
+            ['CSS', { name: 'CSS', percentage: 40, icon: 'assets/icons/css.png' }],
+            ['JavaScript', { name: 'JavaScript', percentage: 50, icon: 'assets/icons/javascript.png' }],
+            ['PHP', { name: 'PHP', percentage: 30, icon: 'assets/icons/php.png' }],
+            ['Java', { name: 'Java', percentage: 25, icon: 'assets/icons/java1.png' }],
+            ['Dart', { name: 'Dart', percentage: 20, icon: 'assets/icons/dart.png' }],
+            ['Python', { name: 'Python', percentage: 15, icon: 'assets/icons/python.png' }],
+            ['TypeScript', { name: 'TypeScript', percentage: 15, icon: 'assets/icons/typescript.png' }],
+            // Các kỹ năng không phải ngôn ngữ lập trình
+            ['Git & GitHub', { name: 'Git & GitHub', percentage: 85, icon: 'assets/icons/github.png' }],
+            ['Docker', { name: 'Docker', percentage: 60, icon: 'assets/icons/docker.png' }],
+           
+        ]);
+
+        // Icon mặc định cho các ngôn ngữ không có trong danh sách trên
+        const defaultIcon = 'assets/icons/default.png';
+
         const username = 'tranhuudat2004';
         const apiUrl = `https://api.github.com/users/${username}/repos?per_page=100&sort=pushed`;
 
         try {
+            // --- BƯỚC 2: FETCH VÀ PHÂN TÍCH GITHUB ---
             const response = await fetch(apiUrl);
-            if (!response.ok) {
-                throw new Error(`GitHub API Error: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
             const repos = await response.json();
 
-            // 1. Đếm số lần xuất hiện của mỗi ngôn ngữ
-            const langStats = {};
-            let totalReposWithLanguage = 0;
+            const langStats = new Map();
             repos.forEach(repo => {
                 if (repo.language) {
-                    langStats[repo.language] = (langStats[repo.language] || 0) + 1;
-                    totalReposWithLanguage++;
+                    langStats.set(repo.language, (langStats.get(repo.language) || 0) + 1);
                 }
             });
 
-            // 2. Chuyển object thành mảng và tính toán phần trăm
-            const languageSkills = Object.keys(langStats).map(lang => ({
-                name: lang,
-                // Tính % dựa trên tần suất, làm tròn và giới hạn max 95% cho đẹp
-                percentage: Math.min(95, Math.round((langStats[lang] / totalReposWithLanguage) * 100 * 2.5))
-            }));
+            // --- BƯỚC 3: TÍNH TOÁN & CẬP NHẬT PHẦN TRĂM ---
+            langStats.forEach((count, lang) => {
+                const factor = 2; // Mỗi repo ngôn ngữ đó sẽ cộng thêm 2%
+                const maxBonus = 40; // Cộng tối đa 40% để tránh quá cao
 
-            // 3. Sắp xếp theo % từ cao đến thấp
-            languageSkills.sort((a, b) => b.percentage - a.percentage);
-
-            // 4. Thêm các kỹ năng thủ công (non-language skills)
-            const manualSkills = [
-                { name: 'HTML5 & CSS3', percentage: 90 },
-                { name: 'Git & GitHub', percentage: 85 },
-                { name: 'Tailwind & Bootstrap', percentage: 80 },
-                { name: 'Docker', percentage: 60 }
-            ];
-
-            // 5. Gộp 2 danh sách lại và đảm bảo không trùng lặp
-            const allSkills = [...manualSkills];
-            languageSkills.forEach(langSkill => {
-                if (!allSkills.some(skill => skill.name.toLowerCase() === langSkill.name.toLowerCase())) {
-                    allSkills.push(langSkill);
+                if (skillsMap.has(lang)) {
+                    // Nếu ngôn ngữ đã có, cộng thêm %
+                    const skill = skillsMap.get(lang);
+                    const bonus = Math.min(count * factor, maxBonus);
+                    skill.percentage = Math.min(skill.percentage + bonus, 95); // Giới hạn cuối cùng là 95%
+                } else {
+                    // Nếu là ngôn ngữ mới, thêm vào danh sách
+                    skillsMap.set(lang, {
+                        name: lang,
+                        percentage: Math.min(10 + (count * factor), 50), // Ngôn ngữ mới có base 10%
+                        icon: defaultIcon
+                    });
                 }
             });
 
-            // 6. Tạo HTML và hiển thị
-            skillsGrid.innerHTML = ''; // Xóa thông báo "Loading..."
-            allSkills.forEach(skill => {
+            // --- BƯỚC 4: HIỂN THỊ KẾT QUẢ ---
+            // Chuyển Map thành Array và sắp xếp theo % giảm dần
+            const finalSkills = Array.from(skillsMap.values())
+                .sort((a, b) => b.percentage - a.percentage);
+
+            skillsGrid.innerHTML = ''; // Xóa thông báo loading
+
+            finalSkills.forEach(skill => {
                 const skillCardHTML = `
-                    <div class="skill-card glass-card animate-on-scroll">
-                        <div class="skill-header">
+                <div class="skill-card glass-card animate-on-scroll">
+                    <div class="skill-header">
+                        <div class="skill-info">
+                            <img src="${skill.icon}" alt="${skill.name} Icon" class="skill-icon-header">
                             <span class="skill-name">${skill.name}</span>
-                            <span class="skill-percentage">${skill.percentage}%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="${skill.percentage}%"></div>
-                        </div>
+                        <span class="skill-percentage">${skill.percentage}%</span>
                     </div>
-                `;
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="${skill.percentage}%"></div>
+                    </div>
+                </div>
+            `;
                 skillsGrid.innerHTML += skillCardHTML;
             });
 
-            // 7. Kích hoạt lại animation cho các skill-card và skill-bar vừa tạo
+            // Kích hoạt lại animation cho các card và thanh skill vừa tạo
             const newAnimatedElements = skillsGrid.querySelectorAll('.animate-on-scroll');
             newAnimatedElements.forEach(el => animationObserver.observe(el));
             initializeSkillBars();
 
         } catch (error) {
-            console.error("Failed to fetch skills from GitHub:", error);
-            skillsGrid.innerHTML = '<p class="skills-loading">Could not load skills from GitHub. Please try again later.</p>';
+            console.error("Failed to fetch skills:", error);
+            skillsGrid.innerHTML = '<p class="skills-loading">Could not load skills from GitHub. Displaying default skills.</p>';
+            // Có thể gọi một hàm hiển thị danh sách mặc định ở đây nếu muốn
         }
     }
 
-    // Gọi hàm để bắt đầu
-    fetchAndDisplayGithubSkills();
+    // Gọi hàm chính để bắt đầu
+    fetchAndDisplayHybridSkills();
 
 
     // ======================================================
