@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             slideshowImageElement.src = slideshowImages[currentImageIndex];
             slideshowImageElement.style.opacity = 1;
-        }, 2000); // ĐỔI: Phải khớp với transition trong CSS (1.5s = 1500ms)
+        }, 2000); // ĐỔI: Phải khớp với transition trong CSS (2s = 2000ms)
     }
 
     // Tự động gọi hàm changeImage sau mỗi 6 giây
