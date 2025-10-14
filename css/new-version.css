@@ -15,6 +15,17 @@
     --resume-button-bg: var(--gradient-green);
 }
 
+/* === BỔ SUNG: BIẾN MÀU CHO LIGHT MODE === */
+body.light-mode {
+    --bg-dark: #f5f5f5;
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --text-primary: #212121;
+    --text-secondary: #5f5f5f;
+    --resume-button-bg: #18181b;
+    /* Nút resume nền đen chữ trắng */
+}
+
 
 * {
     margin: 0;
@@ -708,7 +719,8 @@ a:hover {
 
 .skill-header {
     display: flex;
-    justify-content: space-between; /* Đẩy tên và % ra hai phía */
+    justify-content: space-between;
+    /* Đẩy tên và % ra hai phía */
     align-items: center;
     margin-bottom: 0.75rem;
 }
@@ -717,7 +729,8 @@ a:hover {
 .skill-info {
     display: flex;
     align-items: center;
-    gap: 0.75rem; /* Khoảng cách giữa icon và tên */
+    gap: 0.75rem;
+    /* Khoảng cách giữa icon và tên */
 }
 
 /* KHỐI MỚI: Style cho icon trong header */
@@ -750,10 +763,12 @@ a:hover {
     border-radius: 9999px;
     width: 0;
     transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-    
+
     /* THÊM 2 DÒNG DƯỚI ĐÂY */
-    background-size: 200% 100%; /* Làm cho nền gradient rộng gấp đôi */
-    animation: animateGradient 3s ease infinite; /* Áp dụng animation đã tạo */
+    background-size: 200% 100%;
+    /* Làm cho nền gradient rộng gấp đôi */
+    animation: animateGradient 3s ease infinite;
+    /* Áp dụng animation đã tạo */
 }
 
 /* Responsive: Chuyển về 1 cột trên màn hình nhỏ */
@@ -768,9 +783,11 @@ a:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -900,15 +917,18 @@ a:hover {
 /* ====================================================== */
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cột trên màn hình lớn */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cột trên màn hình lớn */
     gap: 2rem;
     margin-bottom: 3rem;
 }
 
 .blog-post-card {
-    padding: 0; /* Bỏ padding mặc định của glass-card */
+    padding: 0;
+    /* Bỏ padding mặc định của glass-card */
     display: flex;
-    flex-direction: column; /* Sắp xếp ảnh và nội dung theo chiều dọc */
+    flex-direction: column;
+    /* Sắp xếp ảnh và nội dung theo chiều dọc */
 }
 
 .blog-card-image-link {
@@ -916,7 +936,8 @@ a:hover {
 }
 
 .blog-card-image {
-    aspect-ratio: 16 / 9; /* Giữ tỉ lệ ảnh 16:9 */
+    aspect-ratio: 16 / 9;
+    /* Giữ tỉ lệ ảnh 16:9 */
     overflow: hidden;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
@@ -925,19 +946,22 @@ a:hover {
 .blog-card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
+    object-fit: cover;
+    /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .blog-post-card:hover .blog-card-image img {
-    transform: scale(1.05); /* Hiệu ứng zoom khi hover */
+    transform: scale(1.05);
+    /* Hiệu ứng zoom khi hover */
 }
 
 .blog-card-content {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Giúp nội dung card co giãn, đẩy link "Read More" xuống dưới */
+    flex-grow: 1;
+    /* Giúp nội dung card co giãn, đẩy link "Read More" xuống dưới */
 }
 
 .blog-card-tags {
@@ -959,9 +983,11 @@ a:hover {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
 }
+
 .blog-card-content h3 a {
     color: var(--text-primary);
 }
+
 .blog-card-content h3 a:hover {
     color: var(--gradient-pink);
 }
@@ -974,10 +1000,12 @@ a:hover {
 }
 
 .blog-card-link {
-    margin-top: auto; /* Đẩy link này xuống cuối card */
+    margin-top: auto;
+    /* Đẩy link này xuống cuối card */
     color: var(--text-primary);
     font-weight: 500;
-    align-self: flex-start; /* Căn lề trái */
+    align-self: flex-start;
+    /* Căn lề trái */
 }
 
 .blog-card-link i {
@@ -997,13 +1025,15 @@ a:hover {
 /* Responsive cho section blog */
 @media (max-width: 992px) {
     .blog-grid {
-        grid-template-columns: 1fr 1fr; /* 2 cột trên tablet */
+        grid-template-columns: 1fr 1fr;
+        /* 2 cột trên tablet */
     }
 }
 
 @media (max-width: 768px) {
     .blog-grid {
-        grid-template-columns: 1fr; /* 1 cột trên mobile */
+        grid-template-columns: 1fr;
+        /* 1 cột trên mobile */
     }
 }
 
@@ -1499,7 +1529,8 @@ footer a {
 .wakatime-card figure,
 .wakatime-card embed {
     width: 100%;
-    height: 300px; /* Bạn có thể điều chỉnh chiều cao này */
+    height: 300px;
+    /* Bạn có thể điều chỉnh chiều cao này */
 }
 
 /* Responsive cho màn hình nhỏ */
@@ -1514,7 +1545,8 @@ footer a {
 /* ====================================================== */
 
 .award-photo-card {
-    margin-top: 2rem; /* Tạo khoảng cách với card giải thưởng ở trên */
+    margin-top: 2rem;
+    /* Tạo khoảng cách với card giải thưởng ở trên */
     padding: 2rem;
     text-align: center;
 }
@@ -1527,10 +1559,14 @@ footer a {
 }
 
 .award-photo-card .photo-wrapper {
-    max-width: 700px; /* Giới hạn chiều rộng tối đa của ảnh */
-    margin: 0 auto; /* Căn giữa ảnh */
-    border-radius: 0.75rem; /* Bo góc cho đẹp */
-    overflow: hidden; /* Đảm bảo ảnh không bị tràn ra ngoài */
+    max-width: 700px;
+    /* Giới hạn chiều rộng tối đa của ảnh */
+    margin: 0 auto;
+    /* Căn giữa ảnh */
+    border-radius: 0.75rem;
+    /* Bo góc cho đẹp */
+    overflow: hidden;
+    /* Đảm bảo ảnh không bị tràn ra ngoài */
     border: 1px solid var(--border-color);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
@@ -1538,7 +1574,8 @@ footer a {
 .award-photo-card img {
     width: 100%;
     height: auto;
-    display: block; /* Loại bỏ khoảng trắng thừa dưới ảnh */
+    display: block;
+    /* Loại bỏ khoảng trắng thừa dưới ảnh */
 }
 
 .award-photo-card .photo-caption {
@@ -1561,14 +1598,17 @@ footer a {
 
 .project-showcase-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Cột showcase trái, cột details phải */
+    grid-template-columns: 2fr 1fr;
+    /* Cột showcase trái, cột details phải */
     gap: 2rem;
     align-items: center;
-    margin-bottom: 6rem; /* Tăng khoảng cách giữa các dự án */
+    margin-bottom: 6rem;
+    /* Tăng khoảng cách giữa các dự án */
 }
 
 .project-showcase-grid:last-child {
-    margin-bottom: 0; /* Bỏ margin cho dự án cuối cùng */
+    margin-bottom: 0;
+    /* Bỏ margin cho dự án cuối cùng */
 }
 
 /* --- The Main Card (Showcase) --- */
@@ -1685,36 +1725,43 @@ footer a {
 
 /* --- STYLES FOR THE REVERSED LAYOUT --- */
 .layout-reversed {
-    grid-template-columns: 1fr 2fr; /* Đảo ngược tỉ lệ cột */
+    grid-template-columns: 1fr 2fr;
+    /* Đảo ngược tỉ lệ cột */
 }
 
 .layout-reversed .showcase-card {
-    grid-column: 2 / 3; /* Chuyển card sang cột 2 */
+    grid-column: 2 / 3;
+    /* Chuyển card sang cột 2 */
     grid-row: 1 / 2;
 }
 
 .layout-reversed .details-column {
-    grid-column: 1 / 2; /* Chuyển details sang cột 1 */
+    grid-column: 1 / 2;
+    /* Chuyển details sang cột 1 */
     grid-row: 1 / 2;
 }
 
 .layout-reversed .details-column h2,
 .layout-reversed .details-column .project-category,
 .layout-reversed .description-box {
-    text-align: left; /* Đổi hướng text */
+    text-align: left;
+    /* Đổi hướng text */
 }
 
 .layout-reversed .project-tags,
 .layout-reversed .project-links {
-    justify-content: flex-start; /* Đổi hướng các nút */
+    justify-content: flex-start;
+    /* Đổi hướng các nút */
 }
 
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 992px) {
+
     .project-showcase-grid,
     .layout-reversed {
-        grid-template-columns: 1fr; /* Chuyển tất cả về 1 cột */
+        grid-template-columns: 1fr;
+        /* Chuyển tất cả về 1 cột */
     }
 
     .layout-reversed .showcase-card,
@@ -1730,22 +1777,25 @@ footer a {
         text-align: center;
     }
 
-    .details-column h2, 
-    .details-column .project-category, 
+    .details-column h2,
+    .details-column .project-category,
     .description-box,
     .layout-reversed .details-column h2,
     .layout-reversed .details-column .project-category,
     .layout-reversed .description-box {
-        text-align: center; /* Căn giữa tất cả text */
+        text-align: center;
+        /* Căn giữa tất cả text */
     }
 
-    .project-tags, 
+    .project-tags,
     .project-links,
     .layout-reversed .project-tags,
     .layout-reversed .project-links {
-        justify-content: center; /* Căn giữa tất cả nút */
+        justify-content: center;
+        /* Căn giữa tất cả nút */
     }
 }
+
 /* ====================================================== */
 /* 9. SKILLS SECTION (Interactive Grid Version - UPDATED) */
 /* ====================================================== */
@@ -1754,7 +1804,8 @@ footer a {
 .skills-subtitle {
     text-align: center;
     font-weight: 600;
-    color: #c084fc; /* Màu tím nhạt, nổi bật trên nền tối */
+    color: #c084fc;
+    /* Màu tím nhạt, nổi bật trên nền tối */
     margin: 2.5rem 0 1.25rem 0;
     letter-spacing: 0.5px;
 }
@@ -1767,7 +1818,8 @@ footer a {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 0.75rem;
-    background: linear-gradient(135deg, #8A2BE2, #4A00E0); /* Gradient tím */
+    background: linear-gradient(135deg, #8A2BE2, #4A00E0);
+    /* Gradient tím */
     color: white;
     font-size: 1.5rem;
     margin-right: 1rem;
@@ -1785,9 +1837,12 @@ footer a {
     display: grid;
     /* Mặc định trên màn hình lớn: 3 cột bằng nhau */
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem; /* Khoảng cách giữa các ô kỹ năng */
-    width: 100%; /* Đảm bảo lưới chiếm toàn bộ chiều rộng của container */
-    max-width: 900px; /* Giới hạn chiều rộng tối đa để trông đẹp hơn */
+    gap: 0.75rem;
+    /* Khoảng cách giữa các ô kỹ năng */
+    width: 100%;
+    /* Đảm bảo lưới chiếm toàn bộ chiều rộng của container */
+    max-width: 900px;
+    /* Giới hạn chiều rộng tối đa để trông đẹp hơn */
 }
 
 
@@ -1803,7 +1858,8 @@ footer a {
     color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    text-align: center; /* Căn giữa chữ trong từng ô */
+    text-align: center;
+    /* Căn giữa chữ trong từng ô */
 }
 
 /* --- Hiệu ứng khi di chuột vào ô kỹ năng (Giữ nguyên) --- */
@@ -1856,8 +1912,137 @@ footer a {
     pointer-events: none;
 }
 
+/* ====================================================== */
+/* --- BỔ SUNG: LIGHT/DARK MODE & NÚT CHUYỂN THEME --- */
+/* ====================================================== */
+
+/* --- Style cho Nút Chuyển Theme --- */
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    /* Đảm bảo nút không bị co lại */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .theme-toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle-btn .fa-sun,
+.theme-toggle-btn .fa-moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Trạng thái Dark (mặc định): Hiện mặt trăng, ẩn mặt trời */
+.theme-toggle-btn .fa-moon {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+.theme-toggle-btn .fa-sun {
+    transform: translate(-50%, -150%);
+    opacity: 0;
+}
+
+/* Trạng thái Light: Ẩn mặt trăng, hiện mặt trời */
+body.light-mode .theme-toggle-btn .fa-moon {
+    transform: translate(-50%, 150%);
+    opacity: 0;
+}
+
+body.light-mode .theme-toggle-btn .fa-sun {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+
+/* --- Các điều chỉnh cho Light Mode --- */
+body.light-mode .main-header {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode .resume-button {
+    color: #f4f4f5;
+    /* Chữ trắng */
+}
+
+body.light-mode .main-nav a.is-active {
+    color: var(--text-primary);
+}
+
+body.light-mode .nav-indicator {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .welcome-badge {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+body.light-mode .btn-secondary {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .social-links a {
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+body.light-mode .social-links a:hover {
+    color: var(--text-primary);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Đổi màu cho các tiêu đề phụ như "General Expertise", "Soft Skills"... */
+body.light-mode .skills-subtitle {
+    color: #6200ee;
+    /* Một màu tím đậm, dễ đọc trên nền trắng */
+}
+
+/* Đổi màu cho từng ô kỹ năng (pill/tag) */
+body.light-mode .grid-item {
+    background-color: rgba(0, 0, 0, 0.05);
+    /* Nền xám nhạt */
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-secondary);
+    /* Chữ màu xám đậm, kế thừa từ biến màu */
+}
+
+/* Đổi màu cho hiệu ứng hover của ô kỹ năng */
+body.light-mode .grid-item:hover {
+    color: var(--text-primary);
+    /* Chữ màu đen */
+    border-color: #007bff;
+    /* Viền xanh dương đậm hơn */
+    background-color: rgba(0, 123, 255, 0.1);
+    /* Nền xanh dương nhạt */
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+}
+
 /* --- Responsive cho màn hình nhỏ --- */
 @media (max-width: 992px) {
+
     /* Cho máy tính bảng: chuyển thành 2 cột */
     .interactive-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1865,6 +2050,7 @@ footer a {
 }
 
 @media (max-width: 576px) {
+
     /* Cho điện thoại: chuyển thành 2 cột để tiết kiệm không gian */
     /* Nếu bạn muốn 1 cột, đổi '2' thành '1' */
     .interactive-grid {

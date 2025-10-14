@@ -1,313 +1,225 @@
-/* --- Cài đặt biến màu và font chữ --- */
+/* ====================================================== */
+/* --- HỆ THỐNG BIẾN MÀU (ĐÃ GỘP VÀ SỬA LỖI) --- */
+/* ====================================================== */
 :root {
-    --font-primary: 'Inter', sans-serif; /* Bạn có thể import font từ Google Fonts */
-    
-    /* Dark Theme (Mặc định) */
-    --color-bg: #121212;
-    --color-surface: #1e1e1e;
-    --color-primary: #bb86fc;
-    --color-text: #e0e0e0;
-    --color-text-secondary: #a0a0a0;
-    --color-border: #333333;
-}
+    /* Font chữ chung */
+    --font-primary: 'Sora', sans-serif;
 
-body.light-mode {
-    /* Light Theme */
-    --color-bg: #f5f5f5;
-    --color-surface: #ffffff;
-    --color-primary: #6200ee;
-    --color-text: #212121;
-    --color-text-secondary: #5f5f5f;
-    --color-border: #e0e0e0;
-}
-
-/* --- [CẬP NHẬT] Các biến màu từ portfolio chính --- */
-:root {
-    /* ... các biến màu cũ của blog vẫn giữ ... */
-    
-    /* Thêm các biến màu mới từ header của bạn */
-    --border-color: rgba(255, 255, 255, 0.1);
+    /* == Dark Theme (Mặc định) - Ưu tiên từ portfolio chính == */
+    --color-bg: #121212; /* Nền chính */
+    --color-surface: #1e1e1e; /* Nền của card, article */
+    --color-text: #f4f4f5; /* Màu chữ chính */
+    --color-text-secondary: #a1a1aa; /* Màu chữ phụ */
+    --border-color: rgba(255, 255, 255, 0.1); /* Màu viền */
     --gradient-purple: #a855f7;
     --gradient-pink: #ec4899;
-    --resume-button-bg: #f4f4f5; /* Màu cho nút resume */
+    --resume-button-bg: #f4f4f5;
+    
+    /* Biến màu cũ của blog (vẫn hữu ích) */
+    --color-primary-accent: #bb86fc; /* Màu nhấn tím */
 }
 
 body.light-mode {
-    /* ... các biến light-mode cũ của blog vẫn giữ ... */
+    /* == Light Theme == */
+    --color-bg: #f5f5f5;
+    --color-surface: #ffffff;
+    --color-text: #212121;
+    --color-text-secondary: #5f5f5f;
     --border-color: rgba(0, 0, 0, 0.1);
     --resume-button-bg: #18181b;
+    
+    --color-primary-accent: #6200ee;
 }
 
-/* --- [MỚI] THANH TIẾN TRÌNH & HEADER --- */
+
+/* ====================================================== */
+/* --- THIẾT LẬP CHUNG & HELPER --- */
+/* ====================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.container {
+    max-width: 1200px; /* << THAY ĐỔI Ở ĐÂY */
+    margin: 0 auto;
+    padding: 2rem;
+    padding-top: 8rem; /* Đẩy nội dung xuống dưới header */
+}
+a {
+    color: var(--color-primary-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+a:hover { opacity: 0.8; }
+h1, h2, h3 { line-height: 1.3; color: var(--color-text); }
+
+
+/* ====================================================== */
+/* --- HEADER (TỪ PORTFOLIO CHÍNH) --- */
+/* ====================================================== */
 .scroll-progress-bar {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
+    top: 0; left: 0; height: 4px;
     background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
-    width: 0%;
-    z-index: 1000;
+    width: 0%; z-index: 1000;
 }
-
 .main-header {
-    position: fixed;
-    top: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%); /* Luôn hiển thị */
-    z-index: 999;
-    width: 90%;
-    max-width: 960px;
+    position: fixed; top: 1.5rem; left: 50%;
+    transform: translateX(-50%); z-index: 999;
+    width: 90%; max-width: 960px;
     background: rgba(24, 24, 27, 0.7);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 9999px;
-    padding: 0.75rem 1rem;
-    display: flex;
-    justify-content: space-between; /* Căn đều các mục */
-    align-items: center;
+    border-radius: 9999px; padding: 0.75rem 1rem;
+    display: flex; justify-content: space-between; align-items: center;
     transition: background-color 0.3s, border-color 0.3s;
 }
-body.light-mode .main-header {
-    background: rgba(255, 255, 255, 0.7);
-}
-
+body.light-mode .main-header { background: rgba(255, 255, 255, 0.7); }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.25rem;
-    text-decoration: none;
-    color: var(--text-text);
+    font-weight: bold; font-size: 1.25rem; text-decoration: none;
+    color: var(--color-text);
 }
 .logo span {
     background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
-.header-navigation {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
+.header-navigation { display: flex; align-items: center; gap: 1rem; }
 .main-nav a {
-    padding: 0.5rem 0.75rem;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.3s;
+    padding: 0.5rem 0.75rem; color: var(--color-text-secondary);
+    text-decoration: none; font-size: 0.875rem; transition: color 0.3s;
     border-radius: 5px;
 }
-.main-nav a:hover {
-    color: var(--color-text);
-}
-/* Style đơn giản cho link active trên blog */
+.main-nav a:hover { color: var(--color-text); }
 .main-nav a.active {
-    color: var(--color-text);
-    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text); background-color: rgba(255, 255, 255, 0.1);
 }
-body.light-mode .main-nav a.active {
-    background-color: rgba(0, 0, 0, 0.1);
-}
+body.light-mode .main-nav a.active { background-color: rgba(0, 0, 0, 0.1); }
 
 .resume-button {
-    background: var(--resume-button-bg);
-    color: var(--color-bg); /* Đảo màu để tương phản */
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 600;
+    background: var(--resume-button-bg); color: var(--color-bg);
+    padding: 0.5rem 1rem; border-radius: 9999px;
+    text-decoration: none; font-size: 0.875rem; font-weight: 600;
     transition: transform 0.2s, background-color 0.3s, color 0.3s;
-    white-space: nowrap; /* Chống xuống dòng */
+    white-space: nowrap;
 }
-.resume-button:hover {
-    transform: scale(1.05);
-}
+.resume-button:hover { transform: scale(1.05); }
 
 
-/* Đẩy nội dung chính xuống để không bị header che */
-.container {
-    padding-top: 8rem; /* Tăng padding-top */
-}
-
-
-/* --- Navbar --- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-}
-.nav-brand {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--color-text);
-}
-.nav-links a {
-    margin: 0 1rem;
-    color: var(--color-text-secondary);
-}
-.nav-links a.active, .nav-links a:hover {
-    color: var(--color-text);
-}
-
-
-/* --- Nút chuyển Theme --- */
+/* ====================================================== */
+/* --- NÚT CHUYỂN THEME --- */
+/* ====================================================== */
 .theme-toggle-btn {
-    background: none;
-    border: 1px solid var(--color-border);
+    background: none; border: 1px solid var(--border-color);
     color: var(--color-text-secondary);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1rem;
-    position: relative;
-    overflow: hidden; /* Giữ để đảm bảo icon không tràn ra ngoài */
+    width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; font-size: 1rem; position: relative; overflow: hidden;
     transition: background-color 0.3s, border-color 0.3s;
 }
-
-.theme-toggle-btn:hover {
-    background-color: var(--color-border);
-}
-
-.theme-toggle-btn .fa-sun, 
-.theme-toggle-btn .fa-moon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* Thêm opacity vào transition */
+.theme-toggle-btn:hover { background-color: var(--border-color); }
+.theme-toggle-btn .fa-sun, .theme-toggle-btn .fa-moon {
+    position: absolute; top: 50%; left: 50%;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
+.theme-toggle-btn .fa-moon { transform: translate(-50%, -50%); opacity: 1; }
+.theme-toggle-btn .fa-sun { transform: translate(-50%, -150%); opacity: 0; }
+body.light-mode .theme-toggle-btn .fa-moon { transform: translate(-50%, 150%); opacity: 0; }
+body.light-mode .theme-toggle-btn .fa-sun { transform: translate(-50%, -50%); opacity: 1; }
 
-/* == Trạng thái Dark Mode (Mặc định) == */
-/* Mặt trăng hiện ra */
-.theme-toggle-btn .fa-moon {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-}
-/* Mặt trời bị ẩn (đẩy lên trên và mờ đi) */
-.theme-toggle-btn .fa-sun {
-    transform: translate(-50%, -150%); /* Đẩy lên trên */
-    opacity: 0;
-}
 
-/* == Trạng thái Light Mode (Khi body có class 'light-mode') == */
-/* Mặt trăng bị ẩn (đẩy xuống dưới và mờ đi) */
-body.light-mode .theme-toggle-btn .fa-moon {
-    transform: translate(-50%, 150%); /* Đẩy xuống dưới */
-    opacity: 0;
-}
-/* Mặt trời hiện ra */
-body.light-mode .theme-toggle-btn .fa-sun {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-}
-
-/* --- Trang Blog Chính --- */
-.blog-hero {
-    text-align: center;
-    padding: 3rem 0;
-}
+/* ====================================================== */
+/* --- TRANG BLOG CHÍNH (DANH SÁCH BÀI VIẾT) --- */
+/* ====================================================== */
+.blog-hero { text-align: center; padding: 3rem 0; }
 .blog-hero h1 {
     background: linear-gradient(90deg, #bb86fc, #a082e6, #8c7ddb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.blog-hero p {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary);
-}
+.blog-hero p { font-size: 1.1rem; color: var(--color-text-secondary); }
 
 .post-card {
     background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    border: 1px solid var(--border-color); border-radius: 8px;
+    margin-bottom: 2rem; padding: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-.post-tags { margin-bottom: 1rem; }
+.post-card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
 .tag {
     background-color: rgba(187, 134, 252, 0.1);
-    color: var(--color-primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    color: var(--color-primary-accent);
+    padding: 0.25rem 0.75rem; border-radius: 15px;
+    font-size: 0.8rem; font-weight: 500;
     margin-right: 0.5rem;
 }
-.post-card-title {
-    margin-top: 0;
-}
-.post-card-excerpt {
-    color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-}
-.read-more-btn {
-    font-weight: bold;
-}
+.post-card-excerpt { color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+.read-more-btn { font-weight: bold; }
 
-/* --- Trang Chi Tiết Bài Viết --- */
+
+/* ====================================================== */
+/* --- TRANG CHI TIẾT BÀI VIẾT (POST) --- */
+/* ====================================================== */
 .blog-post {
     background-color: var(--color-surface);
-    padding: 2rem;
-    border-radius: 8px;
+    padding: 2.5rem; border-radius: 8px;
 }
 .post-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--color-border);
+    text-align: center; margin-bottom: 3rem;
+    padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);
 }
-.post-meta {
-    color: var(--color-text-secondary);
-    margin: 1rem 0;
-}
+.post-header h1 { font-size: 2.2rem; }
+.post-meta { color: var(--color-text-secondary); margin: 1rem 0; }
+.post-tags { margin-top: 1.5rem; }
+
 .post-content p, .post-content ul {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    margin-bottom: 1.5rem; font-size: 1.1rem;
 }
-.post-content ul {
-    list-style-position: inside;
-    padding-left: 1rem;
-}
-.post-content li {
-    margin-bottom: 0.75rem;
-}
-.post-content strong {
-    color: var(--color-text);
-}
+.post-content ul { list-style-position: inside; padding-left: 1rem; }
+.post-content li { margin-bottom: 0.75rem; }
+.post-content strong { color: var(--color-text); }
 .post-content code {
-    background-color: var(--color-bg);
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--color-bg); padding: 0.2rem 0.4rem;
+    border-radius: 4px; font-family: 'Courier New', Courier, monospace;
 }
 .post-content pre {
-    background-color: var(--color-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    margin-bottom: 1.5rem;
-}
-.post-content pre code {
-    padding: 0;
+    background-color: var(--color-bg); padding: 1rem;
+    border-radius: 8px; overflow-x: auto;
+    white-space: pre-wrap; margin-bottom: 1.5rem;
 }
 
-/* --- Footer --- */
-.footer {
+/* --- [MỚI] STYLE CHO HÌNH ẢNH HƯỚNG DẪN --- */
+.post-image-container {
+    margin: 2.5rem 0; /* Khoảng cách trên dưới */
     text-align: center;
-    padding: 2rem;
-    margin-top: 2rem;
+}
+.post-image-container img {
+    max-width: 100%; /* Đảm bảo ảnh không tràn ra ngoài */
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+.post-image-container .caption {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
     color: var(--color-text-secondary);
-    border-top: 1px solid var(--color-border);
+    font-style: italic;
+}
+
+
+/* ====================================================== */
+/* --- FOOTER --- */
+/* ====================================================== */
+.footer {
+    text-align: center; padding: 2rem; margin-top: 2rem;
+    color: var(--color-text-secondary); border-top: 1px solid var(--border-color);
 }

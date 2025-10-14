@@ -62,32 +62,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillsGrid = document.querySelector('.skills-grid');
 
     // Cập nhật lại toàn bộ hàm này
-function initializeSkillBars() {
-    const skillLevels = document.querySelectorAll('.skill-level');
-    
-    // Logic của Observer sẽ được thay đổi
-    const skillObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            const element = entry.target;
-            const level = element.getAttribute('data-level');
+    function initializeSkillBars() {
+        const skillLevels = document.querySelectorAll('.skill-level');
 
-            // Nếu phần tử đang ở trong màn hình (isIntersecting là true)
-            if (entry.isIntersecting) {
-                // Thì chạy animation đến mức % của nó
-                element.style.width = level;
-            } else {
-                // Ngược lại, nếu nó đã ra ngoài màn hình, RESET nó về 0%
-                element.style.width = '0%';
-            }
+        // Logic của Observer sẽ được thay đổi
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+                const level = element.getAttribute('data-level');
+
+                // Nếu phần tử đang ở trong màn hình (isIntersecting là true)
+                if (entry.isIntersecting) {
+                    // Thì chạy animation đến mức % của nó
+                    element.style.width = level;
+                } else {
+                    // Ngược lại, nếu nó đã ra ngoài màn hình, RESET nó về 0%
+                    element.style.width = '0%';
+                }
+            });
+        }, {
+            threshold: 0.5 // Kích hoạt khi 50% của thanh skill hiện ra
         });
-    }, { 
-        threshold: 0.5 // Kích hoạt khi 50% của thanh skill hiện ra
-    });
 
-    skillLevels.forEach(level => {
-        skillObserver.observe(level);
-    });
-}
+        skillLevels.forEach(level => {
+            skillObserver.observe(level);
+        });
+    }
 
     // Hàm hiển thị kỹ năng phiên bản nâng cao
     async function fetchAndDisplayHybridSkills() {
@@ -109,7 +109,7 @@ function initializeSkillBars() {
             // Các kỹ năng không phải ngôn ngữ lập trình
             ['Git & GitHub', { name: 'Git & GitHub', percentage: 85, icon: 'assets/icons/github.png' }],
             ['Docker', { name: 'Docker', percentage: 60, icon: 'assets/icons/docker.png' }],
-           
+
         ]);
 
         // Icon mặc định cho các ngôn ngữ không có trong danh sách trên
@@ -315,4 +315,33 @@ function initializeSkillBars() {
         }
     }, 200);
 
+    // ======================================================
+    // --- BỔ SUNG: LOGIC CHO LIGHT/DARK THEME ---
+    // ======================================================
+    const themeToggleBtn = document.getElementById('theme-toggle');
+
+    if (themeToggleBtn) {
+        const currentTheme = localStorage.getItem('theme');
+
+        // Áp dụng theme đã lưu khi trang vừa tải
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+        }
+
+        // Gắn sự kiện click cho nút
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+
+            // Lưu lựa chọn vào localStorage
+            let theme = document.body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode';
+
+            // Nếu không có class light-mode, có nghĩa là đang ở dark mode, nhưng ta không cần lưu 'dark-mode'
+            // vì nó là mặc định. Chỉ cần lưu 'light-mode' thôi.
+            if (theme === 'light-mode') {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.removeItem('theme'); // Xóa key khi quay về dark mode
+            }
+        });
+    }
 }); // <-- Dấu ngoặc đóng của sự kiện DOMContentLoaded duy nhất
