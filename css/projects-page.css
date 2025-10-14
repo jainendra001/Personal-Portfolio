@@ -1,6 +1,12 @@
 /* File: css/projects-page.css */
 
 /* --- CSS ĐẶC THÙ CHO TRANG PROJECT --- */
+
+/* --- BỔ SUNG: Wrapper cho trang con --- */
+.page-wrapper {
+    padding-top: 10rem; /* Tạo khoảng trống ở trên để không bị header che */
+}
+
 .text-primary {
     color: var(--gradient-purple) !important;
 }
@@ -381,4 +387,68 @@ footer a {
     color: #adb5bd;
     /* Màu chữ liên kết trong footer */
     text-decoration: none;
+}
+
+/* --- BỔ SUNG: Wrapper cho trang con --- */
+.page-wrapper {
+    padding-top: 10rem;
+}
+
+/* --- [MỚI] BỔ SUNG: Style cho tiêu đề phân loại dự án --- */
+.section-divider {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 6rem 0 4rem 0; /* Tạo khoảng cách lớn */
+    position: relative;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.section-divider::before {
+    left: 0;
+}
+
+.section-divider::after {
+    right: 0;
+}
+
+/* --- [MỚI] Nút Back to Home và các điều chỉnh --- */
+.back-to-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.back-to-home-btn:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-primary);
+}
+
+body.light-mode .back-to-home-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: var(--text-primary);
+}
+
+/* Điều chỉnh lại max-width của container project cho rộng hơn một chút */
+#projects .container {
+    max-width: 1400px;
 }

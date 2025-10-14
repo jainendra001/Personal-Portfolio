@@ -2,663 +2,830 @@
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Portfolio cá nhân của Trần Hữu Đạt - Lập trình viên Web"
-        data-translate-key="metaDescription" />
-    <meta name="author" content="Trần Hữu Đạt" />
-    <title>Trần Hữu Đạt - Portfolio Lập trình viên Web</title>
-    <!-- Favicon-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TIÊU ĐỀ MỚI -->
+    <title>Trần Hữu Đạt - Full-stack Web Developer</title>
+    <!-- THAY ICON MỚI (NẾU CÓ) -->
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <!-- Custom Google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/github.css" rel="stylesheet" />
-    <!-- CSS cho Interactive Grid, Cursor và Language Switcher -->
-    <style>
-        body {
-            cursor: none;
-            position: relative;
-        }
 
-        a,
-        button,
-        input[type="submit"],
-        .form-control {
-            cursor: url('assets/hand_blue.png'), auto;
-        }
+    <!-- THÊM FONT MỚI TỪ GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .interactive-grid-container {
-            margin-bottom: 1.5rem;
-        }
-
-        .interactive-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            text-align: center;
-        }
-
-        .grid-item {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: default;
-            position: relative;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            border: 1px solid #dee2e6;
-        }
-
-        .grid-item:hover {
-            background-color: #d1ecf1;
-            box-shadow: 0 0 15px rgba(13, 202, 240, 0.4);
-            transform: scale(1.05);
-            border-color: #0dcaf0;
-            color: #0a58ca;
-            cursor: none;
-        }
-
-        .cursor-element {
-            position: fixed;
-            display: flex;
-            align-items: center;
-            pointer-events: none;
-            z-index: 1070;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .cursor-element.visible {
-            opacity: 1;
-        }
-
-        .cursor-element img {
-            width: 28px;
-            height: auto;
-            margin-right: 8px;
-        }
-
-        .cursor-element .cursor-text {
-            background-color: #0d6efd;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.95em;
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
-            font-weight: bold;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .cursor-element .cursor-text.fade-out {
-            opacity: 0;
-        }
-
-        .profile-img-custom {
-            max-width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        }
-
-        /* === CSS CẬP NHẬT CHO NÚT CHUYỂN NGÔN NGỮ === */
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-            margin-left: 20px;
-        }
-
-        .language-switcher .current-flag {
-            cursor: pointer;
-            /* Đổi con trỏ khi di vào cờ */
-        }
-
-        .language-switcher .current-flag img {
-            width: 32px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-
-        .language-dropdown {
-            display: none;
-            /* Ẩn mặc định */
-            position: absolute;
-            top: 120%;
-            right: 0;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            padding: 8px;
-            z-index: 1100;
-            width: 180px;
-            border: 1px solid #eee;
-            /* Thêm hiệu ứng chuyển động mượt mà */
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-            pointer-events: none;
-        }
-
-        /* LỚP .show ĐỂ HIỂN THỊ DROPDOWN BẰNG JAVASCRIPT */
-        .language-dropdown.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        /* Bỏ đi quy tắc :hover cũ */
-        /* .language-switcher:hover .language-dropdown { display: block; } */
-
-        .language-dropdown a {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #333;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: background-color 0.2s ease;
-        }
-
-        .language-dropdown a:hover {
-            background-color: #f0f2f5;
-        }
-
-        .language-dropdown img {
-            width: 24px;
-            margin-right: 12px;
-            border-radius: 3px;
-        }
-
-        /* Thêm vào cuối file CSS của bạn */
-        footer.bg-dark a.text-white-50 {
-            transition: color 0.3s ease-in-out;
-        }
-
-        footer.bg-dark a.text-white-50:hover {
-            color: #ffffff !important;
-            /* Dùng !important để ghi đè bootstrap nếu cần */
-            text-decoration: underline;
-        }
-
-        footer a {
-            color: #adb5bd;
-            /* Màu chữ liên kết trong footer */
-            text-decoration: none;
-        }
-
-        .btn-new-gradient {
-            background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
-            color: white;
-        }
-    </style>
+    <!-- LINK CSS VÀ FONT AWESOME -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="d-flex flex-column h-100">
-    <!-- Nội dung HTML của bạn từ <body> đến <footer> giữ nguyên -->
-    <main class="flex-shrink-0">
-        <!-- Navigation-->
-        <header-placeholder></header-placeholder>
+<body>
+    <!-- Thanh tiến trình cuộn giữ nguyên -->
+    <div class="scroll-progress-bar"></div>
 
-        <!-- Header-->
-        <!-- Header-->
-        <header class="py-5">
-            <div class="container px-5 pb-5">
-                <div class="row gx-5 align-items-center">
+    <header class="main-header">
+        <!-- Nhóm 1: Logo -->
+        <a class="logo" href="index.html"><span>tranhuudat</span>2004</a>
 
-                    <!-- === CỘT VĂN BẢN (ĐÃ SỬA) === -->
-                    <!-- Thay đổi từ col-xxl-5 thành col-lg-8 để chiếm khoảng 70% -->
-                    <div class="col-lg-8">
-                        <!-- Header text content-->
-                        <div class="text-center text-lg-start">
-                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
-                                <div class="text-uppercase" data-translate-key="headerBadge">Phát triển Web · Full-Stack
-                                    · Di động</div>
+        <!-- Nhóm 2: Khối điều hướng -->
+        <div class="header-navigation"> <!-- THÊM THẺ NÀY -->
+            <nav class="main-nav">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <!-- <a href="#coding-activity">Activity</a> -->
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#blog">Blog</a> <!-- << THÊM DÒNG NÀY VÀO -->
+                <a href="#contact">Contact</a>
+                <span class="nav-indicator"></span>
+            </nav>
+            <a href="assets/resume/TranHuuDat-Resume-Summary.pdf" class="resume-button" download>Resume</a>
+
+            <!-- === BỔ SUNG NÚT CHUYỂN THEME VÀO ĐÂY === -->
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+
+        </div> <!-- THÊM THẺ NÀY -->
+
+    </header>
+
+    <main>
+        <!-- ====================================================== -->
+        <!-- Section 1: Hero (THAY ĐỔI LỚN) -->
+        <!-- ====================================================== -->
+        <section id="hero" class="hero-section">
+            <div class="hero-background"></div>
+            <div class="container hero-container">
+                <!-- Profile Card (bên trái) -->
+                <div class="profile-card-container animate-on-scroll">
+                    <div class="profile-card glass-card">
+                        <div class="profile-header">
+                            <div class="avatar-wrapper">
+                                <img src="assets/my_image1.jpg" alt="Avatar" class="avatar" />
+                                <div class="status-indicator online"></div>
                             </div>
-                            <div class="fs-3 fw-light text-muted" data-translate-key="headerGreeting">Xin chào, tôi là
-                            </div>
-                            <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Trần Hữu
-                                    Đạt</span></h1>
-                            <p class="lead fw-light text-muted mb-4" data-translate-key="headerDescription">Một sinh
-                                viên Kỹ thuật Phần mềm đầy nhiệt huyết, chuyên về phát triển ứng dụng web và di động,
-                                luôn mong muốn học hỏi công nghệ mới và đóng góp vào các dự án sáng tạo.</p>
-
-                            <p class="lead fw-light text-muted mb-4" style="padding-left: 20px; font-weight: 700;" data-translate-key="ready"> Ready for a new look? </p>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start mb-3">
-                                <!-- Các nút 1 và 2 giữ nguyên -->
-                                <!-- <a class="btn btn-primary btn-lg px-4 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html"
-                                    data-translate-key="btnMyResume">Hồ sơ của tôi</a>
-                                <a class="btn btn-outline-dark btn-lg px-4 py-3 me-sm-3 fs-6 fw-bolder"
-                                    href="projects.html" data-translate-key="btnMyProjects">Dự án của tôi</a> -->
-
-                                <!-- SỬA NÚT THỨ BA -->
-                                <!-- <a class="btn btn-outline-danger btn-lg px-4 py-3 fs-6 fw-bolder" href="animation.html"
-                                    data-translate-key="btnAnimation">Trang hiệu ứng</a> -->
-
-                                <!-- SỬA NÚT THỨ TƯ -->
-                                <!-- Nút phiên bản mới (đã cập nhật) -->
-                                <a class="btn btn-new-gradient btn-lg px-4 py-3 fs-6 fw-bolder" href="new-version.html"
-                                    data-translate-key="btnNewVersion">
-                                    <span data-translate-key="btnNewVersionText">Explore the New Version</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- === CỘT ẢNH (ĐÃ SỬA) === -->
-                    <!-- Thay đổi từ col-xxl-4 thành col-lg-4 để chiếm khoảng 30% -->
-                    <div class="col-lg-4">
-                        <div class="d-flex justify-content-center mt-5 mt-lg-0">
-                            <div>
-                                <img class="profile-img-custom" src="assets/my_image.jpg"
-                                    alt="Ảnh đại diện Trần Hữu Đạt" />
+                            <div class="profile-info">
+                                <h2>Trần Hữu Đạt</h2>
+                                <p class="job-title">Full-stack Web Developer</p>
                             </div>
                         </div>
-                    </div>
+                        <div class="profile-details">
+                            <p><i class="fas fa-map-marker-alt"></i> Ho Chi Minh City, Vietnam</p>
+                            <p><i class="fas fa-calendar-alt"></i> Joined 2022</p>
+                            <p><i class="fas fa-briefcase"></i> Ton Duc Thang University</p>
+                        </div>
 
+                    </div>
+                </div>
+
+                <!-- Hero Text Content (ở giữa) -->
+                <div class="hero-text-content">
+                    <div class="welcome-badge animate-on-scroll">Welcome to my Portfolio</div>
+                    <h1 class="animate-on-scroll">
+                        Building Digital<br>
+                        <span class="gradient-text">Experiences</span>
+                    </h1>
+                    <p style="color: white;" class="animate-on-scroll">A passionate Software Engineering student
+                        specializing in creating
+                        efficient, user-centric web applications.</p>
+                    <div class="hero-buttons animate-on-scroll">
+                        <a href="#projects" class="btn btn-primary">View my projects <i
+                                class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                    </div>
+                    <div class="social-links animate-on-scroll">
+                        <a style="color: white;" href="https://linkedin.com/in/tranhuudat2004" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a style="color: white;" href="https://github.com/TranHuuDat2004" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a style="color: white;" href="mailto:tranhuudat.cv@gmail.com" aria-label="Email"><i
+                                class="fas fa-envelope"></i></a>
+                        <a style="color: white;" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
-        </header>
+            <div class="scroll-down-indicator"></div>
+        </section>
 
-        <!-- Page Content-->
-        <div class="container px-5 my-5">
-            <div class="text-center">
-                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline"
-                        data-translate-key="skillsTitle">Kỹ Năng Của Tôi</span></h1>
+        <!-- ====================================================== -->
+        <!-- Music Player Widget -->
+        <!-- ====================================================== -->
+        <div class="music-player-widget">
+            <img src="assets/song-cover.png" alt="Song Cover" class="song-cover" id="song-cover">
+            <div class="song-info">
+                <h4 id="song-title">Điều chưa nói</h4>
+                <p id="song-artist">Tia ft. OMIXX</p>
             </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-11 col-xl-9 col-xxl-8">
-                    <div class="pb-5"></div>
-                    <section>
-                        <div class="card shadow border-0 rounded-4 mb-5">
-                            <div class="card-body p-5">
-                                <div class="mb-5">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div
-                                            class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-                                            <i class="bi bi-tools"></i>
-                                        </div>
-                                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline"
-                                                data-translate-key="proSkills">Kỹ Năng Chuyên Môn</span></h3>
-                                    </div>
-                                    <h4 class="fw-bolder my-3 text-center text-gradient"
-                                        data-translate-key="generalExpertise">Chuyên Môn Chung</h4>
-                                    <div class="interactive-grid-container mb-4">
-                                        <div class="interactive-grid">
-                                            <div class="grid-item" data-text="Công nghệ Web"
-                                                data-translate-key="skillWebDev">Phát triển Web</div>
-                                            <div class="grid-item" data-text="Nền tảng Di động"
-                                                data-translate-key="skillMobileDev">Phát triển Di động</div>
-                                            <div class="grid-item" data-text="Thiết kế giao diện người dùng"
-                                                data-translate-key="skillUiUx">Thiết kế UI/UX</div>
+            <div class="player-controls">
+                <!-- Thêm ID cho các nút -->
+                <i class="fas fa-backward-step" id="prev-btn"></i>
+                <i class="fas fa-pause" id="play-pause-btn"></i> <!-- Bắt đầu với icon pause -->
+                <i class="fas fa-forward-step" id="next-btn"></i>
+            </div>
+            <i class="fas fa-volume-high"></i> <!-- Phần volume sẽ làm sau nếu bạn muốn -->
+        </div>
 
-                                        </div>
-                                    </div>
-                                    <h4 class="fw-bolder my-3 text-center text-gradient"
-                                        data-translate-key="softSkills">Kĩ năng mềm</h4>
-                                    <div class="interactive-grid-container mb-4">
-                                        <div class="interactive-grid">
-                                            <div class="grid-item" data-text="Giải quyết vấn đề"
-                                                data-translate-key="skillProblemSolving">Giải quyết vấn đề</div>
-                                            <div class="grid-item" data-text="Hợp tác nhóm"
-                                                data-translate-key="skillTeamwork">Làm việc nhóm</div>
-                                            <div class="grid-item" data-text="Effective Communication"
-                                                data-translate-key="skillCommunication">Giao tiếp Hiệu quả</div>
-                                            <div class="grid-item" data-text="Adaptability & Learning"
-                                                data-translate-key="skillAdaptability">Khả năng Thích ứng</div>
-                                            <div class="grid-item" data-text="Attention to Detail"
-                                                data-translate-key="skillAttentionDetail">Chú ý đến Chi tiết</div>
-                                            <div class="grid-item" data-text="Time Management"
-                                                data-translate-key="skillTimeManagement">Quản lý Thời gian</div>
-                                        </div>
-                                    </div>
-                                    <h4 class="fw-bolder my-3 text-center text-gradient"
-                                        data-translate-key="toolsTitle">Công Cụ</h4>
-                                    <div class="interactive-grid-container mb-4">
-                                        <div class="interactive-grid">
-                                            <div class="grid-item" data-text="IDE Phát triển">VSCode</div>
-                                            <div class="grid-item" data-text="Containerization">Docker</div>
-                                            <div class="grid-item" data-text="Quản lý phiên bản">Git & GitHub</div>
-                                        </div>
-                                    </div>
-                                    <h4 class="fw-bolder my-3 text-center text-gradient"
-                                        data-translate-key="designSoftware">Phần Mềm Thiết Kế</h4>
-                                    <div class="interactive-grid-container">
-                                        <div class="interactive-grid">
-                                            <div class="grid-item" data-text="Tạo mẫu UI/UX">Figma</div>
-                                            <div class="grid-item" data-text="Sáng tạo đồ họa">Canva</div>
-                                        </div>
-                                    </div>
+        <!-- ====================================================== -->
+        <!-- Section 2: About Me (CẬP NHẬT) -->
+        <!-- ====================================================== -->
+        <section id="about" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">My personal story</div>
+                    <h2 class="section-title">About Me</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image-wrapper animate-on-scroll">
+                        <img src="assets/my_image.jpg" alt="A pensive anime character in a snowy city scene">
+                        <div class="status-tag">
+                            <span class="green-dot"></span> Available for work
+                        </div>
+                    </div>
+                    <div class="about-text-content animate-on-scroll">
+                        <p>I am a dedicated Software Engineering student at Ton Duc Thang University with a deep passion
+                            for building efficient and user-friendly web solutions. My journey into programming started
+                            with a curiosity to understand how things work, and it has grown into a drive to create
+                            meaningful applications.</p>
+                        <p>I enjoy tackling challenging problems and continuously expanding my skill set in the
+                            ever-evolving world of technology. From developing full-stack e-commerce platforms to
+                            creating fun, interactive web apps, my goal is to leverage my technical abilities to build
+                            impactful products.</p>
+                        <div class="info-box-wrapper glass-card">
+                            <div class="info-box">
+                                <div>
+                                    <span class="info-label">Name</span>
+                                    <p>Trần Hữu Đạt</p>
                                 </div>
-                                <div class="mb-0">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div
-                                            class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-                                            <i class="bi bi-code-slash"></i>
-                                        </div>
-                                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline"
-                                                data-translate-key="techStack">Công Nghệ Sử Dụng</span></h3>
-                                    </div>
-                                    <div class="interactive-grid-container">
-                                        <div class="interactive-grid">
-                                            <div class="grid-item" data-text="Frontend">HTML5</div>
-                                            <div class="grid-item" data-text="Styling">CSS3</div>
-                                            <div class="grid-item" data-text="Scripting">JavaScript (ES6+)</div>
-                                            <div class="grid-item" data-text="Backend">Node.js</div>
-                                            <div class="grid-item" data-text="Framework">Express.js</div>
-                                            <div class="grid-item" data-text="Backend">PHP</div>
-                                            <div class="grid-item" data-text="Database">MySQL</div>
-                                            <div class="grid-item" data-text="Database">Firebase (Firestore)</div>
-                                            <div class="grid-item" data-text="CMS">WordPress</div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <span class="info-label">Email</span>
+                                    <p>tranhuudat.cv@gmail.com</p>
+                                </div>
+                                <div>
+                                    <span class="info-label">Location</span>
+                                    <p>Ho Chi Minh City, VN</p>
+                                </div>
+                                <div>
+                                    <span class="info-label">Availability</span>
+                                    <p class="available-status">Open to Internship</p>
                                 </div>
                             </div>
+                            <a href="assets/resume/TranHuuDat-Resume-Summary.pdf" download
+                                class="btn-download-resume">Download Resume <i class="fas fa-download"></i></a>
                         </div>
-                    </section>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- My Projects on GitHub -->
-    <section class="bg-light py-5">
-        <div class="container px-5 mb-5">
-            <div class="text-center mb-5">
-                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline"
-                        data-translate-key="githubProjectsTitle">Các Dự Án Của Tôi trên GitHub</span></h1>
-            </div>
-        </div>
-        <section class="featured-projects">
-            <div class="projects-grid">
-                <!-- JavaScript sẽ chèn các card dự án vào đây -->
             </div>
         </section>
-        <div class="text-center mt-4">
-            <a class="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
-                href="https://github.com/TranHuuDat2004?tab=repositories" data-translate-key="exploreMoreProjects">Khám
-                phá thêm các dự án của tôi trong tab Kho lưu trữ.</a>
-        </div>
-    </section>
 
-    <!-- About Section-->
-    <div class="container px-8">
-        <div class="row gx-5 justify-content-center">
-            <div class="col-xxl-8">
-                <div class="my-5">
-                    <h2 class="display-5 fw-bolder text-center"><span class="text-gradient d-inline"
-                            data-translate-key="aboutMeTitle">Giới thiệu sơ lược về tôi</span></h2>
-                    <p class="lead fw-light mb-4" data-translate-key="aboutMeIntro">Tôi là Trần Hữu Đạt, một sinh viên
-                        kỹ thuật phần mềm tận tâm tại trường Đại học Tôn Đức Thắng.</p>
-                    <p class="text-muted" data-translate-key="aboutMeDetails">Đam mê tạo ra các giải pháp web và di
-                        động hiệu quả và thân thiện với người dùng. Tôi thích giải quyết các vấn đề thách thức và liên
-                        tục mở rộng bộ kỹ năng của mình trong thế giới công nghệ không ngừng phát triển. Mục tiêu của
-                        tôi là tận dụng khả năng kỹ thuật của mình để xây dựng các ứng dụng có tầm ảnh hưởng và đóng góp
-                        vào các dự án ý nghĩa. Hiện đang tìm kiếm cơ hội để áp dụng kiến thức và phát triển như một lập
-                        trình viên chuyên nghiệp.</p>
-                    <div class="d-flex justify-content-center fs-2 gap-4 mt-4">
-                        <a class="text-gradient" href="https://linkedin.com/in/tranhuudat2004" target="_blank"
-                            rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                        <a class="text-gradient" href="https://github.com/TranHuuDat2004" target="_blank"
-                            rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                        <a class="text-gradient" href="mailto:huudat.peashooer@gmail.com"><i
-                                class="bi bi-envelope-fill"></i></a>
+        <!-- ====================================================== -->
+        <!-- Section 3: Skills (CẬP NHẬT) -->
+        <!-- ====================================================== -->
+        <section id="skills" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <!-- Thêm lại badge "My Skills" -->
+                    <div class="section-badge">My Skills</div>
+                    <!-- Đổi tiêu đề -->
+                    <h2 class="section-title">Technical Stack</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="skills-wrapper">
+                    <div class="skills-grid">
+                        <!-- JavaScript sẽ tự động chèn các thanh kỹ năng vào đây -->
+                        <p class="skills-loading">
+                            <i class="fas fa-spinner fa-spin"></i> Loading technical skills...
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
+        <!-- ====================================================== -->
+        <!-- Section 3.2: Skills (PHIÊN BẢN NÂNG CẤP VỚI LƯỚI TƯƠNG TÁC) -->
+        <!-- ====================================================== -->
+        <section id="skills" class="content-section">
+            <div class="container">
+                <!-- Sử dụng lại cấu trúc header chuẩn của trang bạn -->
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">My Expertise</div>
+                    <h2 class="section-title">My Skills</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Bắt đầu nội dung mới được tích hợp -->
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-11 col-xl-10"> <!-- Điều chỉnh cột để vừa vặn hơn -->
+                        <div class="card glass-card animate-on-scroll" style="border: none; padding: 2.5rem;">
+                            <!-- Phần 1: Kỹ năng chuyên môn và Kỹ năng mềm -->
+                            <div class="mb-5">
+                                <!-- <div class="d-flex align-items-center justify-content-center mb-4">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <h3 class="fw-bolder mb-0"><span class="gradient-text d-inline">Professional
+                                            Skills</span></h3>
+                                </div> -->
+
+                                <h4 class="skills-subtitle">General Expertise</h4>
+                                <div class="interactive-grid-container mb-4">
+                                    <div class="interactive-grid">
+                                        <div class="grid-item" data-text="Web Technologies">Web Development</div>
+                                        <div class="grid-item" data-text="Mobile Platforms">Mobile Development</div>
+                                        <div class="grid-item" data-text="User Interface Design">UI/UX Design</div>
+                                    </div>
+                                </div>
+
+                                <h4 class="skills-subtitle">Soft Skills</h4>
+                                <div class="interactive-grid-container mb-4">
+                                    <div class="interactive-grid">
+                                        <div class="grid-item" data-text="Problem Solving">Problem Solving</div>
+                                        <div class="grid-item" data-text="Team Collaboration">Teamwork</div>
+                                        <div class="grid-item" data-text="Effective Communication">Communication</div>
+                                        <div class="grid-item" data-text="Adaptability & Learning">Adaptability</div>
+                                        <div class="grid-item" data-text="Attention to Detail">Attention to Detail</div>
+                                        <div class="grid-item" data-text="Time Management">Time Management</div>
+                                    </div>
+                                </div>
+
+                                <h4 class="skills-subtitle">Tools</h4>
+                                <div class="interactive-grid-container mb-4">
+                                    <div class="interactive-grid">
+                                        <div class="grid-item" data-text="Development IDE">VSCode</div>
+                                        <div class="grid-item" data-text="Containerization">Docker</div>
+                                        <div class="grid-item" data-text="Version Control">Git & GitHub</div>
+                                    </div>
+                                </div>
+
+                                <h4 class="skills-subtitle">Design Software</h4>
+                                <div class="interactive-grid-container">
+                                    <div class="interactive-grid">
+                                        <div class="grid-item" data-text="UI/UX Prototyping">Figma</div>
+                                        <div class="grid-item" data-text="Graphic Creation">Canva</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phần 2: Công nghệ sử dụng -->
+                            <!-- <div>
+                                <div class="d-flex align-items-center justify-content-center mb-4">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <h3 class="fw-bolder mb-0"><span class="gradient-text d-inline">Tech Stack</span>
+                                    </h3>
+                                </div>
+                                <div class="interactive-grid-container">
+                                    <div class="interactive-grid">
+                                        <div class="grid-item" data-text="Frontend">HTML5</div>
+                                        <div class="grid-item" data-text="Styling">CSS3</div>
+                                        <div class="grid-item" data-text="Scripting">JavaScript (ES6+)</div>
+                                        <div class="grid-item" data-text="Backend">Node.js</div>
+                                        <div class="grid-item" data-text="Framework">Express.js</div>
+                                        <div class="grid-item" data-text="Backend">PHP</div>
+                                        <div class="grid-item" data-text="Database">MySQL</div>
+                                        <div class="grid-item" data-text="Database">Firebase (Firestore)</div>
+                                        <div class="grid-item" data-text="CMS">WordPress</div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="skills" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">Technologies I work with</div>
+                    <h2 class="section-title">My Skills</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">JavaScript (ES6+)</span><span
+                                class="skill-percentage">85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">Node.js / Express.js</span><span
+                                class="skill-percentage">80%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">PHP</span><span
+                                class="skill-percentage">75%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">HTML5 & CSS3</span><span
+                                class="skill-percentage">90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">SQL (MySQL & Firebase)</span><span
+                                class="skill-percentage">70%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">Tailwind & Bootstrap</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">Git & GitHub</span><span
+                                class="skill-percentage">85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card glass-card animate-on-scroll">
+                        <div class="skill-header"><span class="skill-name">Docker</span><span
+                                class="skill-percentage">60%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- ====================================================== -->
+        <!-- Section: Coding Activity (MỚI) -->
+        <!-- ====================================================== -->
+        <!-- <section id="coding-activity" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">Developer Insights</div>
+                    <h2 class="section-title">Coding Activity</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="wakatime-grid animate-on-scroll">
+                     WakaTime Chart 1: Ngôn ngữ lập trình 
+                    <div class="wakatime-card glass-card">
+                        <h3>Languages (All time)</h3>
+
+
+<figure><embed src="https://wakatime.com/share/@TranHuuDat2004/2702fa9b-4da9-4c2a-8088-051ea8a07211.svg"></embed></figure>
+
+                    </div>
+
+                     WakaTime Chart 2: Hoạt động hàng ngày 
+                    <div class="wakatime-card glass-card">
+                        <h3>Daily Activity (All time)</h3>
+
+                         DÁN MÃ IFRAME BIỂU ĐỒ HOẠT ĐỘNG CỦA BẠN VÀO ĐÂY 
+                        <figure><embed
+                                src="https://wakatime.com/share/@TranHuuDat2004/8f2a8fe2-d87f-487b-926a-daed1065ce97.svg"></embed>
+                        </figure>
+
+                    </div>
+                </div>
+            </div>
+         </section> -->
+
+        <!-- ====================================================== -->
+        <!-- Section 4: Featured Works (NEW ALTERNATING LAYOUT) -->
+        <!-- ====================================================== -->
+        <section id="projects" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">Some of my recent work</div>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- PROJECT 1: Omacha Shop (Layout: Image Left, Details Right) -->
+                <div class="project-showcase-grid animate-on-scroll">
+                    <div class="showcase-card">
+                        <div class="showcase-header"><span>Omacha Project</span></div>
+                        <div class="showcase-content">
+                            <div class="text-features">
+                                <h1>OMACHA SHOP<br>E-COMMERCE</h1>
+                                <h4 class="feature-title">FEATURES</h4>
+                                <ul>
+                                    <li>Full-stack e-commerce platform built with PHP & MySQL.</li>
+                                    <li>Robust admin panel for product, order, and user management.</li>
+                                    <li>Responsive design ensuring a seamless experience on all devices.</li>
+                                </ul>
+                            </div>
+                            <div class="image-gallery">
+                                <img src="assets/omacha/Home1.jpg" alt="Omacha Homepage" class="showcase-img">
+                                <!-- <img src="assets/omacha/product.jpg" alt="Omacha Homepage" class="showcase-img"> -->
+                                <img src="assets/omacha/product_detail.jpg" alt="Omacha Homepage" class="showcase-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-column">
+                        <h2>Omacha Shop</h2>
+                        <p class="project-category">Web, E-commerce, Full-stack</p>
+                        <div class="project-tags">
+                            <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
+                        </div>
+                        <div class="description-box glass-card">
+                            <p>A comprehensive toy e-commerce platform designed for a fun shopping experience and
+                                powerful admin tools.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/TranHuuDat2004/Omacha_Shop" target="_blank"
+                                aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://tranhuudat2004.github.io/Omacha-Shop-Demo/" aria-label="Project Details"><i
+                                    class="fas fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: BrickShop (Layout: Details Left, Image Right) -->
+                <div class="project-showcase-grid layout-reversed animate-on-scroll">
+                    <div class="showcase-card">
+                        <div class="showcase-header"><span>BrickShop Project</span></div>
+                        <div class="showcase-content">
+                            <div class="text-features">
+                                <h1>BRICKSHOP<br>E-COMMERCE</h1>
+                                <h4 class="feature-title">FEATURES</h4>
+                                <ul>
+                                    <li>Modern e-commerce hub developed with Node.js and Express.js.</li>
+                                    <li>Sleek and efficient admin UI built with Tailwind CSS.</li>
+                                    <li>Focus on modern JavaScript stack and non-relational databases.</li>
+                                </ul>
+                            </div>
+                            <div class="image-gallery">
+                                <img src="assets/brickshop/homepage.png" alt="BrickShop Homepage" class="showcase-img">
+                                <img src="assets/brickshop/admin_dashboard.png" alt="BrickShop Homepage"
+                                    class="showcase-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-column">
+                        <h2>BrickShop</h2>
+                        <p class="project-category">Web, E-commerce, Node.js</p>
+                        <div class="project-tags"><span>Node.js</span><span>Express.js</span><span>TailwindCSS</span>
+                        </div>
+                        <div class="description-box glass-card">
+                            <p>A modern e-commerce hub for building block fans, developed with Node.js and a Tailwind
+                                CSS admin UI.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/TranHuuDat2004/BrickShop" target="_blank" aria-label="GitHub"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="brickshop.html" aria-label="Project Details"><i class="fas fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: ANIME.TV (Layout: Image Left, Details Right) -->
+                <div class="project-showcase-grid animate-on-scroll">
+                    <div class="showcase-card">
+                        <div class="showcase-header"><span>ANIME.TV Project</span></div>
+                        <div class="showcase-content">
+                            <div class="text-features">
+                                <h1>ANIME.TV<br>STREAMING SITE</h1>
+                                <h4 class="feature-title">FEATURES</h4>
+                                <ul>
+                                    <li>Personal project inspired by Crunchyroll, built with pure JavaScript.</li>
+                                    <li>Dynamic user experience for browsing and discovering anime.</li>
+                                    <li>Demonstrates strong front-end skills with vanilla JS, HTML, and CSS.</li>
+                                </ul>
+                            </div>
+                            <div class="image-gallery">
+                                <img src="assets/anime.tv/main-page-spy.PNG" alt="ANIME.TV Homepage"
+                                    class="showcase-img">
+                                <img src="assets/anime.tv/anime-detail.PNG" alt="ANIME.TV Homepage"
+                                    class="showcase-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-column">
+                        <h2>ANIME.TV</h2>
+                        <p class="project-category">Web, Streaming, Front-end</p>
+                        <div class="project-tags"><span>JavaScript</span><span>HTML5</span><span>CSS3</span></div>
+                        <div class="description-box glass-card">
+                            <p>A personal project inspired by Crunchyroll, built with pure JavaScript for a dynamic user
+                                experience.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/TranHuuDat2004/anime.tv" target="_blank" aria-label="GitHub"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="https://tranhuudat2004.github.io/anime.tv/" target="_blank"
+                                aria-label="Live Demo"><i class="fas fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- === BỔ SUNG: Nút xem tất cả dự án === -->
+            <div class="view-all-posts-container animate-on-scroll" style="margin-top: 4rem;">
+                <a href="project.html" class="btn btn-secondary">
+                    View All Projects <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- Section 5: Awards & Achievements (UPDATED WITH IMAGE) -->
+        <!-- ====================================================== -->
+        <section id="awards" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">Recognition & Accomplishments</div>
+                    <h2 class="section-title">Awards & Achievements</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Card for Award Details -->
+                <div class="award-card glass-card animate-on-scroll">
+                    <div class="award-info">
+                        <p class="award-date">April 2023</p>
+                        <h3 class="award-title">Consolation Prize</h3>
+                        <p class="award-competition">'Class Website Design Competition 2023'</p>
+                        <p class="award-issuer">Faculty of Information Technology, Ton Duc Thang University</p>
+                    </div>
+                    <div class="award-description">
+                        <ul>
+                            <li>
+                                Achieved prize in a university-wide competition with over 20 participating teams, as
+                                part of the "Youth Pioneering Digital Transformation" initiative.
+                            </li>
+                            <li>
+                                Developed a class website on WordPress aimed at fostering academic exchange,
+                                contributing significantly to UI/UX design and theme customization.
+                            </li>
+                            <li>
+                                Demonstrated strong teamwork, creativity, and the practical application of web
+                                development skills in a competitive environment.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- NEW: Card for the Award Photo -->
+                <div class="award-photo-card glass-card animate-on-scroll">
+                    <h3 class="photo-title">A Proud Moment</h3>
+                    <div class="photo-wrapper">
+                        <img src="assets/achive.jpg" alt="A memorable moment - Receiving award at TDTU 2023">
+                    </div>
+                    <p class="photo-caption">Receiving the design award at Ton Duc Thang University, 2023.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- Section 6: Experience (ĐÃ CẬP NHẬT CHO BẠN) -->
+        <!-- ====================================================== -->
+        <section id="experience" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">My professional journey</div>
+                    <h2 class="section-title">Experience & Education</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="timeline">
+                    <!-- Timeline Item 1: Học vấn -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <h3>Bachelor of Software Engineering</h3>
+                            <p class="timeline-meta">Ton Duc Thang University | 2022 - 2026</p>
+                            <p>Building a strong foundation in computer science, algorithms, and web development
+                                principles, while maintaining a GPA of 7.8/10.</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item 2: Kinh nghiệm làm việc -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <h3>Invigilator (Part-time)</h3>
+                            <p class="timeline-meta">Ton Duc Thang University | 2024 - Present</p>
+                            <p>Ensured the integrity of university examinations, developing strong discipline, attention
+                                to detail, and the ability to perform under pressure.</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item 3: Dự án cá nhân -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <h3>Personal Project Development</h3>
+                            <p class="timeline-meta">GitHub | 2022 - Present</p>
+                            <p>Continuously developing full-stack applications and interactive tools to sharpen my
+                                skills and explore new technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- Section 7:  Section Blog -->
+        <!-- ====================================================== -->
+        <section id="blog" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">Sharing my knowledge</div>
+                    <h2 class="section-title">From The Blog (Maintenance)</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Lưới chứa các bài blog nổi bật -->
+                <div class="blog-grid">
+                    <!-- Bài Blog 1: Mixamo & Unity -->
+                    <div class="blog-post-card glass-card animate-on-scroll">
+                        <a href="post-mixamo-unity.html" class="blog-card-image-link">
+                            <div class="blog-card-image">
+                                <!-- Bạn có thể tạo 1 ảnh thumbnail cho bài viết này -->
+                                <img src="assets/blog-thumb-unity.jpg" alt="A 3D character in Unity editor">
+                            </div>
+                        </a>
+                        <div class="blog-card-content">
+                            <div class="blog-card-tags">
+                                <span>Unity</span><span>Game Dev</span>
+                            </div>
+                            <h3><a href="post-mixamo-unity.html">Guide: Using Mixamo Assets in Unity</a></h3>
+                            <p>A standard workflow to correctly download and implement 3D characters and animations from
+                                Mixamo into your Unity projects.</p>
+                            <a href="post-mixamo-unity.html" class="blog-card-link">Read More <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Bài Blog 2 (Ví dụ) -->
+                    <div class="blog-post-card glass-card animate-on-scroll">
+                        <a href="#" class="blog-card-image-link">
+                            <div class="blog-card-image">
+                                <img src="assets/blog-thumb-css.jpg" alt="CSS Grid layout visualization">
+                            </div>
+                        </a>
+                        <div class="blog-card-content">
+                            <div class="blog-card-tags">
+                                <span>CSS</span><span>Frontend</span>
+                            </div>
+                            <h3><a href="#">A Deep Dive into Modern CSS Layouts</a></h3>
+                            <p>Exploring the power of Flexbox and CSS Grid to create complex, responsive web designs
+                                with cleaner and more efficient code.</p>
+                            <a href="#" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Bài Blog 3 (Ví dụ) -->
+                    <div class="blog-post-card glass-card animate-on-scroll">
+                        <a href="#" class="blog-card-image-link">
+                            <div class="blog-card-image">
+                                <img src="assets/blog-thumb-docker.jpg" alt="Docker container logos">
+                            </div>
+                        </a>
+                        <div class="blog-card-content">
+                            <div class="blog-card-tags">
+                                <span>Docker</span><span>DevOps</span>
+                            </div>
+                            <h3><a href="#">Getting Started with Docker for Web Devs</a></h3>
+                            <p>Learn how containerization with Docker can streamline your development workflow, ensuring
+                                consistency across environments.</p>
+                            <a href="#" class="blog-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút xem tất cả bài viết -->
+                <div class="view-all-posts-container animate-on-scroll">
+                    <a href="blog.html" class="btn btn-secondary">View All Posts</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- Section 8: Contact (ĐÃ CẬP NHẬT CHO BẠN) -->
+        <!-- ====================================================== -->
+        <section id="contact" class="content-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge">Let's work together</div>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info-wrapper glass-card animate-on-scroll">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span>Email</span>
+                                <a href="mailto:tranhuudat.cv@gmail.com">tranhuudat.cv@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <span>LinkedIn</span>
+                                <a href="https://linkedin.com/in/tranhuudat2004"
+                                    target="_blank">linkedin.com/in/tranhuudat2004</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <span>GitHub</span>
+                                <a href="https://github.com/TranHuuDat2004"
+                                    target="_blank">github.com/TranHuuDat2004</a>
+                            </div>
+                        </div>
+                        <h3 class="status-title">Current Status</h3>
+                        <div class="contact-status">
+                            <span class="green-dot"></span>
+                            Open for Web Developer Internship opportunities
+                        </div>
+                    </div>
+                    <!-- Form liên hệ - Bạn cần một dịch vụ backend như Formspree để nó hoạt động -->
+                    <form class="contact-form glass-card animate-on-scroll" action="https://formspree.io/f/YOUR_FORM_ID"
+                        method="POST">
+                        <h3>Send Me a Message</h3>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message <i
+                                class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer Chuyên nghiệp & Có Cấu trúc -->
-    <footer-placeholder></footer-placeholder>
+    <!-- ====================================================== -->
+    <!-- Footer (MỚI) -->
+    <!-- ====================================================== -->
 
-    <!-- Cursor Element HTML -->
-    <div class="cursor-element">
-        <img src="assets/cursor_blue.png" alt="Custom Cursor Icon">
-        <span class="cursor-text">Hữu Đạt</span>
-    </div>
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <!-- Cột 1: Giới thiệu -->
+            <div class="footer-column footer-about">
+                <h3 class="footer-logo"><span>tranhuudat</span>2004</h3>
+                <p>A passionate Web Developer dedicated to building beautiful and useful applications.</p>
+            </div>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
+            <!-- Cột 2: Quick Links -->
+            <div class="footer-column footer-links">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="assets/resume.pdf" download>Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Connect with Me -->
+            <div class="footer-column footer-connect">
+                <h4 class="footer-title">Connect with Me</h4>
+                <ul>
+                    <li><a href="https://github.com/TranHuuDat2004" target="_blank"><i class="fab fa-github"></i>
+                            GitHub</a>
+                    </li>
+                    <li><a href="https://linkedin.com/in/tranhuudat2004" target="_blank"><i
+                                class="fab fa-linkedin-in"></i>
+                            LinkedIn</a></li>
+                    <li><a href="mailto:tranhuudat.cv@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dòng Copyright ở dưới cùng -->
+        <div class="footer-copyright">
+            <div class="container">
+                <p>Copyright © <span id="currentYear"></span> Trần Hữu Đạt. All rights reserved.</p>
+                <p>Last updated: <b> October 14th 2025</b></p>
+            </div>
+        </div>
+    </footer>
+
+    <audio id="audio-source"></audio>
+    <script src="js/playlist.js"></script>
     <script src="js/scripts.js"></script>
-    <script src="js/github.js"></script>
-
-    <script src="js/header.js"></script>
-    <script src="js/footer.js"></script>
-
-    <!-- === JAVASCRIPT CẬP NHẬT CHO CHUYỂN NGÔN NGỮ VÀ CURSOR === -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // --- PHẦN 1: LOGIC CHUYỂN NGÔN NGỮ (ĐÃ CẬP NHẬT) ---
-
-            const translations = {
-                "en": {
-                    "metaDescription": "Personal Portfolio of Tran Huu Dat - Web Developer",
-                    "navHome": "Home",
-                    "navResume": "Resume",
-                    "navProjects": "Projects",
-                    "navContact": "Contact",
-                    "headerBadge": "Web Development · Full-Stack · Mobile",
-                    "headerGreeting": "Hello, I'm",
-                    "headerDescription": "A passionate Software Engineering student specializing in web and mobile application development, always eager to learn new technologies and contribute to innovative projects.",
-                    "btnMyResume": "My Resume",
-                    "btnMyProjects": "My Projects",
-                    "skillsTitle": "My Skills",
-                    "softSkills": "Soft Skills",
-                    "skillProblemSolving": "Problem Solving",
-                    "skillTeamwork": "Teamwork & Collaboration",
-                    "skillCommunication": "Effective Communication",
-                    "skillAdaptability": "Adaptability & Learning",
-                    "skillAttentionDetail": "Attention to Detail",
-                    "skillTimeManagement": "Time Management",
-                    "proSkills": "Professional Skills",
-                    "generalExpertise": "General Expertise",
-                    "skillWebDev": "Web Development",
-                    "skillMobileDev": "Mobile Development",
-                    "skillUiUx": "UI/UX Design Principles",
-
-                    "skillAttentionDetail": "Attention to Detail",
-                    "toolsTitle": "Tools",
-                    "designSoftware": "Design Software",
-                    "techStack": "Technical Stack",
-                    "githubProjectsTitle": "My Projects on GitHub",
-                    "exploreMoreProjects": "Explore more of my projects in the Repositories tab.",
-                    "aboutMeTitle": "About Me",
-                    "aboutMeIntro": "I am Tran Huu Dat, a dedicated software engineering student at Ton Duc Thang University.",
-                    "aboutMeDetails": "Passionate about creating efficient and user-friendly web and mobile solutions. I enjoy tackling challenging problems and continuously expanding my skill set in the ever-evolving world of technology. My goal is to leverage my technical abilities to build impactful applications and contribute to meaningful projects. Currently seeking opportunities to apply my knowledge and grow as a professional developer.",
-                    "btnNewVersionText": "Explore the New Version",
-                    "ready": "Ready for a new look?",
-                    // --- CÁC KEY MỚI CHO FOOTER ---
-                    "footerTagline": "A passionate Web Developer dedicated to building beautiful and useful applications.",
-                    "footerQuickLinks": "Quick Links",
-                    "footerConnect": "Connect with Me",
-                    "footerCopyright": "Copyright © Tran Huu Dat 2025",
-                    "btnAnimation": "Animation Page"
-
-                },
-                "vi": {
-                    "metaDescription": "Portfolio cá nhân của Trần Hữu Đạt - Lập trình viên Web",
-                    "navHome": "Trang chủ",
-                    "navResume": "Hồ sơ",
-                    "navProjects": "Dự án",
-                    "navContact": "Liên hệ",
-                    "headerBadge": "Phát triển Web · Full-Stack · Di động",
-                    "headerGreeting": "Xin chào, tôi là",
-                    "headerDescription": "Một sinh viên Kỹ thuật Phần mềm đầy nhiệt huyết, chuyên về phát triển ứng dụng web và di động, luôn mong muốn học hỏi công nghệ mới và đóng góp vào các dự án sáng tạo.",
-                    "btnMyResume": "Hồ sơ của tôi",
-                    "btnMyProjects": "Dự án của tôi",
-                    "skillsTitle": "Kỹ Năng Của Tôi",
-                    "proSkills": "Kỹ Năng Chuyên Môn",
-                    "softSkills": "Kỹ năng mềm",
-                    "skillProblemSolving": "Giải quyết vấn đề",
-                    "skillTeamwork": "Làm việc nhóm & Hợp tác",
-                    "skillCommunication": "Giao tiếp Hiệu quả",
-                    "skillAdaptability": "Khả năng Thích ứng",
-                    "skillAttentionDetail": "Chú ý đến Chi tiết",
-                    "skillTimeManagement": "Quản lý Thời gian",
-                    "generalExpertise": "Chuyên Môn Chung",
-                    "skillWebDev": "Phát triển Web",
-                    "skillMobileDev": "Phát triển Di động",
-                    "skillUiUx": "Thiết kế UI/UX",
-                    "skillAttentionDetail": "Chú ý đến chi tiết",
-                    "toolsTitle": "Công Cụ",
-                    "designSoftware": "Phần Mềm Thiết Kế",
-                    "techStack": "Công Nghệ Sử Dụng",
-                    "githubProjectsTitle": "Các Dự Án Của Tôi trên GitHub",
-                    "exploreMoreProjects": "Khám phá thêm các dự án của tôi trong tab Kho lưu trữ.",
-                    "aboutMeTitle": "Giới thiệu sơ lược về tôi",
-                    "aboutMeIntro": "Tôi là Trần Hữu Đạt, một sinh viên kỹ thuật phần mềm tận tâm tại trường Đại học Tôn Đức Thắng.",
-                    "aboutMeDetails": "Đam mê tạo ra các giải pháp web và di động hiệu quả và thân thiện với người dùng. Tôi thích giải quyết các vấn đề thách thức và liên tục mở rộng bộ kỹ năng của mình trong thế giới công nghệ không ngừng phát triển. Mục tiêu của tôi là tận dụng khả năng kỹ thuật của mình để xây dựng các ứng dụng có tầm ảnh hưởng và đóng góp vào các dự án ý nghĩa. Hiện đang tìm kiếm cơ hội để áp dụng kiến thức và phát triển như một lập trình viên chuyên nghiệp.",
-                    "btnNewVersionText": "Trải nghiệm Trang Web Hoàn Toàn Mới",
-                    "ready": "Sẵn sàng cho một giao diện mới?",
-                    // --- CÁC KEY MỚI CHO FOOTER ---
-                    "footerTagline": "Một lập trình viên Web đam mê xây dựng các ứng dụng đẹp và hữu ích.",
-                    "footerQuickLinks": "Liên kết nhanh",
-                    "footerConnect": "Kết nối với tôi",
-                    "footerCopyright": "Bản quyền © Trần Hữu Đạt 2025",
-                    "btnAnimation": " Trang hiệu ứng",
-                }
-            };
-
-            const languageSwitcher = document.querySelector('.language-switcher');
-            const currentFlag = languageSwitcher.querySelector('.current-flag');
-            const languageDropdown = languageSwitcher.querySelector('.language-dropdown');
-
-            const setLanguage = (lang) => {
-                document.querySelectorAll('[data-translate-key]').forEach(element => {
-                    const key = element.getAttribute('data-translate-key');
-                    if (translations[lang] && translations[lang][key]) {
-                        if (element.tagName === 'META' && element.name === 'description') {
-                            element.setAttribute('content', translations[lang][key]);
-                        } else {
-                            element.innerHTML = translations[lang][key];
-                        }
-                    }
-                });
-
-                document.documentElement.lang = lang;
-                const flagImg = document.getElementById('current-flag-img');
-                if (lang === 'en') {
-                    flagImg.src = 'assets/en.png';
-                    flagImg.alt = 'English';
-                } else {
-                    flagImg.src = 'assets/vn.png';
-                    flagImg.alt = 'Tiếng Việt';
-                }
-                localStorage.setItem('language', lang);
-            };
-
-            // **THAY ĐỔI 1: SỰ KIỆN CLICK ĐỂ MỞ/ĐÓNG DROPDOWN**
-            currentFlag.addEventListener('click', (event) => {
-                event.stopPropagation(); // Ngăn sự kiện click lan ra window
-                languageDropdown.classList.toggle('show');
-            });
-
-            // **THAY ĐỔI 2: ĐÓNG DROPDOWN KHI CLICK RA NGOÀI**
-            window.addEventListener('click', () => {
-                if (languageDropdown.classList.contains('show')) {
-                    languageDropdown.classList.remove('show');
-                }
-            });
-
-            // Gắn sự kiện click cho các lựa chọn ngôn ngữ
-            document.querySelectorAll('.lang-option').forEach(item => {
-                item.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const selectedLang = item.getAttribute('data-lang');
-                    setLanguage(selectedLang);
-                    // **THAY ĐỔI 3: TỰ ĐỘNG ĐÓNG DROPDOWN SAU KHI CHỌN**
-                    languageDropdown.classList.remove('show');
-                });
-            });
-
-            // Tải ngôn ngữ đã lưu khi vào trang
-            const savedLang = localStorage.getItem('language') || 'vi';
-            setLanguage(savedLang);
-
-
-            // --- PHẦN 2: LOGIC CURSOR TƯƠNG TÁC (Giữ nguyên) ---
-            const cursorElement = document.querySelector('.cursor-element');
-            if (cursorElement) { // Chỉ chạy script nếu có phần tử cursor
-                const cursorTextElement = cursorElement.querySelector('.cursor-text');
-                const gridItems = document.querySelectorAll('.interactive-grid .grid-item');
-
-                const autoTexts = ["Hello!", "I'm Tran Huu Dat", "I'm a Web Developer", "I'm looking for a job", "Thanks for visiting!"];
-
-                function updateCursorPosition(x, y) { /* ... giữ nguyên ... */
-                    if (cursorElement.classList.contains('hidden-by-interaction')) {
-                        if (cursorElement.style.opacity !== '0') cursorElement.style.opacity = '0';
-                        return;
-                    }
-                    if (cursorElement.style.opacity !== '1' && cursorElement.classList.contains('visible')) {
-                        cursorElement.style.opacity = '1';
-                    }
-                    cursorElement.style.left = x + 'px';
-                    cursorElement.style.top = y + 'px';
-                    if (!cursorElement.classList.contains('visible')) {
-                        cursorElement.classList.add('visible');
-                    }
-                }
-                function changeCursorTextWithFade(newText) { /* ... giữ nguyên ... */
-                    if (!cursorTextElement || cursorTextElement.isTextFading || cursorTextElement.textContent === newText) return;
-                    cursorTextElement.isTextFading = true;
-                    cursorTextElement.classList.add('fade-out');
-                    setTimeout(() => {
-                        cursorTextElement.textContent = newText;
-                        cursorTextElement.classList.remove('fade-out');
-                        cursorTextElement.isTextFading = false;
-                    }, 300);
-                }
-                function updateAutoCursorText() { /* ... giữ nguyên ... */
-                    let newTextToShow; let isOverGridItem = false; let currentGridItemText = null;
-                    if (cursorElement.classList.contains('hidden-by-interaction')) return;
-                    const cursorRect = cursorElement.getBoundingClientRect();
-                    for (const item of gridItems) {
-                        const itemRect = item.getBoundingClientRect();
-                        if (cursorRect.right > itemRect.left && cursorRect.left < itemRect.right && cursorRect.bottom > itemRect.top && cursorRect.top < itemRect.bottom) {
-                            if (item.dataset.text) { isOverGridItem = true; currentGridItemText = item.dataset.text; break; }
-                        }
-                    }
-                    if (isOverGridItem) { newTextToShow = currentGridItemText; } else {
-                        newTextToShow = autoTexts[autoTextCurrentIndex];
-                        autoTextCurrentIndex = (autoTextCurrentIndex + 1) % autoTexts.length;
-                    }
-                    changeCursorTextWithFade(newTextToShow);
-                }
-
-                document.addEventListener('mousemove', (e) => updateCursorPosition(e.clientX, e.clientY));
-                const interactiveElements = document.querySelectorAll('a, button, input, .form-control, .current-flag');
-                interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => cursorElement.classList.add('hidden-by-interaction'));
-                    el.addEventListener('mouseleave', () => cursorElement.classList.remove('hidden-by-interaction'));
-                });
-                if (gridItems.length > 0 && cursorTextElement) {
-                    gridItems.forEach(item => {
-                        item.addEventListener('mouseenter', () => { if (item.dataset.text) changeCursorTextWithFade(item.dataset.text); });
-                    });
-                    updateAutoCursorText();
-                    setInterval(updateAutoCursorText, 3000);
-                }
-                setTimeout(() => { if (!cursorElement.classList.contains('hidden-by-interaction')) cursorElement.classList.add('visible'); }, 100);
-            }
-        });
-    </script>
-
 </body>
 
 </html>
