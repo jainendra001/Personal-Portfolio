@@ -1,0 +1,241 @@
+/* --- Cài đặt biến màu và font chữ --- */
+:root {
+    --font-primary: 'Inter', sans-serif; /* Bạn có thể import font từ Google Fonts */
+    
+    /* Dark Theme (Mặc định) */
+    --color-bg: #121212;
+    --color-surface: #1e1e1e;
+    --color-primary: #bb86fc;
+    --color-text: #e0e0e0;
+    --color-text-secondary: #a0a0a0;
+    --color-border: #333333;
+}
+
+body.light-mode {
+    /* Light Theme */
+    --color-bg: #f5f5f5;
+    --color-surface: #ffffff;
+    --color-primary: #6200ee;
+    --color-text: #212121;
+    --color-text-secondary: #5f5f5f;
+    --color-border: #e0e0e0;
+}
+
+/* --- Reset & Thiết lập chung --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+a:hover {
+    opacity: 0.8;
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-top: 2rem;}
+
+/* --- Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+.nav-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+.nav-links a {
+    margin: 0 1rem;
+    color: var(--color-text-secondary);
+}
+.nav-links a.active, .nav-links a:hover {
+    color: var(--color-text);
+}
+
+/* --- Nút chuyển Theme --- */
+/* --- Nút chuyển Theme --- */
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden; /* Giữ để đảm bảo icon không tràn ra ngoài */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--color-border);
+}
+
+.theme-toggle-btn .fa-sun, 
+.theme-toggle-btn .fa-moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Thêm opacity vào transition */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* == Trạng thái Dark Mode (Mặc định) == */
+/* Mặt trăng hiện ra */
+.theme-toggle-btn .fa-moon {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+/* Mặt trời bị ẩn (đẩy lên trên và mờ đi) */
+.theme-toggle-btn .fa-sun {
+    transform: translate(-50%, -150%); /* Đẩy lên trên */
+    opacity: 0;
+}
+
+/* == Trạng thái Light Mode (Khi body có class 'light-mode') == */
+/* Mặt trăng bị ẩn (đẩy xuống dưới và mờ đi) */
+body.light-mode .theme-toggle-btn .fa-moon {
+    transform: translate(-50%, 150%); /* Đẩy xuống dưới */
+    opacity: 0;
+}
+/* Mặt trời hiện ra */
+body.light-mode .theme-toggle-btn .fa-sun {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+/* --- Trang Blog Chính --- */
+.blog-hero {
+    text-align: center;
+    padding: 3rem 0;
+}
+.blog-hero h1 {
+    background: linear-gradient(90deg, #bb86fc, #a082e6, #8c7ddb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.blog-hero p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+}
+
+.post-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.post-tags { margin-bottom: 1rem; }
+.tag {
+    background-color: rgba(187, 134, 252, 0.1);
+    color: var(--color-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+.post-card-title {
+    margin-top: 0;
+}
+.post-card-excerpt {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+.read-more-btn {
+    font-weight: bold;
+}
+
+/* --- Trang Chi Tiết Bài Viết --- */
+.blog-post {
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 8px;
+}
+.post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.post-meta {
+    color: var(--color-text-secondary);
+    margin: 1rem 0;
+}
+.post-content p, .post-content ul {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+.post-content ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+.post-content li {
+    margin-bottom: 0.75rem;
+}
+.post-content strong {
+    color: var(--color-text);
+}
+.post-content code {
+    background-color: var(--color-bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.post-content pre {
+    background-color: var(--color-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin-bottom: 1.5rem;
+}
+.post-content pre code {
+    padding: 0;
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+}

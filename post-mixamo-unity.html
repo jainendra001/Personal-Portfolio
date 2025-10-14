@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Mixamo cho Unity | Blog</title>
+    <link rel="stylesheet" href="css/blog-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="#" class="nav-brand">tranhuudat2004</a>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="#">Projects</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="blog-post">
+            <header class="post-header">
+                <h1>Hướng Dẫn: Tải Model & Animation Từ Mixamo Cho Unity (Chuẩn 2025)</h1>
+                <div class="post-meta">
+                    <span>Đăng bởi Trần Hữu Đạt</span> |
+                    <span>Ngày 14 tháng 10, 2025</span>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Unity</span>
+                    <span class="tag">Game Dev</span>
+                    <span class="tag">3D</span>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <p>Khi làm game, việc tìm kiếm model nhân vật 3D có sẵn animation là một trong những bước đầu tiên.
+                    Mixamo của Adobe là một công cụ tuyệt vời và miễn phí cho việc này. Tuy nhiên, để tải tài nguyên
+                    đúng cách và tối ưu cho Unity, bạn cần tuân theo một quy trình chuẩn. Dưới đây là hướng dẫn chi tiết
+                    nhất.</p>
+
+                <h2>Quy trình tải đúng cách</h2>
+                <p>Bạn sẽ lặp lại thao tác <strong>Tìm kiếm → Chọn → Tải về</strong> cho mỗi animation bạn cần. Đây là
+                    cách làm linh hoạt và giúp quản lý project gọn gàng.</p>
+
+                <p>Ví dụ, để có 2 trạng thái cơ bản là <strong>Idle (đứng yên)</strong> và <strong>Walking (đi
+                        bộ)</strong>, bạn cần tải ít nhất 3 file riêng biệt.</p>
+
+                <h3>1. File 1: Nhân vật ở tư thế T-Pose (Quan trọng nhất)</h3>
+                <p>Đây là file chứa model 3D hoàn chỉnh (lưới, xương, texture).</p>
+                <ul>
+                    <li>Tìm animation với từ khóa: <code>"T-Pose"</code>.</li>
+                    <li>Nhấn nút <strong>Download</strong>.</li>
+                    <li>Trong cửa sổ thiết lập, chọn <strong>Skin: <code>With Skin</code></strong>. Đây là bước quyết
+                        định để tải cả ngoại hình nhân vật.</li>
+                    <li>Lưu file với tên gợi nhớ, ví dụ: <code>MyCharacter.fbx</code>.</li>
+                </ul>
+
+                <h3>2. File 2: Animation Đứng yên (Idle)</h3>
+                <p>File này sẽ chỉ chứa dữ liệu chuyển động, không cần model đi kèm.</p>
+                <ul>
+                    <li>Tìm animation với từ khóa: <code>"Idle"</code> và chọn một kiểu bạn thích.</li>
+                    <li>Nhấn nút <strong>Download</strong>.</li>
+                    <li>Trong cửa sổ thiết lập, chọn <strong>Skin: <code>Without Skin</code></strong>. Việc này giúp
+                        file cực nhẹ.</li>
+                    <li>Lưu file với tên: <code>Idle.fbx</code>.</li>
+                </ul>
+
+                <h3>3. File 3: Animation Đi bộ (Walking)</h3>
+                <p>Tương tự như file Idle, file này cũng chỉ chứa dữ liệu animation.</p>
+                <ul>
+                    <li>Tìm animation với từ khóa: <code>"Walking"</code> và chọn kiểu phù hợp.</li>
+                    <li>Nhấn nút <strong>Download</strong>.</li>
+                    <li>Trong cửa sổ thiết lập, chọn <strong>Skin: <code>Without Skin</code></strong>.</li>
+                    <li>Lưu file với tên: <code>Walking.fbx</code>.</li>
+                </ul>
+
+                <h2>Kết quả</h2>
+                <p>Sau khi tải xong, bạn sẽ có một thư mục chứa các file như sau, sẵn sàng để import vào Unity và bắt
+                    đầu tạo Animator Controller:</p>
+                <pre><code>/YourAssetsFolder
+├── MyCharacter.fbx
+├── Idle.fbx
+├── Walking.fbx
+├── (Nếu cần) Running.fbx
+└── (Nếu cần) Jump.fbx
+</code></pre>
+                <p>Đây là cách làm chuẩn và hiệu quả nhất khi làm việc với Mixamo và Unity, giúp bạn quản lý tài nguyên
+                    một cách chuyên nghiệp.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Trần Hữu Đạt. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/blog-script.js"></script>
+</body>
+
+</html>
