@@ -1180,18 +1180,6 @@ a:hover {
 }
 
 /* ====================================================== */
-/* --- FOOTER --- */
-/* ====================================================== */
-.main-footer {
-    padding: 2rem 0;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 4rem;
-}
-
-/* ====================================================== */
 /* --- ANIMATION & RESPONSIVE (LAYOUT SỬA LỖI) --- */
 /* ====================================================== */
 
@@ -1386,13 +1374,12 @@ footer a {
 /* --- FOOTER (THAY THẾ TOÀN BỘ CSS FOOTER CŨ) --- */
 /* ====================================================== */
 .main-footer {
-    background-color: #1a1a1d;
-    /* Một màu nền tối hơn một chút */
+    background-color: var(--color-surface); /* << SỬA Ở ĐÂY */
     color: var(--text-secondary);
     padding-top: 4rem;
-    /* Tăng padding trên */
     border-top: 1px solid var(--border-color);
     margin-top: 4rem;
+    transition: background-color 0.3s, border-color 0.3s; /* Thêm transition cho mượt */
 }
 
 .footer-container {

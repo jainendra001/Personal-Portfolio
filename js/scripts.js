@@ -259,14 +259,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main section');
 
     function moveIndicator(targetLink) {
-        if (!navIndicator) return; // << THÊM DÒNG NÀY
+    // Kiểm tra an toàn, nếu không có vạch chỉ báo thì không làm gì cả
+    if (!navIndicator) return;
 
-        if (!targetLink) {
-            navIndicator.style.opacity = '0';
-            return;
-        }
-
+    // Nếu không có link mục tiêu (ví dụ: cuộn ra khỏi vùng các section), ẩn vạch chỉ báo đi
+    if (!targetLink) {
+        navIndicator.style.opacity = '0';
+        return;
     }
+
+    // === PHẦN LOGIC BỊ THIẾU ĐÂY ===
+    // Lấy thông tin vị trí và kích thước của link mục tiêu
+    const linkRect = targetLink.getBoundingClientRect();
+    // Lấy thông tin vị trí của thanh điều hướng (để tính toán vị trí tương đối)
+    const navRect = targetLink.parentElement.getBoundingClientRect();
+
+    // Di chuyển và thay đổi kích thước của vạch chỉ báo
+    navIndicator.style.width = `${linkRect.width}px`;
+    navIndicator.style.left = `${linkRect.left - navRect.left}px`;
+    navIndicator.style.opacity = '1';
+
+    // Cập nhật class 'is-active' cho các link
+    navLinks.forEach(link => link.classList.remove('is-active'));
+    targetLink.classList.add('is-active');
+}
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => moveIndicator(e.currentTarget));
