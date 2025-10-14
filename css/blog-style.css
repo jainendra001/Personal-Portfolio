@@ -21,44 +21,116 @@ body.light-mode {
     --color-border: #e0e0e0;
 }
 
-/* --- Reset & Thiết lập chung --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* --- [CẬP NHẬT] Các biến màu từ portfolio chính --- */
+:root {
+    /* ... các biến màu cũ của blog vẫn giữ ... */
+    
+    /* Thêm các biến màu mới từ header của bạn */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --gradient-purple: #a855f7;
+    --gradient-pink: #ec4899;
+    --resume-button-bg: #f4f4f5; /* Màu cho nút resume */
 }
 
-body {
-    font-family: var(--font-primary);
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.7;
-    transition: background-color 0.3s ease, color 0.3s ease;
+body.light-mode {
+    /* ... các biến light-mode cũ của blog vẫn giữ ... */
+    --border-color: rgba(0, 0, 0, 0.1);
+    --resume-button-bg: #18181b;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
+/* --- [MỚI] THANH TIẾN TRÌNH & HEADER --- */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    width: 0%;
+    z-index: 1000;
 }
 
-a {
-    color: var(--color-primary);
+.main-header {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%); /* Luôn hiển thị */
+    z-index: 999;
+    width: 90%;
+    max-width: 960px;
+    background: rgba(24, 24, 27, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between; /* Căn đều các mục */
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+body.light-mode .main-header {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+.logo {
+    font-weight: bold;
+    font-size: 1.25rem;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    color: var(--text-text);
 }
-a:hover {
-    opacity: 0.8;
+.logo span {
+    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-h1, h2, h3 {
-    line-height: 1.3;
-    margin-bottom: 1rem;
+.header-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-nav a {
+    padding: 0.5rem 0.75rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s;
+    border-radius: 5px;
+}
+.main-nav a:hover {
     color: var(--color-text);
 }
+/* Style đơn giản cho link active trên blog */
+.main-nav a.active {
+    color: var(--color-text);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+body.light-mode .main-nav a.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 1.75rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-top: 2rem;}
+.resume-button {
+    background: var(--resume-button-bg);
+    color: var(--color-bg); /* Đảo màu để tương phản */
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.3s, color 0.3s;
+    white-space: nowrap; /* Chống xuống dòng */
+}
+.resume-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* Đẩy nội dung chính xuống để không bị header che */
+.container {
+    padding-top: 8rem; /* Tăng padding-top */
+}
+
 
 /* --- Navbar --- */
 .navbar {
@@ -82,7 +154,7 @@ h2 { font-size: 1.75rem; border-bottom: 1px solid var(--color-border); padding-b
     color: var(--color-text);
 }
 
-/* --- Nút chuyển Theme --- */
+
 /* --- Nút chuyển Theme --- */
 .theme-toggle-btn {
     background: none;
