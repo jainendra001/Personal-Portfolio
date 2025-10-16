@@ -14,9 +14,9 @@ Welcome to the source code repository for my personal portfolio website, meticul
   <a href="https://github.com/TranHuuDat2004/tranhuudat2004.github.io/releases/latest" target="_blank">
     <img src="https://img.shields.io/github/v/release/TranHuuDat2004/tranhuudat2004.github.io?style=for-the-badge&logo=github" alt="Latest Release"/>
   </a>
-  <a href="https://github.com/TranHuuDat2004/Galactic-Guardian" target="_blank">
+  <!-- <a href="https://github.com/TranHuuDat2004/Galactic-Guardian" target="_blank">
     <img src="https://img.shields.io/github/repo-size/TranHuuDat2004/tranhuudat2004.github.io?style=for-the-badge&logo=github" alt="GitHub repo size"/>
-  </a>
+  </a> -->
 </p>
 
 ## ✨ Key Features
