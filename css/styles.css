@@ -1201,6 +1201,112 @@ code, pre {
 }
 
 /* ====================================================== */
+/* --- NEW TIMELINE STYLES (Experience & Education) --- */
+/* ====================================================== */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--color-border);
+    top: 0;
+    bottom: 0;
+    left: 100px; /* Position the line on the left */
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+    align-items: flex-start;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-year {
+    position: absolute;
+    left: 100px; /* Align with the vertical line */
+    transform: translateX(-50%);
+    top: 0;
+    width: 80px;
+    height: 30px;
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 1;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.timeline-card {
+    flex: 1;
+    margin-left: 150px; /* Space for the year and line */
+    padding: 1.5rem;
+    border-radius: var(--border-radius-card);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.timeline-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary-text);
+}
+
+.timeline-card .timeline-meta {
+    color: var(--color-secondary-text);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-card p {
+    color: var(--color-secondary-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 20px; /* Adjust line position for smaller screens */
+    }
+
+    .timeline-year {
+        left: 20px; /* Adjust year position */
+        width: 70px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .timeline-card {
+        margin-left: 110px; /* Adjust card position */
+        padding: 1rem;
+    }
+
+    .timeline-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-card .timeline-meta,
+    .timeline-card p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ====================================================== */
 /* --- CONTACT SECTION --- */
 /* ====================================================== */
 .contact-grid {
