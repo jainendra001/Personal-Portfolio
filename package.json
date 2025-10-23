@@ -1,0 +1,22 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "This repository hosts my personal portfolio website, showcasing my projects, skills, and experience. The website is built using HTML, CSS, and JavaScript, providing a clean and interactive user experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jainendra001/Personal-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jainendra001/Personal-Portfolio/issues"
+  },
+  "homepage": "https://github.com/jainendra001/Personal-Portfolio#readme",
+  "devDependencies": {}
+}

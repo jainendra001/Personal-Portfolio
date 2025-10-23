@@ -1,85 +1,91 @@
-# Trần Hữu Đạt - Personal Portfolio 2025
+# Personal Portfolio
 
-![Trần Hữu Đạt Portfolio Banner](assets/profile.PNG) <!-- THAY THẾ bằng ảnh chụp màn hình trang chủ portfolio mới của bạn -->
+This repository hosts my personal portfolio website, showcasing my projects, skills, and experience. The website is built using HTML, CSS, and JavaScript, providing a clean and interactive user experience.
 
-Welcome to the source code repository for my personal portfolio website, meticulously redesigned for 2025. This site acts as a dynamic showcase of my skills, featured projects, and professional journey. It features a modern, dark-themed, single-page design enhanced with fluid animations and rich interactive elements to provide an immersive user experience.
+## Project Structure and File Explanations
 
-<p align="center">
-  <a href="https://github.com/TranHuuDat2004" target="_blank">
-    <img src="https://img.shields.io/badge/GITHUB-TranHuuDat2004-purple?style=for-the-badge&logo=github&logoColor=white" alt="Author: TranHuuDat2004"/>
-  </a>
-  <a href="https://tranhuudat2004.github.io/" target="_blank">
-    <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel" alt="Live Demo"/>
-  </a>
-  <a href="https://github.com/TranHuuDat2004/tranhuudat2004.github.io/releases/latest" target="_blank">
-    <img src="https://img.shields.io/github/v/release/TranHuuDat2004/tranhuudat2004.github.io?style=for-the-badge&logo=github" alt="Latest Release"/>
-  </a>
-  <!-- <a href="https://github.com/TranHuuDat2004/Galactic-Guardian" target="_blank">
-    <img src="https://img.shields.io/github/repo-size/TranHuuDat2004/tranhuudat2004.github.io?style=for-the-badge&logo=github" alt="GitHub repo size"/>
-  </a> -->
-</p>
+This section provides an overview of the files and directories within this repository, explaining their purpose and relevance to the portfolio website.
 
-## ✨ Key Features
+### Root Directory Files
 
-This portfolio has been rebuilt from the ground up to incorporate modern web features:
+- `index.html`: The main entry point of the portfolio website. This is typically the homepage that introduces me and provides navigation to other sections.
+- `blog.html`: A dedicated page for blog posts or articles. This section might contain technical write-ups, project insights, or personal reflections.
+- `download-resume.html`: A page or link dedicated to allowing visitors to download my resume.
+- `project.html`: This page likely showcases various projects I have worked on, providing details, images, and links to live demos or repositories.
+- `post-mixamo-unity.html`: A specific blog post or article related to integrating Mixamo animations with Unity.
+- `post-unity-githubpages.html`: A specific blog post or article detailing the process of deploying Unity projects to GitHub Pages.
+- `new-version.html`: (Potentially redundant - see `redundant_files.md`) This file might be an older version or an experimental page. Its purpose needs clarification.
+- `LICENSE`: Contains the licensing information for the project, typically specifying how others can use, modify, and distribute the code.
+- `.gitattributes`: Defines attributes for pathnames, often used to normalize line endings or specify merge strategies for different file types.
+- `.nojekyll`: A file used to prevent GitHub Pages from processing the site with Jekyll, allowing for custom static site deployments.
+- `README.md`: This file (the one you are reading) provides a general overview of the project, its structure, and how to navigate it.
 
-*   **🎨 Modern Dark-Themed UI:** A sleek, visually appealing dark mode interface that's easy on the eyes and highlights content effectively.
-*   **💡 Light/Dark Mode Toggle:** Users can seamlessly switch between dark and light themes. Their preference is automatically saved in `localStorage` for future visits.
-*   **🚀 Single-Page Architecture:** A smooth, continuous scrolling experience with all sections accessible from a single page (`index.html`), enhanced by an auto-hiding sticky header.
-*   **📜 Dynamic Content & Animations:**
-    *   **Scroll-Triggered Animations:** Elements gracefully fade and slide into view as the user scrolls down the page, powered by `IntersectionObserver`.
-    *   **Live GitHub Skill Bars:** The "Technical Stack" section dynamically fetches data from the GitHub API to calculate and display skill percentages, providing a real-time reflection of my coding activity.
-    *   **Interactive Alternating Project Layout:** Featured projects are presented in an engaging, alternating showcase layout that highlights key features and visuals.
-*   **📚 Integrated Blog System:**
-    *   A dedicated **Blog Section** on the main page previews the latest articles.
-    *   Separate, fully-styled pages for the main blog (`blog.html`) and individual posts (`post-*.html`) ensure a consistent experience.
-*   **🎵 Embedded Music Player:** A subtle, fixed music player widget provides background music with basic controls (play/pause, next/previous).
-*   **📱 Fully Responsive Design:** Meticulously crafted with custom CSS (Flexbox & Grid) to ensure a flawless experience on all devices, from large desktops to mobile phones.
+### `assets/` Directory
 
-## 🛠️ Technology Stack
+This directory contains all static assets used across the website, including images, icons, music, and other media.
 
-*   **HTML5:** Semantic markup for a well-structured and accessible site.
-*   **CSS3:** Advanced custom styling, including:
-    *   **CSS Variables:** For easy theme management (Light/Dark mode).
-    *   **Flexbox & Grid:** For creating complex, responsive layouts.
-    *   **Animations & Transitions:** For smooth, scroll-triggered effects and interactive elements.
-*   **JavaScript (ES6+):** Powers all the dynamic and interactive functionalities:
-    *   **GitHub API Integration:** Fetches repository data to dynamically generate skill bars.
-    *   **`IntersectionObserver` API:** Efficiently handles scroll-based animations.
-    *   **DOM Manipulation:** Manages all UI interactions, including the theme toggle, music player, and header behavior.
-*   **Hosting:** Deployed as a static website via [GitHub Pages](https://pages.github.com/).
+- `.DS_Store`: (Redundant - see `redundant_files.md`) macOS specific file, not part of the project.
+- `achive.jpg`, `banner.png`, `coding.gif`, `cursor_blue.png`, `cursor.png`, `en.png`, `favicon.ico`, `favicon.png`, `full1.PNG`, `full2.PNG`, `hand_blue.png`, `hand.png`, `logo_animetv.png`, `logo_aptis.png`, `logo_aquatrack.png`, `logo_brickshop.png`, `logo_handwriting.png`, `logo_mymusic.png`, `logo_omacha.png`, `logo_puzzle.png`, `logo_puzzle0.png`, `logo_zstyle_resized.png`, `Mahiru in casual outfit.png`, `Mahiru in casual outfit2.png`, `Mahiru in casual outfit3.png`, `mahiru_full_body.png`, `mahiru.png`, `my_image.jpg`, `my_image1.jpg`, `my-image.jpg`, `profile.PNG`, `song-cover.png`, `summary.PNG`, `tap7.png`, `tap12.png`, `type.gif`, `vn.png`, `wallpaper0.jpg`, `wallpaper1.png`, `wallpaper2.jpg`, `wallpaper3.jpg`, `wallpaper4.avif`, `wallpaper5.webp`, `wallpaper6.jpg`, `wallpaper7.jpg`, `web v2.0.png`: Various images and media files used for visual elements, backgrounds, logos, and project showcases. Many of these are likely screenshots or promotional images for specific projects. Some might be redundant or older versions (see `redundant_files.md`).
 
-## 🚀 How to View / Local Setup
+#### `assets/anime.tv/`
 
-1.  **Live Site:**
-    *   The portfolio is live at: [https://tranhuudat2004.github.io/](https://tranhuudat2004.github.io/)
+Contains assets related to an "Anime.tv" project showcase.
 
-2.  **Local Setup:**
-    *   Clone this repository:
-        ```bash
-        git clone https://github.com/TranHuuDat2004/tranhuudat2004.github.io.git
-        ```
-    *   Navigate into the cloned directory:
-        ```bash
-        cd tranhuudat2004.github.io
-        ```
-    *   Open `index.html` (or `new-version.html` if you haven't renamed it yet) directly in your web browser. No special build steps are required.
+- `anime-detail.PNG`, `animetv_resized.png`, `gallery.PNG`, `game.PNG`, `gif.PNG`, `image-detail.PNG`, `main-page-spy.PNG`, `main-page.PNG`, `manga-detail.PNG`, `manga.PNG`, `reading-manga.PNG`, `watch-video.PNG`: Screenshots and images demonstrating the features and UI of the Anime.tv project.
 
-## 🌟 Future Enhancements (Ideas)
+#### `assets/brickshop/`
 
-*   Add more detailed project pages for each item in the showcase.
-*   Implement a search functionality for the blog.
-*   Further performance optimizations, such as lazy loading for images.
+Contains assets related to a "Brickshop" e-commerce project showcase.
 
-## 👤 Author & Contact
+- `admin_add_product.png`, `admin_dashboard.png`, `admin_manage_orders.png`, `admin_manage_products.png`, `admin_manage_users.png`, `doraemon_theme.png`, `homepage.png`, `keeppley_product.png`, `keeppley.png`, `lego_product.png`, `lego.png`, `logo.png`, `order.png`, `product_detail.png`, `product.png`, `qman.png`, `settings_avatar.png`, `settings_profile.png`, `settings_social.png`: Screenshots and images showcasing the Brickshop project, including admin panels, product displays, and user settings.
 
-*   **Trần Hữu Đạt**
-    *   **GitHub:** [@TranHuuDat2004](https://github.com/TranHuuDat2004)
-    *   **LinkedIn:** [linkedin.com/in/tranhuudat2004](https://linkedin.com/in/tranhuudat2004)
-    *   **Email:** `tranhuudat.cv@gmail.com`
+#### `assets/covers/`
 
----
+Contains cover art for music files.
 
-<p align="center">
-  Thank you for visiting my portfolio. I'm always open to connecting and discussing technology!
-</p>
+- `Alan_Walker_All_Falls_Down.jpg`, `faded.png`, `lily.jpg`, `on&on.png`, `spectre.jpg`, `that girl.png`, `Way Back Home.jpg`: Image files used as cover art for the music tracks in the `assets/music/` directory.
+
+#### `assets/icons/`
+
+Contains various technology and general icons.
+
+- `css.png`, `dart.png`, `default.png`, `docker.png`, `github-dark.png`, `github.png`, `html.png`, `java-dark.png`, `java.png`, `java.webp`, `java1.png`, `javascript.png`, `js.webp`, `Jupyter Notebook (2).png`, `JupyterNotebook.png`, `php.png`, `php.svg`, `python.png`, `TypeScript.png`: Icons representing different programming languages, tools, and platforms, likely used in a "skills" or "technologies" section of the portfolio. Some might be redundant (see `redundant_files.md`).
+
+#### `assets/music/`
+
+Contains audio files.
+
+- `Alan Walker - All Falls Down.mp3`, `Alan Walker - Faded.mp3`, `Alan Walker - The Spectre (Lyrics).mp3`, `Alan Walker, K-391 & Emelie Hollow - Lily.mp3`, `Cartoon, Jéja - On & On.mp3`, `Conor Maynard - Way Back Home.mp3`, `That Girl - Olly Murs.mp3`: MP3 audio files, possibly used for a music player feature or as background music on certain pages.
+
+#### `assets/omacha/`
+
+Contains assets related to an "Omacha" project showcase.
+
+- `about1.jpg` through `about5.jpg`, `add_product.jpg`, `admin1.jpg`, `admin2.jpg`, `blog_detail_1.jpg`, `blog_detail_2.jpg`, `blog.jpg`, `cart.jpg`, `checkout.jpg`, `checkout1.jpg`, `checkout2.jpg`, `comment_blog_2.jpg`, `comment_blog.jpg`, `comment_product_2.jpg`, `comment_product.jpg`, `contact.jpg`, `create_admin.jpg`, `edit_product.jpg`, `filter.jpg`, `footer.jpg`, `Home1.jpg` through `Home5.jpg`, `invoice.jpg`, `login_admin.jpg`, `login.jpg`, `logo.png`, `manage_comment.jpg`, `manage_order.jpg`, `manage_product.jpg`, `manage_user.jpg`, `product_detail_2.jpg`, `product_detail_3.jpg`, `product_detail.jpg`, `product.jpg`, `Screen Recording 2024-05-16 at 00.01.07.mov`, `search_product.jpg`, `search.jpg`, `signup.jpg`, `thankyou.jpg`, `wishlist.jpg`: A large collection of screenshots and images detailing the "Omacha" project, likely an e-commerce or content management system. `Screen Recording 2024-05-16 at 00.01.07.mov` is redundant (see `redundant_files.md`).
+
+#### `assets/resume/`
+
+Contains resume documents.
+
+- `JainendraTripathy_CV.pdf`, `JainendraTripathy_ML.pdf`: PDF versions of my curriculum vitae (CV) or resume, possibly one general and one tailored for Machine Learning roles.
+
+#### `assets/star/`
+
+- `favicon.png`: (Potentially redundant - see `redundant_files.md`) A favicon, possibly specific to a sub-project or an older version.
+
+### `css/` Directory
+
+Contains all Cascading Style Sheets (CSS) files that define the visual presentation of the website.
+
+- `blog-style.css`: Styles specific to the blog pages.
+- `projects-page.css`: Styles specific to the projects showcase page.
+- `resume-page.css`: Styles specific to the resume download or display page.
+- `styles.css`: The main stylesheet, likely containing global styles and common UI elements.
+
+### `js/` Directory
+
+Contains all JavaScript files that provide interactivity and dynamic functionality to the website.
+
+- `blog-script.js`: JavaScript functionalities specific to the blog pages, such as dynamic content loading or interactive elements.
+- `playlist.js`: JavaScript for managing and playing music, likely interacting with the audio files in `assets/music/`.
+- `scripts.js`: The main JavaScript file, likely containing global scripts, event listeners, and general interactive features for the portfolio.

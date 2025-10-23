@@ -1,29 +1,34 @@
 /* ====================================================== */
-/* --- BIẾN MÀU VÀ THIẾT LẬP CHUNG --- */
+/* --- COLOR PALETTE & GENERAL SETTINGS --- */
 /* ====================================================== */
 :root {
-    /* Bảng màu mới */
-    --bg-dark: #121212;
-    --bg-card: rgba(28, 28, 31, 0.6);
-    --border-color: rgba(255, 255, 255, 0.1);
-    --text-primary: #f4f4f5;
-    --text-secondary: #a1a1aa;
-    --gradient-purple: #c084fc;
-    --gradient-pink: #f472b6;
-    --gradient-green: #4ade80;
-    --gradient-yellow: #facc15;
-    --resume-button-bg: var(--gradient-green);
+    /* Dark Mode Colors */
+    --color-primary-bg: #0F1116; /* Charcoal Night */
+    --color-surface-bg: #1A1D24; /* Slate Shadow */
+    --color-primary-text: #E8EAED; /* Soft White */
+    --color-secondary-text: #9CA3AF; /* Cool Gray */
+    --color-accent: #4EA8DE; /* Tech Blue */
+    --color-accent-light: #7DD3FC; /* Sky Blue */
+    --color-border: #2E3239; /* Graphite Line */
+    --color-error: #F87171; /* Coral Red */
+    --color-success: #34D399; /* Mint Green */
+
+    /* General Variables */
+    --font-family-primary: 'Inter', 'Poppins', 'Space Grotesk', sans-serif;
+    --font-family-mono: 'IBM Plex Mono', monospace;
+    --border-radius-card: 1rem;
+    --border-radius-button: 0.6rem;
 }
 
-/* === BỔ SUNG: BIẾN MÀU CHO LIGHT MODE === */
+/* Light Mode Variant */
 body.light-mode {
-    --bg-dark: #f5f5f5;
-    --bg-card: rgba(255, 255, 255, 0.8);
-    --border-color: rgba(0, 0, 0, 0.1);
-    --text-primary: #212121;
-    --text-secondary: #5f5f5f;
-    --resume-button-bg: #18181b;
-    /* Nút resume nền đen chữ trắng */
+    --color-primary-bg: #F8FAFC;
+    --color-surface-bg: #FFFFFF;
+    --color-primary-text: #0F172A;
+    --color-secondary-text: #475569;
+    --color-accent: #3B82F6;
+    --color-accent-light: #60A5FA;
+    --color-border: #E2E8F0;
 }
 
 
@@ -38,22 +43,21 @@ html {
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
-    /* Font mới */
-    font-family: 'Sora', sans-serif;
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary-text);
+    font-family: var(--font-family-primary);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 a {
-    color: var(--text-primary);
+    color: var(--color-primary-text);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--gradient-purple);
+    color: var(--color-accent);
 }
 
 .container {
@@ -62,32 +66,63 @@ a:hover {
     padding: 0 2rem;
 }
 
-/* Helper class cho hiệu ứng kính mờ */
+/* Typography */
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+body, p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+small {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+code, pre {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Helper class for glassmorphism */
 .glass-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: 1rem;
+    background: var(--color-surface-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-card);
     padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 
 /* ====================================================== */
-/* --- THANH TIẾN TRÌNH & HEADER --- */
+/* --- SCROLL PROGRESS & HEADER --- */
 /* ====================================================== */
 .scroll-progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     height: 4px;
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    background: linear-gradient(to right, var(--color-accent), var(--color-accent-light));
     width: 0%;
     z-index: 1000;
     transition: width 0.1s linear;
@@ -102,26 +137,22 @@ a:hover {
     width: 90%;
     max-width: 1400px;
 
-    background: rgba(24, 24, 27, 0.8);
+    background: rgba(26, 29, 36, 0.8); /* Slate Shadow with transparency */
     backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
     border-radius: 9999px;
     padding: 0.75rem 1.5rem;
     display: flex;
     align-items: center;
 
-    /* === THAY ĐỔI DÒNG NÀY === */
     justify-content: space-between;
-    /* Căn giữa tất cả các mục */
 
     gap: 1.5rem;
-    /* Tăng khoảng cách giữa logo và khối nav */
     opacity: 0;
     transform: translate(-50%, -100px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* === THÊM KHỐI NÀY === */
 .header-navigation {
     display: flex;
     align-items: center;
@@ -129,11 +160,7 @@ a:hover {
     flex: 1;
     justify-content: flex-end;
     min-width: 0;
-    /* Khoảng cách giữa nav và nút resume */
 }
-
-/* Các style khác cho .main-nav, .resume-button... giữ nguyên */
-
 
 .main-header.visible {
     opacity: 1;
@@ -144,13 +171,13 @@ a:hover {
     font-weight: bold;
     font-size: 1.15rem;
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--color-primary-text);
     white-space: nowrap;
     flex-shrink: 0;
 }
 
 .logo span {
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    background: linear-gradient(to right, var(--color-accent-light), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -166,9 +193,8 @@ a:hover {
 .main-nav a {
     position: relative;
     z-index: 1;
-    /* Đảm bảo link luôn nằm trên indicator */
     padding: 0.5rem 0.65rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text);
     text-decoration: none;
     font-size: 0.85rem;
     transition: color 0.3s;
@@ -176,33 +202,28 @@ a:hover {
 }
 
 .main-nav a:hover {
-    color: var(--text-primary);
+    color: var(--color-primary-text);
 }
 
 .main-nav a.is-active {
-    /* Thêm một class để highlight text khi active */
-    color: var(--text-primary);
+    color: var(--color-primary-text);
 }
 
-/* Style cho vạch active di chuyển */
 .nav-indicator {
     position: absolute;
     bottom: 0;
     left: 0;
-    /* JS sẽ cập nhật giá trị này */
     height: 100%;
-    background-color: rgba(0, 247, 255, 0.1);
+    background-color: rgba(78, 168, 222, 0.1); /* Tech Blue with transparency */
     border-radius: 9999px;
     z-index: 0;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    /* Hiệu ứng mượt mà */
     opacity: 0;
-    /* Ban đầu ẩn đi */
 }
 
 .resume-button {
-    background: var(--resume-button-bg);
-    color: #121212;
+    background: var(--color-accent);
+    color: var(--color-primary-bg); /* Text color should contrast with accent */
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     text-decoration: none;
@@ -234,7 +255,6 @@ a:hover {
     position: absolute;
     inset: 0;
     background-image: url('../assets/wallpaper5.webp');
-    /* ĐỔI TÊN ẢNH NỀN */
     background-size: cover;
     background-position: center;
     z-index: -2;
@@ -245,7 +265,7 @@ a:hover {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, rgba(18, 18, 18, 0.2) 0%, rgba(18, 18, 18, 0.8) 70%);
+    background: radial-gradient(circle, var(--color-primary-bg) 0%, var(--color-primary-bg) 70%);
     z-index: -1;
 }
 
@@ -283,7 +303,7 @@ a:hover {
     height: 4.5rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--gradient-purple);
+    border: 2px solid var(--color-accent);
 }
 
 .status-indicator.online {
@@ -292,20 +312,20 @@ a:hover {
     right: 2px;
     width: 14px;
     height: 14px;
-    background-color: #22c55e;
+    background-color: var(--color-success);
     border-radius: 50%;
-    border: 3px solid var(--bg-card);
+    border: 3px solid var(--color-surface-bg);
 }
 
 .job-title {
-    color: var(--text-secondary);
+    color: var(--color-secondary-text);
     font-size: 0.9rem;
 }
 
 .profile-details {
     margin-top: 1rem;
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text);
 }
 
 .profile-details p {
@@ -318,7 +338,7 @@ a:hover {
 .card-divider {
     border: none;
     height: 1px;
-    background-color: var(--border-color);
+    background-color: var(--color-border);
     margin: 1rem 0;
 }
 
@@ -330,7 +350,7 @@ a:hover {
 
 .discord-status .fa-discord {
     font-size: 1.25rem;
-    color: #7289DA;
+    color: var(--color-accent); /* Using accent for Discord icon */
 }
 
 .discord-info h4 {
@@ -339,12 +359,11 @@ a:hover {
 }
 
 .discord-info p {
-    color: var(--text-secondary);
+    color: var(--color-secondary-text);
     font-size: 0.8rem;
     line-height: 1;
 }
 
-/* SỬA LỖI: Chuyển text-align sang left và bỏ margin auto */
 .hero-text-content {
     text-align: left;
     max-width: 800px;
@@ -354,42 +373,37 @@ a:hover {
 .welcome-badge {
     display: inline-block;
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
+    color: var(--color-secondary-text); /* Updated to use CSS variable */
 }
 
 .hero-text-content h1 {
+    font-family: 'Space Grotesk', sans-serif; /* Applied primary font stack */
+    font-weight: 700; /* Applied bold weight */
     font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
 }
 
-/* .gradient-text {
-    background: linear-gradient(to right, var(--gradient-green), var(--gradient-yellow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-} */
-
 .gradient-text {
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    background: linear-gradient(to right, var(--color-accent-light), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero-text-content p {
+    font-family: 'Inter', sans-serif; /* Applied body font stack */
+    font-weight: 400; /* Applied regular weight */
     font-size: 1.125rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text);
     max-width: 600px;
     margin: 0;
 }
 
-/* Bỏ margin auto */
-
-/* SỬA LỖI: Căn lề trái cho các nút */
 .hero-buttons {
     margin-top: 2rem;
     display: flex;
@@ -399,32 +413,31 @@ a:hover {
 
 .btn {
     padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius-button);
     text-decoration: none;
     font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 12px var(--color-accent)40;
+    transform: translateY(-1px);
 }
 
 .btn-primary {
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
-    color: white;
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
+    background: var(--color-surface-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary-text);
 }
 
-/* SỬA LỖI: Căn lề trái cho các icon social */
 .social-links {
     margin-top: 2.5rem;
     display: flex;
@@ -433,21 +446,21 @@ a:hover {
 }
 
 .social-links a {
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Ensured use of CSS variable */
     font-size: 1rem;
     width: 40px;
     height: 40px;
     display: grid;
     place-items: center;
     border-radius: 50%;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
     transition: all 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--text-primary);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: var(--gradient-purple);
+    color: var(--color-primary-text);
+    background-color: rgba(78, 168, 222, 0.1); /* Tech Blue with transparency */
+    border-color: var(--color-accent);
 }
 
 .scroll-down-indicator {
@@ -504,13 +517,13 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(28, 28, 31, 0.7);
+    background: rgba(26, 29, 36, 0.7); /* Using var(--color-surface-bg) with transparency */
     backdrop-filter: blur(10px);
     padding: 0.75rem 1.25rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-card); /* Using card border radius */
+    border: 1px solid var(--color-border); /* Using border color variable */
     z-index: 998;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
 }
 
 .song-cover {
@@ -521,12 +534,13 @@ a:hover {
 }
 
 .song-info h4 {
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     font-size: 0.875rem;
     font-weight: 500;
 }
 
 .song-info p {
+    color: var(--color-secondary-text); /* Using secondary text color */
     font-size: 0.75rem;
     line-height: 1;
 }
@@ -541,10 +555,11 @@ a:hover {
 .player-controls i {
     cursor: pointer;
     transition: color 0.2s;
+    color: var(--color-secondary-text); /* Default icon color */
 }
 
 .player-controls i:hover {
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Hover icon color */
 }
 
 
@@ -563,23 +578,24 @@ a:hover {
 .section-badge {
     display: inline-block;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border); /* Using border color variable */
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     font-size: 0.875rem;
     margin-bottom: 1rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
 }
 
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif; /* Applied primary font stack */
+    font-weight: 600; /* Applied semi-bold weight */
+    font-size: 2.5rem; /* Adjusted to 2.5rem for H2 role */
 }
 
 .title-underline {
     width: 6rem;
     height: 4px;
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    background: linear-gradient(to right, var(--color-accent-light), var(--color-accent)); /* Using accent colors for gradient */
     border-radius: 9999px;
     margin: 0.75rem auto 0 auto;
 }
@@ -609,7 +625,7 @@ a:hover {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(26, 29, 36, 0.7); /* Using var(--color-surface-bg) with transparency */
     backdrop-filter: blur(5px);
     padding: 0.5rem 1rem;
     border-radius: 9999px;
@@ -617,13 +633,13 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border); /* Using border color variable */
 }
 
 .green-dot {
     width: 8px;
     height: 8px;
-    background-color: var(--gradient-green);
+    background-color: var(--color-success); /* Using success color variable */
     border-radius: 50%;
 }
 
@@ -658,7 +674,7 @@ a:hover {
 }
 
 .available-status {
-    color: var(--gradient-green);
+    color: var(--color-success); /* Using success color variable */
 }
 
 .btn-download-resume {
@@ -666,16 +682,16 @@ a:hover {
     width: 100%;
     text-align: center;
     padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
+    border: 1px solid var(--color-border); /* Using border color variable */
+    border-radius: var(--border-radius-button); /* Using button border radius */
     text-decoration: none;
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-primary-text); /* Using primary text color */
+    background: rgba(26, 29, 36, 0.7); /* Using var(--color-surface-bg) with transparency */
     transition: background-color 0.3s;
 }
 
 .btn-download-resume:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(26, 29, 36, 0.9); /* Slightly more opaque on hover */
 }
 
 
@@ -736,12 +752,12 @@ a:hover {
 
 .skills-carousel-container::before {
     left: 0;
-    background: linear-gradient(to right, var(--bg-dark) 0%, transparent 100%);
+    background: linear-gradient(to right, var(--color-primary-bg) 0%, transparent 100%); /* Using primary background color */
 }
 
 .skills-carousel-container::after {
     right: 0;
-    background: linear-gradient(to left, var(--bg-dark) 0%, transparent 100%);
+    background: linear-gradient(to left, var(--color-primary-bg) 0%, transparent 100%); /* Using primary background color */
 }
 
 /* Carousel track */
@@ -759,11 +775,11 @@ a:hover {
     justify-content: center;
     gap: 1rem;
     padding: 2rem 2.5rem;
-    background: var(--bg-card);
+    background: var(--color-surface-bg); /* Using surface background color */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: 1.25rem;
+    border: 1px solid var(--color-border); /* Using border color variable */
+    border-radius: var(--border-radius-card); /* Using card border radius */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 160px;
     position: relative;
@@ -781,9 +797,9 @@ a:hover {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-        var(--gradient-purple) 0%, 
-        var(--gradient-pink) 50%, 
-        var(--gradient-purple) 100%);
+        var(--color-accent), /* Using accent color */
+        var(--color-accent-light) 50%, /* Using accent light color */
+        var(--color-accent) 100%); /* Using accent color */
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
@@ -795,8 +811,8 @@ a:hover {
 
 .skill-item:hover {
     transform: translateY(-10px) scale(1.05);
-    border-color: var(--gradient-purple);
-    box-shadow: 0 20px 50px rgba(192, 132, 252, 0.3);
+    border-color: var(--color-accent); /* Using accent color */
+    box-shadow: 0 20px 50px rgba(78, 168, 222, 0.3); /* Using accent color with transparency */
 }
 
 /* Icon styling */
@@ -812,14 +828,14 @@ a:hover {
 
 .skill-item:hover .skill-icon {
     transform: scale(1.15) rotate(5deg);
-    filter: drop-shadow(0 8px 20px rgba(192, 132, 252, 0.5));
+    filter: drop-shadow(0 8px 20px rgba(78, 168, 222, 0.5)); /* Using accent color with transparency */
 }
 
 /* Skill name styling */
 .skill-name {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     text-align: center;
     position: relative;
     z-index: 1;
@@ -827,7 +843,7 @@ a:hover {
 }
 
 .skill-item:hover .skill-name {
-    background: linear-gradient(135deg, var(--gradient-purple), var(--gradient-pink));
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light)); /* Using accent colors for gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -837,7 +853,7 @@ a:hover {
 .skills-loading {
     text-align: center;
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
     padding: 3rem 0;
 }
 
@@ -1015,10 +1031,17 @@ a:hover {
 
 .blog-post-card {
     padding: 0;
-    /* Bỏ padding mặc định của glass-card */
     display: flex;
     flex-direction: column;
-    /* Sắp xếp ảnh và nội dung theo chiều dọc */
+    background: var(--color-surface-bg); /* Using surface background color */
+    border: 1px solid var(--color-border); /* Using border color variable */
+    border-radius: var(--border-radius-card); /* Using card border radius */
+    transition: all 0.3s ease;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .blog-card-image-link {
@@ -1027,23 +1050,20 @@ a:hover {
 
 .blog-card-image {
     aspect-ratio: 16 / 9;
-    /* Giữ tỉ lệ ảnh 16:9 */
     overflow: hidden;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-top-left-radius: var(--border-radius-card);
+    border-top-right-radius: var(--border-radius-card);
 }
 
 .blog-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .blog-post-card:hover .blog-card-image img {
     transform: scale(1.05);
-    /* Hiệu ứng zoom khi hover */
 }
 
 .blog-card-content {
@@ -1051,7 +1071,6 @@ a:hover {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /* Giúp nội dung card co giãn, đẩy link "Read More" xuống dưới */
 }
 
 .blog-card-tags {
@@ -1061,8 +1080,8 @@ a:hover {
 }
 
 .blog-card-tags span {
-    background-color: rgba(192, 132, 252, 0.1);
-    color: var(--gradient-purple);
+    background-color: rgba(78, 168, 222, 0.1); /* Using accent color with transparency */
+    color: var(--color-accent); /* Using accent color */
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.75rem;
@@ -1075,15 +1094,15 @@ a:hover {
 }
 
 .blog-card-content h3 a {
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
 }
 
 .blog-card-content h3 a:hover {
-    color: var(--gradient-pink);
+    color: var(--color-accent-light); /* Using accent light color */
 }
 
 .blog-card-content p {
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
     font-size: 0.9rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
@@ -1091,11 +1110,9 @@ a:hover {
 
 .blog-card-link {
     margin-top: auto;
-    /* Đẩy link này xuống cuối card */
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     font-weight: 500;
     align-self: flex-start;
-    /* Căn lề trái */
 }
 
 .blog-card-link i {
@@ -1205,24 +1222,24 @@ a:hover {
 
 .contact-item i {
     font-size: 1.25rem;
-    color: var(--gradient-purple);
+    color: var(--color-accent); /* Using accent color */
     margin-top: 5px;
 }
 
 .contact-item span {
     display: block;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
     font-size: 0.875rem;
 }
 
 .contact-item a {
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .contact-item a:hover {
-    color: var(--gradient-pink);
+    color: var(--color-accent-light); /* Using accent light color */
 }
 
 .status-title {
@@ -1234,6 +1251,7 @@ a:hover {
     align-items: center;
     gap: 0.75rem;
     font-size: 0.9rem;
+    color: var(--color-success); /* Using success color for status */
 }
 
 .contact-form h3 {
@@ -1249,10 +1267,10 @@ a:hover {
     width: 100%;
     padding: 0.75rem 1rem;
     background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border); /* Using border color variable */
     border-radius: 0.5rem;
-    color: var(--text-primary);
-    font-family: 'Sora', sans-serif;
+    color: var(--color-primary-text); /* Using primary text color */
+    font-family: var(--font-family-primary); /* Using primary font family */
     font-size: 0.9rem;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -1260,8 +1278,8 @@ a:hover {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: var(--gradient-purple);
-    box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.2);
+    border-color: var(--color-accent); /* Using accent color */
+    box-shadow: 0 0 0 3px rgba(78, 168, 222, 0.2); /* Using accent color with transparency */
 }
 
 .contact-form button {
@@ -1464,25 +1482,23 @@ footer a {
 /* --- FOOTER (THAY THẾ TOÀN BỘ CSS FOOTER CŨ) --- */
 /* ====================================================== */
 .main-footer {
-    background-color: var(--color-surface); /* << SỬA Ở ĐÂY */
-    color: var(--text-secondary);
+    background-color: var(--color-surface-bg); /* Using surface background color */
+    color: var(--color-secondary-text); /* Using secondary text color */
     padding-top: 4rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--color-border); /* Using border color variable */
     margin-top: 4rem;
-    transition: background-color 0.3s, border-color 0.3s; /* Thêm transition cho mượt */
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .footer-container {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    /* Layout 3 cột */
     gap: 3rem;
-    /* Khoảng cách giữa các cột */
     padding-bottom: 3rem;
 }
 
 .footer-column h4.footer-title {
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
@@ -1492,13 +1508,13 @@ footer a {
 .footer-logo {
     font-weight: bold;
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     margin-bottom: 1rem;
     padding-right: 400px;
 }
 
 .footer-logo span {
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink));
+    background: linear-gradient(to right, var(--color-accent-light), var(--color-accent)); /* Using accent colors for gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1520,7 +1536,7 @@ footer a {
 }
 
 .footer-column ul a {
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
     text-decoration: none;
     transition: color 0.3s, padding-left 0.3s;
     display: inline-flex;
@@ -1529,9 +1545,8 @@ footer a {
 }
 
 .footer-column ul a:hover {
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     padding-left: 5px;
-    /* Hiệu ứng đẩy sang phải khi hover */
 }
 
 /* Dòng Copyright */
@@ -1539,7 +1554,7 @@ footer a {
     padding: 1.5rem 0;
     text-align: center;
     font-size: 0.875rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--color-border); /* Using border color variable */
 }
 
 /* --- Responsive cho Footer --- */
@@ -1675,18 +1690,18 @@ footer a {
 
 /* --- The Main Card (Showcase) --- */
 .showcase-card {
-    background-color: #ffffff;
-    color: #121212;
-    border-radius: 1.5rem;
+    background-color: var(--color-surface-bg); /* Using surface background color */
+    color: var(--color-primary-text); /* Using primary text color */
+    border-radius: var(--border-radius-card); /* Using card border radius */
     padding: 2.5rem;
-    border-top: 8px solid var(--gradient-purple);
+    border-top: 8px solid var(--color-accent); /* Using accent color */
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .showcase-header {
     font-weight: 600;
     margin-bottom: 2rem;
-    color: #888;
+    color: var(--color-secondary-text); /* Using secondary text color */
 }
 
 .showcase-content {
@@ -1697,8 +1712,9 @@ footer a {
 }
 
 .text-features h1 {
+    font-family: 'Space Grotesk', sans-serif; /* Applied primary font stack */
+    font-weight: 700; /* Applied bold weight */
     font-size: 2.2rem;
-    font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
 }
@@ -1707,6 +1723,7 @@ footer a {
     font-weight: 700;
     margin-bottom: 1rem;
     text-transform: uppercase;
+    color: var(--color-primary-text); /* Using primary text color */
 }
 
 .text-features ul {
@@ -1716,7 +1733,7 @@ footer a {
 
 .text-features li {
     margin-bottom: 1rem;
-    color: #555;
+    color: var(--color-secondary-text); /* Using secondary text color */
     position: relative;
     padding-left: 1.5rem;
 }
@@ -1725,7 +1742,7 @@ footer a {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--gradient-purple);
+    color: var(--color-accent); /* Using accent color */
     font-weight: bold;
 }
 
@@ -1743,14 +1760,15 @@ footer a {
 }
 
 .details-column h2 {
+    font-family: 'Space Grotesk', sans-serif; /* Applied primary font stack */
+    font-weight: 700; /* Applied bold weight */
     font-size: 3rem;
-    font-weight: 800;
-    color: var(--text-primary);
+    color: var(--color-primary-text); /* Using primary text color */
     text-align: right;
 }
 
 .details-column .project-category {
-    color: var(--gradient-green);
+    color: var(--color-accent); /* Using accent color */
     font-weight: 600;
     text-align: right;
     margin-top: -1.5rem;
@@ -1765,8 +1783,8 @@ footer a {
 
 .project-tags span {
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    color: var(--color-primary-text); /* Using primary text color */
+    border: 1px solid var(--color-border); /* Using border color variable */
     padding: 0.4rem 1rem;
     border-radius: 9999px;
     font-size: 0.875rem;
@@ -1774,7 +1792,7 @@ footer a {
 
 .description-box {
     padding: 1.5rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text); /* Using secondary text color */
     text-align: right;
 }
 
@@ -1783,6 +1801,7 @@ footer a {
     justify-content: flex-end;
     gap: 1rem;
     font-size: 1.25rem;
+    color: var(--color-secondary-text); /* Using secondary text color */
 }
 
 /* --- STYLES FOR THE REVERSED LAYOUT --- */
