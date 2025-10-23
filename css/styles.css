@@ -38,9 +38,6 @@ body.light-mode {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
 
 body {
     background-color: var(--color-primary-bg);
@@ -1564,289 +1561,208 @@ code, pre {
     }
 }
 
-/* --- CSS CHO AWARD SECTION --- */
+/* ====================================================== */
+/* --- AWARDS CAROUSEL --- */
+/* ====================================================== */
 
-.award-card {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    /* Chia làm 2 cột, cột mô tả rộng hơn */
+/* Container for the carousel with overflow hidden */
+.awards-carousel-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 0;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+    cursor: grab;
+    transition: opacity 0.3s ease;
+}
+
+.awards-carousel-container:active {
+    cursor: grabbing;
+}
+
+.awards-carousel-container:hover {
+    opacity: 0.95;
+}
+
+/* Completely hide scrollbar */
+.awards-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.awards-carousel-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Add gradient masks on both sides for fade effect */
+.awards-carousel-container::before,
+.awards-carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.awards-carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-primary-bg) 0%, transparent 100%); /* Using primary background color */
+}
+
+.awards-carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-primary-bg) 0%, transparent 100%); /* Using primary background color */
+}
+
+/* Carousel track */
+.awards-carousel {
+    display: flex;
     gap: 2rem;
-    padding: 2.5rem;
+}
+
+/* Individual award item */
+.award-item {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    gap: 1rem;
+    padding: 2rem 2.5rem;
+    background: var(--color-surface-bg); /* Using surface background color */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border); /* Using border color variable */
+    border-radius: var(--border-radius-card); /* Using card border radius */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 320px; /* Fixed width for award items */
+    min-height: 450px; /* Ensure consistent height for all cards */
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    text-align: center;
 }
 
-.award-info {
-    text-align: right;
-    border-right: 2px solid var(--border-color);
-    padding-right: 2rem;
+/* Animated gradient background on hover */
+.award-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        var(--color-accent), /* Using accent color */
+        var(--color-accent-light) 50%, /* Using accent light color */
+        var(--color-accent) 100%); /* Using accent color */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
 }
 
-.award-date {
-    color: var(--gradient-purple);
-    font-weight: 700;
+.award-item:hover::before {
+    opacity: 0.1;
+}
+
+.award-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--color-accent); /* Using accent color */
+    box-shadow: 0 20px 50px rgba(78, 168, 222, 0.3); /* Using accent color with transparency */
+}
+
+/* Image styling */
+.award-image {
+    width: 100%;
+    max-width: 250px; /* Limit image width */
+    height: auto;
+    object-fit: contain;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    position: relative;
+    z-index: 1;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.award-item:hover .award-image {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(78, 168, 222, 0.5)); /* Using accent color with transparency */
+}
+
+/* Award title styling */
+.award-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary-text); /* Using primary text color */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
     margin-bottom: 0.5rem;
 }
 
-.award-title {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-}
-
-.award-competition {
-    font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.award-issuer {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.award-description ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.award-description li {
-    position: relative;
-    padding-left: 1.75rem;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-}
-
-.award-description li::before {
-    content: '🏆';
-    /* Hoặc dùng '✨', '✓' */
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--gradient-yellow);
-    font-size: 1rem;
-}
-
-/* Responsive cho màn hình nhỏ */
-@media (max-width: 768px) {
-    .award-card {
-        grid-template-columns: 1fr;
-        /* Chuyển thành 1 cột */
-        gap: 1.5rem;
-    }
-
-    .award-info {
-        text-align: center;
-        border-right: none;
-        border-bottom: 2px solid var(--border-color);
-        padding-right: 0;
-        padding-bottom: 1.5rem;
-    }
-
-    .award-description li {
-        padding-left: 1.5rem;
-    }
-}
-
-/* Thêm vào cuối file CSS của bạn */
-footer.bg-dark a.text-white-50 {
-    transition: color 0.3s ease-in-out;
-}
-
-footer.bg-dark a.text-white-50:hover {
-    color: #ffffff !important;
-    /* Dùng !important để ghi đè bootstrap nếu cần */
-    text-decoration: underline;
-}
-
-footer a {
-    color: #adb5bd;
-    /* Màu chữ liên kết trong footer */
-    text-decoration: none;
-}
-
-/* ====================================================== */
-/* --- FOOTER (THAY THẾ TOÀN BỘ CSS FOOTER CŨ) --- */
-/* ====================================================== */
-.main-footer {
-    background-color: var(--color-surface-bg); /* Using surface background color */
-    color: var(--color-secondary-text); /* Using secondary text color */
-    padding-top: 4rem;
-    border-top: 1px solid var(--color-border); /* Using border color variable */
-    margin-top: 4rem;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    padding-bottom: 3rem;
-}
-
-.footer-column h4.footer-title {
-    color: var(--color-primary-text); /* Using primary text color */
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-}
-
-/* Cột 1: Giới thiệu */
-.footer-logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: var(--color-primary-text); /* Using primary text color */
-    margin-bottom: 1rem;
-    padding-right: 400px;
-}
-
-.footer-logo span {
-    background: linear-gradient(to right, var(--color-accent-light), var(--color-accent)); /* Using accent colors for gradient */
+.award-item:hover .award-title {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light)); /* Using accent colors for gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.footer-about p {
-    max-width: 300px;
-    line-height: 1.7;
-}
-
-/* Cột 2 & 3: Links */
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-column ul li {
-    margin-bottom: 0.75rem;
-}
-
-.footer-column ul a {
-    color: var(--color-secondary-text); /* Using secondary text color */
-    text-decoration: none;
-    transition: color 0.3s, padding-left 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.footer-column ul a:hover {
-    color: var(--color-primary-text); /* Using primary text color */
-    padding-left: 5px;
-}
-
-/* Dòng Copyright */
-.footer-copyright {
-    padding: 1.5rem 0;
-    text-align: center;
-    font-size: 0.875rem;
-    border-top: 1px solid var(--color-border); /* Using border color variable */
-}
-
-/* --- Responsive cho Footer --- */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        /* Chuyển thành 1 cột trên mobile */
-        text-align: center;
-        /* Căn giữa nội dung */
-    }
-
-    .footer-about p {
-        margin: 0 auto;
-        /* Căn giữa đoạn text */
-    }
-
-    .footer-column ul a {
-        justify-content: center;
-        /* Căn giữa các item link */
-    }
-
-    .footer-logo {
-        padding-right: 40px;
-    }
-}
-
-/* Thêm vào cuối file new-version.css */
-
-/* ====================================================== */
-/* --- CODING ACTIVITY SECTION (WAKATIME) --- */
-/* ====================================================== */
-.wakatime-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.wakatime-card {
-    padding: 2rem;
-    text-align: center;
-}
-
-.wakatime-card h3 {
-    margin-bottom: 1.5rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.wakatime-card figure,
-.wakatime-card embed {
-    width: 100%;
-    height: 300px;
-    /* Bạn có thể điều chỉnh chiều cao này */
-}
-
-/* Responsive cho màn hình nhỏ */
-@media (max-width: 768px) {
-    .wakatime-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ====================================================== */
-/* --- AWARD SECTION PHOTO STYLES --- */
-/* ====================================================== */
-
-.award-photo-card {
-    margin-top: 2rem;
-    /* Tạo khoảng cách với card giải thưởng ở trên */
-    padding: 2rem;
-    text-align: center;
-}
-
-.award-photo-card .photo-title {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-}
-
-.award-photo-card .photo-wrapper {
-    max-width: 700px;
-    /* Giới hạn chiều rộng tối đa của ảnh */
-    margin: 0 auto;
-    /* Căn giữa ảnh */
-    border-radius: 0.75rem;
-    /* Bo góc cho đẹp */
-    overflow: hidden;
-    /* Đảm bảo ảnh không bị tràn ra ngoài */
-    border: 1px solid var(--border-color);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.award-photo-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* Loại bỏ khoảng trắng thừa dưới ảnh */
-}
-
-.award-photo-card .photo-caption {
-    margin-top: 1.5rem;
-    font-style: italic;
+.award-description {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var(--color-secondary-text);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    max-height: 7.8em; /* Approximately 5 lines * 1.6 line-height * 0.9rem font-size */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Limit to 5 lines */
+    -webkit-box-orient: vertical;
+}
+
+/* Loading state */
+.awards-loading {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-secondary-text); /* Using secondary text color */
+    padding: 3rem 0;
+}
+
+.awards-loading i {
+    margin-right: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .awards-carousel-container::before,
+    .awards-carousel-container::after {
+        width: 50px;
+    }
+
+    .award-item {
+        padding: 1.5rem 2rem;
+        width: 280px; /* Adjust width for smaller screens */
+        min-height: 420px; /* Adjust min-height for smaller screens */
+    }
+
+    .award-image {
+        max-width: 200px;
+    }
+
+    .award-title {
+        font-size: 1.1rem;
+    }
+
+    .award-description {
+        font-size: 0.85rem;
+    }
 }
 
 /* ====================================================== */
