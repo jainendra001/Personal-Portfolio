@@ -99,8 +99,8 @@ a:hover {
     left: 50%;
     z-index: 999;
 
-    width: 80%;
-    max-width: 1100px;
+    width: 90%;
+    max-width: 1400px;
 
     background: rgba(24, 24, 27, 0.8);
     backdrop-filter: blur(10px);
@@ -111,34 +111,24 @@ a:hover {
     align-items: center;
 
     /* === THAY ĐỔI DÒNG NÀY === */
-    justify-content: center;
+    justify-content: space-between;
     /* Căn giữa tất cả các mục */
 
-    gap: 2rem;
+    gap: 1.5rem;
     /* Tăng khoảng cách giữa logo và khối nav */
     opacity: 0;
     transform: translate(-50%, -100px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* === THAY ĐỔI LOGO THEO THIẾT KẾ MỚI === */
-.logo {
-    font-weight: bold;
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    /* Chuyển màu gradient sang một phần của tên */
-    background: linear-gradient(to right, #a855f7, #ec4899);
-    /* Tím-Hồng */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
 /* === THÊM KHỐI NÀY === */
 .header-navigation {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 0;
     /* Khoảng cách giữa nav và nút resume */
 }
 
@@ -152,9 +142,11 @@ a:hover {
 
 .logo {
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     text-decoration: none;
     color: var(--text-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .logo span {
@@ -165,17 +157,22 @@ a:hover {
 
 .main-nav {
     position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
 }
 
 .main-nav a {
     position: relative;
     z-index: 1;
     /* Đảm bảo link luôn nằm trên indicator */
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.65rem;
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .main-nav a:hover {
@@ -209,9 +206,11 @@ a:hover {
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     font-weight: 600;
     transition: transform 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .resume-button:hover {
@@ -688,21 +687,154 @@ a:hover {
     display: inline-block;
 }
 
-.skills-wrapper {
-    max-width: 1200px;
+/* ====================================================== */
+/* --- SKILLS CAROUSEL --- */
+/* ====================================================== */
+
+/* Container for the carousel with overflow hidden */
+.skills-carousel-container {
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 3rem 0;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+    cursor: grab;
+    transition: opacity 0.3s ease;
 }
 
-/* Chuyển grid thành 2 cột trên màn hình lớn để các thanh dài hơn và đẹp hơn */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+.skills-carousel-container:active {
+    cursor: grabbing;
 }
 
-/* Style cho trạng thái loading */
+.skills-carousel-container:hover {
+    opacity: 0.95;
+}
+
+/* Completely hide scrollbar */
+.skills-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.skills-carousel-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Add gradient masks on both sides for fade effect */
+.skills-carousel-container::before,
+.skills-carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.skills-carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, transparent 100%);
+}
+
+.skills-carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-dark) 0%, transparent 100%);
+}
+
+/* Carousel track */
+.skills-carousel {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Individual skill item */
+.skill-item {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 2.5rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 1.25rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 160px;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Animated gradient background on hover */
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        var(--gradient-purple) 0%, 
+        var(--gradient-pink) 50%, 
+        var(--gradient-purple) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.skill-item:hover::before {
+    opacity: 0.1;
+}
+
+.skill-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--gradient-purple);
+    box-shadow: 0 20px 50px rgba(192, 132, 252, 0.3);
+}
+
+/* Icon styling */
+.skill-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    position: relative;
+    z-index: 1;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 8px 20px rgba(192, 132, 252, 0.5));
+}
+
+/* Skill name styling */
+.skill-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+}
+
+.skill-item:hover .skill-name {
+    background: linear-gradient(135deg, var(--gradient-purple), var(--gradient-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Loading state */
 .skills-loading {
-    grid-column: 1 / -1;
     text-align: center;
     font-size: 1rem;
     color: var(--text-secondary);
@@ -713,68 +845,26 @@ a:hover {
     margin-right: 0.5rem;
 }
 
-.skill-card {
-    padding: 1.25rem;
-}
 
-.skill-header {
-    display: flex;
-    justify-content: space-between;
-    /* Đẩy tên và % ra hai phía */
-    align-items: center;
-    margin-bottom: 0.75rem;
-}
-
-/* KHỐI MỚI: Dùng để nhóm icon và tên kỹ năng */
-.skill-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    /* Khoảng cách giữa icon và tên */
-}
-
-/* KHỐI MỚI: Style cho icon trong header */
-.skill-icon-header {
-    width: 24px;
-    height: 24px;
-}
-
-.skill-name {
-    font-weight: 500;
-}
-
-.skill-percentage {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-}
-
-.skill-bar {
-    width: 100%;
-    height: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 9999px;
-    overflow: hidden;
-}
-
-/* Tìm và cập nhật lại khối này */
-.skill-level {
-    height: 100%;
-    background: linear-gradient(to right, var(--gradient-purple), var(--gradient-pink), var(--gradient-purple));
-    border-radius: 9999px;
-    width: 0;
-    transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-
-    /* THÊM 2 DÒNG DƯỚI ĐÂY */
-    background-size: 200% 100%;
-    /* Làm cho nền gradient rộng gấp đôi */
-    animation: animateGradient 3s ease infinite;
-    /* Áp dụng animation đã tạo */
-}
-
-/* Responsive: Chuyển về 1 cột trên màn hình nhỏ */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
+    .skills-carousel-container::before,
+    .skills-carousel-container::after {
+        width: 50px;
+    }
+
+    .skill-item {
+        padding: 1.5rem 2rem;
+        min-width: 140px;
+    }
+
+    .skill-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .skill-name {
+        font-size: 0.9rem;
     }
 }
 
@@ -1473,21 +1563,6 @@ footer a {
 
     .footer-logo {
         padding-right: 40px;
-    }
-
-    .skills-wrapper {
-        max-width: 400px;
-        /* Chiều rộng tối đa của lưới kỹ năng */
-        margin: 0 auto;
-        /* Tự động căn giữa, tạo ra khoảng trống hai bên */
-    }
-
-    /* SỬA LẠI KHỐI NÀY */
-    .skills-grid {
-        display: grid;
-        /* Luôn hiển thị 3 cột */
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
     }
 }
 
