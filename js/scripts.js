@@ -348,7 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // === PHẦN LOGIC BỊ THIẾU ĐÂY ===
     // Lấy thông tin vị trí và kích thước của link mục tiêu
     const linkRect = targetLink.getBoundingClientRect();
     // Lấy thông tin vị trí của thanh điều hướng (để tính toán vị trí tương đối)

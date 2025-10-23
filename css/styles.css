@@ -570,6 +570,11 @@ code, pre {
     padding: 6rem 0;
 }
 
+#experience.content-section,
+#education.content-section {
+    padding: 3rem 0; /* Reduce padding to make sections smaller */
+}
+
 .section-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -1203,22 +1208,38 @@ code, pre {
 /* ====================================================== */
 /* --- NEW TIMELINE STYLES (Experience & Education) --- */
 /* ====================================================== */
+
+.timeline-item.current-experience-item .timeline-card {
+    background-color: white; /* Changed to white background */
+    color: #0F172A; /* Dark text for contrast */
+}
+
+.timeline-item.current-experience-item .timeline-card h3,
+.timeline-item.current-experience-item .timeline-card p,
+.timeline-item.current-experience-item .timeline-card .timeline-meta {
+    color: #0F172A; /* Ensure all text is dark */
+}
+
+/* Removed specific styling for current-experience-item timeline-year to match general scheme */
+
 .timeline-container {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px; /* Increased max-width for two-sided layout */
     margin: 0 auto;
     padding: 2rem 0;
 }
 
-.timeline-container::before {
+/* Vertical line in the center */
+.timeline-container.two-sided-timeline::before {
     content: '';
     position: absolute;
     width: 2px;
     background: var(--color-border);
     top: 0;
     bottom: 0;
-    left: 100px; /* Position the line on the left */
+    left: 50%; /* Center the line */
     transform: translateX(-50%);
+    z-index: 0;
 }
 
 .timeline-item {
@@ -1226,83 +1247,143 @@ code, pre {
     margin-bottom: 3rem;
     position: relative;
     align-items: flex-start;
+    width: 50%; /* Each item takes half the width */
 }
 
 .timeline-item:last-child {
     margin-bottom: 0;
 }
 
-.timeline-year {
+/* Dot on the timeline */
+.timeline-item::after {
+    content: '';
     position: absolute;
-    left: 100px; /* Align with the vertical line */
-    transform: translateX(-50%);
-    top: 0;
-    width: 80px;
-    height: 30px;
-    background-color: var(--color-accent);
-    color: var(--color-primary-bg);
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 0.9rem;
+    top: 1.5rem; /* Adjust to align with content */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-primary-bg); /* Border to match background */
     z-index: 1;
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translateX(-50%); /* Center dot on the line */
 }
 
-.timeline-card {
+/* Left-sided items */
+.timeline-item.timeline-left {
+    left: 0;
+    padding-right: 3rem; /* Space for the line and dot */
+    justify-content: flex-end; /* Push content to the right */
+}
+
+.timeline-item.timeline-left::after {
+    right: -1px; /* Position dot on the right of the left item */
+}
+
+.timeline-item.timeline-left .timeline-content {
+    text-align: right;
+}
+
+/* Right-sided items */
+.timeline-item.timeline-right {
+    left: 50%;
+    padding-left: 3rem; /* Space for the line and dot */
+}
+
+.timeline-item.timeline-right::after {
+    left: -1px; /* Position dot on the left of the right item */
+}
+
+.timeline-item.timeline-right .timeline-content {
+    text-align: left;
+}
+
+.timeline-content {
     flex: 1;
-    margin-left: 150px; /* Space for the year and line */
     padding: 1.5rem;
     border-radius: var(--border-radius-card);
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background-color: var(--color-surface-bg); /* Use surface background */
+    color: var(--color-primary-text); /* Use primary text color */
 }
 
-.timeline-card h3 {
+.timeline-content h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: var(--color-primary-text);
 }
 
-.timeline-card .timeline-meta {
+.timeline-content .timeline-meta {
     color: var(--color-secondary-text);
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
-.timeline-card p {
+.timeline-content p {
     color: var(--color-secondary-text);
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
+.timeline-year {
+    display: inline-block; /* Changed to inline-block */
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    border: 1px solid var(--color-accent);
+    border-radius: 9999px;
+    padding: 0.3rem 0.8rem; /* Adjusted padding */
+    font-weight: 600;
+    font-size: 0.9rem; /* Adjusted font size */
+    margin-bottom: 1rem; /* Added margin-bottom */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Specific styling for current experience item */
+.timeline-item.current-experience-item .timeline-content {
+    background-color: var(--color-accent-light); /* Use accent light for current item */
+    color: var(--color-primary-bg); /* Dark text for contrast */
+}
+
+.timeline-item.current-experience-item .timeline-content h3,
+.timeline-item.current-experience-item .timeline-content p,
+.timeline-item.current-experience-item .timeline-content .timeline-meta {
+    color: var(--color-primary-bg); /* Ensure all text is dark */
+}
+
+.timeline-item.current-experience-item .timeline-year {
+    background-color: var(--color-primary-bg); /* Dark background for year */
+    color: var(--color-accent-light); /* Light text for year */
+    border-color: var(--color-primary-bg);
+}
+
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-    .timeline-container::before {
+    .timeline-container.two-sided-timeline::before {
         left: 20px; /* Adjust line position for smaller screens */
     }
 
-    .timeline-year {
-        left: 20px; /* Adjust year position */
-        width: 70px;
-        height: 28px;
-        font-size: 0.8rem;
+    .timeline-item {
+        width: 100%; /* Full width on small screens */
+        left: 0 !important; /* Override left positioning */
+        padding-left: 40px; /* Space for the line and dot */
+        padding-right: 0;
+        justify-content: flex-start; /* Align content to left */
     }
 
-    .timeline-card {
-        margin-left: 110px; /* Adjust card position */
-        padding: 1rem;
+    .timeline-item::after {
+        left: 20px; /* Align dot with the line */
+        right: auto;
+        transform: translateX(-50%);
     }
 
-    .timeline-card h3 {
-        font-size: 1.1rem;
+    .timeline-item.timeline-left .timeline-content,
+    .timeline-item.timeline-right .timeline-content {
+        text-align: left; /* All content aligned left on small screens */
     }
 
-    .timeline-card .timeline-meta,
-    .timeline-card p {
-        font-size: 0.85rem;
+    .timeline-item.timeline-left .timeline-year,
+    .timeline-item.timeline-right .timeline-year {
+        margin-left: 0;
     }
 }
 
@@ -1991,7 +2072,7 @@ footer a {
 .skills-subtitle {
     text-align: center;
     font-weight: 600;
-    color: #c084fc;
+    color: var(--color-accent);
     /* Màu tím nhạt, nổi bật trên nền tối */
     margin: 2.5rem 0 1.25rem 0;
     letter-spacing: 0.5px;
@@ -2005,7 +2086,7 @@ footer a {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 0.75rem;
-    background: linear-gradient(135deg, #8A2BE2, #4A00E0);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
     /* Gradient tím */
     color: white;
     font-size: 1.5rem;
@@ -2203,7 +2284,7 @@ body.light-mode .contact-form textarea {
 
 /* Đổi màu cho các tiêu đề phụ như "General Expertise", "Soft Skills"... */
 body.light-mode .skills-subtitle {
-    color: #6200ee;
+    color: var(--color-accent);
     /* Một màu tím đậm, dễ đọc trên nền trắng */
 }
 
